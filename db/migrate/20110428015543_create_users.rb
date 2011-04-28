@@ -1,7 +1,7 @@
-class CreateUsuarios < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration
   def self.up
-    create_table :usuarios do |t|
-      t.string :nombre
+    create_table :users do |t|
+      t.string :name
       t.string :login
       t.string :password_hash
       t.string :password_salt
@@ -10,6 +10,6 @@ class CreateUsuarios < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :usuarios
+    drop_table :users
   end
 end

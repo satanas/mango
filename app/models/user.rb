@@ -1,4 +1,4 @@
-class Usuario < ActiveRecord::Base
+class User < ActiveRecord::Base
   
   def password=(pass)
     return if pass.blank?
@@ -11,8 +11,8 @@ class Usuario < ActiveRecord::Base
     return nil
   end
   
-  def self.autenticar(username, password)
-    user = Usuario.find(:first, :conditions =>"login='#{username}'")
+  def self.auth(username, password)
+    user = User.find(:first, :conditions =>"login='#{username}'")
     return user if user.nil?
     
     digest = Digest::SHA256.hexdigest(password + user.password_salt)
