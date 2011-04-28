@@ -1,0 +1,4 @@
+<h3>Hola <%= session[:user].name %></h3>
+<br/>
+<br/>
+Para cerrar la sesión has click <%= link_to 'aquí', session_url(session[:user]), :method => :delete %>

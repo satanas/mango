@@ -3,7 +3,7 @@ class SessionController < ApplicationController
   
   def index
     if session[:user]
-      redirect_to :action=>'principal'
+      redirect_to :action=>'show'
     end
   end
   
@@ -11,7 +11,7 @@ class SessionController < ApplicationController
     user = User.auth(params[:user][:login], params[:user][:password])
     if user
       session[:user] = user
-      redirect_to :action => 'principal'
+      redirect_to :action => 'show'
     else
       redirect_to :action => 'error'
     end
@@ -23,5 +23,8 @@ class SessionController < ApplicationController
   end
   
   def error
+  end
+  
+  def show
   end
 end
