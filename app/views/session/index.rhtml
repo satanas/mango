@@ -1,5 +1,5 @@
-<% form_for :user, :url=>session_index_path, :method => 'post' do |f| %>
-  <%= f.text_field :login, :size=>'5' %><br/>
-  <%= f.password_field :password, :size=>'5' %><br/>
+<% form_for :user, :url=>session_index_path,:html => {:method => :post} do |f| %>
+  <%= f.text_field :login, :size=>'10' %><br/>
+  <%= f.password_field :password, :size=>'10' %><br/>
   <%= f.submit 'Iniciar sesion' %>
 <% end %>

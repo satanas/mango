@@ -34,12 +34,12 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "session", :action => "index"
 
   # See how all your routes lay out with "rake routes"
-
+  map.session_error 'session/error', :controller => 'session', :action => 'error'
+  map.resources :session
+  
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-  
-  map.resources :session
 end

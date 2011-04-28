@@ -8,9 +8,9 @@ class SessionController < ApplicationController
   end
   
   def create
-    puts "Hoooola #{params.inspect}"
     user = User.auth(params[:user][:login], params[:user][:password])
     if user
+      session[:user] = user
       redirect_to :action => 'principal'
     else
       redirect_to :action => 'error'
@@ -18,6 +18,8 @@ class SessionController < ApplicationController
   end
   
   def destroy
+    session[:user] = nil
+    redirect_to :action=>'index'
   end
   
   def error
