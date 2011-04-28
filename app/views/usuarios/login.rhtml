@@ -1,0 +1,5 @@
+<% form_for :usuario, :url=>autenticar_usuario_url do |f| %>
+  <%= f.text_field :login, :size=>'5' %>
+  <%= f.password_field :password, :size=>'5' %>
+  <%= f.submit 'Iniciar sesion' %>
+<% end %>
