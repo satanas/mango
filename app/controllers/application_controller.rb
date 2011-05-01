@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   before_filter :check_authentication
   
+  helper :flash
+  
   def check_authentication
     puts 'check authentication'
     unless session[:user]

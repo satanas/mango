@@ -13,7 +13,8 @@ class SessionController < ApplicationController
       session[:user] = user
       redirect_to :action => 'show'
     else
-      redirect_to :action => 'error'
+      flash[:notice] = 'Error de autenticacion'
+      redirect_to :action => 'index'
     end
   end
   
