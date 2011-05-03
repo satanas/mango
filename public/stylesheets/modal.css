@@ -1,0 +1,55 @@
+#modal{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px; 
+  left: 0px;
+}
+
+#modal .background{
+  filter: Alpha(Opacity=50); -moz-opacity:0.5; opacity: 0.5;
+  width: 100%; 
+  height: 100%; 
+  background-color: #424242;
+  position: absolute;
+  z-index: 500;
+  top: 0px; 
+  left: 0px;
+}
+
+#modal .container{
+  position: absolute;
+  border: 2px solid #900000;
+  background:#FFFFFF;
+  margin: auto;
+  min-width: 300px;
+  max-width: 400px;
+  left: 39%;
+  top: 35%;
+  z-index: 750;
+}
+
+.pop.title {
+  top: 0;
+  left: 0;
+  /*width: 292px;*/
+  min-width: 292px;
+  max-width: 392px;
+  color:#FFFFFF; 
+  background-color:#b30000;
+  border-bottom: 1px solid #900000;
+  font-weight:bold; 
+  padding: 4px;
+}
+
+.pop.message {
+  margin: auto;
+  padding: 5px 20px 5px 20px;
+  background:#ffffff;
+  text-align: justify;
+}
+
+.pop.button {
+  margin: 10px 10px;
+  text-align: center;
+}

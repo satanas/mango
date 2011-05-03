@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
   before_filter :check_authentication
   
   helper :flash
+  helper :modal
+  include ModalHelper::Modal
   
   def check_authentication
     puts 'check authentication'
