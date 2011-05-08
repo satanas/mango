@@ -1,0 +1,661 @@
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 1      
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21101002 - PRE-INICIADOR # 1
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.605,00        1 10101001 MAIZ A.                       50,04 
+    289,00        6 10102002 H. SOYA 47% L-67              15,00 
+     41,00       42 10105007 BIOFOS                         1,81 
+  1.360,00       40 15059029 NUCLEO DE REVEEX                    
+      4,80      178 15060009 MYCOSORB                       0,10 
+    103,00      200 10104003 ACEITE DE SOYA                 3,00 
+      2,00       45 15058002 SAL ROJA                       0,27 
+---------- 
+  3.400,00 
+
+
+ 
+ 	
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 2      
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21101003 - PRE CERO
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.411,00        1 10101001 MAIZ A.                             
+    476,00        6 10102014 H. SOYA 47% L-67              10,00 
+  1.340,00       11 15079020 PX PRE CERO                   42,70 
+    135,00      200 10104003 ACEITE DE SOYA                 2,94 
+     29,00       42 10105007 FOSFATO                        1,81 
+      9,00       41 10105002 CARBO. CALCIO                  0,24 
+---------- 
+  3.400,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 3      
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21102001 - PRE-INICIADOR #  2
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.666,50        1 10101001 MAIZ A.                       54,78 
+    408,00        6 10102014 H. SOYA 47% L-67              20,00 
+    628,00       11 15079022 PX PRE DOS                          
+    107,00      200 10104003 ACEITE DE SOYA                 4,26 
+     46,00       42 10105007 FOSFATO                        1,81 
+      7,00       41 10105002 CARBO. CALCIO                  0,29 
+      6,00       45 15058002 SAL ROJA                       0,27 
+      4,50       91 15051001 LISINA                         0,40 
+      1,87       41 15052016 MECADOX                        0,29 
+---------- 
+  3.400,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 4      
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21102004 - PRE-INICIADOR #  3
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.698,48        1 10101001 MAIZ A.                       55,94 
+  1.146,00        6 10102014 H. SOYA 47% L-67              27,00 
+    300,00       11 15079027 PX PRE TRES                         
+    176,00      200 10104003 ACEITE DE SOYA                 5,50 
+     49,00       39 10105007 FOSFATO MONOCALCICO            1,81 
+     15,00       41 10105002 CARBO. CALCIO                  0,29 
+      7,40       66 15051002 METIONINA                      0,19 
+      5,12       91 15051001 LISINA                         0,40 
+      3,00       45 15058002 SAL ROJA                       0,27 
+      1,87       41 15052016 MECADOX                        0,29 
+---------- 
+  3.400,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 5      
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21103001 - INICIADOR BATERIA
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.670,78        1 10101001 MAIZ A.                       52,55 
+    985,00        6 10102002 H. SOYA 47% L-67              30,78 
+    162,00      200 10104010 ACEITE DE GIRASOL              5,16 
+    128,00       47 10104002 MELAZA C.                      4,00 
+    106,00       11 15079024 PX BATERIA                     4,96 
+     95,00        3 10101002 SORGO NACIONAL L-15            2,97 
+     52,00       43 10105004 TRICALFOS L-25                 1,63 
+      1,22       91 15051001 LISINA                         0,44 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 6      
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21103004 - INICIADOR IP
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.473,24        1 10101001 MAIZ A.                       46,38 
+    943,00        6 10102002 H. SOYA 47% L-67              29,47 
+    320,00        3 10101002 SORGO NACIONAL L-15           10,00 
+    163,00      162 10104006 SEBO  ANIMAL                   5,19 
+    144,00       47 10104002 MELAZA C.                      4,50 
+    106,00       11 15079024 PX BATERIA                     4,96 
+     50,00       43 10105004 TRICALFOS L-25                 1,56 
+      0,76       91 15051001 LISINA                         0,42 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 7      
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21103005 - INICIADOR  3
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.241,21        1 10101001 MAIZ A.                       39,05 
+    873,00        6 10102002 H. SOYA 47% L-67              27,28 
+    480,00        3 10101002 SORGO NACIONAL L-15           15,00 
+    162,00      162 10104006 SEBO  ANIMAL                   5,16 
+    160,00       19 10102003 H.  ARROZ L-1                  5,00 
+    144,00       47 10104002 MELAZA C.                      4,50 
+     75,00       11 15079028 PX INICIADOR TRES              5,00 
+     47,00       43 10105004 TRICALFOS L-25                 1,47 
+     16,00       41 10105002 CARBO. CALCIO                  0,50 
+      1,19       91 15051001 LISINA                         0,40 
+      0,60       66 15051002 METIONINA                      0,19 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 8      
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21104001 - DESARROLLO RECRÍA
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+    950,70        4 10102004 ARROZ CARGO                   29,99 
+    900,00        6 10102002 H. SOYA 47% L-67              28,13 
+    640,00        3 10101002 SORGO NACIONAL L-15           20,00 
+    224,00       19 10102003 H.  ARROZ L-1                  7,00 
+    180,00      162 10104006 SEBO  ANIMAL                   5,63 
+    160,00       47 10104002 MELAZA C.                      5,00 
+     67,00       11 15079026 PX DESARROLLO IP               4,00 
+     60,00       43 10105004 TRICALFOS L-25                 1,88 
+     18,00       41 10105002 CARBO. CALCIO                  0,56 
+      0,30       66 15051002 METIONINA                      0,15 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 9      
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21104002 - DESARROLLO ENG.
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+    963,56        1 10101001 MAIZ A.                       30,11 
+    818,00        6 10102002 H. SOYA 47% L-67              25,56 
+    640,00        3 10101002 SORGO NACIONAL L-15           20,00 
+    224,00       19 10102003 H.  ARROZ L-1                  7,00 
+    162,00      162 10104006 SEBO  ANIMAL                   5,06 
+    160,00       47 10104002 MELAZA C.                      5,00 
+     95,00        4 10102004 ARROZ CARGO                    2,97 
+     58,00       43 10105004 TRICALFOS L-25                 1,81 
+     21,00       41 10105002 CARBO. CALCIO                  0,66 
+     16,00       56 15059003 MIX ENG.                       0,50 
+     11,80       91 15051001 LISINA                         0,37 
+      8,50       45 15058002 SAL ROJA                       0,27 
+      6,00      176 15053016 PREMIX-6                       0,19 
+      5,50       66 15051002 METIONINA                      0,17 
+      3,53       67 15051003 TREONINA                       0,11 
+      3,20       59 15060010 MICO ID                        0,10 
+      3,20      178 15060009 MYCOSORB                       0,10 
+      0,70      106 15053018 VEGPRO SSF                     0,02 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 10     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21104010 - DESARROLLO IP
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+    972,87        1 10101001 MAIZ A.                       30,59 
+    817,00        6 10102002 H. SOYA 47% L-67              25,53 
+    640,00        3 10101002 SORGO NACIONAL L-15           20,00 
+    224,00       19 10102003 H.  ARROZ L-1                  7,00 
+    160,00       47 10104002 MELAZA C.                      5,00 
+    158,00      162 10104006 SEBO  ANIMAL                   5,03 
+     95,00        4 10102004 ARROZ CARGO                    2,97 
+     67,00       11 15079026 PX DESARROLLO IP               4,00 
+     42,00       43 10105004 TRICALFOS L-25                 1,31 
+     18,00       41 10105002 CARBO. CALCIO                  0,56 
+      5,13       91 15051001 LISINA                         0,37 
+      1,00       66 15051002 METIONINA                      0,17 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 11     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21105002 - TERMINADOR AE.
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+    984,48        1 10101001 MAIZ A.                       30,76 
+    814,00        6 10102002 H. SOYA 47% L-67              25,44 
+    640,00        3 10101002 SORGO NACIONAL L-15           20,00 
+    224,00       19 10102003 H.  ARROZ L-1                  7,00 
+    161,00      162 10104006 SEBO  ANIMAL                   5,03 
+    160,00       47 10104002 MELAZA C.                      5,00 
+     95,00        4 10102004 ARROZ CARGO                    2,97 
+     42,00       43 10105004 TRICALFOS L-25                 1,31 
+     19,00       41 10105002 CARBO. CALCIO                  0,59 
+     16,00       79 15059040 MIX ENGORDE+PAYLEAN            0,50 
+     11,88       91 15051001 LISINA                         0,37 
+     10,50       45 15058002 SAL ROJA                       0,33 
+      6,00      176 15053016 PREMIX-6                       0,19 
+      5,50       66 15051002 METIONINA                      0,17 
+      3,53       67 15051003 TREONINA                       0,11 
+      3,20       59 15060010 MICO ID                        0,10 
+      3,20      178 15060009 MYCOSORB                       0,10 
+      0,70      106 15053018 VEGPRO SSF                     0,02 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 12     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21106001 - GESTANTE
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+    802,06       20 10102001 AFRECHILLO L-65               29,93 
+    662,94        1 10101001 MAIZ A.                       26,68 
+    321,60       19 10102003 H.  ARROZ L-1                 12,00 
+    268,00        6 10102002 H. SOYA 47% L-67              10,00 
+    240,00        3 10101002 SORGO NACIONAL L-15            8,96 
+    160,00       47 10104002 MELAZA C.                      5,97 
+     86,00      162 10104006 SEBO  ANIMAL                   3,28 
+     80,00       11 15079029 PX GESTANTE IP                 2,52 
+     40,00       41 10105002 CARBO. CALCIO                  1,49 
+     13,40      109 15059017 MIX C. GESTANTES               0,50 
+      6,00       43 10105004 TRICALFOS L-25                 0,22 
+---------- 
+  2.680,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 13     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21106002 - HEMBRAS JOVENES
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+    604,08       20 10102001 AFRECHILLO L-65               22,54 
+    535,00        3 10101002 SORGO NACIONAL L-15           19,96 
+    435,00        1 10101001 MAIZ A.                       16,23 
+    398,00        6 10102002 H. SOYA 47% L-67              14,85 
+    321,60       19 10102003 H.  ARROZ L-1                 12,00 
+    148,00       47 10104002 MELAZA C.                      5,52 
+    136,00      162 10104006 SEBO  ANIMAL                   5,07 
+     38,00       43 10105004 TRICALFOS L-25                 1,42 
+     30,00       41 10105002 CARBO. CALCIO                  1,12 
+     13,40       61 15059033 MIX CERDAS JOV+BIOTI.          0,50 
+      5,00      176 15053016 PREMIX-6                       0,19 
+      4,02      178 15060009 MYCOSORB                       0,15 
+      4,00       45 15058002 SAL ROJA                       0,15 
+      3,22       59 15060010 MICO ID                        0,12 
+      3,09       91 15051001 LISINA                         0,12 
+      1,60       66 15051002 METIONINA                      0,06 
+---------- 
+  2.680,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 14     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21107001 - LACTANTE IP
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.708,22        1 10101001 MAIZ A.                       53,13 
+    776,00        6 10102002 H. SOYA 47% L-67              24,25 
+    255,00       20 10102001 AFRECHILLO L-65                7,97 
+    186,00      200 10104010 ACEITE DE GIRASOL              5,81 
+     96,00       47 10104002 MELAZA C.                      3,00 
+     58,00       42 10105005 BIOFOS L-09                    1,81 
+     39,00       41 10105002 CARBO. CALCIO                  1,22 
+     32,00      104 15059016 MIX C. LACTANTES               1,00 
+     13,62       91 15051001 LISINA                         0,43 
+      9,50       45 15058002 SAL ROJA                       0,30 
+      6,12       67 15051003 TREONINA                       0,19 
+      6,00      176 15053016 PREMIX-6                       0,19 
+      5,90       66 15051002 METIONINA                      0,18 
+      4,80      178 15060009 MYCOSORB                       0,15 
+      3,84       59 15060010 MICO ID                        0,12 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 15     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21107002 - PERIPARTO
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.182,55        1 10101001 MAIZ A.                       43,88 
+    470,00       20 10102001 AFRECHILLO L-65               17,54 
+    369,00        6 10102002 H. SOYA 47% L-67              13,77 
+    321,60       19 10102003 H.  ARROZ L-1                 12,00 
+    141,00      200 10104010 ACEITE DE GIRASOL              5,26 
+     80,00       47 10104002 MELAZA C.                      2,99 
+     41,00       41 10105002 CARBO. CALCIO                  1,53 
+     35,00       42 10105005 BIOFOS L-09                    1,31 
+     13,40      105 15059015 PERIPARTO                      0,50 
+      6,00       45 15058002 SAL ROJA                       0,22 
+      5,19       91 15051001 LISINA                         0,19 
+      5,00      176 15053016 PREMIX-6                       0,19 
+      4,02      178 15060009 MYCOSORB                       0,15 
+      3,22       59 15060010 MICO ID                        0,12 
+      2,00       66 15051002 METIONINA                      0,07 
+      1,01       67 15051003 TREONINA                       0,04 
+---------- 
+  2.680,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 16     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21108001 - VERRACOS
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.546,91        1 10101001 MAIZ A.                       48,34 
+    680,00       20 10102001 AFRECHILLO L-65               21,25 
+    400,00       48 15059012 NORPIG VER                    12,50 
+    199,00        6 10102002 H. SOYA 47% L-67               6,22 
+    176,00       47 10104002 MELAZA C.                      5,50 
+    120,00      162 10104006 SEBO  ANIMAL                   3,75 
+     40,00       43 10105004 TRICALFOS L-25                 1,25 
+     17,00       41 10105002 CARBO. CALCIO                  0,53 
+      6,00      176 15053016 PREMIX-6                       0,19 
+      4,93       91 15051001 LISINA                         0,15 
+      4,80      178 15060009 MYCOSORB                       0,15 
+      3,84       59 15060010 MICO ID                        0,12 
+      1,20       66 15051002 METIONINA                      0,04 
+      0,32       64 15055001 DEODORASE                      0,01 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 17     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21203001 - INICIADOR EXTERNO
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.532,00        1 10101001 MAIZ A.                       48,18 
+    809,00        6 10102002 H. SOYA 47% L-67              25,28 
+    320,00        3 10101002 SORGO NACIONAL L-15           10,00 
+    160,00       19 10102003 H.  ARROZ L-1                  5,00 
+    144,00       47 10104002 MELAZA C.                      4,50 
+     93,00      162 10104006 SEBO  ANIMAL                   3,00 
+     75,00       11 15079028 PX INICIADOR TRES              5,00 
+     47,00       43 10105004 TRICALFOS L-25                 1,47 
+     17,00       41 10105002 CARBO. CALCIO                  0,53 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 18     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21203004 - INICIADOR FASE 1
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.826,98        1 10101001 MAIZ A.                       57,30 
+    904,00        6 10102002 H. SOYA 47% L-67              28,25 
+    140,00      200 10104010 ACEITE DE GIRASOL              4,47 
+     96,00       47 10104002 MELAZA C.                      3,00 
+     95,00        3 10101002 SORGO NACIONAL L-15            2,97 
+     75,00       11 15079028 PX INICIADOR TRES              5,00 
+     50,00       43 10105004 TRICALFOS L-25                 1,56 
+     11,00       41 10105002 CARBO. CALCIO                  0,34 
+      1,32       91 15051001 LISINA                         0,40 
+      0,70       66 15051002 METIONINA                      0,19 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 19     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21204001 - DESARROLLO EXTERNO
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.286,04        1 10101001 MAIZ A.                       40,37 
+    701,00        6 10102002 H. SOYA 47% L-67              21,91 
+    640,00        3 10101002 SORGO NACIONAL L-15           20,00 
+    160,00       47 10104002 MELAZA C.                      5,00 
+    102,06       19 10102003 H.  ARROZ L-1                  3,19 
+     95,00        4 10102004 ARROZ CARGO                    2,97 
+     94,00      162 10104006 SEBO  ANIMAL                   3,00 
+     63,00       11 15079030 PX DESARROLLO EXTERNO          2,37 
+     46,00       43 10105004 TRICALFOS L-25                 1,44 
+     12,00       41 10105002 CARBO. CALCIO                  0,38 
+      0,90       91 15051001 LISINA                         0,27 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 20     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21205001 - TERMINADOR EXTERNO
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.135,65        1 10101001 MAIZ A.                       35,65 
+    699,00        6 10102002 H. SOYA 47% L-67              21,84 
+    640,00        3 10101002 SORGO NACIONAL L-15           20,00 
+    350,00        4 10102004 ARROZ CARGO                   10,94 
+    160,00       47 10104002 MELAZA C.                      5,00 
+     94,00      162 10104006 SEBO  ANIMAL                   3,00 
+     63,00       11 15079030 PX DESARROLLO EXTERNO          2,37 
+     49,00       43 10105004 TRICALFOS L-25                 1,53 
+      9,00       41 10105002 CARBO. CALCIO                  0,28 
+      0,75       91 15051001 LISINA                         0,27 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 21     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21206001 - GESTANTE EXTERNO
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+    754,67        1 10101001 MAIZ A.                       28,16 
+    670,00       20 10102001 AFRECHILLO L-65               25,00 
+    535,00        3 10101002 SORGO NACIONAL L-15           19,96 
+    370,00        6 10102002 H. SOYA 47% L-67              13,81 
+    160,00       47 10104002 MELAZA C.                      5,97 
+     54,00      162 10104006 SEBO  ANIMAL                   2,01 
+     47,29       19 10102003 H.  ARROZ L-1                  1,76 
+     35,00       41 10105002 CARBO. CALCIO                  1,31 
+     16,00       43 10105004 TRICALFOS L-25                 0,60 
+     13,40      109 15059017 MIX C. GESTANTES               0,50 
+     12,00       45 15058002 SAL ROJA                       0,45 
+      5,00      176 15053016 PREMIX-6                       0,19 
+      4,02      178 15060009 MYCOSORB                       0,15 
+      3,22       59 15060010 MICO ID                        0,12 
+      0,40       66 15051002 METIONINA                      0,01 
+---------- 
+  2.680,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 22     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21207001 - LACTANTE EXTERNO
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+    727,12        1 10101001 MAIZ A.                       22,72 
+    625,00       20 10102001 AFRECHILLO L-65               19,53 
+    604,00        6 10102002 H. SOYA 47% L-67              18,88 
+    385,00        3 10101002 SORGO NACIONAL L-15           12,03 
+    384,00       19 10102003 H.  ARROZ L-1                 12,00 
+    181,00      162 10104006 SEBO  ANIMAL                   5,66 
+    160,00       47 10104002 MELAZA C.                      5,00 
+     40,00       43 10105004 TRICALFOS L-25                 1,25 
+     32,00      104 15059016 MIX C. LACTANTES               1,00 
+     27,00       41 10105002 CARBO. CALCIO                  0,84 
+      7,55       91 15051001 LISINA                         0,24 
+      6,40       10 15059013 PROHEPA                        0,20 
+      6,00      176 15053016 PREMIX-6                       0,19 
+      4,80      178 15060009 MYCOSORB                       0,15 
+      3,84       59 15060010 MICO ID                        0,12 
+      2,30       66 15051002 METIONINA                      0,07 
+      2,00       45 15058002 SAL ROJA                       0,06 
+      1,99       67 15051003 TREONINA                       0,06 
+---------- 
+  3.200,00 
+
+
+ 
+ 
+User : RAMON                 Inversiones Porcinas              Dia: 14/07/2008
+                             Reporte de Solucion               Time : 09:13   
+                                                               Pagina: 23     
+
+Grupo Multiblend : C:\BrillV7\DATA\JULIO-2008.MLS  ** Multiblend **
+Planta   : MCC - CAMBIOS AA                    
+Precio: MCC - CAMBIOS AA                    
+Formula : 21301001 - CEBA BOVINO
+
+  Cantidad Codigo   Nombre                                  Per. 
+---------- -------- ------------------------------------ ------- 
+  1.502,45        3 10101002 SORGO NACIONAL L-15           65,04 
+    232,00       47 10104002 MELAZA C.                     10,04 
+    230,00       20 10102001 AFRECHILLO L-65                9,96 
+    184,00        6 10102002 H. SOYA 47% L-67               7,97 
+     50,00      159 10107008 OPTIGEN                        2,16 
+     48,00       43 10105004 TRICALFOS L-25                 2,08 
+     27,00       41 10105002 CARBO. CALCIO                  1,17 
+     25,00       45 15058002 SAL ROJA                       1,08 
+     11,55      114 15059024 MIX TERNEROS                   0,50 
+---------- 
+  2.310,00 
+
