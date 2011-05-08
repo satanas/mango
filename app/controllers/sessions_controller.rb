@@ -1,11 +1,12 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   skip_before_filter :check_authentication
   
   def index
     if session[:user]
       redirect_to :action=>'show'
+    else
+      render :index, :layout => 'login'
     end
-    render :index, :layout => 'login'
   end
   
   def show
