@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag 'style' %>
     <%= stylesheet_link_tag 'notice' %>
     <%= stylesheet_link_tag 'modal' %>
     <title>Sistema de porcinas</title>
   </head>
   <body>
-      <%= render_flash_notice %>
-      <%= render_popup_dialog %>
-      <div id="wrapper"><%= yield %></div>
+      <div id="wrapper">
+        <%= render_flash_notice %>
+        <%= render_popup_dialog %>
+        <div id="content"><%= yield %></div>
+      </div>
   </body>
 </html>
