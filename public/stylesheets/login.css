@@ -1,0 +1,40 @@
+#login {
+  margin: 0;
+  padding: 0;
+  background: #f1efe2 url('../images/background3.png') repeat;
+  color: #000;
+  line-height:18px;
+  font-size: 0.70em;
+  font-family: Verdana, sans-serif;
+}
+
+#login #container{
+  margin: 8% auto;
+  width: 400px;
+  height: 270px;
+  border: 1px solid #666;
+  
+}
+
+#login #header{
+  height: 90px;
+  border-bottom: 1px solid #ccc;
+}
+
+#login #contenido{
+  height: 160px;
+  text-align: center;
+  background-color: #fff;
+}
+
+#login #footer {
+  text-align:center;
+  clear: both;
+  font-size: 0.85em;
+  color: #000;
+  padding: 1px 10px;
+}
+
+#login form{
+  padding-top: 20px;
+}

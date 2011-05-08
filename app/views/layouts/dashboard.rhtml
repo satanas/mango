@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag 'style' %>
+    <%= stylesheet_link_tag 'notice' %>
+    <%= stylesheet_link_tag 'modal' %>
+    <title>Sistema de porcinas</title>
+  </head>
+  <body>
+      <div id="wrapper3">
+        <%= render_flash_notice %>
+        <%= render_popup_dialog %>
+        <div id="content"><%= yield %></div>
+      </div>
+  </body>
+</html>

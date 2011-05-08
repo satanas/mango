@@ -21,16 +21,13 @@ class SessionController < ApplicationController
       redirect_to :action => 'show'
     else
       flash[:notice] = 'Error de autenticacion'
-      render :action => 'index'
+      render :index, :layout => 'login'
     end
   end
   
   def destroy
     session[:user] = nil
     redirect_to :action=>'index'
-  end
-  
-  def error
   end
   
 end
