@@ -5,11 +5,13 @@ class SessionController < ApplicationController
     if session[:user]
       redirect_to :action=>'show'
     end
+    render :index, :layout => 'login'
   end
   
   def show
     @popup = ModalHelper::Modal::Popup.new('Bienvenido',
       'Bem-vindo. Voce vais falar portugues logo')
+    render :show, :layout => 'dashboard'
   end
   
   def create
