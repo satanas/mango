@@ -1,0 +1,6 @@
+<%= f.error_messages %>
+<label for="login">Login:</label> <%= f.text_field :login, :size=>'10' %><br/>
+<label for="name">Name:</label> <%= f.text_field :name, :size=>'10' %><br/>
+<label for="password">Password:</label> <%= f.password_field :password, :size=>'10' %><br/>
+<label for="confirm">Confirm:</label> <%= f.password_field :password_confirmation, :size=>'10' %><br/>
+<label for="admin">Admin?:</label> <%= f.check_box :admin %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110508173738) do
+ActiveRecord::Schema.define(:version => 20110508233213) do
 
   create_table "recipes", :force => true do |t|
     t.string   "code"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20110508173738) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",         :default => false
   end
 
 end
