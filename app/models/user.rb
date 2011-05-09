@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     errors.add(:password_confirmation, "can't be blank") if @password_confirmation.blank?
     errors.add(:password_confirmation, "doesn't match") if @password != @password_confirmation
     errors.add(:password, "is too short (minimum is 5 characters)") if !@password.nil? and @password.length < 5
-    return false
+    return false if errors.size > 0
   end
   
   protected
