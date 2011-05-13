@@ -9,6 +9,15 @@
 #   inflect.uncountable %w( fish sheep )
 # end
 
+#para que pluralice en castellano - WY
+#Inflector.inflections.clear
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.plural /([aeiout])([A-Z]|_|$)/, '\1s\2'
+  #inflect.plural /([rlnd])([A-Z]|_|$)/, '\1es\2'
+  inflect.singular /([aeiout])s([A-Z]|_|$)/, '\1\2'
+  #inflect.singular /([rlnd])es([A-Z]|_|$)/, '\1\2'
+end
+
 # extender la clase Inflector
 module Inflector
   def pluralize(word)
