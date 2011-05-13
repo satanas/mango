@@ -13,15 +13,21 @@ class Recipe < ActiveRecord::Base
         @items = []
         fd.gets()
         puts "#{@version} - #{@nombre} - #{@fecha}"
+        fx = File.new('tmp/inputa', 'w')
         while (true)
           item = fd.gets().split(/\t/)
           break if item[0].strip() == '-----------'
           code = item[2].split(' ')[0]
           @items << {:amount=>item[0], :priority=>item[1], :code=>code, :per=>item[3].strip()}
+          fx.puts "#{item[2].split(' ')[0]}:"
+          fx.puts "  code: '#{item[2].split(' ')[0]}'"
+          fx.puts "  name: '#{item[2].split(' ')[1..item[2].split(' ').length].join(' ')}'"
         end
+        fx.close
         @total = fd.gets().strip()
         puts "#{@items.length} items. Total: #{@total}"
         continue = fd.gets().strip()
+        break
         break if continue.nil? or continue == '='
       end
     rescue => err

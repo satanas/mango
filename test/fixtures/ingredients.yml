@@ -1,0 +1,68 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+10101005:
+  code: '10101005'
+  name: 'MAIZ AMARILLO N'
+10102002:
+  code: '10102002'
+  name: 'H. SOYA 47% LOTE'
+10103003:
+  code: '10103003'
+  name: 'LECHE ENT.'
+10107009:
+  code: '10107009'
+  name: 'HP-200-53'
+10104003:
+  code: '10104003'
+  name: 'ACEITE DE SOYA'
+10103004:
+  code: '10103004'
+  name: 'SUERO DE L.12-64'
+10103010:
+  code: '10103010'
+  name: 'LACTOSA 98%'
+10102017:
+  code: '10102017'
+  name: 'HNA PESCADO 54%'
+10107005:
+  code: '10107005'
+  name: 'NUPRO 47'
+15059004:
+  code: '15059004'
+  name: 'S. LECHON'
+10106007:
+  code: '10106007'
+  name: 'PROLECHON'
+15051001:
+  code: '15051001'
+  name: 'LISINA'
+15051002:
+  code: '15051002'
+  name: 'METIONINA'
+10105005:
+  code: '10105005'
+  name: 'BIOFOS'
+15051003:
+  code: '15051003'
+  name: 'TREONINA'
+15052056:
+  code: '15052056'
+  name: 'COLIVAL'
+15060009:
+  code: '15060009'
+  name: 'MYCOSORB'
+10107010:
+  code: '10107010'
+  name: 'BIOMOS'
+15053020:
+  code: '15053020'
+  name: 'FUNGITEK GRAIN'
+15051005:
+  code: '15051005'
+  name: 'TRIPTOFANO'
+15060014:
+  code: '15060014'
+  name: 'LABIFLAX'
+15054008:
+  code: '15054008'
+  name: 'OXITEK POLVO'
