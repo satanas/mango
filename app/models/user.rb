@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   validates_uniqueness_of :login
   validates_presence_of :name, :login
-  validates_length_of :login, :within => 3..40
+  validates_length_of :name, :login, :within => 3..40
   
   before_save :validate_password
   

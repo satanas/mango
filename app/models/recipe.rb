@@ -1,4 +1,10 @@
 class Recipe < ActiveRecord::Base
+  has_many :ingredient_recipe
+  
+  validates_uniqueness_of :code
+  validates_presence_of :name, :code, :version, :total
+  validates_length_of :name, :code, :within => 3..40
+  validates_numericality_of :total
   
   def import(filepath)
     begin

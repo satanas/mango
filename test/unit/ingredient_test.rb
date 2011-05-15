@@ -26,8 +26,8 @@ class IngredientTest < ActiveSupport::TestCase
     assert @ingredients.save
   end
   
-  test "unicity" do
-    # Test code unicity
+  test "uniqueness" do
+    # Test code uniqueness
     @ingredients.code = '10101005'
     @ingredients.name = 'Test-1'
     assert !@ingredients.save
