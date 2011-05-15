@@ -1,5 +1,5 @@
 <h3>Lista de usuarios</h3>
-<div><%= link_to "New", new_user_url %></div>
+<div><%= link_to "New", new_user_path %></div>
 <table>
     <thead>
       <tr>
@@ -17,7 +17,7 @@
         <td><%=h u.login %></td>
         <td><%=h u.name %></td>
         <td><%=h u.admin %></td>
-        <td><%= link_to "Edit", edit_user_url(u) %> 
+        <td><%= link_to "Edit", edit_user_path(u) %> 
         <% if session[:user].id != u.id %>
         | <%= link_to "Delete", user_path(u), :method => :delete, :confirm =>"Do you want to delete user '#{u.name}'?" %>
         <% end %> 

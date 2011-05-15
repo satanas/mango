@@ -1,0 +1,7 @@
+<h1>Edit Ingredient</h1>
+
+<% form_for :ingredient, :url=>ingredient_path(@ingredient), :html=>{:method=>:put} do |f| %>
+  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <br/>
+  <div class='submit'><%= submit_tag 'Save' %> | <%= link_to 'Cancel', ingredients_path %></div>
+<% end %>

@@ -1,0 +1,26 @@
+<h3>Lista de ingredientes</h3>
+<div><%= link_to "New", new_ingredient_path %></div>
+<table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%
+      @ingredients.each do |i|
+    %>
+      <tr>
+        <td><%=h i.code %></td>
+        <td><%=h i.name %></td>
+        <td><%= link_to "Edit", edit_ingredient_path(i) %> 
+        | <%= link_to "Delete", ingredient_path(i), :method => :delete, :confirm =>"Do you want to delete ingredient '#{i.name}'?" %>
+        </td>
+      </tr>
+    <%
+      end 
+    %>
+    </tbody>
+</table>
