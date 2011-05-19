@@ -1,0 +1,30 @@
+#content .wrapper {
+    width: 820px;
+    padding: 40px;
+}
+
+.module {
+    margin-bottom: 20px;
+    
+}
+.module img {
+    display: block;
+    float: left;
+    padding-right: 10px;
+}
+
+.module-content {
+    float: left;
+    width: 250px;
+    margin-left: 10px;
+}
+
+.module-content h2 {
+    border-bottom: solid 1px #999;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.module-content p {
+    padding-bottom: 6px;
+}
