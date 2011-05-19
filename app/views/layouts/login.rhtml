@@ -1,22 +1,34 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <title>Mango | Iniciar sesión</title>
+    <%= stylesheet_link_tag 'reset-min' %>
     <%= stylesheet_link_tag 'grids-min' %>
+    <%= stylesheet_link_tag 'common' %>
     <%= stylesheet_link_tag 'login' %>
-    <%= stylesheet_link_tag 'notice' %>
-    <%= stylesheet_link_tag 'modal' %>
-    <%= javascript_include_tag :defaults %>
-    <title>Mango :: Inversiones Porcinas</title>
-  </head>
-  <body id="login">
-    <%= render_popup_dialog %>
-    <div id="container" class="yui3-g">
-      <div id="header" class="yui3-u-1"></div>
-      <div id="contenido" class="yui3-u-1">
-        <%= render_flash_notice %>
-        <%= yield %>
-      </div>
-      <div id="footer" class="yui3-u-1">Footer (C) Copyright 2011</div>
+</head>
+<body id="dashboard">
+    <div id="header">
+        <div class="wrapper">
+            <div id="logo">
+                <img alt="mango-logo" src="images/mango-logo.png" height="80" width="80" />
+                <h1>MANGO</h1>
+                <p>versión 1.0</p>
+            </div>
+            <div class="clearfix"></div>
+            <div id="login">
+                <%= yield %>
+            </div>
+        </div>
     </div>
-  </body>
+    <div id="footer">
+        <div class="wrapper">
+            <p>Mango (c) 2011 - Desarrollado por team-chuchuguaza</p>
+        </div>
+    </div>
+</body>
 </html>

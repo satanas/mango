@@ -1,17 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <%= javascript_include_tag :defaults %>
-    <%= stylesheet_link_tag 'style' %>
-    <%= stylesheet_link_tag 'notice' %>
-    <%= stylesheet_link_tag 'modal' %>
-    <title>Sistema de porcinas</title>
-  </head>
-  <body>
-      <div id="wrapper">
-        <%= render_flash_notice %>
-        <%= render_popup_dialog %>
-        <div id="content"><%= yield %></div>
-      </div>
-  </body>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <title>Mango | Inicio</title>
+    <%= stylesheet_link_tag 'reset-min' %>
+    <%= stylesheet_link_tag 'grids-min' %>
+    <%= stylesheet_link_tag 'common' %>
+    <!-- TODO css específico de la vista -->
+</head>
+<body id="dashboard">
+    <div id="header">
+        <div class="wrapper">
+            <div id="logo">
+				<%= link_to image_tag 'mango-logo.png', :alt=>'mango-logo', :width=>'80', :height=>'80' %>
+				<h1>MANGO</h1> <!-- TODO Link a dashboard -->
+                <p>versión 1.0</p>
+            </div>
+            <div id="user-stats">
+                <p><%=session[:user].name %></p>
+                <span><%= link_to 'cerrar sesión', session_url(session[:user]), :method => :delete %></span>
+            </div>
+            <div class="clearfix"></div>
+            <div id="menu">
+                <ul>
+                    <li>TITULO_VISTA</li> <!-- TODO El título de la vista -->
+                </ul>
+                <!-- TODO Implementar a futuro funcionalidad de busquedas por vista
+                <form method="get" id="menu-search" action="">
+                    <fieldset>
+                        <input type="text" value="Buscar" name="s" id="s" />
+                    </fieldset>
+                </form>
+                -->
+                <div class="clearfix"></div>
+            </div>
+            <div class="push"></div>
+        </div>
+    </div>
+    <div id="content">
+		<div class="wrapper">
+			<%= yield %>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="wrapper">
+            <p>Mango (c) 2011 - Desarrollado por team-chuchuguaza</p>
+        </div>
+    </div>
+</body>
 </html>
