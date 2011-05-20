@@ -1,7 +1,20 @@
-<h3>Hola <%= session[:user].name %></h3>
-<br/>
-<br/>
-<%= link_to 'Usuarios', users_url %><br/>
-<%= link_to 'Ingredientes', ingredients_url %><br/>
-<%= link_to 'Recetas', recipes_url %><br/>
-Para cerrar la sesión has click <%= link_to 'aquí', session_url(session[:user]), :method => :delete %>
+<div id="dashboard-content" class="yui3-g">
+  <div class="module yui3-u-1-2">
+    <%= link_to image_tag 'usuarios-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64' %>
+    <div class="module-content">
+      <h2><%= link_to 'Usuarios', users_url %></h2>
+      <p><a href="#">Tarea común 1</a></p>
+      <p><a href="#">Tarea común 2</a></p>
+      <p><a href="#">Tarea común 3</a></p>
+    </div>
+  </div>
+  <div class="module yui3-u-1-2">
+    <%= link_to image_tag 'materia-prima-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64' %>
+    <div class="module-content">
+      <h2><%= link_to 'Materia prima', ingredients_url %></h2>
+      <p><a href="#">Tarea común 1</a></p>
+      <p><a href="#">Tarea común 2</a></p>
+      <p><a href="#">Tarea común 3</a></p>
+    </div>
+  </div>
+</div>

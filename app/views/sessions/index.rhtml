@@ -1,5 +1,10 @@
 <% form_for :user, :url=>sessions_path,:html => {:method => :post} do |f| %>
-  <%= f.text_field :login, :size=>'10' %><br/>
-  <%= f.password_field :password, :size=>'10' %><br/>
-  <%= f.submit 'Iniciar sesion' %>
+    <div class="yui3-g">
+        <p class="text-label yui3-u-1-3">Usuario</p>
+        <%= f.text_field :login, :size=>'10', :class=>'text-field yui3-u-2-3' %>
+        <p class="text-label yui3-u-1-3">Contraseña</p>
+        <%= f.password_field :password, :size=>'10', :class=>'text-field yui3-u-2-3' %>
+        <p><%= f.submit 'Iniciar sesión', :class=>'blue-button' %></p>
+    </div>
 <% end %>
+<p><a href="#">¿Olvidó su contraseña?</a></p>

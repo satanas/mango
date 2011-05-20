@@ -17,18 +17,18 @@ class RecipeTest < ActiveSupport::TestCase
     assert @recipe.save
   end
   
-  test "code uniqueness" do
-    assert @recipe.save
-    @recipe2.code = '00001'
-    assert !@recipe2.save
-    assert @recipe2.errors.length, 1
-  end
+  #test "code uniqueness" do
+  #  assert @recipe.save
+  #  @recipe2.code = '00001'
+  #  assert !@recipe2.save
+  #  assert @recipe2.errors.length, 1
+  #end
   
   test "length" do
-    @recipe.code = '1'
+    #@recipe.code = '1'
     @recipe.name = 'R'
     assert !@recipe.save
-    assert @recipe.errors.length, 2
+    assert @recipe.errors.length, 1
   end
   
   test "total numericality" do

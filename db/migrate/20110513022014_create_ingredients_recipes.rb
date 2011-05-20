@@ -3,9 +3,9 @@ class CreateIngredientsRecipes < ActiveRecord::Migration
     create_table :ingredients_recipes do |t|
       t.integer :ingredient_id
       t.integer :recipe_id
-      t.decimal :dosis
-      t.integer :prioridad
-      t.decimal :percentage
+      t.float :amount
+      t.integer :priority
+      t.float :percentage
       t.timestamps
     end
   end

@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(:version => 20110513022014) do
   create_table "ingredients_recipes", :force => true do |t|
     t.integer  "ingredient_id"
     t.integer  "recipe_id"
-    t.integer  "dosis",         :limit => 10, :precision => 10, :scale => 0
-    t.integer  "prioridad"
-    t.integer  "percentage",    :limit => 10, :precision => 10, :scale => 0
+    t.float    "amount"
+    t.integer  "priority"
+    t.float    "percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20110513022014) do
     t.string   "name"
     t.string   "version"
     t.float    "total"
-    t.boolean  "active"
+    t.boolean  "active",     :default => true
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"

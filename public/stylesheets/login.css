@@ -1,40 +1,53 @@
+.wrapper {
+    width: 360px !important;
+}
+
 #login {
-  margin: 0;
-  padding: 0;
-  background: #f1efe2 url('../images/background3.png') repeat;
-  color: #000;
-  line-height:18px;
-  font-size: 0.70em;
-  font-family: Verdana, sans-serif;
+    background: url('images/menu-background.png') repeat-x #434343;
+    color: #fff;
+    padding: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: solid 1px #212121;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    border-radius: 7px;
 }
 
-#login #container{
-  margin: 8% auto;
-  width: 400px;
-  height: 270px;
-  border: 1px solid #666;
-  
+#login .text-label {
+    text-align: right;
+    font-size: 18px;
 }
 
-#login #header{
-  height: 90px;
-  border-bottom: 1px solid #ccc;
+#login .text-field {
+    width: 160px;
+    height: 24px;
+    padding-left: 10px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    border: none;
+    font-size: 12px;
+    color: #404040;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
 }
 
-#login #contenido{
-  height: 160px;
-  text-align: center;
-  background-color: #fff;
+#user_submit {    
+    margin-bottom: 10px;
 }
 
-#login #footer {
-  text-align:center;
-  clear: both;
-  font-size: 0.85em;
-  color: #000;
-  padding: 1px 10px;
+#login p {
+    text-align: center;
+}
+#login a {
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
 }
 
-#login form{
-  padding-top: 20px;
+#footer {
+    margin-top: 190px;
 }
