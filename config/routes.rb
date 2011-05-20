@@ -35,9 +35,10 @@ ActionController::Routing::Routes.draw do |map|
 
   # See how all your routes lay out with "rake routes"
   #map.session_error 'session/error', :controller => 'session', :action => 'error'
-  map.resources :sessions
-  map.resources :users
-  map.resources :ingredients
+  map.resources :sessions, :users, :ingredients
+  map.resources :recipes do |recipes|
+    recipes.resources :ingredients_recipes
+  end
   
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
