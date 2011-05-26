@@ -40,7 +40,7 @@
 <% end %>
 
 <div>
-<% remote_form_for :ingredient, :url=>ingredient_search_path do |f| %>
+<% remote_form_for :ingredient, :url=>ingredient_search_path, :update=>'ingredients_catalo' do |f| %>
   Buscar por código: <%= f.text_field :code, :size=>10 %> 
   Buscar por nombre: <%= f.text_field :name, :size=>12 %>
   <div class='submit'><%= submit_tag 'Buscar' %> | <%= link_to 'Cancel', "#" %></div>

@@ -1,1 +1,1 @@
-$("ingredients_catalog").update("hola");
+$("ingredients_catalog").update("<%= escape_javascript( render :partial=>'search' ) %>");
