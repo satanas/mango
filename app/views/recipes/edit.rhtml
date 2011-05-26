@@ -1,0 +1,49 @@
+<h3>Editar receta</h3>
+
+<% form_for :recipe, :url=>recipe_path(@recipe), :html=>{:method=>:put} do |f| %>
+  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <br/>
+  <div class='submit'><%= submit_tag 'Save' %> | <%= link_to 'Cancel', recipe_path(@recipe) %></div>
+<% end %>
+<br/><br/>
+<% form_for :ingredient_recipe, :url=>recipe_ingredients_recipes_path(@recipe), :html=>{:remote=>true} do |g| %>
+<h5>Ingredientes</h5>
+<table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Prioridad</th>
+        <th>Porcentaje</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%
+      @recipe.ingredient_recipe.each do |ir|
+    %>
+      <tr>
+        <td><%=h ir.ingredient.code %></td>
+        <td><%=h ir.ingredient.name %></td>
+        <td><%=h ir.amount %></td>
+        <td><%=h ir.priority %></td>
+        <td><%=h ir.percentage %></td>
+        <td><%= link_to "Delete", recipe_ingredient_recipe_path(@recipe, ir), 
+          :method => :delete, :confirm =>"Do you want to delete ingredient '#{ir.ingredient.code}'?" %></td>
+      </tr>
+    <%
+      end 
+    %>
+    </tbody>
+</table>
+<% end %>
+
+<div>
+<% remote_form_for :ingredient, :url=>ingredient_search_path do |f| %>
+  Buscar por código: <%= f.text_field :code, :size=>10 %> 
+  Buscar por nombre: <%= f.text_field :name, :size=>12 %>
+  <div class='submit'><%= submit_tag 'Buscar' %> | <%= link_to 'Cancel', "#" %></div>
+  <div id="ingredients_catalog"></div>
+<% end %>
+</div>
