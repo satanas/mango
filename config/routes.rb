@@ -35,6 +35,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # See how all your routes lay out with "rake routes"
   #map.session_error 'session/error', :controller => 'session', :action => 'error'
+  map.ingredient_search 'ingredients/search', :controller => "ingredients", :action => "search"
   map.resources :sessions, :users, :ingredients
   map.resources :recipes do |recipes|
     recipes.resources :ingredients_recipes

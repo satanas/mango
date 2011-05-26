@@ -68,7 +68,7 @@ p,fieldset,table,pre {
 }
 
 input[type=text],input[type=password],textarea {
-    width:12.25em;*width:11.9em;
+    /*width:12.25em;*width:11.9em;*/
 }
 
 html, body {
@@ -83,10 +83,10 @@ html, body {
 }
 
 .clearfix:before, .clearfix:after {
-  content: ".";    
-  display: block;    
-  height: 0;    
-  overflow: hidden;	
+  content: ".";
+  display: block;
+  height: 0;
+  overflow: hidden;
 }
 
 .clearfix:after {

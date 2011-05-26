@@ -19,7 +19,7 @@
         <td><%=h r.name %></td>
         <td><%=h r.version %></td>
         <td><%=h r.active %></td>
-        <td><%= link_to "Edit", edit_recipe_path(r) %> 
+        <td><%= link_to "Show", recipe_path(r) %> | <%= link_to "Edit", edit_recipe_path(r) %> 
         | <%= link_to "Delete", recipe_path(r), :method => :delete, :confirm =>"Do you want to delete recipe '#{r.name}'?" %>
         </td>
       </tr>
