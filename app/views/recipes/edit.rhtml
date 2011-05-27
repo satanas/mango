@@ -39,11 +39,16 @@
 </table>
 <% end %>
 
-<div>
-<% remote_form_for :ingredient, :url=>ingredient_search_path, :update=>'ingredients_catalo' do |f| %>
-  Buscar por código: <%= f.text_field :code, :size=>10 %> 
-  Buscar por nombre: <%= f.text_field :name, :size=>12 %>
-  <div class='submit'><%= submit_tag 'Buscar' %> | <%= link_to 'Cancel', "#" %></div>
-  <div id="ingredients_catalog"></div>
-<% end %>
+<div id="modal">
+  <div class="background"></div>
+  <div class="container">
+    <div id="ingredients_catalog" style="height: 350px; width: 400px; border: 1px solid #000">
+      <% remote_form_for :ingredient, :url=>ingredient_search_path do |f| %>
+        Buscar: <%= f.text_field :pattern, :size=>10 %> 
+        <%= f.select :option, [["Código", 0], ["Nombre", 1]] %>
+        <%= submit_tag 'Buscar' %> | <%= link_to 'Cancel', 'javascript: Element.remove("modal"); window.onscroll = null;' %>
+        <div id="ingredients_grid"></div>
+      <% end %>
+    </div>
+  </div>
 </div>

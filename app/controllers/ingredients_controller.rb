@@ -40,14 +40,12 @@ class IngredientsController < ApplicationController
   end
   
   def search
-    code = params['ingredient']['code']
-    name = params['ingredient']['name']
-    conditions, value = "code LIKE ?", code + "%" unless code.blank?
-    conditions, value = "name LIKE ?", name + "%" unless name.blank?
-    @ingredients = Ingredient.find :all, :conditions => [conditions, value]
-    puts @ingredients.inspect
+    pattern = params['ingredient']['pattern'] + '%'
+    opt = params['ingredient']['option'].to_i
+    condition = (opt.zero?) ? "code LIKE ?" : "name LIKE ?"
+    @ingredients = Ingredient.find :all, :conditions => [condition, pattern]
     respond_to do |format|
-      format.js { render :layout=>false } #{render :search, :layout => false} - render :content_type => 'text/javascript'
+      format.js { render :layout=>false, :locals => {:ingredients=>@ingredients} } #{render :search, :layout => false} - render :content_type => 'text/javascript'
     end
   end
 end

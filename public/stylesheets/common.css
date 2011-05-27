@@ -104,7 +104,7 @@ html, body {
 #header {
     background: #f0f0f0;
     height: 180px;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
 
 #logo {
