@@ -3,10 +3,10 @@
 <% form_for :recipe, :url=>recipe_path(@recipe), :html=>{:method=>:put} do |f| %>
   <%= render :partial=>'form', :locals =>{:f => f} %>
   <br/>
-  <div class='submit'><%= submit_tag 'Save' %> | <%= link_to 'Cancel', recipe_path(@recipe) %></div>
+  <div class='submit'><%= submit_tag 'Save' %> | <%= link_to 'Cancel', recipe_path(@recipe) %> | <%= link_to_remote 'Search', :url=>ingredient_catalog_path %></div>
 <% end %>
 <br/><br/>
-<% form_for :ingredient_recipe, :url=>recipe_ingredients_recipes_path(@recipe), :html=>{:remote=>true} do |g| %>
+<% form_for :ingredient_recipe, :url=>recipe_ingredients_recipes_path(@recipe), :html=>{:remote=>true} do |f| %>
 <h5>Ingredientes</h5>
 <table>
     <thead>
@@ -20,6 +20,14 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <th><%= link_to_remote '+', :url=>ingredient_catalog_path(:by=>'code') %> <%= f.text_field :code, :size=>7, :disabled=>true %></th>
+        <th><%= link_to_remote '+', :url=>ingredient_catalog_path(:by=>'name') %> <%= f.text_field :name, :size=>12, :disabled=>true %></th>
+        <th><%= f.text_field :amount, :size=>4 %></th>
+        <th><%= f.text_field :priority, :size=>4 %></th>
+        <th><%= f.text_field :percentage, :size=>4 %></th>
+        <th>Acciones</th>
+      </tr>
     <%
       @recipe.ingredient_recipe.each do |ir|
     %>
@@ -38,17 +46,3 @@
     </tbody>
 </table>
 <% end %>
-
-<div id="modal">
-  <div class="background"></div>
-  <div class="container">
-    <div id="ingredients_catalog" style="height: 350px; width: 400px; border: 1px solid #000">
-      <% remote_form_for :ingredient, :url=>ingredient_search_path do |f| %>
-        Buscar: <%= f.text_field :pattern, :size=>10 %> 
-        <%= f.select :option, [["Código", 0], ["Nombre", 1]] %>
-        <%= submit_tag 'Buscar' %> | <%= link_to 'Cancel', 'javascript: Element.remove("modal"); window.onscroll = null;' %>
-        <div id="ingredients_grid"></div>
-      <% end %>
-    </div>
-  </div>
-</div>

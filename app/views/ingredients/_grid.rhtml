@@ -1,0 +1,20 @@
+<% if @ingredients.length > 0 %>
+  <div style="height: 300px; overflow:auto;">
+    <table>
+      <tbody>
+      <%
+        @ingredients.each do |i|
+      %>
+        <tr>
+          <td><%=h i.code %></td>
+          <td><%=h i.name %></td>
+        </tr>
+      <%
+        end
+      %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div>No se encontró ningún ingredientes</div>
+<% end %>

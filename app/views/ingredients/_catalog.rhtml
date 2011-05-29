@@ -1,20 +1,13 @@
-<% if @ingredients.length > 0 %>
-  <div style="height: 300px; overflow:auto;">
-    <table>
-      <tbody>
-      <%
-        @ingredients.each do |i|
-      %>
-        <tr>
-          <td><%=h i.code %></td>
-          <td><%=h i.name %></td>
-        </tr>
-      <%
-        end
-      %>
-      </tbody>
-    </table>
+<div id="modal">
+  <div class="background"></div>
+  <div class="container">
+    <div id="ingredients_catalog" style="height: 350px; width: 400px; border: 1px solid #000">
+      <% remote_form_for :ingredient, :url=>ingredient_search_path do |f| %>
+        Buscar: <%= f.text_field :pattern, :size=>10 %> 
+        <%= f.select :option, {"Código"=>0, "Nombre"=>1}, :selected=>@by %>
+        <%= submit_tag 'Buscar' %> | <%= link_to 'Cancel', 'javascript: Element.remove("modal"); window.onscroll = null;' %>
+        <div id="ingredients_grid"></div>
+      <% end %>
+    </div>
   </div>
-<% else %>
-  <div>No se encontró ningún ingredientes</div>
-<% end %>
+</div>

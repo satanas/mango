@@ -48,4 +48,11 @@ class IngredientsController < ApplicationController
       format.js { render :layout=>false, :locals => {:ingredients=>@ingredients} } #{render :search, :layout => false} - render :content_type => 'text/javascript'
     end
   end
+  
+  def catalog
+    @by = (params['by'] == 'code') ? 0 : 1
+    respond_to do |format|
+      format.js { render :layout=>false }
+    end
+  end
 end
