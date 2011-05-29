@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     unless session[:user]
       #TODO Check usage
       session[:request] = action_name
-      redirect_to :controller=>'session', :action=>'error'
+      redirect_to :controller=>'sessions', :action=>'index'
     end
   end
   
