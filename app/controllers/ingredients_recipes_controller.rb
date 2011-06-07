@@ -1,4 +1,8 @@
 class IngredientsRecipesController < ApplicationController
+  def index
+    @recipe = Recipe.find(params[:recipe_id], :include=>'ingredient_recipe', :order=>'ingredients_recipes.id desc')
+  end
+
   def create
     puts "create: #{params.inspect}"
     @recipe = Recipe.find(params[:recipe_id], :include=>'ingredient_recipe')
@@ -12,9 +16,18 @@ class IngredientsRecipesController < ApplicationController
     ing_recipe.percentage = params[:ingredient_recipe][:percentage]
     ing_recipe.save
     puts ing_recipe.inspect
-    
-    @recipe = Recipe.find(params[:recipe_id], :include=>'ingredient_recipe', :order=>'ingredients_recipes.id desc')
+    index()
     puts @recipe.inspect
+    respond_to do |format|
+      format.js { render :layout=>false }
+    end
+  end
+
+  def destroy
+    puts "destroy: #{params.inspect}"
+    ingredient_recipe = IngredientRecipe.find(params[:id])
+    ingredient_recipe.destroy
+    index()
     respond_to do |format|
       format.js { render :layout=>false }
     end
