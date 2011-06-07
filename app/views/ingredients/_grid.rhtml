@@ -6,7 +6,7 @@
         @ingredients.each do |i|
       %>
         <tr>
-          <td><%=h i.code %></td>
+          <td><%= link_to_remote i.code, :url=>ingredient_select_path(:code=>i.code, :name=>i.name) %></td>
           <td><%=h i.name %></td>
         </tr>
       <%

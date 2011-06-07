@@ -1,0 +1,37 @@
+<div id="ingredient_recipe_grid">
+<% remote_form_for :ingredient_recipe, :url=>recipe_ingredients_recipes_path(@recipe) do |f| %>
+<table>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nombre</th>
+      <th>Cantidad</th>
+      <th>Prioridad</th>
+      <th>Porcentaje</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><%= link_to_remote '+', :url=>ingredient_catalog_path(:by=>'code') %> <%= f.text_field :code_display, :size=>7, :disabled=>true %></th>
+      <th><%= link_to_remote '+', :url=>ingredient_catalog_path(:by=>'name') %> <%= f.text_field :name_display, :size=>12, :disabled=>true %></th>
+      <th><%= f.text_field :amount, :size=>4 %></th>
+      <th><%= f.text_field :priority, :size=>4 %></th>
+      <th><%= f.text_field :percentage, :size=>4 %></th>
+      <th><%= f.hidden_field :code %><%= submit_tag 'Agregar' %></th>
+    </tr>
+    <% @recipe.ingredient_recipe.each do |ir| %>
+    <tr>
+      <td><%=h ir.ingredient.code %></td>
+      <td><%=h ir.ingredient.name %></td>
+      <td><%=h ir.amount %></td>
+      <td><%=h ir.priority %></td>
+      <td><%=h ir.percentage %></td>
+      <td><%= link_to "Delete", recipe_ingredient_recipe_path(@recipe, ir), 
+        :method => :delete, :confirm =>"Do you want to delete ingredient '#{ir.ingredient.code}'?" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+</div>

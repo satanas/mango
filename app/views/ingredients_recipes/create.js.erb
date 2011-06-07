@@ -1,0 +1,9 @@
+alert('Hola <%= @recipe.inspect %>');
+/*$('ingredient_recipe_code').value = "";
+$('ingredient_recipe_code_display').value = "";
+$('ingredient_recipe_name_display').value = "";
+$('ingredient_recipe_amount').value = "";
+$('ingredient_recipe_priority').value = "";
+$('ingredient_recipe_percentage').value = "";*/
+$('ingredient_recipe_grid').innerHTML = "<%= escape_javascript(render :partial=>'recipes/edit_grid', :locals =>{:recipe => @recipe}) %>";
+

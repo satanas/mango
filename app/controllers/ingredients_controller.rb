@@ -55,4 +55,13 @@ class IngredientsController < ApplicationController
       format.js { render :layout=>false }
     end
   end
+
+  def select
+    puts "select: #{params.inspect}"
+    @code = params['code']
+    @name = params['name']
+    respond_to do |format|
+      format.js { render :layout=>false }
+    end
+  end
 end
