@@ -1,1 +1,5 @@
-$('ingredient_recipe_grid').innerHTML = "<%= escape_javascript(render :partial=>'recipes/edit_grid', :locals =>{:recipe => @recipe}) %>";
+<% if @error.nil? %>
+  $('ingredient_recipe_grid').innerHTML = "<%= escape_javascript(render :partial=>'recipes/edit_grid', :locals =>{:recipe => @recipe}) %>";
+<% else %>
+  alert('<%= @error %>');
+<% end %>
