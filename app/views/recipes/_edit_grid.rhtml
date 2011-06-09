@@ -28,7 +28,7 @@
       <td><%=h ir.priority %></td>
       <td><%=h ir.percentage %></td>
       <td><%= link_to_remote "Delete", :url=>recipe_ingredient_recipe_path(@recipe, ir), 
-        :method => :delete, :confirm =>"Do you want to delete ingredient '#{ir.ingredient.code}'?" %></td>
+        :method => :delete, :confirm =>"Do you want to delete ingredient '#{ir.ingredient.code} - #{ir.ingredient.name}'?" %></td>
     </tr>
     <% end %>
   </tbody>

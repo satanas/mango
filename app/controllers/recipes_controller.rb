@@ -10,4 +10,9 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id], :include=>'ingredient_recipe', :order=>'ingredients_recipes.id desc')
   end
+
+  def upload
+    
+  end
+
 end

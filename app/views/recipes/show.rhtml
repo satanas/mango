@@ -3,7 +3,7 @@
 <div>Código: <%=h @recipe.code %> | Activa: <%=h @recipe.active %></div>
 <div>Nombre: <%=h @recipe.name %></div>
 <div>Versión: <%=h @recipe.version %></div>
-<%= link_to "Editar", edit_recipe_path(@recipe) %><br/><br/>
+<%= link_to "Edit", edit_recipe_path(@recipe) %> | <%= link_to "Back", recipes_path %><br/><br/>
 
 <h5>Ingredientes</h5>
 <table>
