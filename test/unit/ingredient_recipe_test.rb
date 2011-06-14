@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class IngredientRecipeTest < ActiveSupport::TestCase
-  
+  fixtures :ingredients
   def setup
     @item = IngredientRecipe.new :amount=>12.35, :priority=>14, :percentage=>1.99
   end
@@ -17,11 +17,14 @@ class IngredientRecipeTest < ActiveSupport::TestCase
     @item.recipe_id = 999
     assert !@item.save
     assert @item.errors.length, 2
-    @ingredient = Ingredient.find_by_code('10101005')
+    #@ingredient = Ingredient.find_by_code('10101005')
+    puts ingredients.inspect # = ingredients(10101005)
     @recipe = Recipe.find_by_code('00001')
-    puts @ingredient.inspect, @recipe.inspect
-    @item.ingredient_id = @ingredient.id
-    @item.recipe_id = @recipe.id
-    assert @item.save,@item.errors.inspect
+    #puts @ingredient.inspect, @recipe.inspect
+    ##@item.ingredient_id = @ingredient.id
+    ##@item.recipe_id = @recipe.id
+    #assert @item.save,@item.errors.inspect
+    @item.save
+    puts @item.errors.inspect
   end
 end

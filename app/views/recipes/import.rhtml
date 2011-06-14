@@ -1,5 +1,8 @@
 <h3>Importar receta 2</h3>
-<% form_for :upload, :url=>recipe_upload_path, :html=>{:multipart=>true} do |f| %>
+<% form_for :recipe, :url=>recipe_upload_path, :html=>{:multipart=>true} do |f| %>
+  <% if not @recipe.nil? and @recipe.errors.length > 0 %>
+    <%= f.error_messages %><br/>
+  <% end %>
   <label for="datefile">Select recipe</label>: 
   <%= f.file_field :datafile %>
   <br/>
