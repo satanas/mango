@@ -11,6 +11,7 @@ class IngredientRecipe < ActiveRecord::Base
     begin
       ingredient = Ingredient.find(self.ingredient_id)
     rescue Exception => ex
+      puts "#{ex.inspect}, #{self.ingredient_id}"
       errors.add(:ingredient_id, "must exist")
     end
     

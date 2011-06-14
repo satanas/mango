@@ -19,8 +19,9 @@ class IngredientRecipeTest < ActiveSupport::TestCase
     assert @item.errors.length, 2
     @ingredient = Ingredient.find_by_code('10101005')
     @recipe = Recipe.find_by_code('00001')
-    @item.ingredient = @ingredient
-    @item.recipe = @recipe
-    assert @item.save
+    puts @ingredient.inspect, @recipe.inspect
+    @item.ingredient_id = @ingredient.id
+    @item.recipe_id = @recipe.id
+    assert @item.save,@item.errors.inspect
   end
 end
