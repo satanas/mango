@@ -6,8 +6,15 @@ class Recipe < ActiveRecord::Base
   validates_length_of :name, :within => 3..40 #, :code
   validates_numericality_of :total
   
-  def import(filepath)
+  def self.import(upload)
     begin
+      name =  upload['datafile'].original_filename
+      directory = "public/data"
+      # create the file path
+      filepath = File.join(directory, name)
+      # write the file
+      File.open(path, "wb") { |f| f.write(upload['datafile'].read) }
+
       fd = File.open(filepath, 'r')
       continue = fd.gets()
       while (continue)

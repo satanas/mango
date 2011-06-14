@@ -10,11 +10,15 @@ class SessionsController < ApplicationController
   end
   
   def show
-    @popup = ModalHelper::Modal::Popup.new('Bienvenido',
-      'Bem-vindo. Voce vais falar portugues logo')
-    render :show, :layout => 'dashboard'
+    if session[:user]
+      @popup = ModalHelper::Modal::Popup.new('Bienvenido',
+        'Bem-vindo. Voce vais falar portugues logo')
+      render :show, :layout => 'dashboard'
+    else
+      render :index, :layout => 'login'
+    end
   end
-  
+
   def create
     user = User.auth(params[:user][:login], params[:user][:password])
     if user

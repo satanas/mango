@@ -12,7 +12,8 @@ class RecipesController < ApplicationController
   end
 
   def upload
-    
+    puts "upload: #{params.inspect}"
+    Recipe.import(params[:upload])
   end
 
 end
