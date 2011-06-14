@@ -12,7 +12,6 @@ class RecipesController < ApplicationController
   end
 
   def upload
-    puts "upload: #{params.inspect}"
     @recipe = Recipe.new
     if @recipe.import(params[:recipe])
       flash[:notice] = "Recipe imported successfully"

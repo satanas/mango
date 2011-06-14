@@ -7,6 +7,6 @@ class ClientTest < ActiveSupport::TestCase
 
   test "blank" do
     assert !@client.save
-    assert @client.errors.length == 7, @client.errors.inspect
+    assert_equal @client.errors.length, 7
   end
 end

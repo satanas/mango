@@ -47,7 +47,6 @@ class Recipe < ActiveRecord::Base
 
   def add_ingredient(args)
     ingredient = Ingredient.find_by_code(args[:code])
-    puts ingredient.inspect
     if ingredient.nil?
       raise ActiveRecord::RecordNotFound, "Ingredient with code #{args[:code]} doesn't exist"
     end
