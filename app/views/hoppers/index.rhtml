@@ -1,0 +1,24 @@
+<h2>Lista de tolvas</h2>
+<p><%= link_to "New", new_hopper_path %></p>
+<table>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%
+      @hoppers.each do |h|
+    %>
+      <tr>
+        <td><%=h h.number %></td>
+        <td><%= link_to "Edit", edit_hopper_path(h) %> 
+        | <%= link_to "Delete", hopper_path(h), :method => :delete, :confirm =>"Do you want to delete hopper '#{h.number}'?" %>
+        </td>
+      </tr>
+    <%
+      end 
+    %>
+    </tbody>
+</table>
