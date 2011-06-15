@@ -19,7 +19,7 @@ class ClientsController < ApplicationController
 
   def update
     @client = Client.find params[:id]
-    @client.update_attributes(params[:user])
+    @client.update_attributes(params[:client])
     if @client.save
       flash[:notice] = 'Cliente guardado con éxito'
       redirect_to :clients

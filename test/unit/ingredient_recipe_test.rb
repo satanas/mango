@@ -9,6 +9,6 @@ class IngredientRecipeTest < ActiveSupport::TestCase
   test "blank" do
     @item = IngredientRecipe.new
     assert !@item.save, "IngredientRecipe saved in blank: #{@item.inspect}"
-    assert_equal @item.errors.length, 6, "Expected 6 errors. Got: #{@item.errors.length} - #{@item.errors.inspect}"
+    assert_error_length(6, @item)
   end
 end

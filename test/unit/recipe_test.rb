@@ -9,7 +9,7 @@ class RecipeTest < ActiveSupport::TestCase
   test "blank" do
     @recipe = Recipe.new
     assert !@recipe.save, "Recipe saved in blank: #{@recipe.inspect}"
-    assert_equal @recipe.errors.length, 6, "Expected 6 errors. Got: #{@recipe.errors.length} - #{@recipe.errors.inspect}"
+    assert_error_length(6, @recipe)
 
     @recipe.code = '00001'
     @recipe.name = 'Recipe'
@@ -24,15 +24,13 @@ class RecipeTest < ActiveSupport::TestCase
     #@recipe.code = '1'
     @recipe.name = 'R'
     assert !@recipe.save, "Recipe saved with invalid name: #{@recipe.inspect}"
-    assert_equal @recipe.errors.length, 2, "Expected 2 errors. Got: #{@recipe.errors.length} - #{@recipe.errors.inspect}"
-
+    assert_error_length(2, @recipe)
   end
   
   test "total numericality" do
     @recipe.total = 'abc'
     assert !@recipe.save, "Recipe saved with invalid total: #{@recipe.inspect}"
-    assert_equal @recipe.errors.length, 2, "Expected 2 errors. Got: #{@recipe.errors.length} - #{@recipe.errors.inspect}"
-
+    assert_error_length(2, @recipe)
   end
   
   test "existence" do
@@ -40,7 +38,7 @@ class RecipeTest < ActiveSupport::TestCase
       @recipe.add_ingredient(:code=>'999999999999', :amount=>1, :priority=>1, :percentage=>12)
     }
     assert !@recipe.save, "Recipe saved without ingredients: #{@recipe.inspect} - #{@recipe.ingredient_recipe.inspect}"
-    assert_equal @recipe.errors.length, 1, "Expected 1 error. Got: #{@recipe.errors.length} - #{@recipe.errors.inspect}"
+    assert_error_length(1, @recipe)
   end
 
   # TODO: Test import
