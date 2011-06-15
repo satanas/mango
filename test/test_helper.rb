@@ -37,10 +37,10 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 
   def print_errors(num, obj)
-    return "Expected #{num} errors, got #{obj.errors.length}. #{obj.errors.inspect}"
+    return "Expected #{num} errors, got #{obj.errors.size}. #{obj.errors.inspect}"
   end
 
   def assert_error_length(num, obj)
-    assert_equal obj.errors.length, num, print_errors(num, obj)
+    assert_equal obj.errors.size, num, print_errors(num, obj)
   end
 end
