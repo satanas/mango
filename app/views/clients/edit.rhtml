@@ -1,0 +1,7 @@
+<h1>Edit Client</h1>
+
+<% form_for :client, :url=>client_path(@client), :html=>{:method=>:put} do |f| %>
+  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <br/>
+  <div class='submit'><%= submit_tag 'Save' %> | <%= link_to 'Cancel', clients_path %></div>
+<% end %>
