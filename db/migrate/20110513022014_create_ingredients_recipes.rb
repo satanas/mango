@@ -1,11 +1,11 @@
 class CreateIngredientsRecipes < ActiveRecord::Migration
   def self.up
     create_table :ingredients_recipes do |t|
-      t.integer :ingredient_id
-      t.integer :recipe_id
-      t.float :amount
-      t.integer :priority
-      t.float :percentage
+      t.integer :ingredient_id, :null => false
+      t.integer :recipe_id, :null => false
+      t.float :amount, :null => false
+      t.integer :priority, :null => false
+      t.float :percentage, :null => false
       t.timestamps
     end
   end

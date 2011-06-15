@@ -2,9 +2,9 @@ class CreateRecipes < ActiveRecord::Migration
   def self.up
     create_table :recipes do |t|
       t.string :code
-      t.string :name
-      t.string :version
-      t.float :total
+      t.string :name, :null => false
+      t.string :version, :null => false
+      t.float :total, :null => false
       t.boolean :active, :default => true
       t.text :comment
       t.timestamps
