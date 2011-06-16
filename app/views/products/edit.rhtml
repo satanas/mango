@@ -1,0 +1,7 @@
+<h1>Edit Product</h1>
+
+<% form_for :product, :url=>product_path(@product), :html=>{:method=>:put} do |f| %>
+  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <br/>
+  <div class='submit'><%= submit_tag 'Save' %> | <%= link_to 'Cancel', products_path %></div>
+<% end %>

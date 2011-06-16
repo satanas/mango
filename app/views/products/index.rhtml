@@ -1,0 +1,26 @@
+<h2>Lista de productos</h2>
+<p><%= link_to "New", new_product_path %></p>
+<table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%
+      @products.each do |p|
+    %>
+      <tr>
+        <td><%=h p.code %></td>
+        <td><%=h p.name %></td>
+        <td><%= link_to "Edit", edit_product_path(p) %> 
+        | <%= link_to "Delete", product_path(p), :method => :delete, :confirm =>"Do you want to delete product '#{p.name}'?" %>
+        </td>
+      </tr>
+    <%
+      end 
+    %>
+    </tbody>
+</table>
