@@ -3,18 +3,21 @@
 <table>
     <thead>
       <tr>
-        <th>Number</th>
+        <th>Tolva</th>
+        <th>Ingrediente</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
     <%
-      @hoppers.each do |h|
+      @hoppers.each do |key, obj|
+        ingredient = (obj[:ingredient].nil?) ? 'N/D' : "#{obj[:ingredient].ingredient.code} - #{obj[:ingredient].ingredient.name}"
     %>
       <tr>
-        <td><%=h h.number %></td>
-        <td><%= link_to "Edit", edit_hopper_path(h) %> 
-        | <%= link_to "Delete", hopper_path(h), :method => :delete, :confirm =>"Do you want to delete hopper '#{h.number}'?" %>
+        <td><%=h key %></td>
+        <td><%=h ingredient %></td>
+        <td><%= link_to "Edit", edit_hopper_path(obj[:hopper_id]) %> 
+        | <%= link_to "Delete", hopper_path(obj[:hopper_id]), :method => :delete, :confirm =>"Do you want to delete hopper '#{key}'?" %>
         </td>
       </tr>
     <%

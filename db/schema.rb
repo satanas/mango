@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110615130840) do
+ActiveRecord::Schema.define(:version => 20110615145526) do
 
   create_table "clients", :force => true do |t|
     t.string   "name",       :null => false
@@ -23,7 +23,15 @@ ActiveRecord::Schema.define(:version => 20110615130840) do
   end
 
   create_table "hoppers", :force => true do |t|
-    t.integer  "number"
+    t.integer  "number",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hoppers_ingredients", :force => true do |t|
+    t.integer  "hopper_id",                        :null => false
+    t.integer  "ingredient_id",                    :null => false
+    t.boolean  "active",        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

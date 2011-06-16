@@ -1,9 +1,10 @@
 class HoppersController < ApplicationController
   def index
-    @hoppers = Hopper.find :all, :order => 'number ASC'
+    @hoppers = Hopper.find_active
   end
 
   def edit
+    @ingredients = Ingredient.find :all, :order => 'name ASC'
     @hopper = Hopper.find params[:id]
   end
 
@@ -18,8 +19,12 @@ class HoppersController < ApplicationController
   end
 
   def update
+    puts "Hola, ¿cómo estás? #{params.inspect}"
     @hopper = Hopper.find params[:id]
-    @hopper.update_attributes(params[:hopper])
+    @hopper.deactivate_all_ingredients
+    unless params[:hopper][:hopper_ingredient].blank?
+      @hopper.hopper_ingredient << HopperIngredient.new(:ingredient_id => params[:hopper][:hopper_ingredient], :hopper_id => params[:id])
+    end
     if @hopper.save
       flash[:notice] = 'Hopper saved'
       redirect_to :hoppers
