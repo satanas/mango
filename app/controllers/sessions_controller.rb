@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     if session[:user]
       @popup = ModalHelper::Modal::Popup.new('Bienvenido',
         'Bem-vindo. Voce vais falar portugues logo')
-      render :show, :layout => 'dashboard'
+      render :show
     else
       render :index, :layout => 'login'
     end
@@ -30,10 +30,15 @@ class SessionsController < ApplicationController
       render :index, :layout => 'login'
     end
   end
-  
+
   def destroy
     session[:user] = nil
     redirect_to :action=>'index'
   end
-  
+
+  def not_implemented
+    flash[:notice] = "Esa funcionalidad aún no está implementada"
+    flash[:type] = 'warning'
+    redirect_to :action => :show
+  end
 end

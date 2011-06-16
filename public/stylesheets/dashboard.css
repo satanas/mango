@@ -19,11 +19,11 @@
 }
 
 .module-content h2 {
+    font-size: 17px;
     border-bottom: solid 1px #999;
-    padding-bottom: 8px;
     margin-bottom: 8px;
 }
 
 .module-content p {
-    padding-bottom: 6px;
+    font-size: 15px;
 }
