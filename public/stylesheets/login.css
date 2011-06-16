@@ -43,7 +43,7 @@
 #content {
     background: url('images/menu-background.png') repeat-x #434343;
     color: #fff;
-    padding: 40px;
+    padding: 15px 40px 40px 40px;
     margin-bottom: 8px;
     border: solid 1px #212121;
     -moz-border-radius: 5px;
@@ -112,4 +112,8 @@
 .blue-button:active {
     position: relative;
     top: 1px;
+}
+
+.separator {
+    padding: 8px 0px;
 }

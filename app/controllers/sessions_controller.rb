@@ -25,7 +25,8 @@ class SessionsController < ApplicationController
       session[:user] = user
       redirect_to :action => 'show'
     else
-      flash[:notice] = 'Error de autenticacion'
+      flash[:notice] = 'Credenciales inválidas'
+      flash[:type] = 'error'
       render :index, :layout => 'login'
     end
   end
