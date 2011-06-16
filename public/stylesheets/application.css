@@ -1,12 +1,15 @@
 .wrapper {
-    width: 360px !important;
-    margin: 50px auto;
+    margin: 0 auto;
+    width: 900px;
 }
+
+
 
 #header {
     margin: 0 auto;
     background: #f0f0f0;
     height: 80px;
+    width: 900px;
     margin-bottom: 8px;
     border: 1px solid #cbcbcb;
     -moz-border-radius: 5px;
@@ -40,31 +43,56 @@
     color: #848484;
 }
 
-#content {
+#user-stats {
+    float: right;
+    margin-top: 50px;
+    margin-right: 5px;
+    text-align: right;
+    font-size: 15px;
+}
+
+#user-stats p {
+    display: inline;
+}
+
+#user-stats span {
+}
+
+#menu {
+    height: 40px;
     background: url('images/menu-background.png') repeat-x #434343;
     color: #fff;
-    padding: 40px;
-    margin-bottom: 8px;
     border: solid 1px #212121;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
     border-radius: 5px;
+    margin-bottom: 8px;
 }
 
-#content .text-label {
-    text-align: right;
-    font-size: 18px;
+#menu ul, li {
+    float: left;
+    list-style-type: none !important;
 }
 
-#content .text-field {
-    width: 160px;
+#menu ul {
+    margin-left: 10px;
+}
+
+#menu li {
+    margin-top: 6px;
+}
+
+#menu form {
+    float: right;
+}
+
+#menu form fieldset input {
+    width: 100%;
     height: 24px;
     padding-left: 10px;
-    margin-left: 20px;
-    margin-bottom: 25px;
     border: none;
-    /*font-size: 12px;*/
+    font-size: 12px;
     color: #404040;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
@@ -72,44 +100,22 @@
     border-radius: 15px;
 }
 
-#user_submit {
-    margin: 10px auto;
-}
-
-#content p {
-    text-align: center;
-}
-#content a {
-    font-size: 12px;
-    font-weight: bold;
-    color: #fff;
-}
-
-#footer p {
-    font-size: 12px;
-    text-align: center;
-}
-
-.blue-button {
-    font-size: 14px;
-    font-weight: bold;
-    padding: 8px;
-    color: #fff;
-    background: #13a1e3;
-    #border: solid 1px !3f91b7;
-    border: none;
+#content {
+    padding-bottom: 20px;
+    padding: 20px;
+    width: 860px; /* 900 - 20*2 (padding) */
+    background: #fff;
+    border: solid 1px #cfcfcf;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
     border-radius: 5px;
-    cursor: pointer;
 }
 
-.blue-button:hover {
-    background: #2aafed;
+#footer {
+    margin-bottom: 20px;
 }
-
-.blue-button:active {
-    position: relative;
-    top: 1px;
+#footer p {
+    font-size: 12px;
+    text-align: center;
 }

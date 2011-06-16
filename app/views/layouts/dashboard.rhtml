@@ -9,44 +9,41 @@
     <%= stylesheet_link_tag 'reset-min' %>
     <%= stylesheet_link_tag 'grids-min' %>
     <%= stylesheet_link_tag 'common' %>
+    <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'dashboard' %>
 </head>
 <body id="dashboard">
-    <div id="header">
-        <div class="wrapper">
+    <div class="wrapper">
+        <!-- Header -->
+        <div id="header">
             <div id="logo">
-                <%= link_to image_tag 'mango-logo.png', :alt=>'mango-logo', :width=>'80', :height=>'80' %>
+                <%= image_tag 'mango-logo.png', :alt=>'mango-logo', :width=>'72', :height=>'72' %>
                 <h1>MANGO</h1>
                 <p>versión 1.0</p>
             </div>
             <div id="user-stats">
-                <p><%=session[:user].name %></p>
-                <span><a href="#"><%= link_to 'cerrar sesión', session_url(session[:user]), :method => :delete %></span>
+              <p><%=session[:user].name %></p> | <span><%= link_to 'cerrar sesión', session_url(session[:user]), :method => :delete %></span>
             </div>
             <div class="clearfix"></div>
-            <div id="menu">
-                <ul>
-                    <li>Inicio</li>
-                </ul>
-                <!-- TODO Implementar a futuro funcionalidad de busquedas por vista
-                <form method="get" id="menu-search" action="">
-                    <fieldset>
-                        <input type="text" value="Buscar" name="s" id="s" />
-                    </fieldset>
-                </form>
-                -->
-                <div class="clearfix"></div>
+        </div>
+
+        <!-- Menu -->
+        <div id="menu">
+            <ul>
+                <li>Inicio</li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+
+        <!-- Content -->
+        <div id="content">
+            <div id="dashboard-content">
+                <%= yield %>
             </div>
-            <div class="push"></div>
         </div>
-    </div>
-    <div id="content">
-		<div id="dashboard-content" class="wrapper">
-			<%= yield %>
-        </div>
-    </div>
-    <div id="footer">
-        <div class="wrapper">
+
+        <!-- Footer -->
+        <div id="footer">
             <p>Mango (c) 2011 - Desarrollado por team-chuchuguaza</p>
         </div>
     </div>

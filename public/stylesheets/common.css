@@ -23,6 +23,10 @@ a {
     color: #000;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 abbr,acronym {
     border-bottom:1px dotted #000;cursor:help;
 }
@@ -72,14 +76,9 @@ input[type=text],input[type=password],textarea {
 }
 
 html, body {
-    font-family: 'Droid Sans';
+    font-family: 'sans-serif' !important;
     background: #dedede;
     color: #383838;
-}
-
-.wrapper {
-    margin: 0 auto;
-    width: 900px;
 }
 
 .clearfix:before, .clearfix:after {
@@ -99,129 +98,4 @@ html, body {
 
 .push {
     height: 1px;
-}
-
-#header {
-    background: #f0f0f0;
-    height: 180px;
-    /*padding-top: 50px;*/
-}
-
-#logo {
-    float: left;
-}
-
-#logo img {
-    float: left;
-    padding-right: 15px;
-}
-
-#logo h1 {
-    float: left;
-    margin-left: -5px;
-    margin-bottom: -5px;
-    font-size: 50px;
-    font-weight: bold;
-}
-
-#logo p {
-    font-size: 14px;
-    color: #848484;
-}
-
-#user-stats {
-    float: right;
-    margin-top: 10px;
-    text-align: right;
-}
-
-#user-stats p {
-    font-size: 21px;
-}
-
-#user-stats span {
-    font-size: 12px;
-}
-
-#menu {
-    height: 20px;
-    background: url('images/menu-background.png') repeat-x #434343;
-    color: #fff;
-    padding: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: solid 1px #212121;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
-    -khtml-border-radius: 7px;
-    border-radius: 7px;
-}
-
-#menu ul, li {
-    float: left;
-    list-style-type: none !important;
-}
-
-#menu form {
-    float: right;
-}
-
-#menu form fieldset input {
-    width: 100%;
-    height: 24px;
-    padding-left: 10px;
-    border: none;
-    font-size: 12px;
-    color: #404040;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -khtml-border-radius: 15px;
-    border-radius: 15px;
-}
-
-#content {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-#content .wrapper {
-    padding: 20px;
-    width: 860px; /* 900 - 20*2 (padding) */
-    background: #fff;
-    border: solid 1px #cfcfcf;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -khtml-border-radius: 15px;
-    border-radius: 15px;
-}
-
-#footer {
-    margin-bottom: 20px;
-}
-#footer p {
-    font-size: 12px;
-    text-align: center;
-}
-
-.blue-button {
-    font-size: 14px;
-    font-weight: bold;
-    padding: 8px;
-    color: #fff;
-    background: #13a1e3;
-    #border: solid 1px !3f91b7;
-    border: none;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -khtml-border-radius: 10px;
-    border-radius: 10px;
-}
-
-.blue-button:hover {
-    background: #2aafed;
-}
-
-.blue-button:active {
-    position: relative;
-    top: 1px;
 }

@@ -11,24 +11,23 @@
     <%= stylesheet_link_tag 'common' %>
     <%= stylesheet_link_tag 'login' %>
 </head>
-<body id="dashboard">
-    <div id="header">
-        <div class="wrapper">
+<body id="login">
+    <div class="wrapper">
+        <div id="header">
             <div id="logo">
-                <img alt="mango-logo" src="images/mango-logo.png" height="80" width="80" />
+                <img alt="mango-logo" src="images/mango-logo.png" height="72" width="72" />
                 <h1>MANGO</h1>
                 <p>versión 1.0</p>
             </div>
             <div class="clearfix"></div>
-            <div id="login">
-                <%= yield %>
-            </div>
         </div>
-    </div>
-    <div id="footer">
-        <div class="wrapper">
+        <div id="content">
+            <%= yield %>
+        </div>
+        <div id="footer">
             <p>Mango (c) 2011 - Desarrollado por team-chuchuguaza</p>
         </div>
+        <div class="clearfix"></div>
     </div>
 </body>
 </html>
