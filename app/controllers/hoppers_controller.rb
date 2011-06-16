@@ -3,6 +3,10 @@ class HoppersController < ApplicationController
     @hoppers = Hopper.find_active
   end
 
+  def new
+    @ingredients = Ingredient.find :all, :order => 'name ASC'
+  end
+
   def edit
     @ingredients = Ingredient.find :all, :order => 'name ASC'
     @hopper = Hopper.find params[:id]
@@ -19,7 +23,6 @@ class HoppersController < ApplicationController
   end
 
   def update
-    puts "Hola, ¿cómo estás? #{params.inspect}"
     @hopper = Hopper.find params[:id]
     @hopper.deactivate_all_ingredients
     unless params[:hopper][:hopper_ingredient].blank?
