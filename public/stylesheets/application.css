@@ -3,14 +3,12 @@
     width: 900px;
 }
 
-
-
 #header {
     margin: 0 auto;
     background: #f0f0f0;
     height: 80px;
     width: 900px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     border: 1px solid #cbcbcb;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -60,14 +58,14 @@
 
 #menu {
     height: 40px;
-    background: url('images/menu-background.png') repeat-x #434343;
+    background-color: #434343;
     color: #fff;
     border: solid 1px #212121;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
     border-radius: 5px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 #menu ul, li {
@@ -101,7 +99,6 @@
 }
 
 #content {
-    padding-bottom: 20px;
     padding: 20px;
     width: 860px; /* 900 - 20*2 (padding) */
     background: #fff;
@@ -110,6 +107,7 @@
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
     border-radius: 5px;
+    margin-top: 5px;
 }
 
 #footer {
