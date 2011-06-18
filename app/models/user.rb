@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   end
   
   def password=(pass)
+    return if pass.blank?
     @password = pass
     self.password_salt = User.generate_salt if !self.password_salt?
     self.password_hash = User.encrypt(pass, self.password_salt)

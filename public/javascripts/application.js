@@ -22,3 +22,11 @@ function submit_ingredient_new_form() {
 function submit_ingredient_edit_form() {
     $('ingredient_edit_form').submit();
 }
+
+function submit_user_new_form() {
+    $('user_new_form').submit();
+}
+
+function submit_user_edit_form() {
+    $('user_edit_form').submit();
+}

@@ -19,6 +19,12 @@ module MenuHelper
       menu = menu_for_ingredients_new
     elsif c == 'ingredients' and (a == 'edit' or a == 'update')
       menu = menu_for_ingredients_edit
+    elsif c == 'users' and a == 'index'
+      menu = menu_for_users_index
+    elsif c == 'users' and (a == 'new' or a == 'create')
+      menu = menu_for_users_new
+    elsif c == 'users' and (a == 'edit' or a == 'update')
+      menu = menu_for_users_edit
     end
 
     return content_tag(:div, menu, :id => 'menu')
@@ -107,8 +113,35 @@ module MenuHelper
   def menu_for_ingredients_edit
     menu = content_tag(:p, 'Editar materia prima')
     menu += content_tag(:ul, 
-      render_back(ingredient_path(params[:id])) +
+      render_back(ingredients_path) +
       render_function('Actualizar', 'Actualizar materia prima', "submit_ingredient_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end
+  
+  def menu_for_users_index
+    menu = content_tag(:p, 'Lista de usuarios')
+    menu += content_tag(:ul, 
+      render_back(root_path) +
+      render_action('Crear', 'Crear nuevo usuario', new_user_path, 'button-add.png')
+    )
+    return menu
+  end
+  
+  def menu_for_users_new
+    menu = content_tag(:p, 'Crear nuevo usuario')
+    menu += content_tag(:ul, 
+      render_back(users_path) +
+      render_function('Guardar', 'Guardar usuario', "submit_user_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+  
+  def menu_for_users_edit
+    menu = content_tag(:p, 'Editar usuario')
+    menu += content_tag(:ul, 
+      render_back(users_path) +
+      render_function('Actualizar', 'Actualizar usuario', "submit_user_edit_form()", 'button-execute.png')
     )
     return menu
   end

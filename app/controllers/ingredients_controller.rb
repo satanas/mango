@@ -35,7 +35,7 @@ class IngredientsController < ApplicationController
       flash[:notice] = "Materia prima eliminada con éxito"
     else
       flash[:notice] = "La materia prima no se pudo eliminar"
-      flash[:type]
+      flash[:type] = 'error'
     end
     redirect_to :ingredients
   end
@@ -51,7 +51,8 @@ class IngredientsController < ApplicationController
   end
   
   def catalog
-    @by = (params['by'] == 'code') ? 0 : 1
+    puts "catalog: #{params.inspect}"
+    @by = (params[:by] == 'code') ? 0 : 1
     respond_to do |format|
       format.js { render :layout=>false }
     end
@@ -59,8 +60,8 @@ class IngredientsController < ApplicationController
 
   def select
     puts "select: #{params.inspect}"
-    @code = params['code']
-    @name = params['name']
+    @code = params[:code]
+    @name = params[:name]
     respond_to do |format|
       format.js { render :layout=>false }
     end

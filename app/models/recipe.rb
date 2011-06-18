@@ -1,10 +1,10 @@
 class Recipe < ActiveRecord::Base
   has_many :ingredient_recipe
 
-  validates_presence_of :name, :version
+  validates_presence_of :name, :code
   validates_length_of :name, :within => 3..40
   validates_numericality_of :total
-  validates_associated :ingredient_recipe
+  #validates_associated :ingredient_recipe
 
   before_validation :check_total
 
@@ -50,7 +50,7 @@ class Recipe < ActiveRecord::Base
           fd.gets()
           return false unless validate_field(fd.gets(), 'Ver')
           header = fd.gets().split(/\t/)
-          @recipe = Recipe.new :version=>header[0], :name=>header[1]
+          @recipe = Recipe.new :code=>header[0], :name=>header[1]
           logger.info("Creando encabezado de receta #{@recipe.inspect}")
           fd.gets()
           while (true)

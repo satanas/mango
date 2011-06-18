@@ -12,8 +12,6 @@ class SessionsController < ApplicationController
   def show
     if session[:user]
       @popup = ModalHelper::Modal::Popup.new('Bienvenido', 'Bem-vindo. Voce vais falar portugues logo')
-      flash[:notice] = 'Texto de prueba para valida el notice'
-      flash[:type] = 'warning'
       render :show, :layout => 'dashboard'
     else
       render :index, :layout => 'login'
