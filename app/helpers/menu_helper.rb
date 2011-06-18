@@ -1,18 +1,71 @@
 module MenuHelper
-  
+
   def render_menu
     c = params[:controller]
     a = params[:action]
-    if c == 'recipes' and 'index'
+    if c == 'recipes' and a == 'index'
       menu = menu_for_recipes_index
+    elsif c == 'recipes' and a == 'show'
+      menu = menu_for_recipes_show
+    elsif c == 'recipes' and a == 'edit'
+      menu = menu_for_recipes_edit
+    elsif c == 'recipes' and a == 'import'
+      menu = menu_for_recipes_import
     end
 
-    html = content_tag(:div, menu, :id => 'menu')
-    #html += content_tag(:div, nil, :class => 'clearfix')
-    return html
+    return content_tag(:div, menu, :id => 'menu')
+  end
+
+  private
+
+  def render_action(caption, title, url, image)
+    icon = image_tag(image, :alt=>caption, :title=>title, :height=>28, :width=>28)
+    return content_tag(:li, link_to(icon, url))
+  end
+
+  def render_function(caption, title, function, image)
+    icon = image_tag(image, :alt=>caption, :title=>title, :height=>28, :width=>28)
+    return content_tag(:li, link_to(icon, '#', :onclick => function))
+  end
+
+  def render_back(url)
+    return render_action('Volver', 'Volver', url, 'button-back.png')
   end
 
   def menu_for_recipes_index
     menu = content_tag(:p, 'Lista de recetas')
+    menu += content_tag(:ul, 
+      render_back(root_path) +
+      render_action('Importar', 'Importar receta desde archivo', recipe_import_path, 'button-import.png')+
+      render_action('Crear', 'Crear nueva receta', new_recipe_path, 'button-add.png')
+    )
+    return menu
+  end
+
+  def menu_for_recipes_show
+    menu = content_tag(:p, 'Detalle de receta')
+    menu += content_tag(:ul, 
+      render_back(recipes_path) +
+      render_action('Editar', 'Editar receta', edit_recipe_path, 'button-edit.png')
+    )
+    return menu
+  end
+
+  def menu_for_recipes_edit
+    menu = content_tag(:p, 'Editar receta')
+    menu += content_tag(:ul, 
+      render_back(recipe_path(params[:id])) +
+      render_function('Actualizar', 'Actualizar receta', "submit_recipe_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_recipes_import
+    menu = content_tag(:p, 'Importar receta')
+    menu += content_tag(:ul, 
+      render_back(recipes_path) +
+      render_function('Importar', 'Importar receta', "submit_recipe_upload_form()", 'button-execute.png')
+    )
+    return menu
   end
 end
