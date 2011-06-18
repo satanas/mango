@@ -2,23 +2,43 @@ class RecipesController < ApplicationController
   def index
     @recipes = Recipe.find :all
   end
-  
+
   def show
     @recipe = Recipe.find(params[:id], :include=>'ingredient_recipe', :order=>'id desc')
   end
-  
+
   def edit
     @recipe = Recipe.find(params[:id], :include=>'ingredient_recipe', :order=>'ingredients_recipes.id desc')
+  end
+
+  def create
+    @recipe = Recipe.new params[:recipe]
+    if @recipe.save
+      flash[:notice] = 'Receta guardada con éxito'
+      redirect_to :recipes
+    else
+      render :new
+    end
+  end
+
+  def update
+    @recipe = Recipe.find params[:id]
+    @recipe.update_attributes(params[:recipe])
+    if @recipe.save
+      flash[:notice] = 'Receta actualizada con éxito'
+      redirect_to :recipes
+    else
+      render :edit
+    end
   end
 
   def upload
     @recipe = Recipe.new
     if @recipe.import(params[:recipe])
-      flash[:notice] = "Recipe imported successfully"
-      flash[:notice] = 'info'
+      flash[:notice] = "Receta importada con éxito"
       redirect_to :action => 'index'
     else
-      puts @recipe.errors.inspect
+      flash[:type] = 'error'
       flash[:notice] = "Error importando receta"
       if not @recipe.errors[:upload_file].nil?
         flash[:notice] += ". #{@recipe.errors[:upload_file]}"

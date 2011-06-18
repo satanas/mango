@@ -7,10 +7,16 @@ module MenuHelper
       menu = menu_for_recipes_index
     elsif c == 'recipes' and a == 'show'
       menu = menu_for_recipes_show
+    elsif c == 'recipes' and (a == 'new' or a == 'create')
+      menu = menu_for_recipes_new
     elsif c == 'recipes' and a == 'edit'
       menu = menu_for_recipes_edit
     elsif c == 'recipes' and a == 'import'
       menu = menu_for_recipes_import
+    elsif c == 'ingredients' and a == 'index'
+      menu = menu_for_ingredients_index
+    elsif c == 'ingredients' and (a == 'new' or a == 'create')
+      menu = menu_for_ingredients_new
     end
 
     return content_tag(:div, menu, :id => 'menu')
@@ -51,6 +57,15 @@ module MenuHelper
     return menu
   end
 
+  def menu_for_recipes_new
+    menu = content_tag(:p, 'Crear nueva receta')
+    menu += content_tag(:ul, 
+      render_back(recipes_path) +
+      render_function('Guardar', 'Guardar receta', "submit_recipe_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
   def menu_for_recipes_edit
     menu = content_tag(:p, 'Editar receta')
     menu += content_tag(:ul, 
@@ -65,6 +80,24 @@ module MenuHelper
     menu += content_tag(:ul, 
       render_back(recipes_path) +
       render_function('Importar', 'Importar receta', "submit_recipe_upload_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_ingredients_index
+    menu = content_tag(:p, 'Lista de materias primas')
+    menu += content_tag(:ul, 
+      render_back(root_path) +
+      render_action('Crear', 'Crear nueva materia prima', new_ingredient_path, 'button-add.png')
+    )
+    return menu
+  end
+  
+  def menu_for_ingredients_new
+    menu = content_tag(:p, 'Crear nueva materia prima')
+    menu += content_tag(:ul, 
+      render_back(ingredients_path) +
+      render_function('Guardar', 'Guardar materia prima', "submit_ingredient_new_form()", 'button-execute.png')
     )
     return menu
   end
