@@ -1,3 +1,4 @@
+<% if @recipes.length > 0 %>
 <table>
     <thead>
       <tr>
@@ -28,3 +29,6 @@
     %>
     </tbody>
 </table>
+<% else %>
+<p>No hay recetas disponibles</p>
+<% end %>
