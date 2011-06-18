@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.find :all
+    @recipes = Recipe.find :all, :conditions => ['active = ?', true]
   end
 
   def show

@@ -16,6 +16,6 @@ module ActionsHelper
 
   def render_action_ingredient_catalog(pattern)
     image = image_tag('action-show.png', :alt=>'Catálogo')
-    return link_to_remote image, ingredient_catalog_path(:by=>pattern), :class => 'action'
+    return link_to_remote image, :url=>ingredient_catalog_path(:by=>pattern)
   end
 end
