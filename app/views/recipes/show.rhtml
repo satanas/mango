@@ -3,5 +3,5 @@
 <div>Versión: <%=h @recipe.version %></div>
 <div>Comentario: <%=h @recipe.comment %></div>
 <div>Activa: <%=h @recipe.active %></div>
-<br/><br/>
+<h5>Ingredientes</h5>
 <%= render :partial=>'show_grid', :locals =>{:recipe => @recipe} %>

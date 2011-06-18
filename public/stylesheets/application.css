@@ -1,3 +1,16 @@
+h5 {
+    background-color: #434343;
+    color: #fff;
+    border: solid 1px #212121;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding-left: 5px;
+    font-size: 17px;
+}
+
 .wrapper {
     margin: 0 auto;
     width: 900px;
