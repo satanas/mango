@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
       redirect_to :action => 'index'
     else
       flash[:notice] = "Error importing recipe"
-      render :action => 'import'
+      redirect_to :action => 'import'
     end
   end
 

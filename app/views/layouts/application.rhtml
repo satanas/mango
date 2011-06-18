@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
-    <title>Mango | Inicio</title>
+    <title>Mango | Monitoreo</title>
     <%= stylesheet_link_tag 'reset-min' %>
     <%= stylesheet_link_tag 'grids-min' %>
     <%= stylesheet_link_tag 'common' %>
@@ -13,12 +13,12 @@
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag :defaults %>
 </head>
-<body id="dashboard">
+<body id="application">
     <div class="wrapper">
         <!-- Header -->
         <div id="header">
             <div id="logo">
-                <%= image_tag 'mango-logo.png', :alt=>'mango-logo', :width=>'72', :height=>'72' %>
+                <%= link_to image_tag('mango-logo.png', :alt=>'mango-logo', :title=>'Volver al inicio', :width=>'72', :height=>'72'), root_path %>
                 <h1>MANGO</h1>
                 <p>versión 1.0</p>
             </div>
@@ -37,7 +37,7 @@
 
         <!-- Content -->
         <div id="content">
-            <div id="dashboard-content">
+            <div id="inner-content">
                 <%= yield %>
             </div>
         </div>

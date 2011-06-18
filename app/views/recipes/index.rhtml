@@ -1,4 +1,3 @@
-<div><%= link_to "New", new_recipe_path %> | <%= link_to "Import", recipe_import_path %></div>
 <table>
     <thead>
       <tr>
@@ -18,8 +17,10 @@
         <td><%=h r.name %></td>
         <td><%=h r.version %></td>
         <td><%=h r.active %></td>
-        <td><%= link_to "Show", recipe_path(r) %> | <%= link_to "Edit", edit_recipe_path(r) %> 
-        | <%= link_to "Delete", recipe_path(r), :method => :delete, :confirm =>"Do you want to delete recipe '#{r.name}'?" %>
+        <td>
+          <%= render_action_show(recipe_path(r)) %>
+          <%= render_action_edit(edit_recipe_path(r)) %>
+          <%= render_action_delete(recipe_path(r), "Desea borrar la receta '#{r.name}'?") %>
         </td>
       </tr>
     <%

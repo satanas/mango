@@ -66,20 +66,29 @@
 }
 
 #menu p {
-  margin: 6px 0 0 10px;
+    float: left;
+    margin: 6px 0 0 10px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Helvetica';
 }
 
 #menu ul, li {
-    float: left;
+    float: right;
     list-style-type: none !important;
 }
 
 #menu ul {
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #menu li {
-    margin-top: 6px;
+    margin-top: 3px;
+    padding: 0 5px;
+}
+
+#menu li a {
+    color: #fff;
 }
 
 #menu form {
@@ -119,13 +128,6 @@
     text-align: center;
 }
 
-#dashboard-content h3 {
-    background-color: #aaa;
-    /*-moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;*/
-    padding: 10px;
-    font-size: 20px;
-    margin-bottom: 20px;
+#data_progress {
+  text-align: center;
 }
