@@ -38,3 +38,11 @@ function submit_hopper_new_form() {
 function submit_hopper_edit_form() {
     $('hopper_edit_form').submit();
 }
+
+function submit_product_new_form() {
+    $('product_new_form').submit();
+}
+
+function submit_product_edit_form() {
+    $('product_edit_form').submit();
+}

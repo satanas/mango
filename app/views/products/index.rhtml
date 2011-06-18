@@ -1,5 +1,4 @@
-<h2>Lista de productos</h2>
-<p><%= link_to "New", new_product_path %></p>
+<% if @products.length > 0 %>
 <table>
     <thead>
       <tr>
@@ -15,8 +14,9 @@
       <tr>
         <td><%=h p.code %></td>
         <td><%=h p.name %></td>
-        <td><%= link_to "Edit", edit_product_path(p) %> 
-        | <%= link_to "Delete", product_path(p), :method => :delete, :confirm =>"Do you want to delete product '#{p.name}'?" %>
+        <td>
+          <%= render_action_edit(edit_product_path(p)) %>
+          <%= render_action_delete(product_path(p), "Desea borrar el producto terminado '#{p.name}'?") %>
         </td>
       </tr>
     <%
@@ -24,3 +24,6 @@
     %>
     </tbody>
 </table>
+<% else %>
+<p>No hay productos terminados registrados</p>
+<% end %>

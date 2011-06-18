@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new params[:product]
     if @product.save
-      flash[:notice] = 'Producto guardado con éxito'
+      flash[:notice] = 'Producto terminado guardado con éxito'
       redirect_to :products
     else
       render :new
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
     @product.update_attributes(params[:product])
     if @product.save
-      flash[:notice] = 'Producto guardado con éxito'
+      flash[:notice] = 'Producto terminado actualizado con éxito'
       redirect_to :products
     else
       render :edit
@@ -32,9 +32,10 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
     @product.destroy()
     if @product.errors.size.zero?
-      flash[:notice] = "Producto <strong>'#{@product.name}'</strong> eliminado con éxito"
+      flash[:notice] = "Producto terminado eliminado con éxito"
     else
       flash[:notice] = "El producto no se ha podido eliminar"
+      flash[:type] = 'error'
     end
     redirect_to :products
   end

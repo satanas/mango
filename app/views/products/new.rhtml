@@ -1,7 +1,4 @@
-<h1>New Product</h1>
-
-<% form_for :product, :url=>products_path do |f| %>
+<% form_for :product, :url=>products_path, :html=>{:id=>'product_new_form'} do |f| %>
   <%= render :partial=>'form', :locals =>{:f => f} %>
   <br/>
-  <div class='submit'><%= submit_tag 'Save' %> | <%= link_to 'Cancel', products_path %></div>
 <% end %>
