@@ -15,9 +15,17 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     if @recipe.import(params[:recipe])
       flash[:notice] = "Recipe imported successfully"
+      flash[:notice] = 'info'
       redirect_to :action => 'index'
     else
-      flash[:notice] = "Error importing recipe"
+      puts @recipe.errors.inspect
+      flash[:notice] = "Error importando receta"
+      if not @recipe.errors[:upload_file].nil?
+        flash[:notice] += ". #{@recipe.errors[:upload_file]}"
+      elsif not @recipe.errors[:unknown].nil?
+        flash[:notice] += ". #{@recipe.errors[:unknown]}"
+      end
+      logger.error(flash[:notice])
       redirect_to :action => 'import'
     end
   end
