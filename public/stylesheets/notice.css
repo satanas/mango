@@ -5,10 +5,10 @@
 }
 
 #notice.error{
-  color: #CC0000;
-  background: #FFFFCC url('../images/exclamation.png') no-repeat;
+  color: #dd3c10;
+  background: #ffebe8 url('../images/error.png') no-repeat;
   background-position: 4px 2px;
-  border: 1px solid #cfb400;
+  border: 1px solid #dd3c10;
 }
 
 #notice.empty{
@@ -27,7 +27,7 @@
 
 #notice.info{
   color: #024b00;
-  background: #FFFFCC url('../images/ok.png') no-repeat;
+  background: #FFFFCC url('../images/information.png') no-repeat;
   background-position: 4px 2px;
   border: 1px solid #cfb400;
 }

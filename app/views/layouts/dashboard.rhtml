@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag 'grids-min' %>
     <%= stylesheet_link_tag 'common' %>
     <%= stylesheet_link_tag 'notice' %>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'dashboard' %>
     <%= javascript_include_tag :defaults %>
 </head>
 <body id="dashboard">
@@ -29,12 +29,7 @@
             <div class="clearfix"></div>
         </div>
 
-        <!-- Notifications -->
         <%= render_flash_notice %>
-
-        <!-- Menu -->
-        <%= render_menu %>
-
         <!-- Content -->
         <div id="content">
             <div id="dashboard-content">
