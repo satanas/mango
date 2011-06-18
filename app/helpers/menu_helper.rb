@@ -25,6 +25,12 @@ module MenuHelper
       menu = menu_for_users_new
     elsif c == 'users' and (a == 'edit' or a == 'update')
       menu = menu_for_users_edit
+    elsif c == 'hoppers' and a == 'index'
+      menu = menu_for_hoppers_index
+    elsif c == 'hoppers' and (a == 'new' or a == 'create')
+      menu = menu_for_hoppers_new
+    elsif c == 'hoppers' and (a == 'edit' or a == 'update')
+      menu = menu_for_hoppers_edit
     end
 
     return content_tag(:div, menu, :id => 'menu')
@@ -142,6 +148,33 @@ module MenuHelper
     menu += content_tag(:ul, 
       render_back(users_path) +
       render_function('Actualizar', 'Actualizar usuario', "submit_user_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end
+  
+  def menu_for_hoppers_index
+    menu = content_tag(:p, 'Lista de tolvas')
+    menu += content_tag(:ul, 
+      render_back(root_path) +
+      render_action('Crear', 'Crear nueva tolva', new_hopper_path, 'button-add.png')
+    )
+    return menu
+  end
+  
+  def menu_for_hoppers_new
+    menu = content_tag(:p, 'Crear nueva tolva')
+    menu += content_tag(:ul, 
+      render_back(hoppers_path) +
+      render_function('Guardar', 'Guardar tolva', "submit_hopper_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+  
+  def menu_for_hoppers_edit
+    menu = content_tag(:p, 'Editar tolva')
+    menu += content_tag(:ul, 
+      render_back(hoppers_path) +
+      render_function('Actualizar', 'Actualizar tolva', "submit_hopper_edit_form()", 'button-execute.png')
     )
     return menu
   end

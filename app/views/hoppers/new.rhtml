@@ -1,7 +1,4 @@
-<h1>New Hopper</h1>
-
-<% form_for :hopper, :url=>hoppers_path do |f| %>
+<% form_for :hopper, :url=>hoppers_path, :html=>{:id=>'hopper_new_form'} do |f| %>
   <%= render :partial=>'form', :locals =>{:f => f, :edit => false} %>
   <br/>
-  <div class='submit'><%= submit_tag 'Save' %> | <%= link_to 'Cancel', hoppers_path %></div>
 <% end %>

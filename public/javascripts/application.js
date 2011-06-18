@@ -30,3 +30,11 @@ function submit_user_new_form() {
 function submit_user_edit_form() {
     $('user_edit_form').submit();
 }
+
+function submit_hopper_new_form() {
+    $('hopper_new_form').submit();
+}
+
+function submit_hopper_edit_form() {
+    $('hopper_edit_form').submit();
+}

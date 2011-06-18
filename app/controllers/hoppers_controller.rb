@@ -15,7 +15,7 @@ class HoppersController < ApplicationController
   def create
     @hopper = Hopper.new params[:hopper]
     if @hopper.save
-      flash[:notice] = 'Hopper saved'
+      flash[:notice] = 'Tolva guardada con éxito'
       redirect_to :hoppers
     else
       render :new
@@ -29,7 +29,7 @@ class HoppersController < ApplicationController
       @hopper.hopper_ingredient << HopperIngredient.new(:ingredient_id => params[:hopper][:hopper_ingredient], :hopper_id => params[:id])
     end
     if @hopper.save
-      flash[:notice] = 'Hopper saved'
+      flash[:notice] = 'Tolva actualizada con éxito'
       redirect_to :hoppers
     else
       render :edit
@@ -40,9 +40,10 @@ class HoppersController < ApplicationController
     @hopper = Hopper.find params[:id]
     @hopper.destroy()
     if @hopper.errors.size.zero?
-      flash[:notice] = "Hopper <strong>'#{@hopper.number}'</strong> destroyed"
+      flash[:notice] = "Tolva eliminada con éxito"
     else
-      flash[:notice] = "Can't destroy hopper"
+      flash[:notice] = "La tolva no se ha podido eliminar"
+      flash[:type] = 'error'
     end
     redirect_to :hoppers
   end

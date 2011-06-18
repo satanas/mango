@@ -1,7 +1,4 @@
-<h1>Edit Tolva</h1>
-
-<% form_for :hopper, :url=>hopper_path(@hopper), :html=>{:method=>:put} do |f| %>
+<% form_for :hopper, :url=>hopper_path(@hopper), :html=>{:method=>:put, :id=>'hopper_edit_form'} do |f| %>
   <%= render :partial=>'form', :locals =>{:f => f, :edit => true} %>
   <br/>
-  <div class='submit'><%= submit_tag 'Save' %> | <%= link_to 'Cancel', hoppers_path %></div>
 <% end %>
