@@ -9,7 +9,7 @@ module MenuHelper
       menu = menu_for_recipes_show
     elsif c == 'recipes' and (a == 'new' or a == 'create')
       menu = menu_for_recipes_new
-    elsif c == 'recipes' and a == 'edit'
+    elsif c == 'recipes' and (a == 'edit' or a == 'update')
       menu = menu_for_recipes_edit
     elsif c == 'recipes' and a == 'import'
       menu = menu_for_recipes_import
@@ -17,6 +17,8 @@ module MenuHelper
       menu = menu_for_ingredients_index
     elsif c == 'ingredients' and (a == 'new' or a == 'create')
       menu = menu_for_ingredients_new
+    elsif c == 'ingredients' and (a == 'edit' or a == 'update')
+      menu = menu_for_ingredients_edit
     end
 
     return content_tag(:div, menu, :id => 'menu')
@@ -98,6 +100,15 @@ module MenuHelper
     menu += content_tag(:ul, 
       render_back(ingredients_path) +
       render_function('Guardar', 'Guardar materia prima', "submit_ingredient_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+  
+  def menu_for_ingredients_edit
+    menu = content_tag(:p, 'Editar materia prima')
+    menu += content_tag(:ul, 
+      render_back(ingredient_path(params[:id])) +
+      render_function('Actualizar', 'Actualizar materia prima', "submit_ingredient_edit_form()", 'button-execute.png')
     )
     return menu
   end

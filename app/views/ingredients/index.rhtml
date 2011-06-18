@@ -14,8 +14,9 @@
       <tr>
         <td><%=h i.code %></td>
         <td><%=h i.name %></td>
-        <td><%= link_to "Edit", edit_ingredient_path(i) %> 
-        | <%= link_to "Delete", ingredient_path(i), :method => :delete, :confirm =>"Do you want to delete ingredient '#{i.name}'?" %>
+        <td>
+          <%= render_action_edit(edit_ingredient_path(i)) %>
+          <%= render_action_delete(ingredient_path(i), "Desea borrar la materia prima '#{i.name}'?") %>
         </td>
       </tr>
     <%

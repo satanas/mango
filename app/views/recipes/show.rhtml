@@ -4,30 +4,4 @@
 <div>Comentario: <%=h @recipe.comment %></div>
 <div>Activa: <%=h @recipe.active %></div>
 <br/><br/>
-<h5>Ingredientes</h5>
-<table>
-    <thead>
-      <tr>
-        <th>Código</th>
-        <th>Nombre</th>
-        <th>Cantidad</th>
-        <th>Prioridad</th>
-        <th>Porcentaje</th>
-      </tr>
-    </thead>
-    <tbody>
-    <%
-      @recipe.ingredient_recipe.each do |ir|
-    %>
-      <tr>
-        <td><%=h ir.ingredient.code %></td>
-        <td><%=h ir.ingredient.name %></td>
-        <td><%=h ir.amount %></td>
-        <td><%=h ir.priority %></td>
-        <td><%=h ir.percentage %></td>
-      </tr>
-    <%
-      end 
-    %>
-    </tbody>
-</table>
+<%= render :partial=>'show_grid', :locals =>{:recipe => @recipe} %>

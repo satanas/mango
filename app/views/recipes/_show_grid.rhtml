@@ -1,0 +1,29 @@
+<% if @recipe.ingredient_recipe.length > 0 %>
+<h5>Ingredientes</h5>
+<div id="ingredient_recipe_grid">
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Prioridad</th>
+        <th>Porcentaje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe.ingredient_recipe.each do |ir| %>
+      <tr>
+        <td><%=h ir.ingredient.code %></td>
+        <td><%=h ir.ingredient.name %></td>
+        <td><%=h ir.amount %></td>
+        <td><%=h ir.priority %></td>
+        <td><%=h ir.percentage %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% else %>
+<p>No hay ingredientes definidos para esta receta</p>
+<% end %>

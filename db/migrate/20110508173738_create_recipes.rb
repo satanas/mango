@@ -4,7 +4,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :code
       t.string :name, :null => false
       t.string :version, :null => false
-      t.float :total, :null => false
+      t.float :total, :default => 0
       t.boolean :active, :default => true
       t.text :comment
       t.timestamps

@@ -1,10 +1,16 @@
 class Recipe < ActiveRecord::Base
   has_many :ingredient_recipe
 
-  validates_presence_of :name, :version, :total, :ingredient_recipe
+  validates_presence_of :name, :version
   validates_length_of :name, :within => 3..40
   validates_numericality_of :total
   validates_associated :ingredient_recipe
+
+  before_validation :check_total
+
+  def check_total
+    self.total = 0 if self.total.nil?
+  end
 
   def validate_field(field, value)
     field.strip!()

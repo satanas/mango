@@ -32,6 +32,17 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find params[:id]
+    if @recipe.destroy
+      flash[:notice] = 'Receta eliminada con éxito'
+    else
+      flash[:notice] = 'La receta no se pudo eliminar'
+      flash[:type] = 'error'
+    end
+    redirect_to :recipes
+  end
+
   def upload
     @recipe = Recipe.new
     if @recipe.import(params[:recipe])
