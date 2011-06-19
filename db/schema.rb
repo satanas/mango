@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(:version => 20110616183547) do
   end
 
   create_table "hoppers_ingredients", :force => true do |t|
-    t.integer  "hopper_id",                        :null => false
-    t.integer  "ingredient_id",                    :null => false
+    t.integer  "hopper_id"
+    t.integer  "ingredient_id"
     t.boolean  "active",        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(:version => 20110616183547) do
   add_index "ingredients_recipes", ["recipe_id"], :name => "fk_ingredients_recipes_recipe_id"
 
   create_table "orders", :force => true do |t|
-    t.integer  "recipe_id",   :null => false
-    t.integer  "client_id",   :null => false
-    t.integer  "user_id",     :null => false
-    t.integer  "product_id",  :null => false
+    t.integer  "recipe_id"
+    t.integer  "client_id"
+    t.integer  "user_id"
+    t.integer  "product_id"
     t.integer  "prog_batchs", :null => false
     t.integer  "real_batchs"
     t.string   "code",        :null => false

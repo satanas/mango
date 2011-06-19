@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   include ModalHelper::Modal
   
   def check_authentication
-    puts 'check authentication'
     unless session[:user]
       #TODO Check usage
       session[:request] = action_name

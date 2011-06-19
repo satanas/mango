@@ -1,12 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_filter :check_authentication
+  layout 'login'
   
   def index
-    if session[:user]
-      redirect_to :action=>'show'
-    else
-      render :index, :layout => 'login'
-    end
+    redirect_to :action=>'show' if session[:user]
   end
   
   def show
@@ -14,7 +11,7 @@ class SessionsController < ApplicationController
       @popup = ModalHelper::Modal::Popup.new('Bienvenido', 'Bem-vindo. Voce vais falar portugues logo')
       render :show, :layout => 'dashboard'
     else
-      render :index, :layout => 'login'
+      redirect_to :action=>'index'
     end
   end
 
@@ -26,7 +23,7 @@ class SessionsController < ApplicationController
     else
       flash[:notice] = 'Credenciales inválidas'
       flash[:type] = 'error'
-      render :index, :layout => 'login'
+      redirect_to :action => 'index'
     end
   end
 
@@ -39,5 +36,11 @@ class SessionsController < ApplicationController
     flash[:notice] = "Esa funcionalidad aún no está implementada"
     flash[:type] = 'warning'
     redirect_to :action => :show
+  end
+
+  private
+
+  def select_layout
+    session[:user].nil? ? 'login': 'dashboard'
   end
 end
