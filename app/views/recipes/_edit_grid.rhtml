@@ -13,8 +13,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= render_action_ingredient_catalog('code') %> <%= f.text_field :code_display, :size=>7, :disabled=>true %></td>
-        <td><%= render_action_ingredient_catalog('name') %> <%= f.text_field :name_display, :size=>12, :disabled=>true %></td>
+        <td>
+          <%= render_remote_action_show(ingredient_catalog_path(:by=>'code')) %>
+          <%= f.text_field :code_display, :size=>7, :disabled=>true %>
+        </td>
+        <td>
+          <%= render_remote_action_show(ingredient_catalog_path(:by=>'name')) %> 
+          <%= f.text_field :name_display, :size=>12, :disabled=>true %>
+        </td>
         <td><%= f.text_field :amount, :size=>4 %></td>
         <td><%= f.text_field :priority, :size=>4 %></td>
         <td><%= f.text_field :percentage, :size=>4 %></td>
@@ -27,7 +33,7 @@
         <td><%=h ir.amount %></td>
         <td><%=h ir.priority %></td>
         <td><%=h ir.percentage %></td>
-        <td><%= render_action_delete(recipe_ingredient_recipe_path(@recipe, ir), 
+        <td><%= render_remote_action_delete(recipe_ingredient_recipe_path(@recipe, ir), 
           "Desea eliminar el ingrediente '#{ir.ingredient.code} - #{ir.ingredient.name}'?") %></td>
       </tr>
       <% end %>

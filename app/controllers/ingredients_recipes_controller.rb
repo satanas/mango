@@ -8,7 +8,7 @@ class IngredientsRecipesController < ApplicationController
     @error = nil
     @recipe = Recipe.find(params[:recipe_id], :include=>'ingredient_recipe')
     ingredient = Ingredient.find_by_code(params[:ingredient_recipe][:code])
-    
+
     ingredient_recipe = IngredientRecipe.new
     ingredient_recipe.ingredient = ingredient
     ingredient_recipe.recipe = @recipe
@@ -18,7 +18,7 @@ class IngredientsRecipesController < ApplicationController
 
     if ingredient_recipe.valid?
       ingredient_recipe.save
-      index()
+      index
     else
       @error = "No se pudo guardar el ingrediente"
     end
@@ -35,7 +35,6 @@ class IngredientsRecipesController < ApplicationController
       ingredient_recipe = IngredientRecipe.find(params[:id])
       ingredient_recipe.destroy
       index()
-      #raise Exception
     rescue Exception => ex
       puts ex.inspect
       @error = "No se pudo borrar el ingrediente de la receta"

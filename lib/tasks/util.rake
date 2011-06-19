@@ -38,6 +38,10 @@ namespace :db do
   task :clean_ingredients => :environment do
     puts 'Borrando tabla ingredients_recipes...'
     IngredientRecipe.delete_all
+    puts 'Borrando tabla hopper_ingredients...'
+    HopperIngredient.delete_all
+    puts 'Borrando tabla hoppers...'
+    Hopper.delete_all
     puts 'Borrando tabla recipes...'
     Recipe.delete_all
     puts 'Borrando tabla de ingredientes...'
