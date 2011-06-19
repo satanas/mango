@@ -3,7 +3,7 @@ class CreateRecipes < ActiveRecord::Migration
     create_table :recipes do |t|
       t.string :code
       t.string :name, :null => false
-      t.string :version, :null => false
+      t.string :version
       t.float :total, :default => 0
       t.boolean :active, :default => true
       t.text :comment
