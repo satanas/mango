@@ -73,6 +73,11 @@ ActiveRecord::Schema.define(:version => 20110616183547) do
     t.datetime "updated_at"
   end
 
+  add_index "orders", ["client_id"], :name => "fk_orders_client_id"
+  add_index "orders", ["product_id"], :name => "fk_orders_product_id"
+  add_index "orders", ["recipe_id"], :name => "fk_orders_recipe_id"
+  add_index "orders", ["user_id"], :name => "fk_orders_user_id"
+
   create_table "products", :force => true do |t|
     t.string   "code",       :null => false
     t.string   "name",       :null => false
@@ -83,7 +88,7 @@ ActiveRecord::Schema.define(:version => 20110616183547) do
   create_table "recipes", :force => true do |t|
     t.string   "code"
     t.string   "name",                         :null => false
-    t.string   "version",                      :null => false
+    t.string   "version"
     t.float    "total",      :default => 0.0
     t.boolean  "active",     :default => true
     t.text     "comment"
