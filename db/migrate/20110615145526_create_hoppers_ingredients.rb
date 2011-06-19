@@ -4,8 +4,8 @@ class CreateHoppersIngredients < ActiveRecord::Migration
 extend MigrationHelper
   def self.up
     create_table :hoppers_ingredients do |t|
-      t.integer :hopper_id, :null => false
-      t.integer :ingredient_id, :null => false
+      t.references :hopper
+      t.references :ingredient
       t.boolean :active, :default => false
       t.timestamps
     end

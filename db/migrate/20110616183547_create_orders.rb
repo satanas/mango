@@ -4,10 +4,10 @@ class CreateOrders < ActiveRecord::Migration
 extend MigrationHelper
   def self.up
     create_table :orders do |t|
-      t.integer :recipe_id, :null => false
-      t.integer :client_id, :null => false
-      t.integer :user_id, :null => false
-      t.integer :product_id, :null => false
+      t.references :recipe
+      t.references :client
+      t.references :user
+      t.references :product
       t.integer :prog_batchs, :null => false
       t.integer :real_batchs
       t.string :code, :null => false
