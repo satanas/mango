@@ -15,19 +15,6 @@ namespace :doc do
   end
 end
 
-namespace :util do
-  desc 'Clean ingredients and recipes related tables'
-  task :clean_ingredients => :environment do
-    puts 'Borrando tabla ingredients_recipes...'
-    IngredientRecipe.delete_all
-    puts 'Borrando tabla recipes...'
-    Recipe.delete_all
-    puts 'Borrando tabla de ingredientes...'
-    Ingredient.delete_all
-    puts 'Purgados ingredientes'
-  end
-end
-
 namespace :db do
   namespace :fixtures do
     desc 'Load test user'
@@ -37,6 +24,25 @@ namespace :db do
       Fixtures.create_fixtures(fixtures_dir, 'users')
       puts 'Loaded test users'
     end
+
+    desc 'Load test ingredients'
+    task :ingredients => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
+      Fixtures.create_fixtures(fixtures_dir, 'ingredients')
+      puts 'Loaded test ingredients'
+    end
+  end
+
+  desc 'Clean ingredients and recipes related tables'
+  task :clean_ingredients => :environment do
+    puts 'Borrando tabla ingredients_recipes...'
+    IngredientRecipe.delete_all
+    puts 'Borrando tabla recipes...'
+    Recipe.delete_all
+    puts 'Borrando tabla de ingredientes...'
+    Ingredient.delete_all
+    puts 'Purgados ingredientes'
   end
 end
 

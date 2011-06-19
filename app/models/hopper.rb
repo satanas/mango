@@ -1,6 +1,7 @@
 class Hopper < ActiveRecord::Base
   has_many :hopper_ingredient
 
+  validates_uniqueness_of :number
   validates_presence_of :number
   validates_numericality_of :number, :only_integer => true, :greater_than_or_equal_to => 0
 
@@ -22,5 +23,20 @@ class Hopper < ActiveRecord::Base
       i.active = false
       i.save
     end
+  end
+
+  def update_ingredient(id)
+    deactivate_all_ingredients
+    return true if id.blank?
+    h = HopperIngredient.new(:ingredient_id => id)
+    h.hopper_id = self.id
+    return h.save
+  end
+
+  def eliminate
+    self.hopper_ingredient.each do |i|
+      i.destroy
+    end
+    self.destroy
   end
 end

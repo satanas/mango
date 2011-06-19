@@ -34,7 +34,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find params[:id]
-    if @recipe.destroy
+    if @recipe.eliminate
       flash[:notice] = 'Receta eliminada con éxito'
     else
       flash[:notice] = 'La receta no se pudo eliminar'

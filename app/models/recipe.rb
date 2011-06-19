@@ -8,17 +8,28 @@ class Recipe < ActiveRecord::Base
 
   before_validation :check_total
 
-  def check_total
-    self.total = 0 if self.total.nil?
+  def eliminate
+    self.ingredient_recipe.each do |i|
+      i.destroy
+    end
+    self.destroy
   end
 
-  def validate_field(field, value)
-    field.strip!()
-    if field != value
-      errors.add(:upload_file, "Archivo inválido")
-      return false
+  def add_ingredient(args)
+    icode = args[:ingredient].split(' ')[0]
+    iname = args[:ingredient][(icode.length + 1)..args[:ingredient].length]
+    ingredient = Ingredient.find_by_code(icode)
+    if ingredient.nil?
+      logger.info("  - El ingrediente no existe. Se crea")
+      ingredient = Ingredient.new :code => icode, :name => iname
+      ingredient.save
     end
-    return true
+    item = IngredientRecipe.new
+    item.ingredient_id = ingredient.id
+    item.amount = args[:amount]
+    item.priority = args[:priority]
+    item.percentage = args[:percentage]
+    self.ingredient_recipe << item
   end
 
   def import(upload)
@@ -76,20 +87,18 @@ class Recipe < ActiveRecord::Base
     return true
   end
 
-  def add_ingredient(args)
-    icode = args[:ingredient].split(' ')[0]
-    iname = args[:ingredient][(icode.length + 1)..args[:ingredient].length]
-    ingredient = Ingredient.find_by_code(icode)
-    if ingredient.nil?
-      logger.info("  - El ingrediente no existe. Se crea")
-      ingredient = Ingredient.new :code => icode, :name => iname
-      ingredient.save
+  private
+
+  def check_total
+    self.total = 0 if self.total.nil?
+  end
+
+  def validate_field(field, value)
+    field.strip!()
+    if field != value
+      errors.add(:upload_file, "Archivo inválido")
+      return false
     end
-    item = IngredientRecipe.new
-    item.ingredient_id = ingredient.id
-    item.amount = args[:amount]
-    item.priority = args[:priority]
-    item.percentage = args[:percentage]
-    self.ingredient_recipe << item
+    return true
   end
 end

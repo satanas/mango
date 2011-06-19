@@ -1,6 +1,7 @@
 class HoppersController < ApplicationController
   def index
     @hoppers = Hopper.find_active
+    puts @hoppers.inspect
   end
 
   def new
@@ -13,32 +14,34 @@ class HoppersController < ApplicationController
   end
 
   def create
-    @hopper = Hopper.new params[:hopper]
+    @hopper = Hopper.new :number => params[:hopper][:number]
     if @hopper.save
-      flash[:notice] = 'Tolva guardada con éxito'
+      if @hopper.update_ingredient(params[:hopper][:hopper_ingredient])
+        flash[:notice] = 'Tolva guardada con éxito'
+      else
+        flash[:notice] = 'La tolva fue guardada con éxito pero no se guardó el ingrediente asociado'
+      end
       redirect_to :hoppers
     else
+      new
       render :new
     end
   end
 
   def update
     @hopper = Hopper.find params[:id]
-    @hopper.deactivate_all_ingredients
-    unless params[:hopper][:hopper_ingredient].blank?
-      @hopper.hopper_ingredient << HopperIngredient.new(:ingredient_id => params[:hopper][:hopper_ingredient], :hopper_id => params[:id])
-    end
-    if @hopper.save
+    if @hopper.update_ingredient(params[:hopper][:hopper_ingredient])
       flash[:notice] = 'Tolva actualizada con éxito'
       redirect_to :hoppers
     else
+      edit
       render :edit
     end
   end
 
   def destroy
     @hopper = Hopper.find params[:id]
-    @hopper.destroy()
+    @hopper.eliminate
     if @hopper.errors.size.zero?
       flash[:notice] = "Tolva eliminada con éxito"
     else

@@ -1,4 +1,4 @@
 <%= f.error_messages %>
 <% disabled = (edit) ? true : false %>
-<label for="number">Number:</label> <%= f.text_field :number, :size=>'10', :disabled => disabled %><br/>
-<label for="ingredient">Ingredients:</label> <%= f.collection_select :hopper_ingredient, @ingredients, :id, :name, :include_blank => true %><br/>
+<label for="number">Número:</label> <%= f.text_field :number, :size=>'10', :disabled => disabled %><br/>
+<label for="ingredient">Ingrediente:</label> <%= f.collection_select :hopper_ingredient, @ingredients, :id, :name, :include_blank => true %><br/>

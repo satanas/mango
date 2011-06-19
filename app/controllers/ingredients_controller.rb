@@ -30,12 +30,18 @@ class IngredientsController < ApplicationController
   
   def destroy
     @ingredient = Ingredient.find params[:id]
-    @ingredient.destroy()
+    @ingredient.eliminate
     if @ingredient.errors.size.zero?
       flash[:notice] = "Materia prima eliminada con éxito"
     else
-      flash[:notice] = "La materia prima no se pudo eliminar"
       flash[:type] = 'error'
+      if not @ingredient.errors[:foreign_key].nil?
+        flash[:notice] = 'La materia prima no se puede eliminar porque tiene registros asociados'
+      elsif not @ingredient.errors[:unknown].nil?
+        flash[:notice] = @ingredient.errors[:unknown]
+      else
+        flash[:notice] = "La materia prima no se pudo eliminar"
+      end
     end
     redirect_to :ingredients
   end

@@ -35,7 +35,7 @@ class IngredientsRecipesController < ApplicationController
       ingredient_recipe = IngredientRecipe.find(params[:id])
       ingredient_recipe.destroy
       index()
-      raise Exception
+      #raise Exception
     rescue Exception => ex
       puts ex.inspect
       @error = "No se pudo borrar el ingrediente de la receta"
