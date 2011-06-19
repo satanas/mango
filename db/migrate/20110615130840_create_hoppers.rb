@@ -1,7 +1,7 @@
 class CreateHoppers < ActiveRecord::Migration
   def self.up
     create_table :hoppers do |t|
-      t.integer :number
+      t.integer :number, :null => false
       t.timestamps
     end
   end

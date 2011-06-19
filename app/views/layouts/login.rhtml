@@ -10,25 +10,28 @@
     <%= stylesheet_link_tag 'grids-min' %>
     <%= stylesheet_link_tag 'common' %>
     <%= stylesheet_link_tag 'login' %>
+    <%= stylesheet_link_tag 'notice' %>
+    <%= javascript_include_tag :defaults %>
 </head>
-<body id="dashboard">
-    <div id="header">
-        <div class="wrapper">
+<body id="login">
+    <div class="wrapper">
+        <div id="header">
             <div id="logo">
-                <img alt="mango-logo" src="images/mango-logo.png" height="80" width="80" />
+                <img alt="mango-logo" src="images/mango-logo.png" height="72" width="72" />
                 <h1>MANGO</h1>
                 <p>versión 1.0</p>
             </div>
             <div class="clearfix"></div>
-            <div id="login">
-                <%= yield %>
-            </div>
         </div>
-    </div>
-    <div id="footer">
-        <div class="wrapper">
-            <p>Mango (c) 2011 - Desarrollado por team-chuchuguaza</p>
+        <div id="content">
+            <%= render_flash_notice %>
+            <div class="separator"></div>
+            <%= yield %>
         </div>
+        <div id="footer">
+            <p>Mango (Copyleft) 2011 - Desarrollado por Wil Alvarez</p>
+        </div>
+        <div class="clearfix"></div>
     </div>
 </body>
 </html>

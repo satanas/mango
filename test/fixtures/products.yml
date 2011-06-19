@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: '0000001'
+  name: 'Producto 1'
+
+two:
+  code: '0000002'
+  name: 'Producto 2'
+

@@ -1,7 +1,4 @@
-<h1>Edit User</h1>
-
-<% form_for :user, :url=>user_path(@user), :html=>{:method=>:put} do |f| %>
+<% form_for :user, :url=>user_path(@user), :html=>{:method=>:put, :id=>'user_edit_form'} do |f| %>
   <%= render :partial=>'form', :locals =>{:f => f} %>
   <br/>
-  <div class='submit'><%= submit_tag 'Save' %> | <%= link_to 'Cancel', users_path %></div>
 <% end %>

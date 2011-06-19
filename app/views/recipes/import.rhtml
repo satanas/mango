@@ -1,15 +1,15 @@
-<h3>Importar receta 2</h3>
-<% form_for :recipe, :url=>recipe_upload_path, :html=>{:multipart=>true} do |f| %>
+<% form_for :recipe, :url=>recipe_upload_path, :html=>{:multipart=>true, :id=>'recipe_upload_form'} do |f| %>
   <% if not @recipe.nil? and @recipe.errors.length > 0 %>
     <%= f.error_messages %><br/>
   <% end %>
-  <label for="datefile">Select recipe</label>: 
+  <label for="datefile">Por favor, seleccione el archivo de receta que desea importar</label>: <br/><br/>
   <%= f.file_field :datafile %>
   <br/>
-  <div class='submit'><%= submit_tag 'Upload' %> | <%= link_to 'Back', recipes_path %></div>
 <% end %>
 <div id="data_progress">
   <p>Se está importando la receta, por favor espere...</p><br/>
-  <%= image_tag('progressbar.gif') %>
+  <%= image_tag('ajax-loader.gif') %>
 </div>
+
+<%= javascript_tag "$('data_progress').hide();" %>
 

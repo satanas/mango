@@ -1,34 +1,7 @@
-<h3>Detalle de receta</h3>
-
-<div>Código: <%=h @recipe.code %> | Activa: <%=h @recipe.active %></div>
+<div>Código: <%=h @recipe.code %></div>
 <div>Nombre: <%=h @recipe.name %></div>
 <div>Versión: <%=h @recipe.version %></div>
-<%= link_to "Edit", edit_recipe_path(@recipe) %> | <%= link_to "Back", recipes_path %><br/><br/>
-
+<div>Comentario: <%=h @recipe.comment %></div>
+<div>Activa: <%=h @recipe.active %></div>
 <h5>Ingredientes</h5>
-<table>
-    <thead>
-      <tr>
-        <th>Código</th>
-        <th>Nombre</th>
-        <th>Cantidad</th>
-        <th>Prioridad</th>
-        <th>Porcentaje</th>
-      </tr>
-    </thead>
-    <tbody>
-    <%
-      @recipe.ingredient_recipe.each do |ir|
-    %>
-      <tr>
-        <td><%=h ir.ingredient.code %></td>
-        <td><%=h ir.ingredient.name %></td>
-        <td><%=h ir.amount %></td>
-        <td><%=h ir.priority %></td>
-        <td><%=h ir.percentage %></td>
-      </tr>
-    <%
-      end 
-    %>
-    </tbody>
-</table>
+<%= render :partial=>'show_grid', :locals =>{:recipe => @recipe} %>

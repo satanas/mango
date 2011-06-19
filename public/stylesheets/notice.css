@@ -1,34 +1,28 @@
 #notice{
   height: 22px;
   text-align: left;
-  padding-left: 10px;
+  padding-left: 25px;
+  padding-top: 3px;
 }
 
 #notice.error{
-  color: #CC0000;
-  background: #FFFFCC url('../images/exclamation.png') no-repeat;
-  background-position: 4px 2px;
-  border: 1px solid #cfb400;
-}
-
-#notice.empty{
-  color: #665e2c;
-  background: #FFFFCC url('../images/empty.png') no-repeat;
-  background-position: 4px 2px;
-  border: 1px solid #cfb400;
+  color: #444;
+  background: #ffebe8 url('../images/notice-error.png') no-repeat;
+  background-position: 4px 4px;
+  border: 1px solid #dd3c10;
 }
 
 #notice.warning{
-  color: #CC0000;
-  background: #FFFFCC url('../images/warning.png') no-repeat;
-  background-position: 4px 2px;
+  color: #444;
+  background: #fff9d7 url('../images/notice-warning.png') no-repeat;
+  background-position: 4px 4px;
   border: 1px solid #cfb400;
 }
 
 #notice.info{
-  color: #024b00;
-  background: #FFFFCC url('../images/ok.png') no-repeat;
-  background-position: 4px 2px;
+  color: #444;
+  background: #fff9d7 url('../images/notice-information.png') no-repeat;
+  background-position: 4px 4px;
   border: 1px solid #cfb400;
 }
 

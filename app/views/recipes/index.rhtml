@@ -1,0 +1,34 @@
+<% if @recipes.length > 0 %>
+<table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Versión</th>
+        <th>Activa</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%
+      @recipes.each do |r|
+    %>
+      <tr>
+        <td><%=h r.code %></td>
+        <td><%=h r.name %></td>
+        <td><%=h r.version %></td>
+        <td><%=h r.active %></td>
+        <td>
+          <%= render_action_show(recipe_path(r)) %>
+          <%= render_action_edit(edit_recipe_path(r)) %>
+          <%= render_action_delete(recipe_path(r), "Desea borrar la receta '#{r.name}'?") %>
+        </td>
+      </tr>
+    <%
+      end 
+    %>
+    </tbody>
+</table>
+<% else %>
+<p>No hay recetas registradas</p>
+<% end %>

@@ -1,0 +1,29 @@
+<% if @products.length > 0 %>
+<table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%
+      @products.each do |p|
+    %>
+      <tr>
+        <td><%=h p.code %></td>
+        <td><%=h p.name %></td>
+        <td>
+          <%= render_action_edit(edit_product_path(p)) %>
+          <%= render_action_delete(product_path(p), "Desea borrar el producto terminado '#{p.name}'?") %>
+        </td>
+      </tr>
+    <%
+      end 
+    %>
+    </tbody>
+</table>
+<% else %>
+<p>No hay productos terminados registrados</p>
+<% end %>

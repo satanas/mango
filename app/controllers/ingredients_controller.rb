@@ -10,7 +10,7 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new params[:ingredient]
     if @ingredient.save
-      flash[:notice] = 'Ingrediente guardado con éxito'
+      flash[:notice] = 'Materia prima guardada con éxito'
       redirect_to :ingredients
     else
       render :new
@@ -21,7 +21,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.find params[:id]
     @ingredient.update_attributes(params[:ingredient])
     if @ingredient.save
-      flash[:notice] = 'Ingrediente guardado con éxito'
+      flash[:notice] = 'Materia prima actualizada con éxito'
       redirect_to :ingredients
     else
       render :edit
@@ -30,11 +30,18 @@ class IngredientsController < ApplicationController
   
   def destroy
     @ingredient = Ingredient.find params[:id]
-    @ingredient.destroy()
+    @ingredient.eliminate
     if @ingredient.errors.size.zero?
-      flash[:notice] = "Ingrediente <strong>'#{@ingredient.name}'</strong> eliminado con éxito"
+      flash[:notice] = "Materia prima eliminada con éxito"
     else
-      flash[:notice] = "El ingrediente no se ha podido eliminar"
+      flash[:type] = 'error'
+      if not @ingredient.errors[:foreign_key].nil?
+        flash[:notice] = 'La materia prima no se puede eliminar porque tiene registros asociados'
+      elsif not @ingredient.errors[:unknown].nil?
+        flash[:notice] = @ingredient.errors[:unknown]
+      else
+        flash[:notice] = "La materia prima no se pudo eliminar"
+      end
     end
     redirect_to :ingredients
   end
@@ -50,7 +57,8 @@ class IngredientsController < ApplicationController
   end
   
   def catalog
-    @by = (params['by'] == 'code') ? 0 : 1
+    puts "catalog: #{params.inspect}"
+    @by = (params[:by] == 'code') ? 0 : 1
     respond_to do |format|
       format.js { render :layout=>false }
     end
@@ -58,8 +66,8 @@ class IngredientsController < ApplicationController
 
   def select
     puts "select: #{params.inspect}"
-    @code = params['code']
-    @name = params['name']
+    @code = params[:code]
+    @name = params[:name]
     respond_to do |format|
       format.js { render :layout=>false }
     end
