@@ -41,5 +41,8 @@ class RecipeTest < ActiveSupport::TestCase
     assert_error_length(1, @recipe)
   end
 
-  # TODO: Test import
+  test "import and uniqueness" do
+    assert @recipe2.save
+    assert !@require2.save, "Recipe with same code saved twice... #{@recipe.inspect}"
+  end
 end
