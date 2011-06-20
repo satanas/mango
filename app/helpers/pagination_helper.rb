@@ -5,10 +5,14 @@ module PaginationHelper
     :always_show_anchors => true,
     :next_prev_links => false,
     :first_last_links => true,
-    :prev_title => '&#171; Anterior',
-    :next_title => 'Siguiente &#187;',
-    :first_title => '&#171; Primero',
-    :last_title => 'Último &#187;',
+    :prev_title => '&#171; Previous',
+    :next_title => 'Next &#187;',
+    :first_title => '&#171; First',
+    :last_title => 'Last &#187;',
+    :prev_tooltip => 'Previous page',
+    :next_tooltip => 'Next page',
+    :first_tooltip => 'First page',
+    :last_tooltip => 'Last page',
     :params => {},
     :action => '',
     :page_text => 'Page',
@@ -126,19 +130,19 @@ module PaginationHelper
     end
 
     def link_to_prev
-      nav_link(@first, @previous, @options[:prev_title], 'prev')
+      nav_link(@first, @previous, @options[:prev_title], 'prev', @options[:prev_tooltip])
     end
 
     def link_to_next
-      nav_link(@last, @next, @options[:next_title], 'next')
+      nav_link(@last, @next, @options[:next_title], 'next', @options[:next_tooltip])
     end
 
     def link_to_first
-      nav_link(@first, @first, @options[:first_title], 'first')
+      nav_link(@first, @first, @options[:first_title], 'first', @options[:first_tooltip])
     end
 
     def link_to_last
-      nav_link(@last, @last, @options[:last_title], 'last')
+      nav_link(@last, @last, @options[:last_title], 'last', @options[:last_tooltip])
     end
 
     def link_to_page(page)
@@ -149,11 +153,11 @@ module PaginationHelper
       "<span class='current'>" + @current.to_s + "</span>" 
     end
 
-    def nav_link(value, page, text, link_class='')
+    def nav_link(value, page, text, link_class='', tooltip='')
       if @current == value
-        "<span class='nav disabled_#{link_class}'>#{text}</span>"
+        "<span class='nav disabled_#{link_class}' title='#{tooltip}'>#{text}</span>"
       else
-        "<a class='nav #{link_class}' href='#{@action}?page=#{page.to_i}'>#{text}</a>"
+        "<a class='nav #{link_class}' href='#{@action}?page=#{page.to_i}' title='#{tooltip}'>#{text}</a>"
       end
     end
 

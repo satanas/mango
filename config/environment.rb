@@ -45,9 +45,3 @@ end
 
 require 'will_paginate'
 
-# Pagination config
-PaginationHelper::DEFAULT_OPTIONS[:prev_title] = ''
-PaginationHelper::DEFAULT_OPTIONS[:next_title] = ''
-PaginationHelper::DEFAULT_OPTIONS[:first_title] = ''
-PaginationHelper::DEFAULT_OPTIONS[:last_title] = ''
-

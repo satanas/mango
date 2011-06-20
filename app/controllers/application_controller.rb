@@ -12,7 +12,17 @@ class ApplicationController < ActionController::Base
   helper :flash
   helper :modal
   include ModalHelper::Modal
-  
+
+  # Pagination config
+  PaginationHelper::DEFAULT_OPTIONS[:prev_title] = ''
+  PaginationHelper::DEFAULT_OPTIONS[:next_title] = ''
+  PaginationHelper::DEFAULT_OPTIONS[:first_title] = ''
+  PaginationHelper::DEFAULT_OPTIONS[:last_title] = ''
+  PaginationHelper::DEFAULT_OPTIONS[:prev_tooltip] = 'Pág. anterior'
+  PaginationHelper::DEFAULT_OPTIONS[:next_tooltip] = 'Pág. siguiente'
+  PaginationHelper::DEFAULT_OPTIONS[:first_tooltip] = 'Primera pág.'
+  PaginationHelper::DEFAULT_OPTIONS[:last_tooltip] = 'Última pág.'
+
   def check_authentication
     unless session[:user]
       #TODO Check usage

@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
     user = User.auth(params[:user][:login], params[:user][:password])
     if user
       session[:user] = user
-      session[:per_page] = 2
+      session[:per_page] = 12
       redirect_to :action => 'show'
     else
       flash[:notice] = 'Credenciales inválidas'
