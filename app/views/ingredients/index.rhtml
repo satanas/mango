@@ -1,29 +1,32 @@
+<% i = 0 %>
 <% if @ingredients.length > 0 %>
-<table>
+<table id="tabledata">
     <thead>
       <tr>
-        <th>Código</th>
-        <th>Nombre</th>
-        <th>Acciones</th>
+        <th>Código<span class="order_arrow"></span></th>
+        <th>Nombre<span class="order_arrow"></span></th>
+        <th class="actions_medium">Acciones</th>
       </tr>
     </thead>
     <tbody>
-    <%
-      @ingredients.each do |i|
-    %>
-      <tr>
-        <td><%=h i.code %></td>
-        <td><%=h i.name %></td>
+    <% @ingredients.each do |ing| %>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
+        <td class="center"><%=h ing.code %></td>
+        <td><%=h ing.name %></td>
         <td>
-          <%= render_action_edit(edit_ingredient_path(i)) %>
-          <%= render_action_delete(ingredient_path(i), "Desea borrar la materia prima '#{i.name}'?") %>
+          <%= render_action_edit(edit_ingredient_path(ing)) %>
+          <%= render_action_delete(ingredient_path(ing), "Desea borrar la materia prima '#{ing.name}'?") %>
         </td>
       </tr>
-    <%
-      end 
-    %>
+    <% end %>
     </tbody>
 </table>
+<div id="tablefooter">
+  <div id="pagination">
+    <%= show_pagination @ingredients %>
+  </div>
+</div>
 <% else %>
 <p>No hay materia prima disponible</p>
 <% end %>

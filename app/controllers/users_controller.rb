@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.find :all
+    @users = User.paginate :all, :page=>params[:page], :per_page=>session[:per_page]
   end
   
   def edit

@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   def index
-    @ingredients = Ingredient.find :all
+    @ingredients = Ingredient.paginate :all, :page=>params[:page], :per_page=>session[:per_page]
   end
   
   def edit

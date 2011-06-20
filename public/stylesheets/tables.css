@@ -3,9 +3,6 @@
 }
 
 #tabledata thead th {
-    /*background: #E6E6E6 url('../images/table-header-bg.png') repeat-x 50% 50%;
-    color: #555;
-    border: 1px solid #d3d3d3;*/
     font-weight: normal;
     font-size: 0.8em;
     padding: 6px 10px;
@@ -23,13 +20,16 @@
 
 #tabledata tbody td {
     border-width: 0px;
-    /*normal normal normal 100%/1,45em 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;*/
     font-family: 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
     font-size: 0.8em;
 }
 
 #tabledata thead .actions {
     width: 230px;
+}
+
+#tabledata thead .actions_medium {
+    width: 180px;
 }
 
 #tabledata .center {
