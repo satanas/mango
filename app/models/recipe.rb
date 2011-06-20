@@ -2,6 +2,7 @@ class Recipe < ActiveRecord::Base
   has_many :ingredient_recipe
 
   validates_presence_of :name, :code
+  validates_uniqueness_of :code
   validates_length_of :name, :within => 3..40
   validates_numericality_of :total
   #validates_associated :ingredient_recipe

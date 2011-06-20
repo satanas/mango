@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20110616183547) do
   end
 
   create_table "hoppers", :force => true do |t|
-    t.integer  "number",     :null => false
+    t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(:version => 20110616183547) do
   add_index "hoppers_ingredients", ["ingredient_id"], :name => "fk_hoppers_ingredients_ingredient_id"
 
   create_table "ingredients", :force => true do |t|
-    t.string   "code",       :null => false
-    t.string   "name",       :null => false
+    t.string   "code"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,15 +49,12 @@ ActiveRecord::Schema.define(:version => 20110616183547) do
   create_table "ingredients_recipes", :force => true do |t|
     t.integer  "ingredient_id"
     t.integer  "recipe_id"
-    t.float    "amount",        :null => false
-    t.integer  "priority",      :null => false
-    t.float    "percentage",    :null => false
+    t.float    "amount"
+    t.integer  "priority"
+    t.float    "percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "ingredients_recipes", ["ingredient_id"], :name => "fk_ingredients_recipes_ingredient_id"
-  add_index "ingredients_recipes", ["recipe_id"], :name => "fk_ingredients_recipes_recipe_id"
 
   create_table "orders", :force => true do |t|
     t.integer  "recipe_id"
@@ -87,9 +84,9 @@ ActiveRecord::Schema.define(:version => 20110616183547) do
 
   create_table "recipes", :force => true do |t|
     t.string   "code"
-    t.string   "name",                         :null => false
+    t.string   "name"
     t.string   "version"
-    t.float    "total",      :default => 0.0
+    t.float    "total"
     t.boolean  "active",     :default => true
     t.text     "comment"
     t.datetime "created_at"
@@ -97,10 +94,10 @@ ActiveRecord::Schema.define(:version => 20110616183547) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",                             :null => false
-    t.string   "login",                            :null => false
-    t.string   "password_hash",                    :null => false
-    t.string   "password_salt",                    :null => false
+    t.string   "name"
+    t.string   "login"
+    t.string   "password_hash"
+    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",         :default => false
