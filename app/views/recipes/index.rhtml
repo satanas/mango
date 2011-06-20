@@ -1,34 +1,37 @@
+<% i = 0 %>
 <% if @recipes.length > 0 %>
-<table>
+<table id="tabledata">
     <thead>
       <tr>
-        <th>Código</th>
-        <th>Nombre</th>
-        <th>Versión</th>
-        <th>Activa</th>
-        <th>Acciones</th>
+        <th>Código<span class="order_arrow"></span></th>
+        <th>Nombre<span class="order_arrow"></span></th>
+        <th>Versión<span class="order_arrow"></span></th>
+        <th>Activa<span class="order_arrow"></span></th>
+        <th class="actions">Acciones</th>
       </tr>
     </thead>
     <tbody>
-    <%
-      @recipes.each do |r|
-    %>
-      <tr>
-        <td><%=h r.code %></td>
+    <% @recipes.each do |r| %>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
+        <td class="center"><%=h r.code %></td>
         <td><%=h r.name %></td>
-        <td><%=h r.version %></td>
-        <td><%=h r.active %></td>
-        <td>
+        <td class="center"><%=h r.version %></td>
+        <td class="center"><%=h r.active %></td>
+        <td class="center">
           <%= render_action_show(recipe_path(r)) %>
           <%= render_action_edit(edit_recipe_path(r)) %>
           <%= render_action_delete(recipe_path(r), "Desea borrar la receta '#{r.name}'?") %>
         </td>
       </tr>
-    <%
-      end 
-    %>
+    <% end %>
     </tbody>
 </table>
+<div id="tablefooter">
+  <div id="pagination">
+    <%= show_pagination @recipes %>
+  </div>
+</div>
 <% else %>
 <p>No hay recetas registradas</p>
 <% end %>

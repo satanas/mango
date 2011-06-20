@@ -1,0 +1,56 @@
+#pagination {
+    padding: 6px 10px 0 5px;
+    float: right;
+}
+
+#pagination .nav {
+    height: 22px;
+    width: 22px;
+    display: block;
+    float:left;
+    cursor: pointer;
+}
+
+#pagination .info {
+    display: block;
+    float: left;
+    width: 120px;
+    text-align: center;
+    font-size: 0.8em;
+    padding-top: 2px;
+}
+#pagination .first {
+    background: url('../images/go-first.png') no-repeat;
+}
+
+#pagination .disabled_first {
+    background: url('../images/go-first-disabled.png') no-repeat;
+    cursor: default;
+}
+
+#pagination .prev {
+    background: url('../images/go-previous.png') no-repeat;
+}
+
+#pagination .disabled_prev {
+    background: url('../images/go-previous-disabled.png') no-repeat;
+    cursor: default;
+}
+
+#pagination .next {
+    background: url('../images/go-next.png') no-repeat;
+}
+
+#pagination .disabled_next {
+    background: url('../images/go-next-disabled.png') no-repeat;
+    cursor: default;
+}
+
+#pagination .last {
+    background: url('../images/go-last.png') no-repeat;
+}
+
+#pagination .disabled_last {
+    background: url('../images/go-last-disabled.png') no-repeat;
+    cursor: default;
+}

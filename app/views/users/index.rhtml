@@ -1,19 +1,21 @@
+<% i = 0 %>
 <% if @users.length > 0 %>
-<table>
+<table id="tabledata">
     <thead>
       <tr>
         <th>Usuario</th>
-        <th>Nombre</th>
-        <th>Admin</th>
-        <th>Acciones</th>
+        <th>Nombre<span class="order_arrow"></span></th>
+        <th>Admin<span class="order_arrow"></span></th>
+        <th class="actions_medium">Acciones</th></th>
       </tr>
     </thead>
     <tbody>
     <% @users.each do |u| %>
-      <tr>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
         <td><%=h u.login %></td>
         <td><%=h u.name %></td>
-        <td><%=h u.admin %></td>
+        <td class="center"><%=h u.admin %></td>
         <td>
           <%= render_action_edit(edit_user_path(u)) %>
           <% if session[:user].id != u.id %>
@@ -24,6 +26,11 @@
     <% end %>
     </tbody>
 </table>
+<div id="tablefooter">
+  <div id="pagination">
+    <%= show_pagination @users %>
+  </div>
+</div>
 <% else %>
 <p>No hay usuarios registrados</p>
 <% end %>

@@ -1,14 +1,15 @@
+<% i = 0 %>
 <div id="ingredient_recipe_grid">
   <% remote_form_for :ingredient_recipe, :url=>recipe_ingredients_recipes_path(@recipe) do |f| %>
-  <table>
+  <table id="tabledata">
     <thead>
       <tr>
-        <th>Código</th>
-        <th>Nombre</th>
-        <th>Cantidad</th>
-        <th>Prioridad</th>
-        <th>Porcentaje</th>
-        <th>Acciones</th>
+        <th>Código<span class="order_arrow"></span></th>
+        <th>Nombre<span class="order_arrow"></span></th>
+        <th>Cantidad<span class="order_arrow"></span></th>
+        <th>Prioridad<span class="order_arrow"></span></th>
+        <th>Porcentaje<span class="order_arrow"></span></th>
+        <th class="actions_medium">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -27,17 +28,23 @@
         <td><%= f.hidden_field :code %><%= submit_tag 'Agregar' %></td>
       </tr>
       <% @recipe.ingredient_recipe.each do |ir| %>
-      <tr>
-        <td><%=h ir.ingredient.code %></td>
-        <td><%=h ir.ingredient.name %></td>
-        <td><%=h ir.amount %></td>
-        <td><%=h ir.priority %></td>
-        <td><%=h ir.percentage %></td>
-        <td><%= render_remote_action_delete(recipe_ingredient_recipe_path(@recipe, ir), 
-          "Desea eliminar el ingrediente '#{ir.ingredient.code} - #{ir.ingredient.name}'?") %></td>
-      </tr>
+        <% class_row, i = alternate_row_class(i) %>
+          <tr class="<%= class_row %>">
+          <td><%=h ir.ingredient.code %></td>
+          <td><%=h ir.ingredient.name %></td>
+          <td><%=h ir.amount %></td>
+          <td><%=h ir.priority %></td>
+          <td><%=h ir.percentage %></td>
+          <td><%= render_remote_action_delete(recipe_ingredient_recipe_path(@recipe, ir), 
+            "Desea eliminar el ingrediente '#{ir.ingredient.code} - #{ir.ingredient.name}'?") %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>
+  <div id="tablefooter">
+    <div id="pagination">
+      <!--= show_pagination @recipe %-->
+    </div>
+  </div>
   <% end %>
 </div>

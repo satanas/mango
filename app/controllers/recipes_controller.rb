@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.find :all, :conditions => ['active = ?', true]
+    @recipes = Recipe.paginate :all, :page=>params[:page], :per_page=>session[:per_page], :conditions => ['active = ?', true]
   end
 
   def show

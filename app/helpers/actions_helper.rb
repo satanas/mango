@@ -23,4 +23,7 @@ module ActionsHelper
     image = image_tag('action-delete.png', :alt=>'Borrar')
     return link_to_remote image + " Eliminar", :url=>url, :method => :delete, :confirm =>confirm, :html=>{:class => 'action'}
   end
+
+  def render_action_order
+  end
 end
