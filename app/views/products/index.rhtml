@@ -1,17 +1,17 @@
+<% i = 0 %>
 <% if @products.length > 0 %>
-<table>
+<table id="tabledata">
     <thead>
       <tr>
-        <th>Code</th>
-        <th>Name</th>
-        <th>Acciones</th>
+        <th>Code<span class="order_arrow"></span></th>
+        <th>Name<span class="order_arrow"></span></th>
+        <th class="actions_small">>Acciones</th>
       </tr>
     </thead>
     <tbody>
-    <%
-      @products.each do |p|
-    %>
-      <tr>
+    <% @products.each do |p| %>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
         <td><%=h p.code %></td>
         <td><%=h p.name %></td>
         <td>
@@ -24,6 +24,11 @@
     %>
     </tbody>
 </table>
+<div id="tablefooter">
+  <div id="pagination">
+    <!-- = show_pagination @hoppers %-->
+  </div>
+</div>
 <% else %>
 <p>No hay productos terminados registrados</p>
 <% end %>

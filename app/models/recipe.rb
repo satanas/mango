@@ -17,6 +17,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def add_ingredient(args)
+    overwrite = args[:overwrite]
     icode = args[:ingredient].split(' ')[0]
     iname = args[:ingredient][(icode.length + 1)..args[:ingredient].length]
     ingredient = Ingredient.find_by_code(icode)
@@ -25,12 +26,20 @@ class Recipe < ActiveRecord::Base
       ingredient = Ingredient.new :code => icode, :name => iname
       ingredient.save
     end
-    item = IngredientRecipe.new
-    item.ingredient_id = ingredient.id
-    item.amount = args[:amount]
-    item.priority = args[:priority]
-    item.percentage = args[:percentage]
-    self.ingredient_recipe << item
+    item = IngredientRecipe.find :first, :conditions=>{:ingredient_id=>ingredient.id, :recipe_id=>self.id}
+    if item.nil?
+      item = IngredientRecipe.new
+      item.ingredient_id = ingredient.id
+      item.amount = args[:amount]
+      item.priority = args[:priority]
+      item.percentage = args[:percentage]
+      self.ingredient_recipe << item
+    else
+      item.amount = args[:amount]
+      item.priority = args[:priority]
+      item.percentage = args[:percentage]
+      item.save if overwrite
+    end
   end
 
   def import(upload)
@@ -40,6 +49,7 @@ class Recipe < ActiveRecord::Base
     end
     begin
       transaction do
+        overwrite = (upload['overwrite'] == '1') ? true : false
         name =  upload['datafile'].original_filename
         logger.info("Importando el archivo #{name}")
         tmpfile = Tempfile.new "recipe"
@@ -62,18 +72,26 @@ class Recipe < ActiveRecord::Base
           fd.gets()
           return false unless validate_field(fd.gets(), 'Ver')
           header = fd.gets().split(/\t/)
-          @recipe = Recipe.new :code=>header[0], :name=>header[1]
-          logger.info("Creando encabezado de receta #{@recipe.inspect}")
+          @recipe = Recipe.find_by_code(header[0])
+          if @recipe.nil?
+            @recipe = Recipe.new :code=>header[0], :name=>header[1]
+            logger.info("Creando encabezado de receta #{@recipe.inspect}")
+          end
           fd.gets()
           while (true)
             item = fd.gets().split(/\t/)
             break if item[0].strip() == '-----------'
             logger.info("  * Ingrediente: #{item.inspect}")
+            amount = item[0].gsub('.', '')
+            amount = item[0].gsub(',', '.')
+            percentage = item[3].strip().gsub('.', '')
+            percentage = item[3].gsub(',', '.')
             @recipe.add_ingredient(
-              :amount=>item[0].to_f, 
+              :amount=>amount.to_f, 
               :priority=>item[1].to_i, 
-              :percentage=>item[3].strip().to_f, 
-              :ingredient=>item[2].strip())
+              :percentage=>percentage.to_f, 
+              :ingredient=>item[2].strip(),
+              :overwrite=>overwrite)
           end
           @recipe.total = fd.gets().strip().to_f
           @recipe.save

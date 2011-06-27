@@ -1,16 +1,18 @@
+<% i = 0 %>
 <% if @hoppers.length > 0 %>
-<table>
+<table id="tabledata">
     <thead>
       <tr>
-        <th>Tolva</th>
-        <th>Ingrediente</th>
-        <th>Acciones</th>
+        <th>Tolva<span class="order_arrow"></span></th>
+        <th>Ingrediente<span class="order_arrow"></span></th>
+        <th class="actions_small">Acciones</th>
       </tr>
     </thead>
     <tbody>
     <% @hoppers.each do |key, obj| %>
+      <% class_row, i = alternate_row_class(i) %>
       <% ingredient = (obj[:ingredient].nil?) ? 'N/D' : "#{obj[:ingredient].ingredient.code} - #{obj[:ingredient].ingredient.name}" %>
-      <tr>
+      <tr class="<%= class_row %>">
         <td><%=h key %></td>
         <td><%=h ingredient %></td>
         <td>
@@ -21,6 +23,11 @@
     <% end %>
     </tbody>
 </table>
+<div id="tablefooter">
+  <div id="pagination">
+    <!-- = show_pagination @hoppers %-->
+  </div>
+</div>
 <% else %>
 <p>No hay tolvas registradas</p>
 <% end %>

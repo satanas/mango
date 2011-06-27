@@ -3,7 +3,8 @@
     <%= f.error_messages %><br/>
   <% end %>
   <label for="datefile">Por favor, seleccione el archivo de receta que desea importar</label>: <br/><br/>
-  <%= f.file_field :datafile %>
+  <%= f.file_field :datafile %><br/><br/>
+  <%= f.check_box :overwrite, :checked=>true %> &nbsp; <label for="overwrite">Sobreescribir recetas existentes</label>
   <br/>
 <% end %>
 <div id="data_progress">

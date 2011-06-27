@@ -6,7 +6,7 @@ class IngredientRecipe < ActiveRecord::Base
   validates_presence_of :priority, :only_integer => true
   validates_numericality_of :amount, :priority, :percentage
   
-  before_validation :validate_existence
+  #before_validation :validate_existence
   
   def validate_existence
     if IngredientRecipe.find(:first, :conditions => ["ingredient_id = ? and recipe_id = ?", self.ingredient_id, self.recipe_id])
