@@ -46,3 +46,11 @@ function submit_product_new_form() {
 function submit_product_edit_form() {
     $('product_edit_form').submit();
 }
+
+function submit_order_new_form() {
+    $('order_new_form').submit();
+}
+
+function submit_order_edit_form() {
+    $('order_edit_form').submit();
+}

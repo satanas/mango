@@ -1,4 +1,5 @@
 class Recipe < ActiveRecord::Base
+  has_many :order
   has_many :ingredient_recipe
 
   validates_presence_of :name, :code
@@ -74,7 +75,7 @@ class Recipe < ActiveRecord::Base
           header = fd.gets().split(/\t/)
           @recipe = Recipe.find_by_code(header[0])
           if @recipe.nil?
-            @recipe = Recipe.new :code=>header[0], :name=>header[1]
+            @recipe = Recipe.new :code=>header[0], :name=>header[1], :version=>header[3].strip()
             logger.info("Creando encabezado de receta #{@recipe.inspect}")
           end
           fd.gets()
@@ -88,7 +89,7 @@ class Recipe < ActiveRecord::Base
             percentage = item[3].gsub(',', '.')
             @recipe.add_ingredient(
               :amount=>amount.to_f, 
-              :priority=>item[1].to_i, 
+              :priority=>0, 
               :percentage=>percentage.to_f, 
               :ingredient=>item[2].strip(),
               :overwrite=>overwrite)

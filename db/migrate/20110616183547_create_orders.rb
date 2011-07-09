@@ -25,10 +25,10 @@ extend MigrationHelper
   end
 
   def self.down
-    drop_foreign_key 'orders', 'recipe_id'
-    drop_foreign_key 'orders', 'client_id'
-    drop_foreign_key 'orders', 'user_id'
     drop_foreign_key 'orders', 'product_id'
+    drop_foreign_key 'orders', 'user_id'
+    drop_foreign_key 'orders', 'client_id'
+    drop_foreign_key 'orders', 'recipe_id'
     drop_table :orders
   end
 end

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :order
+
   validates_uniqueness_of :login
   validates_presence_of :name, :login
   validates_length_of :name, :login, :within => 3..40

@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id], :include=>'ingredient_recipe', :order=>'ingredients_recipes.id desc')
+    @recipe = Recipe.find(params[:id], :include=>'ingredient_recipe', :order=>'id desc')
   end
 
   def create

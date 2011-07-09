@@ -37,6 +37,12 @@ module MenuHelper
       menu = menu_for_products_new
     elsif c == 'products' and (a == 'edit' or a == 'update')
       menu = menu_for_products_edit
+    elsif c == 'orders' and a == 'index'
+      menu = menu_for_orders_index
+    elsif c == 'orders' and (a == 'new' or a == 'create')
+      menu = menu_for_orders_new
+    elsif c == 'orders' and (a == 'edit' or a == 'update')
+      menu = menu_for_orders_edit
     end
 
     return content_tag(:div, menu, :id => 'menu')
@@ -208,6 +214,33 @@ module MenuHelper
     menu += content_tag(:ul, 
       render_back(products_path) +
       render_function('Actualizar', 'Actualizar producto terminado', "submit_product_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end
+  
+  def menu_for_orders_index
+    menu = content_tag(:p, 'Lista de órdenes de producción')
+    menu += content_tag(:ul, 
+      render_back(root_path) +
+      render_action('Crear', 'Crear nueva orden de producción', new_product_path, 'button-add.png')
+    )
+    return menu
+  end
+  
+  def menu_for_orders_new
+    menu = content_tag(:p, 'Crear nueva orden de producción')
+    menu += content_tag(:ul, 
+      render_back(products_path) +
+      render_function('Guardar', 'Guardar orden de producción', "submit_product_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+  
+  def menu_for_orders_edit
+    menu = content_tag(:p, 'Editar orden de producción')
+    menu += content_tag(:ul, 
+      render_back(products_path) +
+      render_function('Actualizar', 'Actualizar orden de producción', "submit_product_edit_form()", 'button-execute.png')
     )
     return menu
   end
