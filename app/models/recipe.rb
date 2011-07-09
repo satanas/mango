@@ -6,7 +6,6 @@ class Recipe < ActiveRecord::Base
   validates_uniqueness_of :code
   validates_length_of :name, :within => 3..40
   validates_numericality_of :total
-  #validates_associated :ingredient_recipe
 
   before_validation :check_total
 
@@ -48,6 +47,8 @@ class Recipe < ActiveRecord::Base
       errors.add(:upload_file, "Debe seleccionar un archivo")
       return false
     end
+
+    @line = 0
     begin
       transaction do
         overwrite = (upload['overwrite'] == '1') ? true : false
@@ -60,46 +61,41 @@ class Recipe < ActiveRecord::Base
         tmpfile.close()
 
         fd = File.open(filepath, 'r')
-        continue = fd.gets().strip()
-        return false unless validate_field(continue, 'Formula')
+        continue = validate_field(fd, 'Formula')
 
         while (continue)
-          return false unless validate_field(fd.gets(), 'Code')
-          fd.gets()
-          return false unless validate_field(fd.gets(), 'Description')
-          fd.gets()
-          return false unless validate_field(fd.gets(), 'Date')
-          return false unless validate_field(fd.gets(), 'Stored')
-          fd.gets()
-          return false unless validate_field(fd.gets(), 'Ver')
-          header = fd.gets().split(/\t/)
-          @recipe = Recipe.find_by_code(header[0])
+          validate_field(fd, 'Code')
+          validate_field(fd, '')
+          validate_field(fd, 'Description')
+          validate_field(fd, '')
+          validate_field(fd, 'Date')
+          validate_field(fd, 'Stored')
+          validate_field(fd, '')
+          validate_field(fd, 'Ver')
+          header = validate_header(fd)
+          @recipe = Recipe.find_by_code(header[:code])
           if @recipe.nil?
-            @recipe = Recipe.new :code=>header[0], :name=>header[1], :version=>header[3].strip()
+            @recipe = Recipe.new(header)
             logger.info("Creando encabezado de receta #{@recipe.inspect}")
           end
-          fd.gets()
+          validate_field(fd, nil)
           while (true)
-            item = fd.gets().split(/\t/)
-            break if item[0].strip() == '-----------'
+            item = validate_ingredient(fd, overwrite)
+            break if item.nil?
             logger.info("  * Ingrediente: #{item.inspect}")
-            amount = item[0].gsub('.', '')
-            amount = item[0].gsub(',', '.')
-            percentage = item[3].strip().gsub('.', '')
-            percentage = item[3].gsub(',', '.')
-            @recipe.add_ingredient(
-              :amount=>amount.to_f, 
-              :priority=>0, 
-              :percentage=>percentage.to_f, 
-              :ingredient=>item[2].strip(),
-              :overwrite=>overwrite)
+            @recipe.add_ingredient(item)
           end
+          @line += 1
           @recipe.total = fd.gets().strip().to_f
           @recipe.save
+          @line += 1
           continue = fd.gets().strip()
           break if continue.nil? or continue == '='
         end
       end
+    rescue SyntaxError => ex
+      errors.add(:syntax, "#{@line}. #{ex.message}")
+      return false
     rescue Exception => ex
       errors.add(:unknown, ex.message)
       return false
@@ -113,12 +109,40 @@ class Recipe < ActiveRecord::Base
     self.total = 0 if self.total.nil?
   end
 
-  def validate_field(field, value)
-    field.strip!()
-    if field != value
-      errors.add(:upload_file, "Archivo inválido")
-      return false
-    end
-    return true
+  def validate_field(fd, value)
+    field = fd.gets().strip()
+    @line += 1
+    return '' if value.nil?
+    raise SyntaxError.new "Se esperaba el campo '#{value}' y se obtuvo '#{field}'" if field != value
+    return field
+  end
+
+  def validate_header(fd)
+    header = fd.gets().split(/\t/)
+    @line += 1
+    raise SyntaxError.new 'Encabezado mal formado' if header.size < 4
+    return {
+      :code=>header[0], 
+      :name=>header[1], 
+      :version=>header[3].strip()
+    }
+  end
+
+  def validate_ingredient(fd, overwrite)
+    item = fd.gets().split(/\t/)
+    @line += 1
+    return nil if item[0].strip() == '-----------'
+    raise SyntaxError.new 'Ingrediente mal formado' if item.size < 4
+    amount = item[0].gsub('.', '')
+    amount = item[0].gsub(',', '.')
+    percentage = item[3].strip().gsub('.', '')
+    percentage = item[3].gsub(',', '.')
+    return {
+      :amount=>amount.to_f, 
+      :percentage=>percentage.to_f, 
+      :ingredient=>item[2].strip(),
+      :priority=>0,
+      :overwrite=>overwrite
+    }
   end
 end
