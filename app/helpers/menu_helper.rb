@@ -222,7 +222,7 @@ module MenuHelper
     menu = content_tag(:p, 'Lista de órdenes de producción')
     menu += content_tag(:ul, 
       render_back(root_path) +
-      render_action('Crear', 'Crear nueva orden de producción', new_product_path, 'button-add.png')
+      render_action('Crear', 'Crear nueva orden de producción', new_order_path, 'button-add.png')
     )
     return menu
   end
@@ -230,8 +230,8 @@ module MenuHelper
   def menu_for_orders_new
     menu = content_tag(:p, 'Crear nueva orden de producción')
     menu += content_tag(:ul, 
-      render_back(products_path) +
-      render_function('Guardar', 'Guardar orden de producción', "submit_product_new_form()", 'button-execute.png')
+      render_back(orders_path) +
+      render_function('Guardar', 'Guardar orden de producción', "submit_order_new_form()", 'button-execute.png')
     )
     return menu
   end
@@ -239,8 +239,8 @@ module MenuHelper
   def menu_for_orders_edit
     menu = content_tag(:p, 'Editar orden de producción')
     menu += content_tag(:ul, 
-      render_back(products_path) +
-      render_function('Actualizar', 'Actualizar orden de producción', "submit_product_edit_form()", 'button-execute.png')
+      render_back(orders_path) +
+      render_function('Actualizar', 'Actualizar orden de producción', "submit_order_edit_form()", 'button-execute.png')
     )
     return menu
   end

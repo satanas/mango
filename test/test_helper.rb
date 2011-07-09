@@ -35,12 +35,30 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-
+  
   def print_errors(num, obj)
     return "Expected #{num} errors, got #{obj.errors.size}. #{obj.errors.inspect}"
   end
 
   def assert_error_length(num, obj)
+    assert !obj.save, "Saved #{obj.class.to_s} unexpectedly - #{obj.inspect}"
     assert_equal obj.errors.size, num, print_errors(num, obj)
+  end
+  
+  def assert_error_match(obj, field, match)
+    assert_match match, obj.errors[field].to_s, "Not matched the expected error, #{obj.errors.inspect}"
+  end
+  
+  def assert_invalid(obj, field, wrong_val, right_val, match)
+    obj[field] = wrong_val
+    assert !obj.save, "#{obj.class.to_s} saved with #{field.to_s} invalid - #{obj.inspect}"
+    assert_equal 1, obj.errors.length, "A field which wasn't supposed to be affected gave error - #{obj.errors.inspect}"
+    assert_error_match obj, field, match
+    obj[field] = right_val
+  end
+  
+  # this function resumes the last step of a test
+  def assert_obj_saved(obj)
+    assert obj.save, "#{obj.class.to_s} not saved - #{obj.errors.inspect}"
   end
 end

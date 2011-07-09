@@ -53,6 +53,8 @@ class RecipesController < ApplicationController
       flash[:notice] = "Error importando receta"
       if not @recipe.errors[:upload_file].nil?
         flash[:notice] += ". #{@recipe.errors[:upload_file]}"
+      elsif not @recipe.errors[:syntax].nil?
+        flash[:notice] = "Error de sintaxis en la línea #{@recipe.errors[:syntax]}"
       elsif not @recipe.errors[:unknown].nil?
         flash[:notice] += ". #{@recipe.errors[:unknown]}"
       end

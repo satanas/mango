@@ -22,6 +22,7 @@ namespace :db do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
       fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
       Fixtures.create_fixtures(fixtures_dir, 'users')
+      Fixtures.create_fixtures(fixtures_dir, 'clients')
       puts 'Loaded test users'
     end
 
@@ -31,6 +32,14 @@ namespace :db do
       fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
       Fixtures.create_fixtures(fixtures_dir, 'ingredients')
       puts 'Loaded test ingredients'
+    end
+    
+    desc 'Load test products'
+    task :products => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
+      Fixtures.create_fixtures(fixtures_dir, 'products')
+      puts 'Loaded test products'
     end
   end
 
