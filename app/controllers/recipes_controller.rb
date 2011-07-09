@@ -44,22 +44,37 @@ class RecipesController < ApplicationController
   end
 
   def upload
-    @recipe = Recipe.new
-    if @recipe.import(params[:recipe])
-      flash[:notice] = "Receta importada con éxito"
-      redirect_to :action => 'index'
-    else
+    if params[:recipe]['datafile'].nil?
       flash[:type] = 'error'
-      flash[:notice] = "Error importando receta"
-      if not @recipe.errors[:upload_file].nil?
-        flash[:notice] += ". #{@recipe.errors[:upload_file]}"
-      elsif not @recipe.errors[:syntax].nil?
-        flash[:notice] = "Error de sintaxis en la línea #{@recipe.errors[:syntax]}"
-      elsif not @recipe.errors[:unknown].nil?
-        flash[:notice] += ". #{@recipe.errors[:unknown]}"
-      end
+      flash[:notice] = "Debe seleccionar un archivo"
       logger.error(flash[:notice])
       redirect_to :action => 'import'
+    else
+      overwrite = (params[:recipe]['overwrite'] == '1') ? true : false
+      name =  params[:recipe]['datafile'].original_filename
+      logger.info("Importando el archivo #{name}")
+      tmpfile = Tempfile.new "recipe"
+      filepath = tmpfile.path()
+      tmpfile.write(params[:recipe]['datafile'].read)
+      tmpfile.close()
+
+      @recipe = Recipe.new
+      if @recipe.import(filepath, overwrite)
+        flash[:notice] = "Receta importada con éxito"
+        redirect_to :action => 'index'
+      else
+        flash[:type] = 'error'
+        flash[:notice] = "Error importando receta"
+        if not @recipe.errors[:upload_file].nil?
+          flash[:notice] += ". #{@recipe.errors[:upload_file]}"
+        elsif not @recipe.errors[:syntax].nil?
+          flash[:notice] = "Error de sintaxis en la línea #{@recipe.errors[:syntax]}"
+        elsif not @recipe.errors[:unknown].nil?
+          flash[:notice] += ". #{@recipe.errors[:unknown]}"
+        end
+        logger.error(flash[:notice])
+        redirect_to :action => 'import'
+      end
     end
   end
 

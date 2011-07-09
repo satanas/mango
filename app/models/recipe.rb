@@ -42,24 +42,10 @@ class Recipe < ActiveRecord::Base
     end
   end
 
-  def import(upload)
-    if upload.nil?
-      errors.add(:upload_file, "Debe seleccionar un archivo")
-      return false
-    end
-
+  def import(filepath, overwrite)
     @line = 0
     begin
       transaction do
-        overwrite = (upload['overwrite'] == '1') ? true : false
-        name =  upload['datafile'].original_filename
-        logger.info("Importando el archivo #{name}")
-        tmpfile = Tempfile.new "recipe"
-        filepath = tmpfile.path()
-        # write the file
-        tmpfile.write(upload['datafile'].read)
-        tmpfile.close()
-
         fd = File.open(filepath, 'r')
         continue = validate_field(fd, 'Formula')
 
@@ -132,6 +118,7 @@ class Recipe < ActiveRecord::Base
     item = fd.gets().split(/\t/)
     @line += 1
     return nil if item[0].strip() == '-----------'
+    raise SyntaxError.new 'Ingredient vacio' if item.empty?
     raise SyntaxError.new 'Ingrediente mal formado' if item.size < 4
     amount = item[0].gsub('.', '')
     amount = item[0].gsub(',', '.')
