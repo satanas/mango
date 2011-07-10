@@ -29,9 +29,9 @@ class User < ActiveRecord::Base
   def validate_password
     return true if @password.blank? and @password_confirmation.blank? and !self.new_record?
     errors.add(:password, "can't be blank") if @password.blank?
+    errors.add(:password, "is too short (minimum is 5 characters)") if !@password.nil? and @password.length < 5
     errors.add(:password_confirmation, "can't be blank") if @password_confirmation.blank?
     errors.add(:password_confirmation, "doesn't match") if @password != @password_confirmation
-    errors.add(:password, "is too short (minimum is 5 characters)") if !@password.nil? and @password.length < 5
     return false if errors.size > 0
   end
   

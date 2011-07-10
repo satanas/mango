@@ -2,28 +2,22 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
   def setup
-    @product = Product.new
+    @product = Product.new :code=>'123456', :name=>'Producto de prueba'
   end
   
   test "blank" do
-    # Test code and name presence, name and code length
-    assert !@product.save, "Product saved in blank: #{@product.inspect}"
-    assert_error_length(4, @product)
+    @product = Product.new
+    assert_error_length 4, @product
   end
   
   test "length" do
-    # Test name length and code length
-    @product.code = '0'
-    @product.name = 'T'*50
-    assert !@product.save, "Product saved with invalid field lengths: #{@product.inspect}"
-    assert_error_length(2, @product)
+    assert_invalid @product, :code, '0', '0123540', /is too short/
+    assert_invalid @product, :name, 'T'*50, 'PRUEBA', /is too long/
+    assert_obj_saved @product
   end
   
   test "uniqueness" do
-    # Test code uniqueness
-    @product.code = '0000001'
-    @product.name = 'Test-1'
-    assert !@product.save, "Product saved a record with non-unique code: #{@product.inspect}"
-    assert_error_length(1, @product)
+    assert_invalid @product, :code, '0000001', '432184766', /has already been taken/
+    assert_obj_saved @product
   end
 end

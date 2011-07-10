@@ -8,8 +8,7 @@ class RecipeTest < ActiveSupport::TestCase
   
   test "blank" do
     @recipe = Recipe.new
-    assert !@recipe.save, "Recipe saved in blank: #{@recipe.inspect}"
-    assert_error_length(3, @recipe)
+    assert_error_length 3, @recipe
   end
   
   test "length" do

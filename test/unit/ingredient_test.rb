@@ -2,28 +2,22 @@ require 'test_helper'
 
 class IngredientTest < ActiveSupport::TestCase
   def setup
-    @ingredient = Ingredient.new
+    @ingredient = Ingredient.new :code=>'4324123', :name=>'INGREDIENTE DE PRUEBA'
   end
   
   test "blank" do
-    # Test code and name presence, name and code length
-    assert !@ingredient.save, "Ingredient saved in blank: #{@ingredient.inspect}"
-    assert_error_length(4, @ingredient)
+    @ingredient = Ingredient.new
+    assert_error_length 4, @ingredient
   end
   
   test "length" do
-    # Test name length and code length
-    @ingredient.code = '0'
-    @ingredient.name = 'T'*50
-    assert !@ingredient.save, "Ingredient saved with invalid field lengths: #{@ingredient.inspect}"
-    assert_error_length(2, @ingredient)
+    assert_invalid @ingredient, :code, '0', '0123540', /is too short/
+    assert_invalid @ingredient, :name, 'T'*50, 'PRUEBA', /is too long/
+    assert_obj_saved @ingredient
   end
   
   test "uniqueness" do
-    # Test code uniqueness
-    @ingredient.code = '10101005'
-    @ingredient.name = 'Test-1'
-    assert !@ingredient.save, "Ingredient saved a record with non-unique code: #{@ingredient.inspect}"
-    assert_error_length(1, @ingredient)
+    assert_invalid @ingredient, :code, '10101005', '432184766', /has already been taken/
+    assert_obj_saved @ingredient
   end
 end
