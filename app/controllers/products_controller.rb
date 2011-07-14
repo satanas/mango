@@ -30,12 +30,18 @@ class ProductsController < ApplicationController
   
   def destroy
     @product = Product.find params[:id]
-    @product.destroy()
+    @product.eliminate
     if @product.errors.size.zero?
       flash[:notice] = "Producto terminado eliminado con éxito"
     else
-      flash[:notice] = "El producto no se ha podido eliminar"
       flash[:type] = 'error'
+      if not @product.errors[:foreign_key].nil?
+        flash[:notice] = 'El producto terminado no se puede eliminar porque tiene registros asociados'
+      elsif not @product.errors[:unknown].nil?
+        flash[:notice] = @product.errors[:unknown]
+      else
+        flash[:notice] = "El producto no se ha podido eliminar"
+      end
     end
     redirect_to :products
   end

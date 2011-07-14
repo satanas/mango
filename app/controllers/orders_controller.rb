@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = []
+    @orders = Order.paginate :all, :page=>params[:page], :per_page=>session[:per_page]
   end
 
   def new
@@ -10,7 +10,41 @@ class OrdersController < ApplicationController
     @products = Product.find :all, :order => 'name ASC'
   end
 
+  def edit
+    @order = Order.find(params[:id])
+    new()
+  end
+
   def create
     puts params.inspect
+    @order = Order.new params[:order]
+    if @order.save
+      flash[:notice] = 'Orden de producción guardada con éxito'
+      redirect_to :orders
+    else
+      render :new
+    end
+  end
+
+  def update
+    @order = Order.find params[:id]
+    @order.update_attributes(params[:order])
+    if @order.save
+      flash[:notice] = 'Orden de producción actualizada con éxito'
+      redirect_to :orders
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @order = Order.find params[:id]
+    if @order.destroy
+      flash[:notice] = 'Orden de producción eliminada con éxito'
+    else
+      flash[:notice] = 'La orden de producción no se pudo eliminar'
+      flash[:type] = 'error'
+    end
+    redirect_to :orders
   end
 end

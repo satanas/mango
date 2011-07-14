@@ -11,7 +11,7 @@
         <th>Batch Prog.<span class="order_arrow"></span></th>
         <th>Batch Real.<span class="order_arrow"></span></th>
         <th>Culminada<span class="order_arrow"></span></th>
-        <th class="actions">Acciones</th>
+        <th class="actions_small">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -19,15 +19,14 @@
       <% class_row, i = alternate_row_class(i) %>
       <tr class="<%= class_row %>">
         <td class="center"><%=h o.code %></td>
-        <td><%=h o.recipe.name %></td>
+        <td><%=h o.recipe.code %></td>
         <td><%=h o.client.name %></td>
-        <td><%=h o.user.name %></td>
+        <td><%=h o.user.login %></td>
         <td><%=h o.product.name %></td>
         <td class="center"><%=h o.prog_batchs %></td>
         <td class="center"><%=h o.real_batchs %></td>
         <td class="center"><%=h o.completed %></td>
         <td class="center">
-          <%= render_action_show(order_path(o)) %>
           <%= render_action_edit(edit_order_path(o)) %>
           <%= render_action_delete(order_path(o), "Desea borrar la orden '#{o.code}'?") %>
         </td>

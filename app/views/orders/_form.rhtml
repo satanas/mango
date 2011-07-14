@@ -1,8 +1,8 @@
 <%= f.error_messages %>
 <label for="code">Código:</label> <%= f.text_field :code, :size=>'10' %><br/>
-<label for="recipe_id">Receta:</label> <%= f.collection_select :recipe_id, @recipes, :id, :name, :include_blank => true %><br/>
+<label for="recipe_id">Receta:</label> <%= f.collection_select :recipe_id, @recipes, :id, :code, :include_blank => true %><br/>
 <label for="client_id">Cliente:</label> <%= f.collection_select :client_id, @clients, :id, :name, :include_blank => true %><br/>
-<label for="user_id">Usuario:</label> <%= f.collection_select :user_id, @users, :id, :name, :include_blank => true %><br/>
+<label for="user_id">Usuario:</label> <%= f.collection_select :user_id, @users, :id, :login, :include_blank => true %><br/>
 <label for="product_id">Producto:</label> <%= f.collection_select :product_id, @products, :id, :name, :include_blank => true %><br/>
 <label for="prog_batchs">Batch Programados:</label> <%= f.text_field :prog_batchs, :size=>'10' %><br/>
 <label for="real_batchs">Batch Realizados:</label> <%= f.text_field :real_batchs, :size=>'10', :value=>0 %><br/>
