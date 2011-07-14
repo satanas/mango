@@ -1,34 +1,40 @@
-<h2>Lista de clientes</h2>
-<p><%= link_to "New", new_client_path %></p>
-<table>
+<% i = 0 %>
+<% if @clients.length > 0 %>
+<table id="tabledata">
     <thead>
       <tr>
-        <th>CI/RIF</th>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Tel 1</th>
-        <th>Tel 2</th>
-        <th>Email</th>
-        <th>Acciones</th>
+        <th>CI/RIF<span class="order_arrow"></th>
+        <th>Name<span class="order_arrow"></th>
+        <th>Address<span class="order_arrow"></th>
+        <th>Tel 1<span class="order_arrow"></th>
+        <th>Tel 2<span class="order_arrow"></th>
+        <th>Email<span class="order_arrow"></th>
+        <th class="actions_medium">Acciones</th>
       </tr>
     </thead>
     <tbody>
-    <%
-      @clients.each do |c|
-    %>
-      <tr>
+    <% @clients.each do |c| %>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
         <td><%=h c.ci_rif %></td>
         <td><%=h c.name %></td>
         <td><%=h c.address %></td>
         <td><%=h c.tel1 %></td>
         <td><%=h c.tel2 %></td>
         <td><%=h c.email %></td>
-        <td><%= link_to "Edit", edit_client_path(c) %> 
-        | <%= link_to "Delete", client_path(c), :method => :delete, :confirm =>"Do you want to delete user '#{c.name}'?" %>
+        <td>
+          <%= render_action_edit(edit_client_path(c)) %>
+          <%= render_action_delete(client_path(c), "Desea borrar el cliente '#{c.name}'?") %>
         </td>
       </tr>
-    <%
-      end 
-    %>
+    <% end %>
     </tbody>
 </table>
+<div id="tablefooter">
+  <div id="pagination">
+    <%= show_pagination @clients %>
+  </div>
+</div>
+<% else %>
+<p>No hay usuarios registrados</p>
+<% end %>

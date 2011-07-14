@@ -54,3 +54,11 @@ function submit_order_new_form() {
 function submit_order_edit_form() {
     $('order_edit_form').submit();
 }
+
+function submit_client_new_form() {
+    $('client_new_form').submit();
+}
+
+function submit_client_edit_form() {
+    $('client_edit_form').submit();
+}

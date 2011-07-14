@@ -43,6 +43,12 @@ module MenuHelper
       menu = menu_for_orders_new
     elsif c == 'orders' and (a == 'edit' or a == 'update')
       menu = menu_for_orders_edit
+    elsif c == 'clients' and a == 'index'
+      menu = menu_for_clients_index
+    elsif c == 'clients' and (a == 'new' or a == 'create')
+      menu = menu_for_clients_new
+    elsif c == 'clients' and (a == 'edit' or a == 'update')
+      menu = menu_for_clients_edit
     end
 
     return content_tag(:div, menu, :id => 'menu')
@@ -241,6 +247,33 @@ module MenuHelper
     menu += content_tag(:ul, 
       render_back(orders_path) +
       render_function('Actualizar', 'Actualizar orden de producción', "submit_order_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_clients_index
+    menu = content_tag(:p, 'Lista de clientes')
+    menu += content_tag(:ul, 
+      render_back(root_path) +
+      render_action('Crear', 'Crear nuevo cliente', new_client_path, 'button-add.png')
+    )
+    return menu
+  end
+  
+  def menu_for_clients_new
+    menu = content_tag(:p, 'Crear nuevo cliente')
+    menu += content_tag(:ul, 
+      render_back(clients_path) +
+      render_function('Guardar', 'Guardar cliente', "submit_client_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+  
+  def menu_for_clients_edit
+    menu = content_tag(:p, 'Editar cliente')
+    menu += content_tag(:ul, 
+      render_back(clients_path) +
+      render_function('Actualizar', 'Actualizar cliente', "submit_client_edit_form()", 'button-execute.png')
     )
     return menu
   end
