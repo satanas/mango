@@ -32,6 +32,10 @@
     width: 180px;
 }
 
+#tabledata thead .actions_small {
+    width: 140px;
+}
+
 #tabledata .center {
     text-align: center;
 }

@@ -6,11 +6,10 @@
         <th>Código<span class="order_arrow"></span></th>
         <th>Receta<span class="order_arrow"></span></th>
         <th>Cliente<span class="order_arrow"></span></th>
-        <th>Usuario<span class="order_arrow"></span></th>
         <th>Producto<span class="order_arrow"></span></th>
-        <th>Batch Prog.<span class="order_arrow"></span></th>
-        <th>Batch Real.<span class="order_arrow"></span></th>
-        <th>Culminada<span class="order_arrow"></span></th>
+        <th>B. Prog.</th>
+        <th>B. Real.</th>
+        <th>Fin.</th>
         <th class="actions_small">Acciones</th>
       </tr>
     </thead>
@@ -21,7 +20,6 @@
         <td class="center"><%=h o.code %></td>
         <td><%=h o.recipe.code %></td>
         <td><%=h o.client.name %></td>
-        <td><%=h o.user.login %></td>
         <td><%=h o.product.name %></td>
         <td class="center"><%=h o.prog_batchs %></td>
         <td class="center"><%=h o.real_batchs %></td>

@@ -42,22 +42,9 @@ class Recipe < ActiveRecord::Base
     end
   end
 
-  def import(upload)
-    if upload.nil?
-      errors.add(:upload_file, "Debe seleccionar un archivo")
-      return false
-    end
+  def import(filepath, overwrite)
     begin
       transaction do
-        overwrite = (upload['overwrite'] == '1') ? true : false
-        name =  upload['datafile'].original_filename
-        logger.info("Importando el archivo #{name}")
-        tmpfile = Tempfile.new "recipe"
-        filepath = tmpfile.path()
-        # write the file
-        tmpfile.write(upload['datafile'].read)
-        tmpfile.close()
-
         fd = File.open(filepath, 'r')
         continue = fd.gets().strip()
         return false unless validate_field(continue, 'Formula')
