@@ -49,6 +49,8 @@ module MenuHelper
       menu = menu_for_clients_new
     elsif c == 'clients' and (a == 'edit' or a == 'update')
       menu = menu_for_clients_edit
+    elsif c == 'reports' and a == 'index'
+      menu = menu_for_reports_index
     end
 
     return content_tag(:div, menu, :id => 'menu')
@@ -275,6 +277,12 @@ module MenuHelper
       render_back(clients_path) +
       render_function('Actualizar', 'Actualizar cliente', "submit_client_edit_form()", 'button-execute.png')
     )
+    return menu
+  end
+  
+  def menu_for_reports_index
+    menu = content_tag(:p, 'Reportes')
+    menu += content_tag(:ul, render_back(root_path))
     return menu
   end
 end

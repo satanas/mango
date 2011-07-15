@@ -144,3 +144,24 @@ h5 {
 #data_progress {
   text-align: center;
 }
+
+#report_title {
+  cursor: pointer;
+}
+
+.report-content {
+    float: left;
+    width: 830px;
+    margin: 0 10px;
+}
+
+.report-content h2 {
+    font-size: 17px;
+    border-bottom: solid 1px #999;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.report-content p {
+    font-size: 15px;
+}

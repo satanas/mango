@@ -1,7 +1,15 @@
-<div>Código: <%=h @recipe.code %></div>
-<div>Nombre: <%=h @recipe.name %></div>
-<div>Versión: <%=h @recipe.version %></div>
-<div>Comentario: <%=h @recipe.comment %></div>
-<div>Activa: <%=h @recipe.active %></div>
+<% form_for :recipe do |f| %>
+<label for="code" class="small">Código:</label>
+<div class="field"><%=h @recipe.code %></div>
+<label for="name" class="small">Nombre:</label>
+<div class="field"><%=h @recipe.name %></div>
+<label for="version" class="small">Versión:</label>
+<div class="field"><%=h @recipe.version %></div>
+<label for="comment" class="small">Comentario:</label>
+<div class="field"><%=h @recipe.comment %></div>
+<label for="active" class="small">Activa:</label>
+<div class="field"><%=h @recipe.active %></div>
+<div class="clearfix"></div>
+<% end %>
 <h5>Ingredientes</h5>
 <%= render :partial=>'show_grid', :locals =>{:recipe => @recipe} %>

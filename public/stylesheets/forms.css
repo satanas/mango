@@ -1,0 +1,32 @@
+form label {
+  float: left;
+  clear: both;
+  display: block;
+  text-align: right;
+  padding-right: 5px;
+  margin-bottom: 2px;
+}
+
+form label.small {
+  width: 100px;
+}
+
+form input {
+  border: 1px solid #999;
+  background-color: #fff;
+  font-size: 15px;
+}
+
+form select {
+  font-size: 15px;
+}
+
+form .field {
+  float: left;
+  display: block;
+  margin-bottom: 2px;
+}
+
+form input:focus {
+  background-color: #FFFDC0;
+}

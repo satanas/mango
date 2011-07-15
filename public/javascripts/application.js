@@ -1,6 +1,10 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+document.observe("dom:loaded", function() {
+    hide_all_report_details();
+});
+
 function submit_recipe_new_form() {
     $('recipe_new_form').submit();
 }
@@ -62,3 +66,15 @@ function submit_client_new_form() {
 function submit_client_edit_form() {
     $('client_edit_form').submit();
 }
+
+function toggle_report_details(id) {
+    $(id).toggle();
+}
+
+function hide_all_report_details() {
+    if($('recipes_report_details') != null)
+        $('recipes_report_details').hide();
+    if($('otro_report_details') != null)
+        $('otro_report_details').hide();
+}
+

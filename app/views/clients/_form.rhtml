@@ -1,7 +1,14 @@
 <%= f.error_messages %>
-<label for="ci_rif">CI/RIF:</label> <%= f.text_field :ci_rif, :size=>'10' %><br/>
-<label for="name">Name:</label> <%= f.text_field :name, :size=>'20' %><br/>
-<label for="address">Address:</label> <%= f.text_field :address, :size=>'30' %><br/>
-<label for="tel1">Tel 1:</label> <%= f.text_field :tel1, :size=>'10' %><br/>
-<label for="tel2">Tel 2:</label> <%= f.text_field :tel2, :size=>'10' %><br/>
-<label for="email">Email:</label> <%= f.text_field :email, :size=>'10' %><br/>
+<label for="ci_rif" class="small">C.I./R.I.F.:</label>
+<div class="field"><%= f.text_field :ci_rif, :size=>'20' %></div>
+<label for="name" class="small">Nombre:</label>
+<div class="field"><%= f.text_field :name, :size=>'20' %></div>
+<label for="tel1" class="small">Teléfono 1:</label>
+<div class="field"><%= f.text_field :tel1, :size=>'20' %></div>
+<label for="tel2" class="small">Teléfono 2:</label>
+<div class="field"><%= f.text_field :tel2, :size=>'20' %></div>
+<label for="email" class="small">E-mail:</label>
+<div class="field"><%= f.text_field :email, :size=>'20' %></div>
+<label for="address" class="small">Dirección:</label>
+<div class="field"><%= f.text_field :address, :size=>'50' %></div>
+<div class="clearfix"></div>

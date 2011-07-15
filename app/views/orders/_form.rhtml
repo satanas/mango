@@ -1,10 +1,20 @@
 <%= f.error_messages %>
-<label for="code">Código:</label> <%= f.text_field :code, :size=>'10' %><br/>
-<label for="recipe_id">Receta:</label> <%= f.collection_select :recipe_id, @recipes, :id, :code, :include_blank => true %><br/>
-<label for="client_id">Cliente:</label> <%= f.collection_select :client_id, @clients, :id, :name, :include_blank => true %><br/>
-<label for="user_id">Usuario:</label> <%= f.collection_select :user_id, @users, :id, :login, :include_blank => true %><br/>
-<label for="product_id">Producto:</label> <%= f.collection_select :product_id, @products, :id, :name, :include_blank => true %><br/>
-<label for="prog_batchs">Batch Programados:</label> <%= f.text_field :prog_batchs, :size=>'10' %><br/>
-<label for="real_batchs">Batch Realizados:</label> <%= f.text_field :real_batchs, :size=>'10', :value=>0 %><br/>
-<label for="comment">Comentario:</label> <%= f.text_field :comment, :size=>'20' %><br/>
-<label for="completed">Completada:</label> <%= f.check_box :completed %><br/>
+<label for="code" class="small">Código:</label>
+<div class="field"><%= f.text_field :code, :size=>'10' %></div>
+<label for="recipe_id" class="small">Receta:</label>
+<div class="field"><%= f.collection_select :recipe_id, @recipes, :id, :code, :include_blank => true %></div>
+<label for="client_id" class="small">Cliente:</label>
+<div class="field"><%= f.collection_select :client_id, @clients, :id, :name, :include_blank => true %></div>
+<label for="user_id" class="small">Usuario:</label>
+<div class="field"><%= f.collection_select :user_id, @users, :id, :login, :include_blank => true %></div>
+<label for="product_id" class="small">Producto:</label>
+<div class="field"><%= f.collection_select :product_id, @products, :id, :name, :include_blank => true %></div>
+<label for="prog_batchs" class="small">Batch Prog.:</label>
+<div class="field"><%= f.text_field :prog_batchs, :size=>'10' %></div>
+<label for="real_batchs" class="small">Batch Real.:</label>
+<div class="field"><%= f.text_field :real_batchs, :size=>'10', :value=>0 %></div>
+<label for="comment" class="small">Comentario:</label>
+<div class="field"><%= f.text_field :comment, :size=>'30' %></div>
+<label for="completed" class="small">Completada:</label>
+<div class="field"><%= f.check_box :completed %></div>
+<div class="clearfix"></div>

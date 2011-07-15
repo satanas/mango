@@ -1,6 +1,12 @@
 <%= f.error_messages %>
-<label for="login">Login:</label> <%= f.text_field :login, :size=>'10' %><br/>
-<label for="name">Name:</label> <%= f.text_field :name, :size=>'10' %><br/>
-<label for="password">Password:</label> <%= f.password_field :password, :size=>'10' %><br/>
-<label for="confirm">Confirm:</label> <%= f.password_field :password_confirmation, :size=>'10' %><br/>
-<label for="admin">Admin?:</label> <%= f.check_box :admin %>
+<label for="login" class="small">Login:</label>
+<div class="field"><%= f.text_field :login, :size=>'20' %></div>
+<label for="name" class="small">Nombre:</label>
+<div class="field"><%= f.text_field :name, :size=>'20' %></div>
+<label for="password" class="small">Contraseña:</label>
+<div class="field"><%= f.password_field :password, :size=>'20' %></div>
+<label for="confirm" class="small">Confirmar:</label>
+<div class="field"><%= f.password_field :password_confirmation, :size=>'20' %></div>
+<label for="admin" class="small">Es admin?:</label>
+<div class="field"><%= f.check_box :admin %></div>
+<div class="clearfix"></div>
