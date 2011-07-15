@@ -30,10 +30,12 @@
 
 #tabledata thead .actions_medium {
     width: 180px;
+    text-align: center;
 }
 
 #tabledata thead .actions_small {
     width: 140px;
+    text-align: center;
 }
 
 #tabledata .center {
