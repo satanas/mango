@@ -1,13 +1,13 @@
 <div id="modal">
   <div class="background"></div>
-  <div class="container">
-    <div id="ingredients_catalog" style="height: 350px; width: 400px; border: 1px solid #000">
-      <% remote_form_for :ingredient, :url=>ingredient_search_path do |f| %>
-        Buscar: <%= f.text_field :pattern, :size=>10 %> 
-        <%= f.select :option, {"Código"=>0, "Nombre"=>1}, :selected=>@by %>
-        <%= submit_tag 'Buscar' %> | <%= link_to 'Cancel', 'javascript: Element.remove("modal"); window.onscroll = null;' %>
-        <div id="ingredients_grid"></div>
-      <% end %>
-    </div>
+  <div id="catalog">
+    <h2>Catálogo de materia prima</h2>
+    <% remote_form_for :ingredient, :url=>ingredient_search_path do |f| %>
+      <%= f.select :option, {"Código"=>0, "Nombre"=>1}, :selected=>@by %>
+      <%= f.text_field :pattern, :size=>10 %>
+      <%= submit_tag 'Buscar' %>
+      <div id="ingredients_grid"></div>
+      <div id="button"><%= button_to_function 'Cerrar', 'close_error_dialog()', :class=>'err_btn' %></div>
+    <% end %>
   </div>
 </div>

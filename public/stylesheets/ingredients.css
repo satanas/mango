@@ -1,0 +1,36 @@
+#catalog {
+  height: 350px;
+  width: 320px;
+  border: 1px solid #999;
+  position: absolute;
+  background:#FFFFFF;
+  margin: auto;
+  left: 34%;
+  top: 35%;
+  z-index: 750;
+}
+
+#catalog h2 {
+  font-size: 15px;
+  background-color: #434343;
+  color: #fff;
+  padding: 3px 6px;
+}
+
+#catalog #ingredients_grid {
+  height: 260px;
+  overflow: auto;
+}
+
+#catalog #button {
+  text-align: center;
+  padding: 10px;
+}
+
+#catalog #ingredients_grid table {
+  border: 0 none #fff;
+}
+
+#catalog #ingredient_option {
+  margin-left: 10px;
+}

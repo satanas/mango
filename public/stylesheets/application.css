@@ -50,6 +50,7 @@ h5 {
 }
 
 #logo p {
+    float: left;
     font-size: 14px;
     color: #848484;
 }

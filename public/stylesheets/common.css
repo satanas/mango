@@ -77,9 +77,11 @@ input[type=text],input[type=password],textarea {
 }
 
 html, body {
-    font-family: 'sans-serif' !important;
+    /*font-family: 'sans-serif' !important;*/
+    font-family: 'Lucida Grande', Verdana, Helvetica, sans-serif !important;
     background: #dedede;
     color: #383838;
+    font-size: 13px;
 }
 
 .clearfix:before, .clearfix:after {

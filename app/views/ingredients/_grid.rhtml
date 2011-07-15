@@ -1,20 +1,16 @@
+<% x = 0 %>
 <% if @ingredients.length > 0 %>
-  <div style="height: 300px; overflow:auto;">
-    <table>
-      <tbody>
-      <%
-        @ingredients.each do |i|
-      %>
-        <tr>
-          <td><%= link_to_remote i.code, :url=>ingredient_select_path(:code=>i.code, :name=>i.name) %></td>
-          <td><%=h i.name %></td>
-        </tr>
-      <%
-        end
-      %>
-      </tbody>
-    </table>
-  </div>
+<table id="tabledata">
+  <tbody>
+  <% @ingredients.each do |i| %>
+    <% class_row, x = alternate_row_class(x) %>
+    <tr class="<%= class_row %>">
+      <td style="padding-left: 20px;"><%= link_to_remote i.code, :url=>ingredient_select_path(:code=>i.code, :name=>i.name) %></td>
+      <td><%=h i.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 <% else %>
   <div>No se encontró ningún ingredientes</div>
 <% end %>

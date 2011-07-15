@@ -57,7 +57,6 @@ class IngredientsController < ApplicationController
   end
   
   def catalog
-    puts "catalog: #{params.inspect}"
     @by = (params[:by] == 'code') ? 0 : 1
     respond_to do |format|
       format.js { render :layout=>false }
@@ -65,7 +64,6 @@ class IngredientsController < ApplicationController
   end
 
   def select
-    puts "select: #{params.inspect}"
     @code = params[:code]
     @name = params[:name]
     respond_to do |format|

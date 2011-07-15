@@ -37,6 +37,10 @@
   margin-left: 30px;
 }
 
+.fieldWithErrors {
+  border: 1px solid #da0000;
+}
+
 #errorButton {
   text-align: center;
   padding: 10px;

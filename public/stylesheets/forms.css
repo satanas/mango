@@ -14,11 +14,6 @@ form label.small {
 form input[type='text'] {
   border: 1px solid #999;
   background-color: #fff;
-  font-size: 15px;
-}
-
-form select {
-  font-size: 15px;
 }
 
 form .field {
@@ -29,8 +24,4 @@ form .field {
 
 form input[type='text']:focus {
   background-color: #FFFDC0;
-}
-
-.fieldWithErrors {
-  border: 1px solid #da0000;
 }

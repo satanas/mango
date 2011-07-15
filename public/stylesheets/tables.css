@@ -4,7 +4,7 @@
 
 #tabledata thead th {
     font-weight: normal;
-    font-size: 0.8em;
+    font-size: 12px;
     padding: 6px 10px;
     background: #ccc url('../images/table-footer-bg.png') repeat-x 50% 50%;
     border: 1px solid #aaa;
@@ -20,8 +20,8 @@
 
 #tabledata tbody td {
     border-width: 0px;
-    font-family: 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 0.8em;
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 13px;
 }
 
 #tabledata thead .actions {
