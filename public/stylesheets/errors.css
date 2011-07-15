@@ -1,0 +1,47 @@
+#errorDialog {
+  position: absolute;
+  border: 1px solid #800000;
+  background:#FFFFFF;
+  margin: auto;
+  width: 450px;
+  max-height: 350px;
+  z-index: 750;
+  top: 35%;
+  left: 32%;
+}
+
+#errorExplanation {
+  height: 90%;
+  padding-bottom: 10px;
+}
+
+#errorExplanation h2 {
+  font-size: 17px;
+  background-color: #b50000;
+  color: #fff;
+  padding: 3px 6px;
+}
+
+#errorExplanation p {
+  padding: 10px 10px 0 10px;
+}
+
+#errorExplanation ul {
+  padding: 0 10px;
+}
+
+#errorExplanation li {
+  clear: both;
+  float: none;
+  list-style-type: disc !important;
+  margin-left: 30px;
+}
+
+#errorButton {
+  text-align: center;
+  padding: 10px;
+}
+
+.err_btn {
+  width: 100px;
+}

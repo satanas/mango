@@ -1,4 +1,4 @@
-<%= f.error_messages %>
+<%= render_error_messages(f.error_messages) %>
 <% disabled = (edit) ? true : false %>
 <label for="number" class="small">Número:</label>
 <div class="field"><%= f.text_field :number, :size=>'10', :disabled => disabled %></div>

@@ -1,4 +1,4 @@
-<%= f.error_messages %>
+<%= render_error_messages(f.error_messages) %>
 <label for="ci_rif" class="small">C.I./R.I.F.:</label>
 <div class="field"><%= f.text_field :ci_rif, :size=>'20' %></div>
 <label for="name" class="small">Nombre:</label>

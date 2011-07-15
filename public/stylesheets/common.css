@@ -48,7 +48,7 @@ ol li {
 }
 
 ul li {
-    list-style: disc outside;
+    list-style: circle outside;
 }
 
 dl dd {

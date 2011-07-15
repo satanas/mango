@@ -1,4 +1,4 @@
-<%= f.error_messages %>
+<%= render_error_messages(f.error_messages) %>
 <label for="login" class="small">Login:</label>
 <div class="field"><%= f.text_field :login, :size=>'20' %></div>
 <label for="name" class="small">Nombre:</label>

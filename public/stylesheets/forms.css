@@ -11,7 +11,7 @@ form label.small {
   width: 100px;
 }
 
-form input {
+form input[type='text'] {
   border: 1px solid #999;
   background-color: #fff;
   font-size: 15px;
@@ -27,6 +27,10 @@ form .field {
   margin-bottom: 2px;
 }
 
-form input:focus {
+form input[type='text']:focus {
   background-color: #FFFDC0;
+}
+
+.fieldWithErrors {
+  border: 1px solid #da0000;
 }

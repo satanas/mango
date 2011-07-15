@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
-    new()
+    new
   end
 
   def create
@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
       flash[:notice] = 'Orden de producción guardada con éxito'
       redirect_to :orders
     else
+      new
       render :new
     end
   end
@@ -33,6 +34,7 @@ class OrdersController < ApplicationController
       flash[:notice] = 'Orden de producción actualizada con éxito'
       redirect_to :orders
     else
+      new
       render :edit
     end
   end

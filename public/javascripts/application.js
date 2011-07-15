@@ -78,3 +78,6 @@ function hide_all_report_details() {
         $('otro_report_details').hide();
 }
 
+function close_error_dialog() {
+    $('modal').remove();
+}
