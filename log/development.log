@@ -1,0 +1,802 @@
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /home/walvarez/proyectos/porcinas/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /home/walvarez/proyectos/porcinas/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:37:45 -0300 2011
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+
+RuntimeError (!!! Missing the mysql2 gem. Add it to your Gemfile: gem 'mysql2'):
+  
+
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (69.1ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.5ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (75.9ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /home/walvarez/proyectos/porcinas/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /home/walvarez/proyectos/porcinas/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:41:21 -0300 2011
+
+RuntimeError (!!! Missing the mysql2 gem. Add it to your Gemfile: gem 'mysql2'):
+  
+
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.2ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.1ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /home/walvarez/proyectos/porcinas/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:44:56 -0300 2011
+
+RuntimeError (!!! Missing the mysql2 gem. Add it to your Gemfile: gem 'mysql2'):
+  
+
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:45:00 -0300 2011
+
+RuntimeError (!!! Missing the mysql2 gem. Add it to your Gemfile: gem 'mysql2'):
+  
+
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:46:16 -0300 2011
+
+RuntimeError (!!! Missing the mysql2 gem. Add it to your Gemfile: gem 'mysql2'):
+  
+
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.9ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /home/walvarez/proyectos/porcinas/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:47:01 -0300 2011
+
+TypeError (can't convert Fixnum into String):
+  
+
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.2ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.7ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /home/walvarez/proyectos/porcinas/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:49:18 -0300 2011
+  Processing by SessionsController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_sessions_index_rhtml__397724630__618141858_0 at /home/walvarez/proyectos/porcinas/app/views/sessions/index.rhtml:1)
+Rendered sessions/index.rhtml within layouts/login (4.5ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at Sat Jul 23 00:49:25 -0300 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"commit"=>"Iniciar sesión", "authenticity_token"=>"maZijA1BvB5WA90PnultBAwO1H3IlzAVDBvR6j9bSGA=", "utf8"=>"✓", "user"=>{"login"=>"prueba", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'prueba') LIMIT 1[0m
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 32ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 00:49:25 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (16.6ms)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at Sat Jul 23 00:49:29 -0300 2011
+  Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (0.9ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM `recipes` WHERE (active = 1)[0m
+Rendered recipes/index.rhtml within layouts/application (28.2ms)
+Completed 200 OK in 51ms (Views: 33.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at Sat Jul 23 00:52:02 -0300 2011
+  Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (0.1ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `recipes` WHERE (active = 1)[0m
+Rendered recipes/index.rhtml within layouts/application (34.1ms)
+Completed 200 OK in 50ms (Views: 38.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recipes/2" for 127.0.0.1 at Sat Jul 23 00:52:11 -0300 2011
+  Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mRecipe Load (0.3ms)[0m  [1mSELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 2 ORDER BY id desc LIMIT 1[0m
+  [1m[35mIngredientRecipe Load (0.4ms)[0m  SELECT `ingredient_recipes`.* FROM `ingredient_recipes` WHERE (`ingredient_recipes`.recipe_id = 2)
+Mysql2::Error: Table 'porcinas.ingredient_recipes' doesn't exist: SELECT `ingredient_recipes`.* FROM `ingredient_recipes` WHERE (`ingredient_recipes`.recipe_id = 2)
+Completed 500 Internal Server Error in 31ms
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Table 'porcinas.ingredient_recipes' doesn't exist: SELECT `ingredient_recipes`.* FROM `ingredient_recipes` WHERE (`ingredient_recipes`.recipe_id = 2)):
+  app/controllers/recipes_controller.rb:7:in `show'
+
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.8ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:52:23 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 00:52:23 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (18.1ms)
+Completed 200 OK in 22ms (Views: 21.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/hoppers" for 127.0.0.1 at Sat Jul 23 00:52:25 -0300 2011
+  Processing by HoppersController#index as HTML
+  [1m[36mHopper Load (0.4ms)[0m  [1mSELECT `hoppers`.* FROM `hoppers` ORDER BY number ASC[0m
+DEPRECATION WARNING: Base#before_save has been deprecated, please use Base.before_save :method instead. (called from /home/walvarez/proyectos/porcinas/app/models/hopper_ingredient.rb:5)
+  [1m[35mHopperIngredient Load (0.4ms)[0m  SELECT `hopper_ingredients`.* FROM `hopper_ingredients` WHERE (hopper_id = 1 and active = 1) LIMIT 1
+Mysql2::Error: Table 'porcinas.hopper_ingredients' doesn't exist: SELECT  `hopper_ingredients`.* FROM `hopper_ingredients` WHERE (hopper_id = 1 and active = 1) LIMIT 1
+Completed 500 Internal Server Error in 24ms
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Table 'porcinas.hopper_ingredients' doesn't exist: SELECT  `hopper_ingredients`.* FROM `hopper_ingredients` WHERE (hopper_id = 1 and active = 1) LIMIT 1):
+  app/models/hopper.rb:12:in `find_active'
+  app/models/hopper.rb:11:in `each'
+  app/models/hopper.rb:11:in `find_active'
+  app/controllers/hoppers_controller.rb:3:in `index'
+
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (68.8ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (74.2ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at Sat Jul 23 00:57:45 -0300 2011
+  Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.2ms)[0m  [1mSELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `recipes` WHERE (active = 1)
+Rendered recipes/index.rhtml within layouts/application (35.8ms)
+Completed 200 OK in 53ms (Views: 40.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/recipes/2" for 127.0.0.1 at Sat Jul 23 00:57:48 -0300 2011
+  Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1mSELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 2 ORDER BY id desc LIMIT 1[0m
+  [1m[35mIngredientRecipe Load (0.4ms)[0m  SELECT `ingredient_recipes`.* FROM `ingredient_recipes` WHERE (`ingredient_recipes`.recipe_id = 2)
+Mysql2::Error: Table 'porcinas.ingredient_recipes' doesn't exist: SELECT `ingredient_recipes`.* FROM `ingredient_recipes` WHERE (`ingredient_recipes`.recipe_id = 2)
+Completed 500 Internal Server Error in 33ms
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Table 'porcinas.ingredient_recipes' doesn't exist: SELECT `ingredient_recipes`.* FROM `ingredient_recipes` WHERE (`ingredient_recipes`.recipe_id = 2)):
+  app/controllers/recipes_controller.rb:7:in `show'
+
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (14.3ms)
+Rendered /home/walvarez/.rvm/gems/ruby-1.8.7-p334@porcinas3/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /home/walvarez/proyectos/porcinas/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+
+
+Started GET "/recipes/2" for 127.0.0.1 at Sat Jul 23 00:58:08 -0300 2011
+  Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mRecipe Load (0.1ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 2 ORDER BY id desc LIMIT 1
+  [1m[36mIngredientRecipe Load (0.9ms)[0m  [1mSELECT `ingredients_recipes`.* FROM `ingredients_recipes` WHERE (`ingredients_recipes`.recipe_id = 2)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_recipes_show_rhtml__145987274__616327948_0 at /home/walvarez/proyectos/porcinas/app/views/recipes/show.rhtml:1)
+  [1m[35mIngredient Load (0.4ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 1 LIMIT 1
+  [1m[36mIngredient Load (0.6ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 4 LIMIT 1[0m
+  [1m[35mIngredient Load (0.2ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 7 LIMIT 1
+  [1m[36mIngredient Load (0.2ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 3 LIMIT 1[0m
+  [1m[35mIngredient Load (0.3ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 2 LIMIT 1
+  [1m[36mIngredient Load (0.3ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 8 LIMIT 1[0m
+  [1m[35mIngredient Load (0.3ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 5 LIMIT 1
+  [1m[36mIngredient Load (0.2ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 11 LIMIT 1[0m
+  [1m[35mIngredient Load (0.2ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 9 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 10 LIMIT 1[0m
+  [1m[35mIngredient Load (0.2ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 6 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 12 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 13 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 15 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 17 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 18 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 19 LIMIT 1
+  [1m[36mIngredient Load (0.2ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 20 LIMIT 1[0m
+  [1m[35mIngredient Load (0.2ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 21 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 22 LIMIT 1[0m
+Rendered recipes/_show_grid.rhtml (39.6ms)
+Rendered recipes/show.rhtml within layouts/application (54.3ms)
+Completed 200 OK in 166ms (Views: 54.8ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at Sat Jul 23 00:58:11 -0300 2011
+  Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (0.1ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `recipes` WHERE (active = 1)[0m
+Rendered recipes/index.rhtml within layouts/application (34.6ms)
+Completed 200 OK in 49ms (Views: 38.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at Sat Jul 23 00:58:13 -0300 2011
+  Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecipe Load (0.3ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 ORDER BY id desc LIMIT 1
+  [1m[36mIngredientRecipe Load (0.6ms)[0m  [1mSELECT `ingredients_recipes`.* FROM `ingredients_recipes` WHERE (`ingredients_recipes`.recipe_id = 1)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_recipes_show_rhtml__145987274__616696348_0 at /home/walvarez/proyectos/porcinas/app/views/recipes/show.rhtml:1)
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 1 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 2 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 3 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 4 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 5 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 6 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 7 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 8 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 9 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 10 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 11 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 12 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 13 LIMIT 1
+  [1m[36mIngredient Load (0.3ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 14 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 15 LIMIT 1
+  [1m[36mIngredient Load (0.2ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 16 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 17 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 18 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 19 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 20 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 21 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 22 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 4 LIMIT 1
+Rendered recipes/_show_grid.rhtml (33.7ms)
+Rendered recipes/show.rhtml within layouts/application (48.7ms)
+Completed 200 OK in 89ms (Views: 51.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at Sat Jul 23 00:58:17 -0300 2011
+  Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.1ms)[0m  [1mSELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0[0m
+  [1m[35mSQL (9.9ms)[0m  SELECT COUNT(*) FROM `recipes` WHERE (active = 1)
+Rendered recipes/index.rhtml within layouts/application (38.2ms)
+Completed 200 OK in 111ms (Views: 42.6ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:58:40 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 00:58:40 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (16.8ms)
+Completed 200 OK in 20ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for 127.0.0.1 at Sat Jul 23 00:59:09 -0300 2011
+  Processing by OrdersController#index as HTML
+  [1m[36mOrder Load (0.5ms)[0m  [1mSELECT `orders`.* FROM `orders` LIMIT 12 OFFSET 0[0m
+  [1m[35mRecipe Load (0.3ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 6 LIMIT 1
+  [1m[36mClient Load (0.3ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`id` = 953125641 LIMIT 1[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 953125641 LIMIT 1
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 19 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `clients`.* FROM `clients` WHERE `clients`.`id` = 953125641 LIMIT 1
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 996332877 LIMIT 1[0m
+  [1m[35mRecipe Load (0.2ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`id` = 953125641 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 996332877 LIMIT 1
+Rendered orders/index.rhtml within layouts/application (74.6ms)
+Completed 200 OK in 93ms (Views: 77.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:59:14 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 00:59:14 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (17.4ms)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at Sat Jul 23 00:59:34 -0300 2011
+  Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.2ms)[0m  [1mSELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `recipes` WHERE (active = 1)
+Rendered recipes/index.rhtml within layouts/application (34.4ms)
+Completed 200 OK in 50ms (Views: 38.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recipes?page=2" for 127.0.0.1 at Sat Jul 23 00:59:39 -0300 2011
+  Processing by RecipesController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 12[0m
+Rendered recipes/index.rhtml within layouts/application (33.4ms)
+Completed 200 OK in 48ms (Views: 37.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/recipes?page=1" for 127.0.0.1 at Sat Jul 23 00:59:41 -0300 2011
+  Processing by RecipesController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[35mRecipe Load (0.1ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `recipes` WHERE (active = 1)[0m
+Rendered recipes/index.rhtml within layouts/application (36.4ms)
+Completed 200 OK in 52ms (Views: 40.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 00:59:43 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 00:59:43 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (16.6ms)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at Sat Jul 23 01:03:33 -0300 2011
+  Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (0.1ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `recipes` WHERE (active = 1)[0m
+Rendered recipes/index.rhtml within layouts/application (95.4ms)
+Completed 200 OK in 111ms (Views: 100.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 01:03:36 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:03:36 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (17.1ms)
+Completed 200 OK in 20ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at Sat Jul 23 01:03:38 -0300 2011
+  Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (0.2ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `recipes` WHERE (active = 1)[0m
+Rendered recipes/index.rhtml within layouts/application (34.3ms)
+Completed 200 OK in 51ms (Views: 39.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at Sat Jul 23 01:03:40 -0300 2011
+  Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecipe Load (0.4ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 ORDER BY id desc LIMIT 1
+  [1m[36mIngredientRecipe Load (0.1ms)[0m  [1mSELECT `ingredients_recipes`.* FROM `ingredients_recipes` WHERE (`ingredients_recipes`.recipe_id = 1)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_recipes_show_rhtml__145987274__617750938_0 at /home/walvarez/proyectos/porcinas/app/views/recipes/show.rhtml:1)
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 1 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 2 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 3 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 4 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 5 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 6 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 7 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 8 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 9 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 10 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 11 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 12 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 13 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 14 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 15 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 16 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 17 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 18 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 19 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 20 LIMIT 1[0m
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 21 LIMIT 1
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 22 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 4 LIMIT 1
+Rendered recipes/_show_grid.rhtml (100.3ms)
+Rendered recipes/show.rhtml within layouts/application (115.5ms)
+Completed 200 OK in 155ms (Views: 117.8ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at Sat Jul 23 01:03:44 -0300 2011
+  Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.2ms)[0m  [1mSELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `recipes` WHERE (active = 1)
+Rendered recipes/index.rhtml within layouts/application (36.5ms)
+Completed 200 OK in 53ms (Views: 41.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 01:03:46 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:03:46 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (18.1ms)
+Completed 200 OK in 21ms (Views: 20.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/hoppers" for 127.0.0.1 at Sat Jul 23 01:03:48 -0300 2011
+  Processing by HoppersController#index as HTML
+  [1m[36mHopper Load (0.1ms)[0m  [1mSELECT `hoppers`.* FROM `hoppers` ORDER BY number ASC[0m
+DEPRECATION WARNING: Base#before_save has been deprecated, please use Base.before_save :method instead. (called from /home/walvarez/proyectos/porcinas/app/models/hopper_ingredient.rb:5)
+  [1m[35mHopperIngredient Load (0.6ms)[0m  SELECT `hoppers_ingredients`.* FROM `hoppers_ingredients` WHERE (hopper_id = 1 and active = 1) LIMIT 1
+  [1m[36mIngredient Load (0.4ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` WHERE `ingredients`.`id` = 31 LIMIT 1[0m
+Rendered hoppers/index.rhtml within layouts/application (30.4ms)
+Completed 200 OK in 59ms (Views: 34.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 01:05:04 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:05:04 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (17.6ms)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at Sat Jul 23 01:05:06 -0300 2011
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.4ms)[0m  SELECT `products`.* FROM `products`
+Rendered products/index.rhtml within layouts/application (19.9ms)
+Completed 200 OK in 32ms (Views: 24.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 01:05:33 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:05:33 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (17.2ms)
+Completed 200 OK in 20ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at Sat Jul 23 01:05:36 -0300 2011
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` LIMIT 12 OFFSET 0[0m
+Rendered users/index.rhtml within layouts/application (12.5ms)
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at Sat Jul 23 01:05:55 -0300 2011
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` LIMIT 12 OFFSET 0
+Rendered users/index.rhtml within layouts/application (15.2ms)
+Completed 200 OK in 22ms (Views: 20.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 01:05:57 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:05:57 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (18.8ms)
+Completed 200 OK in 22ms (Views: 21.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/clients" for 127.0.0.1 at Sat Jul 23 01:05:59 -0300 2011
+  Processing by ClientsController#index as HTML
+  [1m[36mClient Load (0.4ms)[0m  [1mSELECT `clients`.* FROM `clients` LIMIT 12 OFFSET 0[0m
+Rendered clients/index.rhtml within layouts/application (20.7ms)
+Completed 200 OK in 35ms (Views: 24.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 01:06:19 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:06:19 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (17.6ms)
+Completed 200 OK in 21ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/ingredients" for 127.0.0.1 at Sat Jul 23 01:06:22 -0300 2011
+  Processing by IngredientsController#index as HTML
+  [1m[35mIngredient Load (0.5ms)[0m  SELECT `ingredients`.* FROM `ingredients` LIMIT 12 OFFSET 0
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM `ingredients`[0m
+Rendered ingredients/index.rhtml within layouts/application (27.2ms)
+Completed 200 OK in 45ms (Views: 32.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/ingredients" for 127.0.0.1 at Sat Jul 23 01:06:41 -0300 2011
+  Processing by IngredientsController#index as HTML
+  [1m[35mIngredient Load (0.1ms)[0m  SELECT `ingredients`.* FROM `ingredients` LIMIT 12 OFFSET 0
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `ingredients`[0m
+Rendered ingredients/index.rhtml within layouts/application (28.1ms)
+Completed 200 OK in 45ms (Views: 32.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 01:06:45 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:06:45 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (16.7ms)
+Completed 200 OK in 20ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/not_implemented" for 127.0.0.1 at Sat Jul 23 01:06:51 -0300 2011
+  Processing by SessionsController#not_implemented as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:06:51 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (17.6ms)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/reports/index" for 127.0.0.1 at Sat Jul 23 01:06:53 -0300 2011
+  Processing by ReportsController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_reports_index_rhtml___439279124__617157188_0 at /home/walvarez/proyectos/porcinas/app/views/reports/index.rhtml:5)
+Rendered reports/index.rhtml within layouts/application (13.2ms)
+Completed 200 OK in 18ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 01:06:56 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:06:56 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (18.4ms)
+Completed 200 OK in 22ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/not_implemented" for 127.0.0.1 at Sat Jul 23 01:06:57 -0300 2011
+  Processing by SessionsController#not_implemented as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:06:58 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (17.5ms)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/not_implemented" for 127.0.0.1 at Sat Jul 23 01:07:57 -0300 2011
+  Processing by SessionsController#not_implemented as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:07:57 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (19.2ms)
+Completed 200 OK in 22ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions/953125641" for 127.0.0.1 at Sat Jul 23 01:10:51 -0300 2011
+  Processing by SessionsController#destroy as HTML
+  Parameters: {"id"=>"953125641"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 01:10:51 -0300 2011
+  Processing by SessionsController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_sessions_index_rhtml__397724630__616369158_0 at /home/walvarez/proyectos/porcinas/app/views/sessions/index.rhtml:1)
+Rendered sessions/index.rhtml within layouts/login (5.1ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at Sat Jul 23 01:10:56 -0300 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"commit"=>"Iniciar sesión", "authenticity_token"=>"VPb0yoYPEtdBqnmpx73LOWq9QBPkp41FaNwRqIBDidg=", "utf8"=>"✓", "user"=>{"login"=>"prueba", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE (login = 'prueba') LIMIT 1
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 17ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 01:10:56 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (17.7ms)
+Completed 200 OK in 21ms (Views: 20.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/ingredients" for 127.0.0.1 at Sat Jul 23 01:11:00 -0300 2011
+  Processing by IngredientsController#index as HTML
+  [1m[36mIngredient Load (0.1ms)[0m  [1mSELECT `ingredients`.* FROM `ingredients` LIMIT 12 OFFSET 0[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `ingredients`
+Rendered ingredients/index.rhtml within layouts/application (27.3ms)
+Completed 200 OK in 45ms (Views: 31.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/ingredients/new" for 127.0.0.1 at Sat Jul 23 01:11:15 -0300 2011
+  Processing by IngredientsController#new as HTML
+DEPRECATION WARNING: f.error_messages was removed from Rails and is now available as a plugin. Please install it with `rails plugin install git://github.com/rails/dynamic_form.git`. (called from _app_views_ingredients__form_rhtml___108417605__617235098_951966 at /home/walvarez/proyectos/porcinas/app/views/ingredients/_form.rhtml:1)
+Rendered ingredients/_form.rhtml (1.2ms)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_ingredients_new_rhtml___736347777__617224338_0 at /home/walvarez/proyectos/porcinas/app/views/ingredients/new.rhtml:1)
+Rendered ingredients/new.rhtml within layouts/application (15.5ms)
+Completed 200 OK in 20ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from /home/walvarez/proyectos/porcinas/config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+
+
+Started GET "/ingredients" for 127.0.0.1 at Sat Jul 23 11:37:35 -0300 2011
+  Processing by IngredientsController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 11:37:35 -0300 2011
+  Processing by SessionsController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_sessions_index_rhtml__397724630__618615198_0 at /home/walvarez/proyectos/porcinas/app/views/sessions/index.rhtml:1)
+Rendered sessions/index.rhtml within layouts/login (95.4ms)
+Completed 200 OK in 159ms (Views: 158.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at Sat Jul 23 11:37:42 -0300 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"commit"=>"Iniciar sesión", "authenticity_token"=>"Zj+IPgXsZV4nV1uswmoE1NRLLs2y3o0JK5lZ5l3B3Wc=", "utf8"=>"✓", "user"=>{"login"=>"prueba", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'prueba') LIMIT 1[0m
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 65ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 11:37:43 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (81.6ms)
+Completed 200 OK in 122ms (Views: 121.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at Sat Jul 23 11:37:49 -0300 2011
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.5ms)[0m  SELECT `products`.* FROM `products`
+Rendered products/index.rhtml within layouts/application (64.6ms)
+Completed 200 OK in 152ms (Views: 127.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at Sat Jul 23 11:37:52 -0300 2011
+  Processing by ProductsController#new as HTML
+Rendered products/_form.rhtml (0.8ms)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_products_new_rhtml__391508145__617831348_0 at /home/walvarez/proyectos/porcinas/app/views/products/new.rhtml:1)
+Rendered products/new.rhtml within layouts/application (28.6ms)
+Completed 200 OK in 35ms (Views: 34.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at Sat Jul 23 11:37:54 -0300 2011
+  Processing by ProductsController#create as HTML
+  Parameters: {"authenticity_token"=>"Zj+IPgXsZV4nV1uswmoE1NRLLs2y3o0JK5lZ5l3B3Wc=", "utf8"=>"✓", "product"=>{"name"=>"", "code"=>""}}
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT 1 FROM `products` WHERE (`products`.`code` = BINARY '') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK[0m
+Rendered products/_form.rhtml (7.1ms)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_products_new_rhtml__391508145__616973378_0 at /home/walvarez/proyectos/porcinas/app/views/products/new.rhtml:1)
+Rendered products/new.rhtml within layouts/application (21.6ms)
+Completed 200 OK in 325ms (Views: 26.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/products" for 127.0.0.1 at Sat Jul 23 11:38:19 -0300 2011
+  Processing by ProductsController#create as HTML
+  Parameters: {"authenticity_token"=>"Zj+IPgXsZV4nV1uswmoE1NRLLs2y3o0JK5lZ5l3B3Wc=", "utf8"=>"✓", "product"=>{"name"=>"Hola", "code"=>"123123"}}
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM `products` WHERE (`products`.`code` = BINARY '123123') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `products`[0m
+  [1m[35mAREL (0.9ms)[0m  INSERT INTO `products` (`code`, `created_at`, `name`, `updated_at`) VALUES ('123123', '2011-07-23 14:38:19', 'Hola', '2011-07-23 14:38:19')
+  [1m[36mSQL (46.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 181ms
+
+
+Started GET "/products" for 127.0.0.1 at Sat Jul 23 11:38:20 -0300 2011
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.4ms)[0m  SELECT `products`.* FROM `products`
+Rendered products/index.rhtml within layouts/application (22.8ms)
+Completed 200 OK in 94ms (Views: 27.8ms | ActiveRecord: 48.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 11:38:27 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 11:38:27 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (16.9ms)
+Completed 200 OK in 20ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/orders" for 127.0.0.1 at Sat Jul 23 11:38:30 -0300 2011
+  Processing by OrdersController#index as HTML
+  [1m[36mOrder Load (0.5ms)[0m  [1mSELECT `orders`.* FROM `orders` LIMIT 12 OFFSET 0[0m
+  [1m[35mRecipe Load (0.3ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 6 LIMIT 1
+  [1m[36mClient Load (0.3ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`id` = 953125641 LIMIT 1[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 953125641 LIMIT 1
+  [1m[36mRecipe Load (0.3ms)[0m  [1mSELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 19 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `clients`.* FROM `clients` WHERE `clients`.`id` = 953125641 LIMIT 1
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 996332877 LIMIT 1[0m
+  [1m[35mRecipe Load (0.2ms)[0m  SELECT `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`id` = 953125641 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 996332877 LIMIT 1
+Rendered orders/index.rhtml within layouts/application (106.9ms)
+Completed 200 OK in 377ms (Views: 191.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Jul 23 11:38:33 -0300 2011
+  Processing by SessionsController#index as HTML
+Redirected to http://localhost:3000/sessions/show
+Completed 302 Found in 1ms
+
+
+Started GET "/sessions/show" for 127.0.0.1 at Sat Jul 23 11:38:33 -0300 2011
+  Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"show"}
+Rendered sessions/show.rhtml within layouts/dashboard (17.4ms)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at Sat Jul 23 11:38:35 -0300 2011
+  Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (0.4ms)[0m  [1mSELECT `recipes`.* FROM `recipes` WHERE (active = 1) LIMIT 12 OFFSET 0[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `recipes` WHERE (active = 1)
+Rendered recipes/index.rhtml within layouts/application (35.8ms)
+Completed 200 OK in 84ms (Views: 71.9ms | ActiveRecord: 0.7ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from ./config/environment.rb:5)
+DEPRECATION WARNING: ActionController::Routing::Routes is deprecated. Instead, use Rails.application.routes. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: You are using the old router DSL which will be removed in Rails 3.1. Please check how to update your routes file at: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/. (called from /home/walvarez/proyectos/porcinas/config/routes.rb:1)
+DEPRECATION WARNING: Base#before_save has been deprecated, please use Base.before_save :method instead. (called from ./app/models/hopper_ingredient.rb:5)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m

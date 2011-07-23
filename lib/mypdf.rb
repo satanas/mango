@@ -1,6 +1,6 @@
-require 'pdf/fpdf'
+#require 'pdf/writer'
 
-class MyPDF < FPDF
+class MyPDF
   BASE_OPTIONS = {
     :font => ['Arial','',9], 
     :forecolor => ['0','0','0'], 

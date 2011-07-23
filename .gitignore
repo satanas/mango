@@ -1,5 +1,6 @@
 .rvmrc
-log/*
+.bundle
+log/*-log
 config/database.yml
-tmp/*
+tmp/
 *.swp

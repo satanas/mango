@@ -1,4 +1,28 @@
 ActionController::Routing::Routes.draw do |map|
+
+  root :to => "sessions#index"
+
+  #map.session_error 'session/error', :controller => 'session', :action => 'error'
+  map.ingredient_search 'ingredients/search', :controller => "ingredients", :action => "search"
+  map.ingredient_catalog 'ingredients/catalog', :controller => "ingredients", :action => "catalog"
+  map.ingredient_select 'ingredients/select', :controller => "ingredients", :action => "select"
+  map.recipe_import 'recipes/import', :controller => "recipes", :action => "import"
+  map.recipe_upload 'recipes/upload', :controller => "recipes", :action => "upload"
+  map.reports 'reports/index', :controller => "reports", :action => "index"
+  map.ingredients_report 'reports/ingredients', :controller => "reports", :action => "ingredients"
+  map.not_implemented 'sessions/not_implemented', :controller => "sessions", :action => "not_implemented"
+  map.resources :sessions, :users, :ingredients, :clients, :hoppers, :products, :orders
+  map.resources :recipes do |recipes|
+    recipes.resources :ingredients_recipes
+  end
+
+  # Install the default routes as the lowest priority.
+  # Note: These default routes make all actions in every controller accessible via GET requests. You should
+  # consider removing the them or commenting them out if you're using named routes and resources.
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -31,25 +55,4 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "sessions", :action => "index"
-
-  # See how all your routes lay out with "rake routes"
-  #map.session_error 'session/error', :controller => 'session', :action => 'error'
-  map.ingredient_search 'ingredients/search', :controller => "ingredients", :action => "search"
-  map.ingredient_catalog 'ingredients/catalog', :controller => "ingredients", :action => "catalog"
-  map.ingredient_select 'ingredients/select', :controller => "ingredients", :action => "select"
-  map.recipe_import 'recipes/import', :controller => "recipes", :action => "import"
-  map.recipe_upload 'recipes/upload', :controller => "recipes", :action => "upload"
-  map.reports 'reports/index', :controller => "reports", :action => "index"
-  map.not_implemented 'sessions/not_implemented', :controller => "sessions", :action => "not_implemented"
-  map.resources :sessions, :users, :ingredients, :clients, :hoppers, :products, :orders
-  map.resources :recipes do |recipes|
-    recipes.resources :ingredients_recipes
-  end
-
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing the them or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
 end

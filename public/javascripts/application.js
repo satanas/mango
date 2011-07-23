@@ -68,12 +68,13 @@ function submit_client_edit_form() {
 }
 
 function toggle_report_details(id) {
+    hide_all_report_details();
     $(id).toggle();
 }
 
 function hide_all_report_details() {
-    if($('recipes_report_details') != null)
-        $('recipes_report_details').hide();
+    if($('ingredients_report_details') != null)
+        $('ingredients_report_details').hide();
     if($('otro_report_details') != null)
         $('otro_report_details').hide();
 }

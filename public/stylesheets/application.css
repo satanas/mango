@@ -171,3 +171,7 @@ h5 {
 .report-content p {
     font-size: 15px;
 }
+
+.report-details {
+    padding-bottom: 30px;
+}

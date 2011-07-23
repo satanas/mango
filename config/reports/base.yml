@@ -1,0 +1,28 @@
+report:
+  settings:
+    page_size: LETTER
+    orientation: P
+  body:
+    image:
+      filename: header.png
+    text:
+      field: subtitle
+      style:
+        align: C
+        font:
+          size: 16
+          color: [220, 220, 220]
+    table:
+      title:
+        field: table_title
+        style:
+          font:
+            size: 13
+            color: [150, 0, 0]
+      columns:
+        field: data
+        style:
+          font:
+            size: 10
+            color: [0, 0, 0]
+
