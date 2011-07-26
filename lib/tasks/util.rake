@@ -45,6 +45,8 @@ namespace :db do
 
   desc 'Clean ingredients and recipes related tables'
   task :clean_ingredients => :environment do
+    puts 'Borrando tabla de ordenes...'
+    Order.delete_all
     puts 'Borrando tabla ingredients_recipes...'
     IngredientRecipe.delete_all
     puts 'Borrando tabla hopper_ingredients...'

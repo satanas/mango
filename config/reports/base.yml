@@ -1,28 +1,50 @@
 report:
   settings:
-    page_size: LETTER
-    orientation: P
+    page:
+      size: LETTER
+      orientation: P
+      #margins: [45, -1, 45, -1]
+      numbering:
+        position: top
+        align: center
+        offset: 0
   body:
-    image:
-      filename: header.png
-    text:
-      field: subtitle
-      style:
-        align: C
+    1:
+      image:
+        filename: header.png
+        align: center
+    2:
+      text:
+        field: subtitle
+        align: center
+        spacing: 1.5
         font:
-          size: 16
-          color: [220, 220, 220]
-    table:
-      title:
-        field: table_title
-        style:
-          font:
-            size: 13
-            color: [150, 0, 0]
-      columns:
+          size: 10
+          color: [70, 70, 70]
+    3:
+      table:
+        align: center
         field: data
-        style:
-          font:
-            size: 10
-            color: [0, 0, 0]
+        borders: all
+        font:
+          size: 10
+          color: [0, 0, 0]
+        columns:
+          codigo:
+            label: Codigo
+            align: center
+            width: 100
+            heading:
+              align: center
+              bold: true
+          nombre:
+            label: Nombre
+            align: left
+            width: 200
+            heading:
+              align: center
+    4:
+      text:
+        field: footer
+        align: center
 
