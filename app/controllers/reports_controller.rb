@@ -7,6 +7,7 @@ class ReportsController < ApplicationController
     data['config_file'] = 'base.yml'
     data['subtitle'] = 'Reporte de prueba'
     data['footer'] = 'Otro texto mas'
+    data['popo'] = 'Un texto de pruebas otra vez añlskd ñlaks lñkasd'
     data['table_title'] = 'Ingredientes'
     data['columns'] = ['codigo', 'nombre']
     data['data'] = []

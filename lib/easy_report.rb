@@ -78,11 +78,13 @@ class EasyReport
   end
 
   def render_table(element)
+    @pdf.text ' ', :font_size => 9
     font = get_font(element['font'])
     table = PDF::SimpleTable.new
     table.column_order = @data['columns']
     table.show_lines = get_table_borders(element['borders'])
-    table.position = get_align(element['align'])
+    #table.position = get_align(element['align'])
+    #table.orientation = get_align(element['align'])
     table.font_size = font['size']
     element['columns'].each do |key, value|
       col = PDF::SimpleTable::Column.new(key)
@@ -99,6 +101,7 @@ class EasyReport
     end
     table.data.replace @data[element['field']]
     table.render_on(@pdf)
+    @pdf.text ' ', :font_size => 9
   end
 
   def render_page_number

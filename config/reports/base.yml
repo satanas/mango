@@ -6,7 +6,7 @@ report:
       #margins: [45, -1, 45, -1]
       numbering:
         position: top
-        align: center
+        align: right
         offset: 0
   body:
     1:
@@ -23,7 +23,7 @@ report:
           color: [70, 70, 70]
     3:
       table:
-        align: center
+        align: left
         field: data
         borders: all
         font:
@@ -47,4 +47,7 @@ report:
       text:
         field: footer
         align: center
-
+    5:
+      text:
+        field: popo
+        align: left
