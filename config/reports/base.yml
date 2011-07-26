@@ -23,26 +23,23 @@ report:
           color: [70, 70, 70]
     3:
       table:
-        align: left
         field: data
-        borders: all
-        font:
-          size: 10
-          color: [0, 0, 0]
+        borders: none
+        heading:
+          align: center
+          bold: true
         columns:
           codigo:
-            label: Codigo
+            label: Codigo debe ser una etiqueta muy muy larga
             align: center
             width: 100
-            heading:
-              align: center
-              bold: true
           nombre:
             label: Nombre
             align: left
             width: 200
-            heading:
-              align: center
+        font:
+          size: 10
+          color: [0, 0, 0]
     4:
       text:
         field: footer

@@ -80,11 +80,10 @@ class EasyReport
   def render_table(element)
     @pdf.text ' ', :font_size => 9
     font = get_font(element['font'])
+    head = get_table_heading(element['heading'])
     table = PDF::SimpleTable.new
     table.column_order = @data['columns']
     table.show_lines = get_table_borders(element['borders'])
-    #table.position = get_align(element['align'])
-    #table.orientation = get_align(element['align'])
     table.font_size = font['size']
     element['columns'].each do |key, value|
       col = PDF::SimpleTable::Column.new(key)
@@ -92,7 +91,6 @@ class EasyReport
       unless value['width'].nil?
         col.width = value['width']
       end
-      head = get_table_heading(value['heading'])
       heading = PDF::SimpleTable::Column::Heading.new(value['label'])
       heading.bold = head['bold']
       heading.justification = head['align']
@@ -173,6 +171,7 @@ class EasyReport
 
   def get_table_borders(value)
     return :all if value.nil?
+    return :all if value.downcase == 'all'
     return :inner if value.downcase == 'inner'
     return :outer if value.downcase == 'outer'
     return :none if value.downcase == 'none'
