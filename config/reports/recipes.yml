@@ -1,0 +1,116 @@
+report:
+  settings:
+    page:
+      size: Letter
+      orientation: P
+      margins: 15
+    style:
+      font_family: 'Helvetica'
+      font_size: 10
+      font_color: [0, 0, 0]
+  header:
+    1:
+      text:
+        label: INVERSIONES PORCINAS C.A.
+        margin: 30
+        align: left
+        style:
+          font_size: 11
+          font_weight: B
+    2:
+      text:
+        label: Av Circunvalacion Primera, antigua planta Los Chachitos
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    3:
+      image:
+        filename: mango-logo-report.png
+        width: 20
+        height: 20
+        x: 20
+        y: 12
+    4:
+      text:
+        label: Yaritagua - Estado Yaracuy
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    5:
+      breakline:
+    6:
+      date:
+        pattern: "Fecha: %d-%m-%Y"
+        align: right
+    7:
+      pagenum:
+        pattern: "Pag. <PAGE>"
+        align: right
+  body:
+    1:
+      text:
+        field: title
+        align: center
+        style:
+          font_size: 16
+    2:
+      table:
+        field: table1
+        heading:
+          align: center
+          style:
+            font_weight: B
+            bg_color: [220, 220, 220]
+        columns:
+          1:
+            code:
+              label: Codigo
+              align: left
+              width: 20
+          2:
+            name:
+              label: Nombre
+              align: left
+          3:
+            amount:
+              label: Cant.
+              align: right
+              width: 20
+          4:
+            priority:
+              label: Prior.
+              align: right
+              width: 20
+          5:
+            percentage:
+              label: "%"
+              align: right
+              width: 20
+        grouping:
+          1:
+            recipe:
+              align: L
+              style:
+                font_color: [0, 0, 75]
+                font_weight: B
+                border: B
+    3:
+      breakline:
+    4:
+      text:
+        field: total
+        align: left
+        style:
+          font_size: 16
+          font_weight: B
+          font_color: [0, 0, 110]
+  footer:
+    1:
+      text:
+        label: Reporte generado con Mango (Copyleft) 2011
+        align: center
+        style:
+          font_size: 8
+          font_color: [80, 80, 80]

@@ -1,18 +1,10 @@
 <div class="yui3-u-1">
-  <div class="report-content" id="ingredients_report_title">
-    <h2 onclick="toggle_report_details('ingredients_report_details')">Materia Prima</h2>
-    <div id="ingredients_report_details" class="report-details">
-      <% form_for :report, :url=>ingredients_report_path do |f| %>
+  <div class="report-content" id="recipes_report_title">
+    <h2 onclick="toggle_report_details('recipes_report_details')">Recetas</h2>
+    <div id="recipes_report_details" class="report-details">
+      <% form_for :report, :url=>recipes_report_path do |f| %>
         <%= submit_tag 'Generar Reporte' %>
       <% end %>
-    </div>
-  </div>
-</div>
-<div class="yui3-u-1">
-  <div class="report-content" id="otro_report_title">
-    <h2 onclick="toggle_report_details('otro_report_details')">Otro reporte</h2>
-    <div id="otro_report_details" class="report-details">
-      <%= link_to 'Otro' %>
     </div>
   </div>
 </div>

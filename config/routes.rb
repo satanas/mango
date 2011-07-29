@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.recipe_import 'recipes/import', :controller => "recipes", :action => "import"
   map.recipe_upload 'recipes/upload', :controller => "recipes", :action => "upload"
   map.reports 'reports/index', :controller => "reports", :action => "index"
-  map.ingredients_report 'reports/ingredients', :controller => "reports", :action => "ingredients"
+  map.recipes_report 'reports/recipes', :controller => "reports", :action => "recipes"
   map.not_implemented 'sessions/not_implemented', :controller => "sessions", :action => "not_implemented"
   map.resources :sessions, :users, :ingredients, :clients, :hoppers, :products, :orders
   map.resources :recipes do |recipes|

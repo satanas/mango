@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
 gem 'color-tools', '>= 1.3.0'
-gem 'pdf-writer'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'mysql2', '< 0.3'
 gem 'dynamic_form'

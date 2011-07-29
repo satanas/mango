@@ -73,10 +73,8 @@ function toggle_report_details(id) {
 }
 
 function hide_all_report_details() {
-    if($('ingredients_report_details') != null)
-        $('ingredients_report_details').hide();
-    if($('otro_report_details') != null)
-        $('otro_report_details').hide();
+    if($('recipes_report_details') != null)
+        $('recipes_report_details').hide();
 }
 
 function close_error_dialog() {
