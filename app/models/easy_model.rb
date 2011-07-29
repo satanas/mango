@@ -4,6 +4,7 @@ class EasyModel
     data['title'] = 'Reporte de recetas'
     data['table1'] = []
     @recipes = Recipe.find :all, :include => {:ingredient_recipe => :ingredient}
+    return nil if @recipes.length.zero?
     @recipes.each do |r|
       receta = "Receta: #{r.code} - #{r.name} Version: #{r.version}"
       r.ingredient_recipe.each do |ing|
