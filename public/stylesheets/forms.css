@@ -25,3 +25,14 @@ form .field {
 form input[type='text']:focus {
   background-color: #FFFDC0;
 }
+
+form .chzn-field-normal {
+  width: 300px;
+  text-align: left;
+}
+
+form .active-result {
+  display: block;
+  float: left;
+  clear: both;
+}
