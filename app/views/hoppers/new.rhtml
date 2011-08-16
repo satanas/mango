@@ -1,4 +1,4 @@
-<% form_for :hopper, :url=>hoppers_path, :html=>{:id=>'hopper_new_form'} do |f| %>
+<%= form_for :hopper, :url=>hoppers_path, :html=>{:id=>'hopper_new_form'} do |f| %>
   <%= render :partial=>'form', :locals =>{:f => f, :edit => false} %>
   <br/>
 <% end %>

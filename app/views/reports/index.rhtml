@@ -2,7 +2,7 @@
   <div class="report-content" id="recipes_report_title">
     <h2 onclick="toggle_report_details('recipes_report_details')">Recetas</h2>
     <div id="recipes_report_details" class="report-details">
-      <% form_for :report, :url=>recipes_report_path do |f| %>
+      <%= form_for :report, :url=>recipes_report_path do |f| %>
         <%= submit_tag 'Generar Reporte' %>
       <% end %>
     </div>

@@ -1,4 +1,4 @@
-<% form_for :recipe, :url=>recipe_upload_path, :html=>{:multipart=>true, :id=>'recipe_upload_form'} do |f| %>
+<%= form_for :recipe, :url=>recipe_upload_path, :html=>{:multipart=>true, :id=>'recipe_upload_form'} do |f| %>
   <% if not @recipe.nil? and @recipe.errors.length > 0 %>
     <%= f.error_messages %><br/>
   <% end %>
