@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
 
   def not_implemented
     flash[:notice] = "Esa funcionalidad aún no está implementada"
-    flash[:type] = 'warning'
+    flash[:type] = 'warn'
     redirect_to :action => :show
   end
 

@@ -67,6 +67,22 @@ function submit_client_edit_form() {
     $('client_edit_form').submit();
 }
 
+function submit_batch_new_form() {
+    $('batch_new_form').submit();
+}
+
+function submit_batch_edit_form() {
+    $('batch_edit_form').submit();
+}
+
+function submit_lot_new_form() {
+    $('lot_new_form').submit();
+}
+
+function submit_lot_edit_form() {
+    $('lot_edit_form').submit();
+}
+
 function toggle_report_details(id) {
     hide_all_report_details();
     $(id).toggle();

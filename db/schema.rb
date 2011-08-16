@@ -10,7 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110815113331) do
+ActiveRecord::Schema.define(:version => 20110815145659) do
+
+  create_table "batches", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "recipe_id"
+    t.integer  "ingredient_id"
+    t.integer  "lot_id"
+    t.integer  "schedule_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "batches", ["ingredient_id"], :name => "fk_batches_ingredient_id"
+  add_index "batches", ["lot_id"], :name => "fk_batches_lot_id"
+  add_index "batches", ["order_id"], :name => "fk_batches_order_id"
+  add_index "batches", ["recipe_id"], :name => "fk_batches_recipe_id"
+  add_index "batches", ["schedule_id"], :name => "fk_batches_schedule_id"
+  add_index "batches", ["user_id"], :name => "fk_batches_user_id"
 
   create_table "clients", :force => true do |t|
     t.string   "name",       :null => false
@@ -60,6 +78,17 @@ ActiveRecord::Schema.define(:version => 20110815113331) do
   add_index "ingredients_recipes", ["ingredient_id"], :name => "fk_ingredients_recipes_ingredient_id"
   add_index "ingredients_recipes", ["recipe_id"], :name => "fk_ingredients_recipes_recipe_id"
 
+  create_table "lots", :force => true do |t|
+    t.string   "code"
+    t.float    "amount",        :default => 0.0
+    t.date     "date"
+    t.integer  "ingredient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lots", ["ingredient_id"], :name => "fk_lots_ingredient_id"
+
   create_table "orders", :force => true do |t|
     t.integer  "recipe_id"
     t.integer  "client_id"
@@ -94,6 +123,14 @@ ActiveRecord::Schema.define(:version => 20110815113331) do
     t.float    "total",      :default => 0.0
     t.boolean  "active",     :default => true
     t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schedules", :force => true do |t|
+    t.string   "name"
+    t.string   "start_hour"
+    t.string   "end_hour"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

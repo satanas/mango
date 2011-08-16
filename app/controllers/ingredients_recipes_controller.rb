@@ -4,7 +4,6 @@ class IngredientsRecipesController < ApplicationController
   end
 
   def create
-    puts "create: #{params.inspect}"
     @error = nil
     @recipe = Recipe.find(params[:recipe_id], :include=>'ingredient_recipe')
     ingredient = Ingredient.find_by_code(params[:ingredient_recipe][:code])
@@ -29,7 +28,6 @@ class IngredientsRecipesController < ApplicationController
   end
 
   def destroy
-    puts "destroy: #{params.inspect}"
     @error = nil
     begin
       ingredient_recipe = IngredientRecipe.find(params[:id])

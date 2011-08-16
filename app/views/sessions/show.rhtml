@@ -14,9 +14,9 @@
     </div>
   </div>
   <div class="module yui3-u-1-2">
-    <%= link_to image_tag('batches-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), not_implemented_path %>
+    <%= link_to image_tag('batches-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), batches_path %>
     <div class="module-content">
-      <h2><%= link_to 'Batches', not_implemented_path %></h2>
+      <h2><%= link_to 'Batches', batches_path %></h2>
       <p>Descripción</p>
     </div>
   </div>
@@ -35,16 +35,30 @@
     </div>
   </div>
   <div class="module yui3-u-1-2">
-    <%= link_to image_tag('producto-terminado-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), products_path %>
+    <%= link_to image_tag('lot-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), lots_path %>
+    <div class="module-content">
+      <h2><%= link_to 'Lotes', lots_path %></h2>
+      <p>Descripción</p>
+    </div>
+  </div>
+  <div class="module yui3-u-1-2">
+    <%= link_to image_tag('product-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), products_path %>
     <div class="module-content">
       <h2><%= link_to 'Producto Terminado', products_path %></h2>
       <p>Descripción</p>
     </div>
   </div>
   <div class="module yui3-u-1-2">
-    <%= link_to image_tag('reportes-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), reports_path %>
+    <%= link_to image_tag('clientes-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), clients_path %>
     <div class="module-content">
-      <h2><%= link_to 'Reportes', reports_path %></h2>
+      <h2><%= link_to 'Clientes', clients_path %></h2>
+      <p>Descripción</p>
+    </div>
+  </div>
+  <div class="module yui3-u-1-2">
+    <%= link_to image_tag('turnos-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), not_implemented_path %>
+    <div class="module-content">
+      <h2><%= link_to 'Turnos', not_implemented_path %></h2>
       <p>Descripción</p>
     </div>
   </div>
@@ -56,17 +70,18 @@
     </div>
   </div>
   <div class="module yui3-u-1-2">
-    <%= link_to image_tag('configuracion-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), not_implemented_path %>
+    <%= link_to image_tag('reportes-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), reports_path %>
+    <div class="module-content">
+      <h2><%= link_to 'Reportes', reports_path %></h2>
+      <p>Descripción</p>
+    </div>
+  </div>
+  <div class="module yui3-u-1-2">
+    <%= link_to image_tag('configuration-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), not_implemented_path %>
     <div class="module-content">
       <h2><%= link_to 'Configuración', not_implemented_path %></h2>
       <p>Descripción</p>
     </div>
   </div>
-  <div class="module yui3-u-1-2">
-    <%= link_to image_tag('clientes-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), clients_path %>
-    <div class="module-content">
-      <h2><%= link_to 'Clientes', clients_path %></h2>
-      <p>Descripción</p>
-    </div>
-  </div>
+  
 </div>
