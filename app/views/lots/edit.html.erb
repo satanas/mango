@@ -1,0 +1,4 @@
+<% form_for :lot, :url=>lot_path(@lot), :html => {:method=>:put, :id => 'lot_edit_form'} do |f| %>
+  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <br/>
+<% end %>

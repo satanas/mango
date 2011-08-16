@@ -1,0 +1,10 @@
+<%= render_error_messages(f.error_messages) %>
+<label for="code" class="small">Código:</label>
+<div class="field"><%= f.text_field :code, :size=>'15' %></div>
+<label for="amount" class="small">Cantidad:</label>
+<div class="field"><%= f.text_field :amount, :size=>'15' %></div>
+<label for="date" class="small">Fecha:</label>
+<div class="field"><%= f.date_select :date, :size=>'10' %></div>
+<label for="ingredient_id" class="small">Materia Prima:</label>
+<div class="field"><%= f.collection_select :ingredient_id, @ingredients, :id, :name, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
+<div class="clearfix"></div>
