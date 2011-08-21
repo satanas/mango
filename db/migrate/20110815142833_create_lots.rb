@@ -5,8 +5,8 @@ extend MigrationHelper
   def self.up
     create_table :lots do |t|
       t.string :code
-      t.float :amount, :default => 0
       t.date :date
+      t.string :location
       t.references :ingredient
       t.timestamps
     end

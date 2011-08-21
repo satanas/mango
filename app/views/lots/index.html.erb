@@ -4,7 +4,7 @@
     <thead>
       <tr>
         <th>Código<span class="order_arrow"></span></th>
-        <th>Cantidad<span class="order_arrow"></span></th>
+        <th>Ubicación<span class="order_arrow"></span></th>
         <th>Fecha<span class="order_arrow"></span></th>
         <th>Materia Prima<span class="order_arrow"></span></th>
         <th class="actions_small">Acciones</th>
@@ -15,7 +15,7 @@
       <% class_row, i = alternate_row_class(i) %>
       <tr class="<%= class_row %>">
         <td class="center"><%=h item.code %></td>
-        <td><%=h item.amount %></td>
+        <td><%=h item.location %></td>
         <td><%=h item.date %></td>
         <td><%=h item.ingredient.name %></td>
         <td class="center">

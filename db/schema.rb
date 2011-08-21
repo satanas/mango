@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(:version => 20110815145659) do
 
   create_table "lots", :force => true do |t|
     t.string   "code"
-    t.float    "amount",        :default => 0.0
     t.date     "date"
+    t.string   "location"
     t.integer  "ingredient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
