@@ -8,6 +8,10 @@ class OrdersController < ApplicationController
     @clients = Client.find :all, :order => 'name ASC'
     @users = User.find :all, :order => 'name ASC'
     @products = Product.find :all, :order => 'name ASC'
+    @order = Order.new if @order.nil?
+    unless session[:user].admin?
+      @order.user_id = session[:user].id
+    end
   end
 
   def edit
@@ -16,7 +20,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    puts params.inspect
     @order = Order.new params[:order]
     if @order.save
       flash[:notice] = 'Orden de producción guardada con éxito'
