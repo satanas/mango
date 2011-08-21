@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110815145659) do
+ActiveRecord::Schema.define(:version => 20110821131914) do
 
   create_table "batches", :force => true do |t|
     t.integer  "order_id"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(:version => 20110815145659) do
 
   add_index "hoppers_ingredients", ["hopper_id"], :name => "fk_hoppers_ingredients_hopper_id"
   add_index "hoppers_ingredients", ["ingredient_id"], :name => "fk_hoppers_ingredients_ingredient_id"
+
+  create_table "hoppers_lots", :force => true do |t|
+    t.integer  "hopper_id"
+    t.integer  "lot_id"
+    t.boolean  "active",     :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hoppers_lots", ["hopper_id"], :name => "fk_hoppers_lots_hopper_id"
+  add_index "hoppers_lots", ["lot_id"], :name => "fk_hoppers_lots_lot_id"
 
   create_table "ingredients", :force => true do |t|
     t.string   "code",       :null => false

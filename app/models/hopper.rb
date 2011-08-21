@@ -1,5 +1,6 @@
 class Hopper < ActiveRecord::Base
-  has_many :hopper_ingredient
+  has_many :hopper_lot
+  #has_many :lot
 
   validates_uniqueness_of :number
   validates_presence_of :number
@@ -9,32 +10,32 @@ class Hopper < ActiveRecord::Base
     actives = {}
     hoppers = Hopper.find :all, :order => 'number ASC'
     hoppers.each do |hop|
-      ingredients = HopperIngredient.find :first, :conditions => ['hopper_id = ? and active = ?', hop.id, true]
+      lots = HopperLot.find :first, :conditions => ['hopper_id = ? and active = ?', hop.id, true]
       actives[hop.number] = {
-        :ingredient => ingredients,
+        :lot => lots,
         :hopper_id => hop.id
       }
     end
     return actives
   end
 
-  def deactivate_all_ingredients
-    self.hopper_ingredient.each do |i|
+  def deactivate_all_lots
+    self.hopper_lot.each do |i|
       i.active = false
       i.save
     end
   end
 
-  def update_ingredient(id)
-    deactivate_all_ingredients
+  def update_lot(id)
+    deactivate_all_lots
     return true if id.blank?
-    h = HopperIngredient.new(:ingredient_id => id)
+    h = HopperLot.new(:lot_id => id)
     h.hopper_id = self.id
     return h.save
   end
 
   def eliminate
-    self.hopper_ingredient.each do |i|
+    self.hopper_lot.each do |i|
       i.destroy
     end
     self.destroy

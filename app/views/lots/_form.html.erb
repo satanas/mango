@@ -5,6 +5,6 @@
 <div class="field"><%= f.text_field :location, :size=>'20' %></div>
 <label for="date" class="small">Fecha:</label>
 <div class="field"><%= f.date_select :date, :size=>'10' %></div>
-<label for="ingredient_id" class="small">Materia Prima:</label>
+<label for="ingredient_id" class="small">Ingrediente:</label>
 <div class="field"><%= f.collection_select :ingredient_id, @ingredients, :id, :name, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
 <div class="clearfix"></div>

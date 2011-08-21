@@ -1,22 +1,21 @@
 class HoppersController < ApplicationController
   def index
     @hoppers = Hopper.find_active
-    puts @hoppers.inspect
   end
 
   def new
-    @ingredients = Ingredient.find :all, :order => 'name ASC'
+    @lots = Lot.find :all, :order => 'code ASC'
   end
 
   def edit
-    @ingredients = Ingredient.find :all, :order => 'name ASC'
+    @lots = Lot.find :all, :order => 'code ASC'
     @hopper = Hopper.find params[:id]
   end
 
   def create
     @hopper = Hopper.new :number => params[:hopper][:number]
     if @hopper.save
-      if @hopper.update_ingredient(params[:hopper][:hopper_ingredient])
+      if @hopper.update_lot(params[:hopper][:hopper_lot])
         flash[:notice] = 'Tolva guardada con éxito'
       else
         flash[:notice] = 'La tolva fue guardada con éxito pero no se guardó el ingrediente asociado'
@@ -30,7 +29,7 @@ class HoppersController < ApplicationController
 
   def update
     @hopper = Hopper.find params[:id]
-    if @hopper.update_ingredient(params[:hopper][:hopper_ingredient])
+    if @hopper.update_lot(params[:hopper][:hopper_lot])
       flash[:notice] = 'Tolva actualizada con éxito'
       redirect_to :hoppers
     else
