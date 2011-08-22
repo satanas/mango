@@ -1,6 +1,6 @@
 <% i = 0 %>
 <div id="ingredient_recipe_grid">
-  <% remote_form_for :ingredient_recipe, :url=>recipe_ingredients_recipes_path(@recipe) do |f| %>
+  <%= form_for :ingredient_recipe, :url=>recipe_ingredients_recipes_path(@recipe) do |f| %>
   <table id="tabledata">
     <thead>
       <tr>
@@ -14,18 +14,13 @@
     </thead>
     <tbody>
       <tr>
-        <td>
-          <%= render_remote_action_show(ingredient_catalog_path(:by=>'code')) %>
-          <%= f.text_field :code_display, :size=>7, :disabled=>true %>
-        </td>
-        <td>
-          <%= render_remote_action_show(ingredient_catalog_path(:by=>'name')) %> 
-          <%= f.text_field :name_display, :size=>12, :disabled=>true %>
+        <td colspan="2">
+          <%= f.collection_select :code, @ingredients, :code, :name, {:include_blank => true}, :class=>'chzn-select chzn-done chzn-field-normal' %>
         </td>
         <td><%= f.text_field :amount, :size=>4 %></td>
         <td><%= f.text_field :priority, :size=>4 %></td>
         <td><%= f.text_field :percentage, :size=>4 %></td>
-        <td><%= f.hidden_field :code %><%= submit_tag 'Agregar' %></td>
+        <td><%= submit_tag 'Agregar' %></td>
       </tr>
       <% @recipe.ingredient_recipe.each do |ir| %>
         <% class_row, i = alternate_row_class(i) %>
@@ -35,7 +30,7 @@
           <td><%=h ir.amount %></td>
           <td><%=h ir.priority %></td>
           <td><%=h ir.percentage %></td>
-          <td><%= render_remote_action_delete(recipe_ingredient_recipe_path(@recipe, ir), 
+          <td><%= render_action_delete(recipe_ingredient_recipe_path(@recipe, ir), 
             "Desea eliminar el ingrediente '#{ir.ingredient.code} - #{ir.ingredient.name}'?") %></td>
         </tr>
       <% end %>

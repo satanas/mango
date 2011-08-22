@@ -22,8 +22,22 @@ form .field {
   margin-bottom: 2px;
 }
 
+form .text_disabled {
+  background-color: #eee !important;
+}
+
 form input[type='text']:focus {
   background-color: #FFFDC0;
+}
+
+form .chzn-field-small {
+  width: 100px;
+  text-align: left;
+}
+
+form .chzn-field-medium {
+  width: 200px;
+  text-align: left;
 }
 
 form .chzn-field-normal {

@@ -2,10 +2,9 @@
   <div class="background"></div>
   <div id="catalog">
     <h2>Catálogo de materia prima</h2>
-    <% remote_form_for :ingredient, :url=>ingredient_search_path do |f| %>
-      <%= f.select :option, {"Código"=>0, "Nombre"=>1}, :selected=>@by %>
-      <%= f.text_field :pattern, :size=>10 %>
-      <%= submit_tag 'Buscar' %>
+    <% form_for :ingredient, :url=>ingredient_select_path, :remote=>true do |f| %>
+      <%= f.collection_select :code, @ingredients, :id, :name, {:include_blank => true}, :class=>'chzn-select chzn-done chzn-field-normal' %>
+      <%= submit_tag 'Aceptar' %>
       <div id="ingredients_grid"></div>
       <div id="button"><%= button_to_function 'Cerrar', 'close_error_dialog()', :class=>'err_btn' %></div>
     <% end %>

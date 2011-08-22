@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id], :include=>'ingredient_recipe', :order=>'id desc')
+    @ingredients = Ingredient.find :all
   end
 
   def create
@@ -28,12 +29,14 @@ class RecipesController < ApplicationController
       flash[:notice] = 'Receta actualizada con éxito'
       redirect_to :recipes
     else
+      edit
       render :edit
     end
   end
 
   def destroy
     @recipe = Recipe.find params[:id]
+    @ingredients = Ingredient.find :all
     if @recipe.eliminate
       flash[:notice] = 'Receta eliminada con éxito'
     else

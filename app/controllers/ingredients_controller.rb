@@ -57,7 +57,7 @@ class IngredientsController < ApplicationController
   end
   
   def catalog
-    @by = (params[:by] == 'code') ? 0 : 1
+    @ingredients = Ingredient.find :all
     respond_to do |format|
       format.js { render :layout=>false }
     end

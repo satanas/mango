@@ -16,12 +16,12 @@ module ActionsHelper
 
   def render_remote_action_show(url)
     image = image_tag('action-show.png', :alt=>'Mostrar')
-    return link_to_remote image, :url=>url
+    return link_to image, url, :remote=>true
   end
 
   def render_remote_action_delete(url , confirm)
     image = image_tag('action-delete.png', :alt=>'Borrar')
-    return link_to_remote image + " Eliminar", :url=>url, :method => :delete, :confirm =>confirm, :html=>{:class => 'action'}
+    return link_to image + " Eliminar", url, :method => :delete, :remote=>true, :confirm =>confirm, :html=>{:class => 'action'}
   end
 
 end
