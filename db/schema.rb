@@ -47,17 +47,6 @@ ActiveRecord::Schema.define(:version => 20110821131914) do
     t.datetime "updated_at"
   end
 
-  create_table "hoppers_ingredients", :force => true do |t|
-    t.integer  "hopper_id"
-    t.integer  "ingredient_id"
-    t.boolean  "active",        :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "hoppers_ingredients", ["hopper_id"], :name => "fk_hoppers_ingredients_hopper_id"
-  add_index "hoppers_ingredients", ["ingredient_id"], :name => "fk_hoppers_ingredients_ingredient_id"
-
   create_table "hoppers_lots", :force => true do |t|
     t.integer  "hopper_id"
     t.integer  "lot_id"
@@ -140,8 +129,8 @@ ActiveRecord::Schema.define(:version => 20110821131914) do
 
   create_table "schedules", :force => true do |t|
     t.string   "name"
-    t.string   "start_hour"
-    t.string   "end_hour"
+    t.time     "start_hour"
+    t.time     "end_hour"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

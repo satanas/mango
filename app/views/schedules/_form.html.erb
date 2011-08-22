@@ -1,0 +1,8 @@
+<%= render_error_messages(f.error_messages) %>
+<label for="name" class="small">Nombre:</label>
+<div class="field"><%= f.text_field :name, :size=>'20' %></div>
+<label for="name" class="small">Hora inicio:</label>
+<div class="field"><%= f.time_select :start_hour %></div>
+<label for="tel1" class="small">Hora fin:</label>
+<div class="field"><%= f.time_select :end_hour %></div>
+<div class="clearfix"></div>

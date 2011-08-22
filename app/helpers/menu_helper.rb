@@ -61,6 +61,12 @@ module MenuHelper
       menu = menu_for_lots_new
     elsif c == 'lots' and (a == 'edit' or a == 'update')
       menu = menu_for_lots_edit
+    elsif c == 'schedules' and a == 'index'
+      menu = menu_for_schedules_index
+    elsif c == 'schedules' and (a == 'new' or a == 'create')
+      menu = menu_for_schedules_new
+    elsif c == 'schedules' and (a == 'edit' or a == 'update')
+      menu = menu_for_schedules_edit
     elsif c == 'reports' and a == 'index'
       menu = menu_for_reports_index
     end
@@ -346,6 +352,33 @@ module MenuHelper
     return menu
   end
   
+def menu_for_schedules_index
+    menu = content_tag(:p, 'Lista de turnos')
+    menu += content_tag(:ul, 
+      render_back(root_path) +
+      render_action('Crear', 'Crear nuevo turno', new_schedule_path, 'button-add.png')
+    )
+    return menu
+  end
+  
+  def menu_for_schedules_new
+    menu = content_tag(:p, 'Crear nuevo turno')
+    menu += content_tag(:ul, 
+      render_back(schedules_path) +
+      render_function('Guardar', 'Guardar turno', "submit_schedule_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+  
+  def menu_for_schedules_edit
+    menu = content_tag(:p, 'Editar turno')
+    menu += content_tag(:ul, 
+      render_back(schedules_path) +
+      render_function('Actualizar', 'Actualizar turno', "submit_schedule_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end 
+
   def menu_for_reports_index
     menu = content_tag(:p, 'Reportes')
     menu += content_tag(:ul, render_back(root_path))

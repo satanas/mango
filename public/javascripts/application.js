@@ -83,6 +83,14 @@ function submit_lot_edit_form() {
     $('lot_edit_form').submit();
 }
 
+function submit_schedule_new_form() {
+    $('schedule_new_form').submit();
+}
+
+function submit_schedule_edit_form() {
+    $('schedule_edit_form').submit();
+}
+
 function toggle_report_details(id) {
     hide_all_report_details();
     $(id).toggle();
