@@ -16,10 +16,13 @@ form input[type='text'] {
   background-color: #fff;
 }
 
-form .field {
+form .field, form .field-no {
   float: left;
   display: block;
-  margin-bottom: 2px;
+}
+
+form .field {
+  margin-bottom: 5px;
 }
 
 form .text_disabled {

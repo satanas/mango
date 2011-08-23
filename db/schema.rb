@@ -10,21 +10,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821131914) do
+ActiveRecord::Schema.define(:version => 20110823041331) do
 
   create_table "batches", :force => true do |t|
     t.integer  "order_id"
     t.integer  "recipe_id"
-    t.integer  "ingredient_id"
-    t.integer  "lot_id"
+    t.integer  "hopper_id"
     t.integer  "schedule_id"
     t.integer  "user_id"
+    t.integer  "number"
+    t.float    "amount"
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "batches", ["ingredient_id"], :name => "fk_batches_ingredient_id"
-  add_index "batches", ["lot_id"], :name => "fk_batches_lot_id"
+  add_index "batches", ["hopper_id"], :name => "fk_batches_hopper_id"
   add_index "batches", ["order_id"], :name => "fk_batches_order_id"
   add_index "batches", ["recipe_id"], :name => "fk_batches_recipe_id"
   add_index "batches", ["schedule_id"], :name => "fk_batches_schedule_id"

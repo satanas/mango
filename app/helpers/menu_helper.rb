@@ -302,7 +302,7 @@ module MenuHelper
     menu = content_tag(:p, 'Lista de batches')
     menu += content_tag(:ul, 
       render_back(root_path) +
-      render_action('Crear', 'Crear nuevo batch', new_batch_path, 'button-add.png')
+      render_action('Crear', 'Crear nuevo batch', new_batche_path, 'button-add.png')
     )
     return menu
   end

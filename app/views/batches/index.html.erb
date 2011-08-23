@@ -1,0 +1,40 @@
+<% i = 0 %>
+<% if @batches.length > 0 %>
+<table id="tabledata">
+    <thead>
+      <tr>
+        <th>CI/RIF<span class="order_arrow"></th>
+        <th>Name<span class="order_arrow"></th>
+        <th>Address<span class="order_arrow"></th>
+        <th>Tel 1<span class="order_arrow"></th>
+        <th>Tel 2<span class="order_arrow"></th>
+        <th>Email<span class="order_arrow"></th>
+        <th class="actions_small">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @batches.each do |item| %>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
+        <td><%=h item.ci_rif %></td>
+        <td><%=h item.name %></td>
+        <td><%=h item.address %></td>
+        <td><%=h item.tel1 %></td>
+        <td><%=h item.tel2 %></td>
+        <td><%=h item.email %></td>
+        <td>
+          <%= render_action_edit(edit_batche_path(item)) %>
+          <%= render_action_delete(batche_path(item), "Desea borrar el cliente '#{item.name}'?") %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+<div id="tablefooter">
+  <div id="pagination">
+    <%=raw show_pagination @batches %>
+  </div>
+</div>
+<% else %>
+<p>No hay batches registrados</p>
+<% end %>
