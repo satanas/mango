@@ -41,6 +41,30 @@ namespace :db do
       Fixtures.create_fixtures(fixtures_dir, 'products')
       puts 'Loaded test products'
     end
+    
+    desc 'Load test schedule'
+    task :schedules => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
+      Fixtures.create_fixtures(fixtures_dir, 'schedules')
+      puts 'Loaded test schedules'
+    end
+
+    desc 'Load test lots'
+    task :lots => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
+      Fixtures.create_fixtures(fixtures_dir, 'lots')
+      puts 'Loaded test lots'
+    end
+
+    desc 'Load test recipes'
+    task :recipes => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      r = Recipe.new
+      r.import('test/receta_brill_nueva.txt', true)
+      puts 'Loaded test recipes'
+    end
   end
 
   desc 'Clean ingredients and recipes related tables'
@@ -68,5 +92,9 @@ namespace :sys do
     Rake::Task['db:create'].invoke
     Rake::Task['db:migrate'].invoke
     Rake::Task['db:fixtures:users'].invoke
+    Rake::Task['db:fixtures:schedules'].invoke
+    Rake::Task['db:fixtures:products'].invoke
+    Rake::Task['db:fixtures:recipes'].invoke
+    Rake::Task['db:fixtures:lots'].invoke
   end
 end

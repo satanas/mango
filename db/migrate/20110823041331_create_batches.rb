@@ -5,7 +5,6 @@ extend MigrationHelper
   def self.up
     create_table :batches do |t|
       t.references :order
-      t.references :recipe
       t.references :hopper
       t.references :schedule
       t.references :user
@@ -16,7 +15,6 @@ extend MigrationHelper
       t.timestamps
     end
     add_foreign_key 'batches', 'order_id', 'orders'
-    add_foreign_key 'batches', 'recipe_id', 'recipes'
     add_foreign_key 'batches', 'hopper_id', 'hoppers'
     add_foreign_key 'batches', 'schedule_id', 'schedules'
     add_foreign_key 'batches', 'user_id', 'users'

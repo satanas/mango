@@ -4,8 +4,15 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
+one:
+  code: "123456789"
+  location: Almacen 1
+  date: "2011-08-23"
+  ingredient_id: 5
+
+two:
+  code: "987654321"
+  location: Almacen 2
+  date: "2011-08-23"
+  ingredient_id: 2
 #  column: value

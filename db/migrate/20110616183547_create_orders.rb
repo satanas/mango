@@ -12,7 +12,7 @@ extend MigrationHelper
       t.integer :real_batchs
       t.string :code, :null => false
       t.string :comment
-      t.boolean :completed
+      t.boolean :completed, :default => false
       t.timestamps :register_date
       t.timestamps :start_date
       t.timestamps :end_date

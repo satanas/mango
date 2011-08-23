@@ -1,6 +1,6 @@
 class Hopper < ActiveRecord::Base
   has_many :hopper_lot
-  #has_many :lot
+  has_many :batch
 
   validates_uniqueness_of :number
   validates_presence_of :number
@@ -15,6 +15,18 @@ class Hopper < ActiveRecord::Base
         :lot => lots,
         :hopper_id => hop.id
       }
+    end
+    return actives
+  end
+
+  def self.actives_to_select
+    actives = []
+
+    hoppers = Hopper.find :all, :order => 'number ASC'
+    hoppers.each do |hop|
+      lots = HopperLot.find :first, :conditions => ['hopper_id = ? and active = ?', hop.id, true]
+      next if lots.nil?
+      actives << ["#{hop.number} - Lote: #{lots.lot.code}", hop.id]
     end
     return actives
   end

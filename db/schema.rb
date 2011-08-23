@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(:version => 20110823041331) do
 
   create_table "batches", :force => true do |t|
     t.integer  "order_id"
-    t.integer  "recipe_id"
     t.integer  "hopper_id"
     t.integer  "schedule_id"
     t.integer  "user_id"
@@ -28,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20110823041331) do
 
   add_index "batches", ["hopper_id"], :name => "fk_batches_hopper_id"
   add_index "batches", ["order_id"], :name => "fk_batches_order_id"
-  add_index "batches", ["recipe_id"], :name => "fk_batches_recipe_id"
   add_index "batches", ["schedule_id"], :name => "fk_batches_schedule_id"
   add_index "batches", ["user_id"], :name => "fk_batches_user_id"
 
@@ -100,7 +98,7 @@ ActiveRecord::Schema.define(:version => 20110823041331) do
     t.integer  "real_batchs"
     t.string   "code",                                 :null => false
     t.string   "comment"
-    t.boolean  "completed"
+    t.boolean  "completed",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "processed_in_baan", :default => false

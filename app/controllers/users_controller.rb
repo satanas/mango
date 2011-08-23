@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     @user.eliminate
     if @user.errors.size.zero?
-      flash[:notice] = "Usuario <strong>'#{@user.name}'</strong> eliminado con éxito"
+      flash[:notice] = "Usuario eliminado con éxito"
     else
       flash[:notice] = "El usuario no se ha podido eliminar"
     end

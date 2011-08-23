@@ -1,5 +1,12 @@
 <div id="dashboard-content" class="yui3-g">
   <div class="module yui3-u-1-2">
+    <%= link_to image_tag('batches-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), batches_path %>
+    <div class="module-content">
+      <h2><%= link_to 'Batches', batches_path %></h2>
+      <p>Control y gestión de batches</p>
+    </div>
+  </div>
+  <div class="module yui3-u-1-2">
     <%= link_to image_tag('orden-de-produccion-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), orders_path %>
     <div class="module-content">
       <h2><%= link_to 'Órdenes de Producción', orders_path %></h2>
@@ -11,13 +18,6 @@
     <div class="module-content">
       <h2><%= link_to 'Recetas', recipes_path %></h2>
       <p>Manejo de recetas de producción</p>
-    </div>
-  </div>
-  <div class="module yui3-u-1-2">
-    <%= link_to image_tag('batches-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), batches_path %>
-    <div class="module-content">
-      <h2><%= link_to 'Batches', batches_path %></h2>
-      <p>Control y gestión de batches</p>
     </div>
   </div>
   <div class="module yui3-u-1-2">

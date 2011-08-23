@@ -3,18 +3,14 @@
 <div class="field"><%= f.text_field :number, :size=>'10' %></div>
 <label for="code" class="small">Orden Prod.:</label>
 <div class="field-no"><%= f.collection_select :order_id, @orders, :id, :code, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
-<label for="recipe_id" class="small">Receta:</label>
-<div class="field-no"><%= f.collection_select :recipe_id, @recipes, :id, :name, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
 <label for="hopper_id" class="small">Tolva:</label>
-<div class="field-no"><%= f.collection_select :hopper_id, @hoppers, :id, :number, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
+<div class="field-no"><%= f.select :hopper_id, @hoppers, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
 <label for="amount" class="small">Cantidad:</label>
 <div class="field"><%= f.text_field :amount, :size=>'10' %></div>
 <label for="start" class="small">Inicio:</label>
 <div class="field"><%= f.date_select :start, :size=>'10' %></div>
 <label for="end" class="small">Fin:</label>
 <div class="field"><%= f.date_select :end, :size=>'10' %></div>
-<label for="client_id" class="small">Cliente:</label>
-<div class="field-no"><%= f.collection_select :client_id, @clients, :id, :name, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
 <% if session[:user].admin? %>
 <label for="user_id" class="small">Usuario:</label>
 <div class="field-no"><%= f.collection_select :user_id, @users, :id, :login, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
