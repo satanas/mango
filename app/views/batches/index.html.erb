@@ -22,8 +22,8 @@
         <td><%=h item.order.code %></td>
         <td><%=h item.hopper.number %></td>
         <td><%=h item.amount %></td>
-        <td><%=h item.start %></td>
-        <td><%=h item.end %></td>
+        <td><%=h item.start.strftime("%d-%m-%Y %H:%M:%S") %></td>
+        <td><%=h item.end.strftime("%d-%m-%Y %H:%M:%S") %></td>
         <td><%=h item.user.login %></td>
         <td><%=h item.schedule.name %></td>
         <td>
