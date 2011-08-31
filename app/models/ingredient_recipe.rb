@@ -3,8 +3,10 @@ class IngredientRecipe < ActiveRecord::Base
   belongs_to :recipe
   
   validates_presence_of :amount, :percentage
-  validates_presence_of :priority, :only_integer => true
-  validates_numericality_of :amount, :priority, :percentage
+  validates_numericality_of :priority, :only_integer => true
+  validates_numericality_of :amount, :percentage
+
+  validates_associated :ingredient, :recipe
   
   #before_validation :validate_existence
   
