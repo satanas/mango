@@ -8,6 +8,7 @@ class BatchesController < ApplicationController
     @users = User.find :all, :order => 'name ASC'
     @schedules = Schedule.find :all, :order => 'name ASC'
     @hoppers = Hopper.actives_to_select
+    @batch = Batch.new :user_id => session[:user].id
   end
 
   def edit

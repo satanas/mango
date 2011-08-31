@@ -15,7 +15,7 @@
 <label for="user_id" class="small">Usuario:</label>
 <div class="field"><%= f.collection_select :user_id, @users, :id, :login, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
 <% else %>
-<%= f.hidden_field :user_id, :size=>'10' %>
+<%= f.hidden_field :user_id %>
 <% end %>
 <label for="schedule_id" class="small">Turno:</label>
 <div class="field"><%= f.collection_select :schedule_id, @schedules, :id, :name, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
