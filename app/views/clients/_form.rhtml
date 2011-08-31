@@ -1,16 +1,17 @@
 <%= render_error_messages(f.error_messages) %>
 <label for="code" class="small">Código:</label>
-<div class="field"><%= f.text_field :code, :size=>'20' %></div>
+<div class="field"><%= f.text_field :code, :size=>'20' %> <span>*</span></div>
 <label for="ci_rif" class="small">C.I./R.I.F.:</label>
-<div class="field"><%= f.text_field :ci_rif, :size=>'20' %></div>
+<div class="field"><%= f.text_field :ci_rif, :size=>'20' %> <span>*</span></div>
 <label for="name" class="small">Nombre:</label>
-<div class="field"><%= f.text_field :name, :size=>'25' %></div>
+<div class="field"><%= f.text_field :name, :size=>'25' %> <span>*</span></div>
 <label for="tel1" class="small">Teléfono 1:</label>
-<div class="field"><%= f.text_field :tel1, :size=>'20' %></div>
+<div class="field"><%= f.text_field :tel1, :size=>'20' %> <span>*</span></div>
 <label for="tel2" class="small">Teléfono 2:</label>
 <div class="field"><%= f.text_field :tel2, :size=>'20' %></div>
 <label for="email" class="small">E-mail:</label>
 <div class="field"><%= f.text_field :email, :size=>'20' %></div>
 <label for="address" class="small">Dirección:</label>
-<div class="field"><%= f.text_field :address, :size=>'50' %></div>
+<div class="field"><%= f.text_field :address, :size=>'50' %> <span>*</span></div>
 <div class="clearfix"></div>
+<br/><span class="required">* Campos obligatorios</span>

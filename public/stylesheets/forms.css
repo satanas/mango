@@ -53,3 +53,25 @@ form .active-result {
   float: left;
   clear: both;
 }
+
+form .field span {
+  color: #c00;
+  margin-left: 5px;
+}
+
+form .required {
+  color: #c00;
+  margin-left: 15px;
+}
+
+form .field_with_errors {
+  border-width: 2px 1px 2px 1px;
+  border-color: #c00;
+  border-style: solid;
+  display: inline;
+}
+
+form .field .chzn-single span {
+  color: #000;
+  margin-left: 0px;
+}

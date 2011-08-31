@@ -5,12 +5,12 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :login
   validates_presence_of :name, :login
   validates_length_of :name, :login, :within => 3..40
-  
+
   before_save :validate_password
-  
+
   attr_accessor :password, :password_confirmation
   attr_protected :id, :password_salt
-  
+
   def self.auth(login, password)
     user = User.find(:first, :conditions =>["login = ?", login])
     return nil if user.nil?

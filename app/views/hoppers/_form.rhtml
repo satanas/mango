@@ -1,7 +1,8 @@
 <%= render_error_messages(f.error_messages) %>
 <% disabled = (edit) ? true : false %>
 <label for="number" class="small">Número:</label>
-<div class="field"><%= f.text_field :number, :size=>'10', :disabled => disabled %></div>
+<div class="field"><%= f.text_field :number, :size=>'10', :disabled => disabled %> <span>*</span></div>
 <label for="ingredient" class="small">Lote:</label>
-<div class="field"><%= f.collection_select :hopper_lot, @lots, :id, :to_collection_select, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
+<div class="field"><%= f.collection_select :hopper_lot, @lots, :id, :to_collection_select, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %> <span>*</span></div>
 <div class="clearfix"></div>
+<br/><span class="required">* Campos obligatorios</span>

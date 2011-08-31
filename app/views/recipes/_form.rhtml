@@ -1,8 +1,8 @@
 <%= render_error_messages(f.error_messages) %>
 <label for="code" class="small">Código:</label>
-<div class="field"><%= f.text_field :code, :size=>'20' %></div>
+<div class="field"><%= f.text_field :code, :size=>'20' %> <span>*</span></div>
 <label for="name" class="small">Nombre:</label>
-<div class="field"><%= f.text_field :name, :size=>'20' %></div>
+<div class="field"><%= f.text_field :name, :size=>'20' %> <span>*</span></div>
 <label for="version" class="small">Versión:</label>
 <div class="field"><%= f.text_field :version, :size=>'10' %></div>
 <label for="comment" class="small">Comentario:</label>
@@ -10,3 +10,4 @@
 <label for="active" class="small">Activa:</label>
 <div class="field"><%= f.check_box :active %></div>
 <div class="clearfix"></div>
+<br/><span class="required">* Campos obligatorios</span>
