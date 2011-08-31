@@ -11,7 +11,7 @@
     <tbody>
     <% @hoppers.each do |key, obj| %>
       <% class_row, i = alternate_row_class(i) %>
-      <% ingredient = (obj[:lot].nil?) ? 'N/D' : obj[:lot].lot.code %>
+      <% ingredient = (obj[:lot].nil?) ? 'N/D' : "#{obj[:lot].lot.code} - #{obj[:lot].lot.ingredient.name}" %>
       <tr class="<%= class_row %>">
         <td><%=h key %></td>
         <td><%=h ingredient %></td>
