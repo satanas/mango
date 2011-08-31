@@ -3,5 +3,5 @@
 <label for="number" class="small">Número:</label>
 <div class="field"><%= f.text_field :number, :size=>'10', :disabled => disabled %></div>
 <label for="ingredient" class="small">Lote:</label>
-<div class="field"><%= f.collection_select :hopper_lot, @lots, :id, :code, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
+<div class="field"><%= f.collection_select :hopper_lot, @lots, :id, :to_collection_select, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
 <div class="clearfix"></div>
