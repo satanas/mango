@@ -1,8 +1,10 @@
 <%= render_error_messages(f.error_messages) %>
+<label for="code" class="small">Código:</label>
+<div class="field"><%= f.text_field :code, :size=>'20' %></div>
 <label for="ci_rif" class="small">C.I./R.I.F.:</label>
 <div class="field"><%= f.text_field :ci_rif, :size=>'20' %></div>
 <label for="name" class="small">Nombre:</label>
-<div class="field"><%= f.text_field :name, :size=>'20' %></div>
+<div class="field"><%= f.text_field :name, :size=>'25' %></div>
 <label for="tel1" class="small">Teléfono 1:</label>
 <div class="field"><%= f.text_field :tel1, :size=>'20' %></div>
 <label for="tel2" class="small">Teléfono 2:</label>

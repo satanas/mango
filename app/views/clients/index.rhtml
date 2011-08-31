@@ -3,11 +3,10 @@
 <table id="tabledata">
     <thead>
       <tr>
+        <th>Código<span class="order_arrow"></th>
         <th>CI/RIF<span class="order_arrow"></th>
         <th>Name<span class="order_arrow"></th>
         <th>Address<span class="order_arrow"></th>
-        <th>Tel 1<span class="order_arrow"></th>
-        <th>Tel 2<span class="order_arrow"></th>
         <th>Email<span class="order_arrow"></th>
         <th class="actions_small">Acciones</th>
       </tr>
@@ -16,11 +15,10 @@
     <% @clients.each do |c| %>
       <% class_row, i = alternate_row_class(i) %>
       <tr class="<%= class_row %>">
+        <td><%=h c.code %></td>
         <td><%=h c.ci_rif %></td>
         <td><%=h c.name %></td>
         <td><%=h c.address %></td>
-        <td><%=h c.tel1 %></td>
-        <td><%=h c.tel2 %></td>
         <td><%=h c.email %></td>
         <td>
           <%= render_action_edit(edit_client_path(c)) %>
