@@ -27,13 +27,21 @@
         <!-- Header -->
         <div id="header">
             <div id="logo">
-                <%= link_to image_tag('mango-logo.png', :alt=>'mango-logo', :title=>'Volver al inicio', :width=>'72', :height=>'72'), root_path %>
-                <h1>MANGO</h1>
-                <p>versión 1.0</p>
+                <%= image_tag session[:company]['image'], :alt=>'company-logo', :width=>'72', :height=>'72' %>
+                <h1><%= session[:company]['name'] %></h1>
+                <p><%= session[:company]['desc1'] %></p>
+                <p><%= session[:company]['desc2'] %></p>
             </div>
             <div id="user-stats">
-                <p><strong><%= session[:user].name %></strong></p> | 
+                <p><strong><%= session[:user].name %></strong> | </p>
                 <span><%= link_to 'cerrar sesión', session_url(session[:user]), :method => :delete %></span>
+                <div class="separator clearfix"></div>
+                <div id="mango-logo">
+                    <%= image_tag('mango-logo.png', :alt=>'mango-logo', :width=>'36', :height=>'36') %>
+                    <p class="branding title">Mango</p>
+                    <p class="branding version">versión 1.0</p>
+                    <div class="clearfix"></div>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>

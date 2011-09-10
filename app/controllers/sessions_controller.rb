@@ -20,6 +20,8 @@ class SessionsController < ApplicationController
     if user
       session[:user] = user
       session[:per_page] = 12
+      session[:company] = YAML::load(File.open("#{Rails.root.to_s}/config/company.yml"))['company']
+      puts session.inspect
       redirect_to :action => 'show'
     else
       flash[:notice] = 'Credenciales inválidas'
@@ -30,6 +32,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user] = nil
+    session[:per_page] = nil
+    session[:company] = nil
     redirect_to :action=>'index'
   end
 
