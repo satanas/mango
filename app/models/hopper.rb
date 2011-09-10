@@ -7,15 +7,17 @@ class Hopper < ActiveRecord::Base
   validates_numericality_of :number, :only_integer => true, :greater_than_or_equal_to => 0
 
   def self.find_active
-    actives = {}
+    actives = []
     hoppers = Hopper.find :all, :order => 'number ASC'
     hoppers.each do |hop|
       lots = HopperLot.find :first, :conditions => ['hopper_id = ? and active = ?', hop.id, true]
-      actives[hop.number] = {
+      actives << {
         :lot => lots,
-        :hopper_id => hop.id
+        :hopper_id => hop.id,
+        :number => hop.number,
       }
     end
+    #actives.sort_by {|hop| hop[:number]}
     return actives
   end
 
@@ -47,9 +49,20 @@ class Hopper < ActiveRecord::Base
   end
 
   def eliminate
-    self.hopper_lot.each do |i|
-      i.destroy
+    begin
+      b = Batch.find :all, :conditions => {:hopper_id => self.id}
+      if b.length > 0:
+        errors.add(:foreign_key, 'no se puede eliminar porque tiene registros asociados')
+        return
+      end
+      self.hopper_lot.each do |i|
+        i.destroy
+      end
+      self.destroy
+    rescue ActiveRecord::StatementInvalid => ex
+      errors.add(:foreign_key, 'no se puede eliminar porque tiene registros asociados')
+    rescue Exception => ex
+      errors.add(:unknown, ex.message)
     end
-    self.destroy
   end
 end

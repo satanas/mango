@@ -9,15 +9,15 @@
       </tr>
     </thead>
     <tbody>
-    <% @hoppers.each do |key, obj| %>
+    <% @hoppers.each do |obj| %>
       <% class_row, i = alternate_row_class(i) %>
       <% ingredient = (obj[:lot].nil?) ? 'N/D' : "#{obj[:lot].lot.code} - #{obj[:lot].lot.ingredient.name}" %>
       <tr class="<%= class_row %>">
-        <td><%=h key %></td>
+        <td><%=h obj[:number] %></td>
         <td><%=h ingredient %></td>
         <td>
           <%= render_action_edit(edit_hopper_path(obj[:hopper_id])) %>
-          <%= render_action_delete(hopper_path(obj[:hopper_id]), "Desea borrar la tolva '#{key}'?") %>
+          <%= render_action_delete(hopper_path(obj[:hopper_id]), "Desea borrar la tolva '#{obj[:number]}'?") %>
         </td>
       </tr>
     <% end %>
