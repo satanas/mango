@@ -27,7 +27,7 @@
         <!-- Header -->
         <div id="header">
             <div id="logo">
-                <%= image_tag session[:company]['image'], :alt=>'company-logo', :width=>'72', :height=>'72' %>
+                <%= link_to image_tag(session[:company]['image'], :alt=>'company-logo', :width=>'72', :height=>'72', :title=>"Volver al inicio"), root_path %>
                 <h1><%= session[:company]['name'] %></h1>
                 <p><%= session[:company]['desc1'] %></p>
                 <p><%= session[:company]['desc2'] %></p>
@@ -37,9 +37,8 @@
                 <span><%= link_to 'cerrar sesión', session_url(session[:user]), :method => :delete %></span>
                 <div class="separator clearfix"></div>
                 <div id="mango-logo">
-                    <%= image_tag('mango-logo.png', :alt=>'mango-logo', :width=>'36', :height=>'36') %>
-                    <p class="branding title">Mango</p>
-                    <p class="branding version">versión 1.0</p>
+                    <%= image_tag('mango-logo.png', :alt=>'mango-logo', :width=>'22', :height=>'22') %>
+                    <p class="branding">Mango v1.0</p>
                     <div class="clearfix"></div>
                 </div>
             </div>

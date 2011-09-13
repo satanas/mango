@@ -18,11 +18,11 @@ h5 {
 
 #header {
     margin: 0 auto;
-    background: #434343; /*#f0f0f0;*/
+    background: #f0f0f0; /* #434343;*/
     height: 80px;
     width: 900px;
     margin-bottom: 5px;
-    border: 1px solid #212121 /*#cbcbcb;*/
+    border: 1px solid #cbcbcb; /*#212121;*/
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
@@ -46,13 +46,13 @@ h5 {
     margin-bottom: -5px;
     font-size: 30px;
     width: 500px;
-    color: #fff;
+    color: #383838;
 }
 
 #logo p {
     float: left;
     font-size: 14px;
-    color: #ddd;
+    color: #848484;
     width: 500px;
     margin: 1px 0 !important;
 }
@@ -69,11 +69,11 @@ h5 {
 
 #user-stats p {
     display: inline;
-    color: #eee;
+    color: #666;
 }
 
 #mango-logo {
-    width: 110px;
+    width: 90px;
     float: right;
 }
 
@@ -82,7 +82,7 @@ h5 {
 }
 
 #user-stats .separator {
-    margin-top: 16px;
+    margin-top: 28px;
 }
 
 #user-stats .branding {
@@ -90,6 +90,9 @@ h5 {
     float: left;
     text-align: left;
     margin-left: 5px;
+    color: #aaa;
+    font-size: 10px;
+    margin-top: 5px;
 }
 
 #user-stats .branding.title {
@@ -97,12 +100,11 @@ h5 {
 }
 
 #user-stats .branding.version {
-    font-size: 9px;
 }
 
 #user-stats span a {
     font-size: 12px;
-    color: #ccc;
+    color: #666;
 }
 
 #menu {
@@ -172,6 +174,7 @@ h5 {
 }
 
 #footer {
+    margin-top: 5px;
     margin-bottom: 20px;
 }
 #footer p {
