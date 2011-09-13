@@ -4,28 +4,24 @@ class BatchesController < ApplicationController
   end
 
   def new
-    @orders = Order.find :all, :conditions => ['completed = ?', false]
-    @users = User.find :all, :order => 'name ASC'
-    @schedules = Schedule.find :all, :order => 'name ASC'
-    @hoppers = Hopper.actives_to_select
+    fill
     @batch = Batch.new :user_id => session[:user].id
   end
 
   def edit
+    fill
     @batch = Batch.find params[:id]
-    @orders = Order.find :all, :conditions => ['completed = ?', false]
-    @users = User.find :all, :order => 'name ASC'
-    @schedules = Schedule.find :all, :order => 'name ASC'
-    @hoppers = Hopper.actives_to_select
   end
 
   def create
     @batch = Batch.new params[:batch]
-    if @batch.save
+    @saved = @batch.save
+    puts @batch.errors.inspect
+    if @saved
       flash[:notice] = 'Batch guardado con éxito'
       redirect_to :batches
     else
-      new
+      fill
       render :new
     end
   end
@@ -37,7 +33,7 @@ class BatchesController < ApplicationController
       flash[:notice] = 'Batch actualizado con éxito'
       redirect_to :batches
     else
-      edit
+      fill
       render :edit
     end
   end
@@ -51,5 +47,14 @@ class BatchesController < ApplicationController
       flash[:type] = 'error'
     end
     redirect_to :batches
+  end
+
+  private
+
+  def fill
+    @orders = Order.find :all, :conditions => ['completed = ?', false]
+    @users = User.find :all, :order => 'name ASC'
+    @schedules = Schedule.find :all, :order => 'name ASC'
+    @hoppers = Hopper.actives_to_select
   end
 end
