@@ -1,0 +1,115 @@
+report:
+  settings:
+    page:
+      size: Letter
+      orientation: P
+      margins: 15
+    style:
+      font_family: 'Helvetica'
+      font_size: 10
+      font_color: [0, 0, 0]
+  header:
+    1:
+      text:
+        label: INVERSIONES PORCINAS C.A.
+        margin: 30
+        align: left
+        style:
+          font_size: 11
+          font_weight: B
+    2:
+      text:
+        label: "RIF: 0-00000000-0"
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    3:
+      image:
+        filename: default-report-logo.png
+        width: 20
+        height: 20
+        x: 20
+        y: 12
+    4:
+      text:
+        label: Yaritagua - Estado Yaracuy
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    5:
+      breakline:
+    6:
+      date:
+        pattern: "Fecha: %d-%m-%Y"
+        align: right
+    7:
+      pagenum:
+        pattern: "Pag. <PAGE>"
+        align: right
+  body:
+    1:
+      text:
+        field: title
+        align: center
+        style:
+          font_size: 16
+    2:
+      table:
+        field: results
+        heading:
+          align: center
+          style:
+            font_weight: B
+            bg_color: [220, 220, 220]
+        columns:
+          1:
+           order :
+              label: Orden
+              align: left
+              width: 20
+          2:
+            recipe_code:
+              label: Receta
+              align: left
+          3:
+            recipe_name:
+              label: Desc. Receta
+              align: left
+              width: 20
+          4:
+            client_code:
+              label: Cliente
+              align: left
+              width: 20
+          5:
+            client_name:
+              label: Desc. Cliente
+              align: left
+              width: 20
+          6:
+            real_batches:
+              label: Batch.R.
+              align: right
+              width: 15
+          7:
+            total_recipe:
+              label: Total Estand.
+              align: right
+              width: 20
+          8:
+            total_real:
+              label: Total Real
+              align: right
+              width: 20
+    3:
+      breakline:
+  footer:
+    1:
+      text:
+        label: Reporte generado con Mango v1.0 (Copyleft) 2011
+        align: center
+        style:
+          font_size: 8
+          font_color: [80, 80, 80]
