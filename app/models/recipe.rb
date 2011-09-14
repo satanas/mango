@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
   has_many :ingredient_recipe
+  has_many :order
 
   validates_presence_of :name, :code
   validates_uniqueness_of :code

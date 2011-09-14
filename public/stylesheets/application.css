@@ -186,6 +186,7 @@ h5 {
   text-align: center;
 }
 
+/* Reports */
 #report_title {
   cursor: pointer;
 }
@@ -209,4 +210,8 @@ h5 {
 
 .report-details {
     padding-bottom: 30px;
+}
+
+.report-details label .normal {
+    width: 100px;
 }

@@ -1,22 +1,21 @@
 ActionController::Routing::Routes.draw do |map|
 
-  root :to => "sessions#index"
+  match 'ingredients/search' => "ingredients#search", :via => :get, :as => 'ingredient_search'
+  match 'ingredients/catalog' => "ingredients#catalog", :via => :get, :as => 'ingredient_catalog'
+  match 'ingredients/select' => "ingredients#select", :via => :get, :as => 'ingredient_select'
+  match 'recipes/import' => "recipes#import", :via => :get, :as => 'recipe_import'
+  match 'recipes/upload' => "recipes#upload", :via => :get, :as => 'recipe_upload'
+  match 'reports/index' => "reports#index", :via => :get, :as => "reports"
+  match 'reports/recipes' => "reports#recipes", :via => :get, :as => "recipes_report"
+  match 'reports/order_details' => "reports#order_details", :via => :get, :as => "order_details_report"
+  match 'sessions/not_implemented' => "sessions#not_implemented", :via => :get, :as => "not_implemented"
 
-  #map.session_error 'session/error', :controller => 'session', :action => 'error'
-  map.ingredient_search 'ingredients/search', :controller => "ingredients", :action => "search"
-  map.ingredient_catalog 'ingredients/catalog', :controller => "ingredients", :action => "catalog"
-  map.ingredient_select 'ingredients/select', :controller => "ingredients", :action => "select"
-  map.recipe_import 'recipes/import', :controller => "recipes", :action => "import"
-  map.recipe_upload 'recipes/upload', :controller => "recipes", :action => "upload"
-  map.reports 'reports/index', :controller => "reports", :action => "index"
-  map.recipes_report 'reports/recipes', :controller => "reports", :action => "recipes"
-  map.not_implemented 'sessions/not_implemented', :controller => "sessions", :action => "not_implemented"
-  map.resources :sessions, :users, :ingredients, :clients, :hoppers, :products, :orders, :lots, :schedules, :batches
-  map.resources :recipes do |recipes|
-    recipes.resources :ingredients_recipes
+  resources :sessions, :users, :ingredients, :clients, :hoppers, :products, :orders, :lots, :schedules, :batches
+  resources :recipes do
+    resources :ingredients_recipes
   end
 
+  root :to => "sessions#index"
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-
 end

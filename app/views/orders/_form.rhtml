@@ -18,9 +18,11 @@
 <% if action != 'new' %>
 <label for="real_batchs" class="small">Batch Real.:</label>
 <div class="field"><%= f.text_field :real_batchs, :size=>'10', :value=>0 %></div>
+<label for="total" class="small">Total:</label>
+<div class="field"><%= f.text_field :total, :size=>'10', :value=>0 %></div>
 <% end %>
 <label for="comment" class="small">Comentario:</label>
-<div class="field"><%= f.text_field :comment, :size=>'30' %></div>
+<div class="field"><%= f.text_field :comment, :size=>'50' %></div>
 <% if action != 'new' %>
 <label for="completed" class="small">Completada:</label>
 <div class="field"><%= f.check_box :completed %></div>

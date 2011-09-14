@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110831001812) do
+ActiveRecord::Schema.define(:version => 20110913235049) do
 
   create_table "batches", :force => true do |t|
     t.integer  "order_id"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20110831001812) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "processed_in_baan", :default => false
+    t.float    "total"
   end
 
   add_index "orders", ["client_id"], :name => "fk_orders_client_id"
