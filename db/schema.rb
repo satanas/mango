@@ -10,27 +10,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110913235049) do
+ActiveRecord::Schema.define(:version => 20110914232223) do
 
-  create_table "batches", :force => true do |t|
-    t.integer  "order_id"
-    t.integer  "hopper_id"
-    t.integer  "schedule_id"
-    t.integer  "user_id"
-    t.integer  "number"
-    t.float    "amount"
-    t.datetime "start"
-    t.datetime "end"
+  create_table "batch_hoppers_lots", :force => true do |t|
+    t.integer  "batch_id"
+    t.integer  "hopper_lot_id"
+    t.float    "amount",        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "batches", ["hopper_id"], :name => "fk_batches_hopper_id"
+  add_index "batch_hoppers_lots", ["batch_id"], :name => "fk_batch_hoppers_lots_batch_id"
+  add_index "batch_hoppers_lots", ["hopper_lot_id"], :name => "fk_batch_hoppers_lots_hopper_lot_id"
+
+  create_table "batches", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "schedule_id"
+    t.integer  "user_id"
+    t.integer  "number"
+    t.float    "total"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   add_index "batches", ["order_id"], :name => "fk_batches_order_id"
   add_index "batches", ["schedule_id"], :name => "fk_batches_schedule_id"
   add_index "batches", ["user_id"], :name => "fk_batches_user_id"
 
   create_table "clients", :force => true do |t|
+    t.string   "code",       :null => false
     t.string   "name",       :null => false
     t.string   "ci_rif",     :null => false
     t.string   "address"
@@ -39,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20110913235049) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "code",       :null => false
   end
 
   create_table "hoppers", :force => true do |t|
@@ -95,15 +104,15 @@ ActiveRecord::Schema.define(:version => 20110913235049) do
     t.integer  "client_id"
     t.integer  "user_id"
     t.integer  "product_id"
-    t.integer  "prog_batchs",                          :null => false
-    t.integer  "real_batchs"
+    t.integer  "prog_batches",                         :null => false
+    t.integer  "real_batches"
     t.string   "code",                                 :null => false
     t.string   "comment"
     t.boolean  "completed",         :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.boolean  "processed_in_baan", :default => false
     t.float    "total"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "orders", ["client_id"], :name => "fk_orders_client_id"
@@ -142,9 +151,9 @@ ActiveRecord::Schema.define(:version => 20110913235049) do
     t.string   "login",                            :null => false
     t.string   "password_hash",                    :null => false
     t.string   "password_salt",                    :null => false
+    t.boolean  "admin",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",         :default => false
   end
 
 end

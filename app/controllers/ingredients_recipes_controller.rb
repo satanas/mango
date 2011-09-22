@@ -5,7 +5,6 @@ class IngredientsRecipesController < ApplicationController
   end
 
   def create
-    puts params.inspect
     unless params[:ingredient_recipe][:code].blank?
       @recipe = Recipe.find(params[:recipe_id], :include=>'ingredient_recipe')
       ingredient = Ingredient.find_by_code(params[:ingredient_recipe][:code])

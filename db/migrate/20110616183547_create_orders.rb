@@ -8,11 +8,13 @@ extend MigrationHelper
       t.references :client
       t.references :user
       t.references :product
-      t.integer :prog_batchs, :null => false
-      t.integer :real_batchs
+      t.integer :prog_batches, :null => false
+      t.integer :real_batches
       t.string :code, :null => false
       t.string :comment
       t.boolean :completed, :default => false
+      t.boolean :processed_in_baan, :default => false
+      t.float :total
       t.timestamps :register_date
       t.timestamps :start_date
       t.timestamps :end_date

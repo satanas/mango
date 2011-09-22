@@ -5,8 +5,6 @@
       <tr>
         <th>Número<span class="order_arrow"></th>
         <th>Orden Prod.<span class="order_arrow"></th>
-        <th>Tolva<span class="order_arrow"></th>
-        <th>Cantidad<span class="order_arrow"></th>
         <th>Inicio<span class="order_arrow"></th>
         <th>Fin<span class="order_arrow"></th>
         <th>Usuario<span class="order_arrow"></th>
@@ -20,10 +18,8 @@
       <tr class="<%= class_row %>">
         <td><%=h item.number %></td>
         <td><%=h item.order.code %></td>
-        <td><%=h item.hopper.number %></td>
-        <td><%=h item.amount %></td>
-        <td><%=h item.start.strftime("%d-%m-%Y %H:%M:%S") %></td>
-        <td><%=h item.end.strftime("%d-%m-%Y %H:%M:%S") %></td>
+        <td><%=h item.start_date.strftime("%d-%m-%Y %H:%M:%S") %></td>
+        <td><%=h item.end_date.strftime("%d-%m-%Y %H:%M:%S") %></td>
         <td><%=h item.user.login %></td>
         <td><%=h item.schedule.name %></td>
         <td>

@@ -1,0 +1,2 @@
+module BatchesHopperLotHelper
+end

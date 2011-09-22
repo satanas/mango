@@ -1,4 +1,6 @@
 <%= form_for :batch, :url=>batche_path(@batch), :html=>{:method=>:put, :id=>'batch_edit_form'} do |f| %>
-  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <%= render :partial=>'form', :locals =>{:f => f, :action=>'edit'} %>
   <br/>
 <% end %>
+<h5>Detalle de batch</h5>
+<%= render :partial=>'edit_grid', :locals =>{:batch => @batch} %>

@@ -9,6 +9,7 @@
         <th>Producto<span class="order_arrow"></span></th>
         <th>B. Prog.</th>
         <th>B. Real.</th>
+        <th>Total</th>
         <th>Fin.</th>
         <th class="actions_small">Acciones</th>
       </tr>
@@ -23,8 +24,9 @@
         <td><%=h o.recipe.name %></td>
         <td><%=h client %></td>
         <td><%=h product %></td>
-        <td class="center"><%=h o.prog_batchs %></td>
-        <td class="center"><%=h o.real_batchs %></td>
+        <td class="center"><%=h o.prog_batches %></td>
+        <td class="center"><%=h o.real_batches %></td>
+        <td class="center"><%=h o.total %></td>
         <td class="center"><%=h o.completed %></td>
         <td class="center">
           <%= render_action_edit(edit_order_path(o)) %>

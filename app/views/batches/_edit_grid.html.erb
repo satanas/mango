@@ -1,0 +1,36 @@
+<% i = 0 %>
+<div id="batches_hopper_lots_grid">
+  <%= form_for :batch_hopper_lot, :url=>batches_hopper_lot_path(batch) do |f| %>
+  <table id="tabledata">
+    <thead>
+      <tr>
+        <th>Tolva<span class="order_arrow"></span></th>
+        <th>Cantidad<span class="order_arrow"></span></th>
+        <th class="actions_medium">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= f.select :hopper_lot_id, @hoppers, {:include_blank => true}, :class=>'chzn-select chzn-done chzn-field-normal' %>
+        </td>
+        <td><%= f.text_field :amount, :size=>10 %></td>
+        <td><%= submit_tag 'Agregar' %></td>
+      </tr>
+      <% @batch.batch_hopper_lot.each do |bh| %>
+        <% class_row, i = alternate_row_class(i) %>
+          <tr class="<%= class_row %>">
+          <td><%=h "#{bh.hopper_lot.hopper.number} - Lote: #{bh.hopper_lot.lot.code}" %></td>
+          <td><%=h bh.amount %></td>
+          <td><%= render_action_delete(batch_hopper_lot_path(@batch, bh), "Desea eliminar el detalle?") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div id="tablefooter">
+    <div id="pagination">
+      <!--= show_pagination @recipe %-->
+    </div>
+  </div>
+  <% end %>
+</div>

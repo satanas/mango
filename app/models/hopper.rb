@@ -1,6 +1,5 @@
 class Hopper < ActiveRecord::Base
   has_many :hopper_lot
-  has_many :batch
 
   validates_uniqueness_of :number
   validates_presence_of :number

@@ -1,6 +1,7 @@
 class HopperLot < ActiveRecord::Base
   belongs_to :hopper
   belongs_to :lot
+  has_many :batch_hopper_lot
 
   validates_associated :hopper, :lot
 
