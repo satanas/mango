@@ -4,11 +4,11 @@ class HoppersController < ApplicationController
   end
 
   def new
-    @lots = Lot.find :all, :order => 'code ASC'
+    @lots = Lot.find_all
   end
 
   def edit
-    @lots = Lot.find :all, :order => 'code ASC'
+    @lots = Lot.find_all
     @hopper = Hopper.find params[:id]
   end
 
@@ -54,5 +54,11 @@ class HoppersController < ApplicationController
       end
     end
     redirect_to :hoppers
+  end
+
+  private
+
+  def fill
+    @lots 
   end
 end

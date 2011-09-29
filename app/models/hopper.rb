@@ -9,7 +9,7 @@ class Hopper < ActiveRecord::Base
     actives = []
     hoppers = Hopper.find :all, :order => 'number ASC'
     hoppers.each do |hop|
-      lots = HopperLot.find :first, :conditions => ['hopper_id = ? and active = ?', hop.id, true]
+      lots = HopperLot.find :first, :conditions => ['hopper_id = ? and active = ?', hop.id, true], :include => {:lot=>:ingredient}
       actives << {
         :lot => lots,
         :hopper_id => hop.id,

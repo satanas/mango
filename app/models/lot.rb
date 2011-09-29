@@ -12,6 +12,6 @@ class Lot < ActiveRecord::Base
   end
 
   def to_collection_select
-   "#{self.code} - #{self.ingredient.name}"
+   "#{self.ingredient.name} (L: #{self.code})"
   end
 end

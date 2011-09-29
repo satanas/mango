@@ -4,14 +4,14 @@
     <thead>
       <tr>
         <th>Tolva<span class="order_arrow"></span></th>
-        <th>Lote<span class="order_arrow"></span></th>
+        <th>Ingrediente (Lote)<span class="order_arrow"></span></th>
         <th class="actions_small">Acciones</th>
       </tr>
     </thead>
     <tbody>
     <% @hoppers.each do |obj| %>
       <% class_row, i = alternate_row_class(i) %>
-      <% ingredient = (obj[:lot].nil?) ? 'N/D' : "#{obj[:lot].lot.code} - #{obj[:lot].lot.ingredient.name}" %>
+      <% ingredient = (obj[:lot].nil?) ? 'N/D' : "#{obj[:lot].lot.ingredient.name} (L: #{obj[:lot].lot.code})" %>
       <tr class="<%= class_row %>">
         <td><%=h obj[:number] %></td>
         <td><%=h ingredient %></td>

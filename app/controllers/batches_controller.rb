@@ -10,13 +10,12 @@ class BatchesController < ApplicationController
 
   def edit
     fill
-    @batch = Batch.find params[:id]
+    @batch = Batch.find params[:id], :include=>{:batch_hopper_lot=>{:hopper_lot=>[{:lot=>:ingredient}, :hopper]}}
   end
 
   def create
     @batch = Batch.new params[:batch]
     @saved = @batch.save
-    puts @batch.errors.inspect
     if @saved
       flash[:notice] = 'Batch guardado con éxito'
       redirect_to :batches
