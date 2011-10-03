@@ -23,10 +23,12 @@ class EasyModel
   end
 
   def self.daily_production(start_date, end_date)
-    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.end >= ? and batches.end <= ?', start_date, end_date]
+    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.end_date >= ? and batches.end_date <= ?', start_date, end_date]
     return nil if @orders.length.zero?
     data = {}
     data['title'] = "Reporte de Produccion Diaria por Fabrica"
+    data['since'] = "Desde: #{Date.parse(start_date).strftime("%d/%m/%Y")}"
+    data['until'] = "Hasta: #{Date.parse(end_date).strftime("%d/%m/%Y")}"
     data['results'] = []
     @orders.each do |o|
       data['results'] << {
@@ -35,9 +37,9 @@ class EasyModel
         'recipe_name' => o.recipe.name,
         'client_code' => o.client.code,
         'client_name' => o.client.name,
-        'real_batches' => o.real_batchs.to_s,
-        'total_recipe' => o.recipe.total.to_s,
-        'total_real' => o.total.to_s,
+        'real_batches' => o.real_batches.to_s,
+        'total_recipe' => "#{o.recipe.total.to_s} Kg",
+        'total_real' => "#{o.total.to_s} Kg",
       }
     end
     return data

@@ -2,8 +2,8 @@ report:
   settings:
     page:
       size: Letter
-      orientation: P
-      margins: 15
+      orientation: L
+      margins: 20
     style:
       font_family: 'Helvetica'
       font_size: 10
@@ -41,10 +41,14 @@ report:
     5:
       breakline:
     6:
-      date:
-        pattern: "Fecha: %d-%m-%Y"
+      text:
+        field: since
         align: right
     7:
+      text:
+        field: until
+        align: right
+    8:
       pagenum:
         pattern: "Pag. <PAGE>"
         align: right
@@ -54,12 +58,13 @@ report:
         field: title
         align: center
         style:
-          font_size: 16
+          font_size: 12
+          font_weight: B
     2:
       table:
         field: results
         heading:
-          align: center
+          align: left
           style:
             font_weight: B
             bg_color: [220, 220, 220]
@@ -73,21 +78,22 @@ report:
             recipe_code:
               label: Receta
               align: left
+              width: 20
           3:
             recipe_name:
               label: Desc. Receta
               align: left
-              width: 20
+              width: 50
           4:
             client_code:
               label: Cliente
               align: left
-              width: 20
+              width: 30
           5:
             client_name:
               label: Desc. Cliente
               align: left
-              width: 20
+              width: 40
           6:
             real_batches:
               label: Batch.R.
@@ -97,12 +103,12 @@ report:
             total_recipe:
               label: Total Estand.
               align: right
-              width: 20
+              width: 30
           8:
             total_real:
               label: Total Real
               align: right
-              width: 20
+              width: 30
     3:
       breakline:
   footer:
