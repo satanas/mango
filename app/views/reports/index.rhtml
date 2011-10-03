@@ -20,5 +20,15 @@
     </div>
   </div>
 
+  <div class="report-content">
+    <h2 onclick="toggle_report_details('order_details')">Detalles de Orden de Producción</h2>
+    <div id="order_details" class="report-details">
+      <%= form_for :report, :url=>order_details_report_path do |f| %>
+        <%= f.label :order, "Nro. Orden: ", :class=>'small' %> <%= f.text_field :order, :size=>15 %><br/><br/><br/>
+        <%= submit_tag 'Generar Reporte' %>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 <div class="clearfix"></div>
