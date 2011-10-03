@@ -155,7 +155,11 @@ module EasyReport
           return ''
         end
       else
-        return @data[element['field']]
+        if @data.has_key?(element['field'])
+          return @data[element['field']]
+        else
+          raise IndexError, "Undefined field '#{element['field']}' in report configuration"
+        end
       end
     end
 
