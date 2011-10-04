@@ -25,4 +25,16 @@ class ReportsController < ApplicationController
       send_data report.render, :filename => "produccion_diaria.pdf", :type => "application/pdf"
     end
   end
+
+  def order_details
+    data = EasyModel.order_details(params[:report][:order])
+    if data.nil?
+      flash[:notice] = 'No hay registros para generar el reporte'
+      flash[:type] = 'warn'
+      redirect_to :action => 'index'
+    else
+      report = EasyReport::Report.new data, 'order_details.yml'
+      send_data report.render, :filename => "detalle_orden_produccion.pdf", :type => "application/pdf"
+    end
+  end
 end

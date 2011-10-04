@@ -45,15 +45,62 @@ class EasyModel
     return data
   end
 
-=begin
-  def self.order_details(start_date, end_date)
-    @batches = Batch.find :all, :conditions => ['start >= ? and end <= ?', start_date, end_date], :order => '
-    return nil if @batches.length.zero?
+  def self.order_details(order)
+    @order = Order.find_by_code order, :include=>[
+        {:batch=>{:batch_hopper_lot=>{:hopper_lot=>[:hopper, {:lot=>:ingredient}]}}},
+        {:recipe=>{:ingredient_recipe=>:ingredient}},
+        :product
+      ]
+    return nil if @order.nil?
     data = {}
-    data['title'] = 'Detalle Orden de Producción'
-    
+    data['title'] = 'Detalle Orden de Produccion'
+    ingredients = {}
+    @order.recipe.ingredient_recipe.each do |ir|
+      ingredients[ir.ingredient.code] = {
+        'amount' => ir.amount.to_f,
+      }
+    end
+
+    data['recipe'] = "#{@order.recipe.code} - #{@order.recipe.name}"
+    data['product'] = "#{@order.product.code} - #{@order.product.name}"
+    data['prog_batches'] = @order.prog_batches
+    data['real_batches'] = @order.real_batches
+
+    details = {}
+    total_real = 0
+    #total_std = 0
+    #total_var = 0
+    @order.batch.each do |batch|
+      batch.batch_hopper_lot.each do |bhl|
+        key = bhl.hopper_lot.lot.ingredient.code
+        std_amount = (ingredients.has_key?(key)) ? ingredients[key]['amount'] : 0
+        unless details.has_key?(key)
+          details[key] = {
+            'ingredient' => bhl.hopper_lot.lot.ingredient.name,
+            'lot' => bhl.hopper_lot.lot.code,
+            'hopper' => bhl.hopper_lot.hopper.number,
+            'real_kg' => bhl.amount.to_f,
+            'std_kg' => std_amount,
+            'var_kg' => 0
+          }
+        else
+          details[key]['real_kg'] += bhl.amount.to_f
+          details[key]['std_kg'] += ingredients[key]['amount']
+        end
+        total_real += details[key]['real_kg']
+        details[key]['var_kg'] = details[key]['real_kg'] - details[key]['std_kg']
+      end
+    end
+
+    data['total_real_kg'] = total_real
+    data['results'] = []
+    details.each do |key, value|
+      element = {'code' => key}
+      data['results'] << element.merge(value)
+    end
+    return data
   end
-=end
+
   #==== Utilities ====
   def self.parse_date(param, name)
     day = param["#{name}(1i)"].to_i

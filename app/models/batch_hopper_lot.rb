@@ -14,13 +14,11 @@ class BatchHopperLot < ActiveRecord::Base
     b = Batch.find self.batch_id
     b.total += self.amount
     b.save
-    puts b.errors.inspect
   end
 
   def calculate_decr
     b = Batch.find self.batch_id
     b.total -= self.amount
     b.save
-    puts b.errors.inspect
   end
 end

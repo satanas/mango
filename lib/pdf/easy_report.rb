@@ -309,7 +309,8 @@ module EasyReport
         h = max_height(arr_width, arr_label, DEFAULT_LINE_HEIGHT)
         config.each do |column|
           style = column['head']['style']
-          align = column['head']['align']
+          #align = column['head']['align']
+          align = column['cell']['align']
           x = GetX()
           y = GetY()
           fill = set_bg_color(style['bg_color'])
@@ -337,7 +338,7 @@ module EasyReport
           end
         end
         arr_width = config.map {|c| c['width']}
-        arr_content = row.values()
+        arr_content = row.values().collect{|value| value.to_s }
         h = max_height(arr_width, arr_content, DEFAULT_LINE_HEIGHT)
 
         set_table_header(config, show_head) if check_page_break(h)
@@ -351,7 +352,7 @@ module EasyReport
           set_text_color(style['font_color'])
           set_font(style)
           Rect(x, y, column['width'], h, 'F')
-          MultiCell(column['width'], DEFAULT_LINE_HEIGHT, row[column['field']], 0, align, 0)
+          MultiCell(column['width'], DEFAULT_LINE_HEIGHT, row[column['field']].to_s, 0, align, 0)
           SetXY(x + column['width'], y)
         end
         Ln(h)
