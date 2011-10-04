@@ -22,7 +22,7 @@ class RecipeTest < ActiveSupport::TestCase
   end
 
   test "import and uniqueness" do
-    assert @recipe.import("#{RAILS_ROOT}/test/receta_brill_una.txt", true), @recipe.errors.inspect
-    assert !@recipe.import("#{RAILS_ROOT}/test/receta_brill_error.txt", true)
+    assert @recipe.import("#{::Rails.root.to_s}/test/receta_brill_una.txt", true), @recipe.errors.inspect
+    assert !@recipe.import("#{::Rails.root.to_s}/test/receta_brill_error.txt", true)
   end
 end
