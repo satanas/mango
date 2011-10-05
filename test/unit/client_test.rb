@@ -2,12 +2,12 @@ require 'test_helper'
 
 class ClientTest < ActiveSupport::TestCase
   def setup
-    @client = Client.new :name=>'Test Name', :ci_rif=>'12345678', :address=>'Test address', :tel1=>'1111-1234567'
+    @client = Client.new :name=>'Test Name', :ci_rif=>'12345678', :address=>'Test address', :tel1=>'1111-1234567', :code => 'CODE'
   end
 
   test "blank" do
     @client = Client.new
-    assert_error_length 6, @client
+    assert_error_length 7, @client
   end
 
   test "length" do
