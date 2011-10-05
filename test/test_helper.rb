@@ -61,4 +61,9 @@ class ActiveSupport::TestCase
   def assert_obj_saved(obj)
     assert obj.save, "#{obj.class.to_s} not saved - #{obj.errors.inspect}"
   end
+
+
+  def time_stamp(time)
+    time.to_datetime.strftime("%a, %d %b %Y, %l:%M%P").squeeze(' ')
+  end
 end

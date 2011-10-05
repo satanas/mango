@@ -8,6 +8,6 @@ class IngredientRecipeTest < ActiveSupport::TestCase
   
   test "blank" do
     @item = IngredientRecipe.new
-    assert_error_length 6, @item
+    assert_error_length 5, @item
   end
 end

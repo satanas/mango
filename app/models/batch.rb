@@ -10,10 +10,23 @@ class Batch < ActiveRecord::Base
   validates_numericality_of :total, :greater_than_or_equal_to => 0
   validates_associated :order, :schedule, :user
   
-  before_validation :validates_total
+  before_validation :validates_total, :check_associations
 
   def validates_total
     self.total = 0 if self.total.nil?
     return true
+  end
+
+  def check_associations
+    if order_id.kind_of?(Integer) && !Order.exists?(order_id)
+      errors[:order_id] << "doesn't exist"
+    end
+    if schedule_id.kind_of?(Integer) && !Schedule.exists?(schedule_id)
+      errors[:schedule_id] << "doesn't exist"
+    end
+    if user_id.kind_of?(Integer) && !User.exists?(user_id)
+      errors[:user_id] << "doesn't exist"
+    end
+
   end
 end
