@@ -27,6 +27,5 @@ class Batch < ActiveRecord::Base
     if user_id.kind_of?(Integer) && !User.exists?(user_id)
       errors[:user_id] << "doesn't exist"
     end
-
   end
 end
