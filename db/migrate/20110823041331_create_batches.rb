@@ -8,7 +8,6 @@ extend MigrationHelper
       t.references :schedule
       t.references :user
       t.integer :number
-      t.float :total
       t.timestamp :start_date
       t.timestamp :end_date
       t.timestamps

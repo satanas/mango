@@ -14,7 +14,6 @@ extend MigrationHelper
       t.string :comment
       t.boolean :completed, :default => false
       t.boolean :processed_in_baan, :default => false
-      t.float :total
       t.timestamps :register_date
       t.timestamps :start_date
       t.timestamps :end_date

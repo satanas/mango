@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(:version => 20110914232223) do
     t.integer  "schedule_id"
     t.integer  "user_id"
     t.integer  "number"
-    t.float    "total"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at"
@@ -110,7 +109,6 @@ ActiveRecord::Schema.define(:version => 20110914232223) do
     t.string   "comment"
     t.boolean  "completed",         :default => false
     t.boolean  "processed_in_baan", :default => false
-    t.float    "total"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
