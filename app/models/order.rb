@@ -8,14 +8,12 @@ class Order < ActiveRecord::Base
   validates_presence_of :recipe_id, :user_id
   validates_uniqueness_of :code
   validates_numericality_of :prog_batches, :real_batches, :only_integer => 0, :greater_than_or_equal_to => 0
-  validates_numericality_of :total
   validates_associated :recipe, :client, :user
 
   before_validation :validates_real_batchs
 
   def validates_real_batchs
     self.real_batches = 0 if self.real_batches.nil?
-    self.total = 0 if self.total.nil?
     return true
   end
 end
