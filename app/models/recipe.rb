@@ -5,10 +5,7 @@ class Recipe < ActiveRecord::Base
   validates_presence_of :name, :code
   validates_uniqueness_of :code
   validates_length_of :name, :within => 3..40
-  validates_numericality_of :total
   #validates_associated :ingredient_recipe
-
-  before_validation :check_total
 
   def eliminate
     self.ingredient_recipe.each do |i|
@@ -70,18 +67,20 @@ class Recipe < ActiveRecord::Base
             item = fd.gets().split(/\t/)
             break if item[0].strip() == '-----------'
             logger.info("  * Ingrediente: #{item.inspect}")
-            amount = item[0].gsub('.', '')
-            amount = item[0].gsub(',', '.')
-            percentage = item[3].strip().gsub('.', '')
-            percentage = item[3].gsub(',', '.')
+            #amount = item[0].gsub('.', '')
+            #amount = item[0].gsub(',', '.')
+            amount = convert_to_float(item[0])
+            #percentage = item[3].strip().gsub('.', '')
+            #percentage = item[3].gsub(',', '.')
+            percentage = convert_to_float(item[3])
             @recipe.add_ingredient(
-              :amount=>amount.to_f, 
-              :priority=>0, 
-              :percentage=>percentage.to_f, 
+              :amount=>amount,
+              :priority=>0,
+              :percentage=>percentage,
               :ingredient=>item[2].strip(),
               :overwrite=>overwrite)
           end
-          @recipe.total = fd.gets().strip().to_f
+          @recipe.total = convert_to_float(fd.gets().strip())
           @recipe.save
           continue = fd.gets().strip()
           break if continue.nil? or continue == '='
@@ -96,10 +95,6 @@ class Recipe < ActiveRecord::Base
 
   private
 
-  def check_total
-    self.total = 0 if self.total.nil?
-  end
-
   def validate_field(field, value)
     field.strip!()
     if field != value
@@ -107,5 +102,11 @@ class Recipe < ActiveRecord::Base
       return false
     end
     return true
+  end
+
+  def convert_to_float(string)
+    value = string.strip().gsub('.', '')
+    value = value.gsub(',', '.')
+    return value.to_f
   end
 end
