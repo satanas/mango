@@ -49,7 +49,8 @@ class Hopper < ActiveRecord::Base
 
   def eliminate
     begin
-      b = Batch.find :all, :conditions => {:hopper_id => self.id}
+      #b = Batch.find :all, :include => [:orders], :conditions => {:order=>{:hopper_id => self.id}}
+      b = BatchHopperLot.find :all, :include => [:hopper_lot], :conditions => {:hoppers_lots=>{:hopper_id => self.id}}
       if b.length > 0:
         errors.add(:foreign_key, 'no se puede eliminar porque tiene registros asociados')
         return
@@ -59,6 +60,7 @@ class Hopper < ActiveRecord::Base
       end
       self.destroy
     rescue ActiveRecord::StatementInvalid => ex
+      puts ex.inspect
       errors.add(:foreign_key, 'no se puede eliminar porque tiene registros asociados')
     rescue Exception => ex
       errors.add(:unknown, ex.message)
