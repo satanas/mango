@@ -7,15 +7,9 @@ class Batch < ActiveRecord::Base
   validates_uniqueness_of :order_id, :scope => [:number]
   validates_presence_of :order, :schedule, :user, :start_date, :end_date
   validates_numericality_of :number, :only_integer => true, :greater_than_or_equal_to => 0
-  validates_numericality_of :total, :greater_than_or_equal_to => 0
   validates_associated :order, :schedule, :user
-  
-  before_validation :validates_total, :check_associations
 
-  def validates_total
-    self.total = 0 if self.total.nil?
-    return true
-  end
+  before_validation :check_associations
 
   def check_associations
     if order_id.kind_of?(Integer) && !Order.exists?(order_id)
@@ -27,6 +21,5 @@ class Batch < ActiveRecord::Base
     if user_id.kind_of?(Integer) && !User.exists?(user_id)
       errors[:user_id] << "doesn't exist"
     end
-
   end
 end
