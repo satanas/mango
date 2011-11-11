@@ -39,7 +39,7 @@ class EasyModel
         'client_name' => o.client.name,
         'real_batches' => o.real_batches.to_s,
         'total_recipe' => "#{o.recipe.total.to_s} Kg",
-        'total_real' => "#{o.total.to_s} Kg",
+        'total_real' => "0", #"#{o.total.to_s} Kg",
       }
     end
     return data

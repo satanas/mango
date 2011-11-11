@@ -27,7 +27,7 @@ class Hopper < ActiveRecord::Base
     hoppers.each do |hop|
       lots = HopperLot.find :first, :conditions => ['hopper_id = ? and active = ?', hop.id, true]
       next if lots.nil?
-      actives << ["#{hop.number} - Lote: #{lots.lot.code}", hop.id]
+      actives << ["Tolva #{hop.number} - #{lots.lot.ingredient.name} (L: #{lots.lot.code})", lots.id]
     end
     return actives
   end
@@ -49,7 +49,6 @@ class Hopper < ActiveRecord::Base
 
   def eliminate
     begin
-      #b = Batch.find :all, :include => [:orders], :conditions => {:order=>{:hopper_id => self.id}}
       b = BatchHopperLot.find :all, :include => [:hopper_lot], :conditions => {:hoppers_lots=>{:hopper_id => self.id}}
       if b.length > 0:
         errors.add(:foreign_key, 'no se puede eliminar porque tiene registros asociados')

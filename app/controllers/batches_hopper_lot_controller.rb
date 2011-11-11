@@ -2,8 +2,12 @@ class BatchesHopperLotController < ApplicationController
 
   def create
     if not params[:batch_hopper_lot][:amount].blank? or not params[:batch_hopper_lot][:hopper_lot_id].blank?
+      hopper_lot = HopperLot.find(params[:batch_hopper_lot][:hopper_lot_id])
+      batch = Batch.find(params[:batch_id])
+
       b = BatchHopperLot.new params[:batch_hopper_lot]
-      b.batch_id = params[:batch_id]
+      b.batch = batch
+      b.hopper_lot = hopper_lot
       if b.valid?
         b.save
         flash[:notice] = "Detalle agregado al batch"

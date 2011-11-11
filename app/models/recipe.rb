@@ -1,18 +1,11 @@
 class Recipe < ActiveRecord::Base
-  has_many :ingredient_recipe
+  has_many :ingredient_recipe, :dependent => :destroy
   has_many :order
 
   validates_presence_of :name, :code
   validates_uniqueness_of :code
   validates_length_of :name, :within => 3..40
   #validates_associated :ingredient_recipe
-
-  def eliminate
-    self.ingredient_recipe.each do |i|
-      i.destroy
-    end
-    self.destroy
-  end
 
   def add_ingredient(args)
     overwrite = args[:overwrite]
@@ -67,11 +60,7 @@ class Recipe < ActiveRecord::Base
             item = fd.gets().split(/\t/)
             break if item[0].strip() == '-----------'
             logger.info("  * Ingrediente: #{item.inspect}")
-            #amount = item[0].gsub('.', '')
-            #amount = item[0].gsub(',', '.')
             amount = convert_to_float(item[0])
-            #percentage = item[3].strip().gsub('.', '')
-            #percentage = item[3].gsub(',', '.')
             percentage = convert_to_float(item[3])
             @recipe.add_ingredient(
               :amount=>amount,

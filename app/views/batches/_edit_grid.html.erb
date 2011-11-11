@@ -20,7 +20,7 @@
       <% @batch.batch_hopper_lot.each do |bh| %>
         <% class_row, i = alternate_row_class(i) %>
           <tr class="<%= class_row %>">
-          <td><%=h "#{bh.hopper_lot.hopper.number} - #{bh.hopper_lot.lot.ingredient.name} - (L: #{bh.hopper_lot.lot.code})" %></td>
+          <td><%=h "Tolva #{bh.hopper_lot.hopper.number} - #{bh.hopper_lot.lot.ingredient.name} - (L: #{bh.hopper_lot.lot.code})" %></td>
           <td><%=h bh.amount %></td>
           <td><%= render_action_delete(batch_hopper_lot_path(@batch, bh), "Desea eliminar el detalle?") %></td>
         </tr>

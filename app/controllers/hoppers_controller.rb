@@ -60,6 +60,6 @@ class HoppersController < ApplicationController
   private
 
   def fill
-    @lots 
+    @lots
   end
 end
