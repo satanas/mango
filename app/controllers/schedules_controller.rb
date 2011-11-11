@@ -34,6 +34,7 @@ class SchedulesController < ApplicationController
     if @schedule.errors.size.zero?
       flash[:notice] = "Turno eliminado con éxito"
     else
+      logger.error("Error eliminando turno: #{@schedule.errors.inspect}")
       flash[:type] = 'error'
       if not @schedule.errors[:foreign_key].nil?
         flash[:notice] = 'El turno no se puede eliminar porque tiene registros asociados'

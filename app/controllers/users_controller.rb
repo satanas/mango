@@ -34,7 +34,15 @@ class UsersController < ApplicationController
     if @user.errors.size.zero?
       flash[:notice] = "Usuario eliminado con éxito"
     else
-      flash[:notice] = "El usuario no se ha podido eliminar"
+      logger.error("Error eliminando usuario: #{@user.errors.inspect}")
+      flash[:type] = 'error'
+      if not @user.errors[:foreign_key].nil?
+        flash[:notice] = 'El usuario no se puede eliminar porque tiene registros asociados'
+      elsif not @user.errors[:unknown].nil?
+        flash[:notice] = @user.errors[:unknown]
+      else
+        flash[:notice] = "El usuario no se ha podido eliminar"
+      end
     end
     redirect_to :users
   end

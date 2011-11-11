@@ -20,6 +20,7 @@ class IngredientsRecipesController < ApplicationController
         ingredient_recipe.save
         flash[:notice] = "Ingrediente agregado a la receta"
       else
+        logger.error("No se pudo guardar el ingrediente: #{ingredient_recipe.errors.inspect}")
         flash[:notice] = "No se pudo guardar el ingrediente"
         flash[:type] = 'error'
       end
@@ -32,13 +33,14 @@ class IngredientsRecipesController < ApplicationController
   end
 
   def destroy
-    begin
-      ingredient_recipe = IngredientRecipe.find(params[:id])
-      ingredient_recipe.destroy
-      flash[:notice] = "Ingrediente eliminado de la receta"
-    rescue Exception => ex
-      flash[:notice] = "No se pudo borrar el ingrediente de la receta"
+    @ingredient_recipe = IngredientRecipe.find params[:id]
+    @ingredient_recipe.eliminate
+    if @ingredient_recipe.errors.size.zero?
+      flash[:notice] = "Ingrediente eliminado de la receta con éxito"
+    else
+      logger.error("Error eliminando ingrediente de la receta: #{@ingredient_recipe.errors.inspect}")
       flash[:type] = 'error'
+      flash[:notice] = "No se pudo borrar el ingrediente de la receta"
     end
 
     redirect_to edit_recipe_path(params[:recipe_id])

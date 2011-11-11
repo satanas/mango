@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
     if @product.errors.size.zero?
       flash[:notice] = "Producto terminado eliminado con éxito"
     else
+      logger.error("Error eliminando producto: #{@product.errors.inspect}")
       flash[:type] = 'error'
       if not @product.errors[:foreign_key].nil?
         flash[:notice] = 'El producto terminado no se puede eliminar porque tiene registros asociados'

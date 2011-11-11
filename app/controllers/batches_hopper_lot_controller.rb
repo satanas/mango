@@ -8,6 +8,7 @@ class BatchesHopperLotController < ApplicationController
         b.save
         flash[:notice] = "Detalle agregado al batch"
       else
+        puts b.errors.inspect
         flash[:notice] = "No se pudo guardar el detalle"
         flash[:type] = 'error'
       end
@@ -19,13 +20,14 @@ class BatchesHopperLotController < ApplicationController
   end
 
   def destroy
-    begin
-      b = BatchHopperLot.find(params[:id])
-      b.destroy
-      flash[:notice] = "Detalle eliminado del batch"
-    rescue Exception => ex
-      flash[:notice] = "No se pudo borrar el detalle del batch"
+    @batch_hopper_lot = BatchHopperLot.find params[:id]
+    @batch_hopper_lot.eliminate
+    if @batch_hopper_lot.errors.size.zero?
+      flash[:notice] = "Detalle de batch eliminado con éxito"
+    else
+      logger.error("Error eliminando detalle de batch: #{@batch_hopper_lot.errors.inspect}")
       flash[:type] = 'error'
+      flash[:notice] = "No se pudo borrar el detalle de batch"
     end
 
     redirect_to edit_batche_path(params[:batch_id])

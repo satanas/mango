@@ -34,6 +34,7 @@ class IngredientsController < ApplicationController
     if @ingredient.errors.size.zero?
       flash[:notice] = "Materia prima eliminada con éxito"
     else
+      logger.error("Error eliminando ingredient: #{@ingredient.errors.inspect}")
       flash[:type] = 'error'
       if not @ingredient.errors[:foreign_key].nil?
         flash[:notice] = 'La materia prima no se puede eliminar porque tiene registros asociados'

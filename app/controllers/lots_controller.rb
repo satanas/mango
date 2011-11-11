@@ -40,6 +40,7 @@ class LotsController < ApplicationController
     if @lot.errors.size.zero?
       flash[:notice] = "Lote eliminado con éxito"
     else
+      logger.error("Error eliminando lote: #{@lot.errors.inspect}")
       flash[:type] = 'error'
       if not @lot.errors[:foreign_key].nil?
         flash[:notice] = 'El lote no se puede eliminar porque tiene registros asociados'

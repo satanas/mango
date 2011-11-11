@@ -44,6 +44,7 @@ class HoppersController < ApplicationController
     if @hopper.errors.size.zero?
       flash[:notice] = "Tolva eliminada con éxito"
     else
+      logger.error("Error eliminando tolva: #{@hopper.errors.inspect}")
       flash[:type] = 'error'
       if not @hopper.errors[:foreign_key].nil?
         flash[:notice] = 'La tolva no se puede eliminar porque tiene registros asociados'

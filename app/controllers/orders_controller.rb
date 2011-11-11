@@ -44,11 +44,19 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find params[:id]
-    if @order.destroy
+    @order.eliminate
+    if @order.errors.size.zero?
       flash[:notice] = 'Orden de producción eliminada con éxito'
     else
-      flash[:notice] = 'La orden de producción no se pudo eliminar'
+      logger.error("Error eliminando orden: #{@order.errors.inspect}")
       flash[:type] = 'error'
+      if not @order.errors[:foreign_key].nil?
+        flash[:notice] = 'La orden no se puede eliminar porque tiene registros asociados'
+      elsif not @order.errors[:unknown].nil?
+        flash[:notice] = @order.errors[:unknown]
+      else
+        flash[:notice] = "La orden no se ha podido eliminar"
+      end
     end
     redirect_to :orders
   end

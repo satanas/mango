@@ -34,6 +34,7 @@ class ClientsController < ApplicationController
     if @client.errors.size.zero?
       flash[:notice] = "Cliente eliminado con éxito"
     else
+      logger.error("Error eliminando cliente: #{@client.errors.inspect}")
       flash[:type] = 'error'
       if not @client.errors[:foreign_key].nil?
         flash[:notice] = 'El cliente no se puede eliminar porque tiene registros asociados'

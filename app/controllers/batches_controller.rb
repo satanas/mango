@@ -39,11 +39,19 @@ class BatchesController < ApplicationController
 
   def destroy
     @batch = Batch.find params[:id]
-    if @batch.eliminate
+    @batch.eliminate
+    if @batch.errors.size.zero?
       flash[:notice] = 'Batch eliminado con éxito'
     else
-      flash[:notice] = 'El batch no se pudo eliminar'
+      logger.error("Error eliminando batch: #{@batch.errors.inspect}")
       flash[:type] = 'error'
+      if not @batch.errors[:foreign_key].nil?
+        flash[:notice] = 'El batch no se puede eliminar porque tiene registros asociados'
+      elsif not @batch.errors[:unknown].nil?
+        flash[:notice] = @batch.errors[:unknown]
+      else
+        flash[:notice] = "El batch no se ha podido eliminar"
+      end
     end
     redirect_to :batches
   end
