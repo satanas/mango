@@ -31,15 +31,16 @@ class EasyModel
     data['until'] = "Hasta: #{Date.parse(end_date).strftime("%d/%m/%Y")}"
     data['results'] = []
     @orders.each do |o|
+      r_batches = Batch.get_real(o.id)
       data['results'] << {
         'order' => o.code,
         'recipe_code' => o.recipe.code,
         'recipe_name' => o.recipe.name,
         'client_code' => o.client.code,
         'client_name' => o.client.name,
-        'real_batches' => o.real_batches.to_s,
+        'real_batches' => Batch.get_real(o.id).to_s,#o.real_batches.to_s,
         'total_recipe' => "#{o.recipe.total.to_s} Kg",
-        'total_real' => "0", #"#{o.total.to_s} Kg",
+        'total_real' => "#{Batch.get_total_real(o.id).to_s} Kg", #"#{o.total.to_s} Kg",
       }
     end
     return data

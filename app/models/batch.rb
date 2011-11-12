@@ -22,4 +22,19 @@ class Batch < ActiveRecord::Base
       errors[:user_id] << "doesn't exist"
     end
   end
+
+  def self.get_real(order_id)
+    return self.where(:order_id => order_id).count
+  end
+
+  def self.get_total_real(order_id)
+    total = 0
+    batches = self.where(:order_id => order_id)
+    batches.each do |b|
+      b.batch_hopper_lot.each do |bhl|
+        total += bhl.amount
+      end
+    end
+    return total
+  end
 end
