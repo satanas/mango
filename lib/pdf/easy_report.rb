@@ -225,6 +225,17 @@ module EasyReport
       return grouping
     end
 
+    def get_totalization(element)
+      totalization = {
+        'precision' => element['precision'],
+        'label' => element['label'],
+        'border' => element['border'],
+        'align' => get_align(element['align']),
+        'style' => get_style(element['style']),
+      }
+      return totalization
+    end
+
     def get_table_cell_config(element)
       columns = []
       default_width = 0
@@ -236,6 +247,8 @@ module EasyReport
       1.upto(element['columns'].length) do |i|
         key = element['columns'][i].keys()[0]
         col = element['columns'][i][key]
+        totalize = (col.has_key?('totalize')) ? col['totalize'] : false
+        unit = (col.has_key?('unit')) ? " #{col['unit']}" : ''
 
         unless col['width'].nil?
           current_width += col['width']
@@ -247,6 +260,8 @@ module EasyReport
           'field' => key,
           'label' => col['label'],
           'width' => col['width'],
+          'totalize' => totalize,
+          'unit' => unit,
           'head' => {
             'align' => get_align(element['heading']['align']),
             'style' => get_style(element['heading']['style']),
@@ -325,7 +340,9 @@ module EasyReport
     end
 
     def set_table_body(element, config, show_head=false)
+      totals = {}
       table_data = @data[element['field']]
+      totalization = get_totalization(element['totalization'])
       grouping = get_grouping(element['grouping'])
 
       table_data.each do |row|
@@ -344,6 +361,15 @@ module EasyReport
         set_table_header(config, show_head) if check_page_break(h)
 
         config.each do |column|
+          if column['totalize']
+            if totals.has_key?(column['field'])
+              totals[column['field']] += row[column['field']].to_f
+            else
+              totals[column['field']] = row[column['field']].to_f
+            end
+          end
+
+          text = "#{row[column['field']].to_s}#{column['unit']}"
           style = column['cell']['style']
           align = column['cell']['align']
           x = GetX()
@@ -352,11 +378,40 @@ module EasyReport
           set_text_color(style['font_color'])
           set_font(style)
           Rect(x, y, column['width'], h, 'F')
-          MultiCell(column['width'], DEFAULT_LINE_HEIGHT, row[column['field']].to_s, 0, align, 0)
+          MultiCell(column['width'], DEFAULT_LINE_HEIGHT, text, 0, align, 0)
           SetXY(x + column['width'], y)
         end
         Ln(h)
       end
+      # Totalization
+      index = 0
+      label_width = 0
+      config.each_index do |i|
+        index = i
+        break if config[i]['totalize']
+        label_width += config[i]['width']
+      end
+      x = GetX()
+      y = GetY()
+      fill = set_bg_color(totalization['style']['bg_color'])
+      set_text_color(totalization['style']['font_color'])
+      set_font(totalization['style'])
+      Rect(x, y, label_width, DEFAULT_LINE_HEIGHT, 'F')
+      MultiCell(label_width, DEFAULT_LINE_HEIGHT, totalization['label'], totalization['border'], totalization['align'], fill)
+      SetXY(x + label_width, y)
+
+      index.upto(config.length - 1) do |i|
+        text = (config[i]['totalize']) ? "#{totals[config[i]['field']]}#{config[i]['unit']}" : ''
+        x = GetX()
+        y = GetY()
+        fill = set_bg_color(totalization['style']['bg_color'])
+        set_text_color(totalization['style']['font_color'])
+        set_font(totalization['style'])
+        Rect(x, y, config[i]['width'], DEFAULT_LINE_HEIGHT, 'F')
+        MultiCell(config[i]['width'], DEFAULT_LINE_HEIGHT, text, totalization['border'], config[i]['cell']['align'], fill)
+        SetXY(x + config[i]['width'], y)
+      end
+      Ln(DEFAULT_LINE_HEIGHT)
     end
 
     def check_page_break(h)

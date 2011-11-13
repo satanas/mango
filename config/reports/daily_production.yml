@@ -68,6 +68,13 @@ report:
           style:
             font_weight: B
             bg_color: [220, 220, 220]
+        totalization:
+          precision: 2
+          label: Totales
+          align: right
+          border: T
+          style:
+            font_weight: B
         columns:
           1:
            order :
@@ -104,11 +111,15 @@ report:
               label: Total Estand.
               align: right
               width: 30
+              unit: Kg
+              totalize: true
           8:
             total_real:
               label: Total Real
               align: right
               width: 30
+              unit: Kg
+              totalize: true
     3:
       breakline:
   footer:

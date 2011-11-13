@@ -23,11 +23,11 @@ class Batch < ActiveRecord::Base
     end
   end
 
-  def self.get_real(order_id)
+  def self.get_real_batches(order_id)
     return self.where(:order_id => order_id).count
   end
 
-  def self.get_total_real(order_id)
+  def self.get_real_total(order_id)
     total = 0
     batches = self.where(:order_id => order_id)
     batches.each do |b|
