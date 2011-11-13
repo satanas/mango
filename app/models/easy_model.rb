@@ -66,8 +66,11 @@ class EasyModel
 
     data['recipe'] = "#{@order.recipe.code} - #{@order.recipe.name}"
     data['product'] = "#{@order.product.code} - #{@order.product.name}"
-    data['prog_batches'] = @order.prog_batches
-    data['real_batches'] = @order.real_batches
+    data['start_date'] = Batch.where(:order_id=>@order.id).minimum('start_date').strftime("%d/%m/%Y %H:%M:%S")
+    data['end_date'] = Batch.where(:order_id=>@order.id).maximum('end_date').strftime("%d/%m/%Y %H:%M:%S")
+    data['prog_batches'] = @order.prog_batches.to_s
+    data['real_batches'] = @order.real_batches.to_s
+    data['product_total'] = "#{Batch.get_real_total(@order.id).to_s} Kg"
 
     details = {}
     total_real = 0

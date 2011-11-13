@@ -2,7 +2,7 @@ report:
   settings:
     page:
       size: Letter
-      orientation: L
+      orientation: P
       margins: 20
     style:
       font_family: 'Helvetica'
@@ -47,22 +47,106 @@ report:
   body:
     1:
       text:
-        label: "Receta: "
+        label: "Formula: "
         align: right
-        width: 20
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
     2:
       text:
         field: recipe
-        align: right
+        align: left
         width: 50
     3:
+      text:
+        label: "Prod. Term.: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    4:
+      text:
+        field: product
+        align: left
+        width: 50
+    5:
+      text:
+        label: "Inicio: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    6:
+      text:
+        field: start_date
+        align: left
+        width: 50
+    7:
+      text:
+        label: "Final: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    8:
+      text:
+        field: end_date
+        align: left
+        width: 50
+    9:
+      text:
+        label: "Batch Prog.: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    10:
+      text:
+        field: prog_batches
+        align: left
+        width: 13
+        breakline: 0
+    11:
+      text:
+        label: "Batch Real.: "
+        align: right
+        width: 25
+        breakline: 0
+        style:
+          font_weight: B
+    12:
+      text:
+        field: real_batches
+        align: left
+        width: 13
+    13:
+      text:
+        label: "Cant. Prod. Term.: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    14:
+      text:
+        field: product_total
+        align: left
+        width: 50
+    15:
+      breakline:
+    16:
       text:
         field: title
         align: center
         style:
           font_size: 12
           font_weight: B
-    4:
+    17:
       table:
         field: results
         heading:
@@ -70,6 +154,13 @@ report:
           style:
             font_weight: B
             bg_color: [220, 220, 220]
+        totalization:
+          precision: 2
+          label: Totales
+          align: right
+          border: T
+          style:
+            font_weight: B
         columns:
           1:
            code:
@@ -80,7 +171,7 @@ report:
             ingredient:
               label: Materia Prima
               align: left
-              width: 50
+              width: 45
           3:
             lot:
               label: Lote
@@ -88,25 +179,31 @@ report:
               width: 20
           4:
            std_kg:
-              label: Estand. Kg
+              label: Estandar
               align: right
               width: 30
+              unit: Kg
+              totalize: true
           5:
             real_kg:
-              label: Real Kg
+              label: Real
               align: right
+              unit: Kg
               width: 30
+              totalize: true
           6:
             var_kg:
-              label: Var Kg
+              label: Var
               align: right
-              width: 20
+              unit: Kg
+              width: 25
+              totalize: true
           7:
             hopper:
               label: Tolva
               align: right
               width: 15
-    5:
+    18:
       breakline:
   footer:
     1:
