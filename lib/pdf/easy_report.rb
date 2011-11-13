@@ -139,7 +139,8 @@ module EasyReport
     def render_table(element)
       config, show_head = get_table_cell_config(element)
       set_table_header(config, show_head)
-      set_table_body(element, config, show_head)
+      totals = set_table_body(element, config, show_head)
+      set_table_totalization(element, config, totals)
     end
 
     def render_breakline
@@ -226,13 +227,16 @@ module EasyReport
     end
 
     def get_totalization(element)
-      totalization = {
-        'precision' => element['precision'],
-        'label' => element['label'],
-        'border' => element['border'],
-        'align' => get_align(element['align']),
-        'style' => get_style(element['style']),
-      }
+      totalization = nil
+      unless element.nil?
+        totalization = {
+          'precision' => (element.has_key?('precision')) ? 2 : element['precision'],
+          'label' => element['label'],
+          'border' => element['border'],
+          'align' => get_align(element['align']),
+          'style' => get_style(element['style']),
+        }
+      end
       return totalization
     end
 
@@ -342,7 +346,6 @@ module EasyReport
     def set_table_body(element, config, show_head=false)
       totals = {}
       table_data = @data[element['field']]
-      totalization = get_totalization(element['totalization'])
       grouping = get_grouping(element['grouping'])
 
       table_data.each do |row|
@@ -383,9 +386,15 @@ module EasyReport
         end
         Ln(h)
       end
-      # Totalization
+      return totals
+    end
+
+    def set_table_totalization(element, config, totals)
       index = 0
       label_width = 0
+      totalization = get_totalization(element['totalization'])
+      return if totalization.nil?
+
       config.each_index do |i|
         index = i
         break if config[i]['totalize']
