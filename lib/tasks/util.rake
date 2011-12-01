@@ -94,7 +94,7 @@ namespace :sys do
     Rake::Task['db:fixtures:users'].invoke
     Rake::Task['db:fixtures:schedules'].invoke
     Rake::Task['db:fixtures:products'].invoke
-    Rake::Task['db:fixtures:recipes'].invoke
+    #Rake::Task['db:fixtures:recipes'].invoke
     Rake::Task['db:fixtures:lots'].invoke
   end
 end

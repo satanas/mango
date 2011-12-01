@@ -8,12 +8,13 @@ class Recipe < ActiveRecord::Base
   #validates_associated :ingredient_recipe
 
   def add_ingredient(args)
+    logger.debug("Agregando ingrediente: #{args.inspect}")
     overwrite = args[:overwrite]
     icode = args[:ingredient].split(' ')[0]
-    iname = args[:ingredient][(icode.length + 1)..args[:ingredient].length]
+    iname = args[:ingredient][(icode.length + 1)..args[:ingredient].length].strip()
     ingredient = Ingredient.find_by_code(icode)
     if ingredient.nil?
-      logger.info("  - El ingrediente no existe. Se crea")
+      logger.debug("  - El ingrediente no existe. Se crea")
       ingredient = Ingredient.new :code => icode, :name => iname
       ingredient.save
     end
@@ -31,6 +32,7 @@ class Recipe < ActiveRecord::Base
       item.percentage = args[:percentage]
       item.save if overwrite
     end
+    logger.debug("Ingrediente agregado: #{item.inspect}")
   end
 
   def import(filepath, overwrite)
@@ -53,13 +55,13 @@ class Recipe < ActiveRecord::Base
           @recipe = Recipe.find_by_code(header[0])
           if @recipe.nil?
             @recipe = Recipe.new :code=>header[0], :name=>header[1], :version=>header[3].strip()
-            logger.info("Creando encabezado de receta #{@recipe.inspect}")
+            logger.debug("Creando encabezado de receta #{@recipe.inspect}")
           end
           fd.gets()
           while (true)
             item = fd.gets().split(/\t/)
             break if item[0].strip() == '-----------'
-            logger.info("  * Ingrediente: #{item.inspect}")
+            logger.debug("  * Ingrediente: #{item.inspect}")
             amount = convert_to_float(item[0])
             percentage = convert_to_float(item[3])
             @recipe.add_ingredient(
@@ -82,11 +84,66 @@ class Recipe < ActiveRecord::Base
     return true
   end
 
+  def import_new(filepath, overwrite)
+    begin
+      transaction do
+        fd = File.open(filepath, 'r')
+        continue = fd.gets().split(';')
+        while (continue)
+          header = continue
+          return false unless validate_field(header[0], 'C')
+          version = header[1]
+          code = header[2]
+          name = header[3].strip()
+          total = header[5]
+          @recipe = Recipe.find_by_code(header[2])
+          if @recipe.nil?
+            @recipe = Recipe.new :code=>header[2], :name=>header[3].strip(), :version=>header[1]
+            logger.debug("Creando encabezado de receta #{@recipe.inspect}")
+          end
+
+          while (true)
+            item = fd.gets()
+            break if item.nil?
+            item = item.split(';')
+            logger.debug("  * Ingrediente: #{item.inspect}")
+            break if item.length == 1
+            return false unless validate_field(item[0], 'D')
+            @recipe.add_ingredient(
+              :amount=>convert_to_float(item[3]),
+              :priority=>item[1].to_i,
+              :percentage=>0,
+              :ingredient=>item[2],
+              :overwrite=>overwrite)
+          end
+          @recipe.total = convert_to_float(total)
+          @recipe.save
+          continue = fd.gets()
+          break if continue.nil?
+          continue = continue.split(';')
+        end
+      end
+    rescue Exception => ex
+      errors.add(:unknown, ex.message)
+      return false
+    end
+    return true
+  end
+
   private
 
   def validate_field(field, value)
     field.strip!()
     if field != value
+      errors.add(:upload_file, "Archivo inválido")
+      return false
+    end
+    return true
+  end
+
+  def validate_starts_with(field, value)
+    field.strip!()
+    unless field.start_with?(value)
       errors.add(:upload_file, "Archivo inválido")
       return false
     end

@@ -62,12 +62,13 @@ class RecipesController < ApplicationController
       tmpfile.close()
 
       @recipe = Recipe.new
-      if @recipe.import(filepath, overwrite)
+      if @recipe.import_new(filepath, overwrite)
         flash[:notice] = "Receta importada con éxito"
         redirect_to :action => 'index'
       else
         flash[:type] = 'error'
         flash[:notice] = "Error importando receta"
+        puts "#{@recipe.errors.inspect}"
         if not @recipe.errors[:upload_file].nil?
           flash[:notice] += ". #{@recipe.errors[:upload_file]}"
         elsif not @recipe.errors[:syntax].nil?
@@ -75,7 +76,7 @@ class RecipesController < ApplicationController
         elsif not @recipe.errors[:unknown].nil?
           flash[:notice] += ". #{@recipe.errors[:unknown]}"
         end
-        logger.error(flash[:notice])
+        logger.error(@recipe.errors.inspect)
         redirect_to :action => 'import'
       end
     end
