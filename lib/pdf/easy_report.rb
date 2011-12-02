@@ -265,6 +265,7 @@ module EasyReport
           'label' => col['label'],
           'width' => col['width'],
           'totalize' => totalize,
+          'precision' => col['precision'],
           'unit' => unit,
           'head' => {
             'align' => get_align(element['heading']['align']),
@@ -373,10 +374,9 @@ module EasyReport
             end
           end
 
-          unless totalization.nil?
-            field_text = round(row[column['field']].to_f, {:precision => totalization['precision'].to_i})
-          else
-            field_text = row[column['field']]
+          field_text = row[column['field']]
+          if column['precision']
+            field_text = number_with_precision(row[column['field']].to_f, column['precision'].to_i)
           end
 
           text = "#{field_text}#{column['unit']}"
@@ -417,7 +417,11 @@ module EasyReport
       SetXY(x + label_width, y)
 
       index.upto(config.length - 1) do |i|
-        text = (config[i]['totalize']) ? "#{totals[config[i]['field']]}#{config[i]['unit']}" : ''
+        field_text = totals[config[i]['field']]
+        if totalization['precision']
+          field_text = number_with_precision(totals[config[i]['field']].to_f, totalization['precision'].to_i)
+        end
+        text = (config[i]['totalize']) ? "#{field_text}#{config[i]['unit']}" : ''
         x = GetX()
         y = GetY()
         fill = set_bg_color(totalization['style']['bg_color'])
@@ -505,18 +509,18 @@ module EasyReport
 
     def number_with_delimiter(number, delimiter=",", separator=".")
       begin
-         parts = number.to_s.split('.')
-         parts[0].gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{delimiter}")
-         parts.join separator
+        parts = number.to_s.split('.')
+        parts[0].gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{delimiter}")
+        parts.join separator
       rescue
         number
       end
      end
 
     def number_with_precision(number, precision=3)
-     "%01.#{precision}f" % number
+      "%01.#{precision}f" % number
     rescue
-     number
+      number
     end
 
   end # Report

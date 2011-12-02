@@ -197,6 +197,7 @@ report:
               width: 30
               unit: Kg
               totalize: true
+              precision: 2
           5:
             real_kg:
               label: Real
@@ -204,6 +205,7 @@ report:
               unit: Kg
               width: 30
               totalize: true
+              precision: 2
           6:
             var_kg:
               label: Var
@@ -211,6 +213,7 @@ report:
               unit: Kg
               width: 25
               totalize: true
+              precision: 2
           7:
             hopper:
               label: Tolva
