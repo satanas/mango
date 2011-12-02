@@ -64,12 +64,13 @@ class EasyModel
       }
     end
 
+    data['order'] = @order.code
     data['recipe'] = "#{@order.recipe.code} - #{@order.recipe.name}"
     data['product'] = "#{@order.product.code} - #{@order.product.name}"
     data['start_date'] = Batch.where(:order_id=>@order.id).minimum('start_date').strftime("%d/%m/%Y %H:%M:%S")
     data['end_date'] = Batch.where(:order_id=>@order.id).maximum('end_date').strftime("%d/%m/%Y %H:%M:%S")
     data['prog_batches'] = @order.prog_batches.to_s
-    data['real_batches'] = @order.real_batches.to_s
+    data['real_batches'] = Batch.where(:order_id => @order.id).count.to_s #We are not using this field => @order.real_batches.to_s
     data['product_total'] = "#{Batch.get_real_total(@order.id).to_s} Kg"
 
     details = {}
@@ -91,8 +92,9 @@ class EasyModel
           }
         else
           details[key]['real_kg'] += bhl.amount.to_f
-          details[key]['std_kg'] += ingredients[key]['amount']
+          #details[key]['std_kg'] += ingredients[key]['amount']
         end
+        details[key]['std_kg'] = ingredients[key]['amount'] * @order.prog_batches
         total_real += details[key]['real_kg']
         details[key]['var_kg'] = details[key]['real_kg'] - details[key]['std_kg']
       end

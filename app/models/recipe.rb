@@ -110,13 +110,13 @@ class Recipe < ActiveRecord::Base
             break if item.length == 1
             return false unless validate_field(item[0], 'D')
             @recipe.add_ingredient(
-              :amount=>convert_to_float(item[3]),
+              :amount=>item[3].to_f,
               :priority=>item[1].to_i,
               :percentage=>0,
               :ingredient=>item[2],
               :overwrite=>overwrite)
           end
-          @recipe.total = convert_to_float(total)
+          @recipe.total = total.to_f
           @recipe.save
           continue = fd.gets()
           break if continue.nil?

@@ -47,7 +47,7 @@ report:
   body:
     1:
       text:
-        label: "Formula: "
+        label: "Orden: "
         align: right
         width: 120
         breakline: 0
@@ -55,12 +55,12 @@ report:
           font_weight: B
     2:
       text:
-        field: recipe
+        field: order
         align: left
         width: 50
     3:
       text:
-        label: "Prod. Term.: "
+        label: "Formula: "
         align: right
         width: 120
         breakline: 0
@@ -68,12 +68,12 @@ report:
           font_weight: B
     4:
       text:
-        field: product
+        field: recipe
         align: left
         width: 50
     5:
       text:
-        label: "Inicio: "
+        label: "Prod. Term.: "
         align: right
         width: 120
         breakline: 0
@@ -81,12 +81,12 @@ report:
           font_weight: B
     6:
       text:
-        field: start_date
+        field: product
         align: left
         width: 50
     7:
       text:
-        label: "Final: "
+        label: "Inicio: "
         align: right
         width: 120
         breakline: 0
@@ -94,12 +94,12 @@ report:
           font_weight: B
     8:
       text:
-        field: end_date
+        field: start_date
         align: left
         width: 50
     9:
       text:
-        label: "Batch Prog.: "
+        label: "Final: "
         align: right
         width: 120
         breakline: 0
@@ -107,11 +107,24 @@ report:
           font_weight: B
     10:
       text:
+        field: end_date
+        align: left
+        width: 50
+    11:
+      text:
+        label: "Batch Prog.: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    12:
+      text:
         field: prog_batches
         align: left
         width: 13
         breakline: 0
-    11:
+    13:
       text:
         label: "Batch Real.: "
         align: right
@@ -119,12 +132,12 @@ report:
         breakline: 0
         style:
           font_weight: B
-    12:
+    14:
       text:
         field: real_batches
         align: left
         width: 13
-    13:
+    15:
       text:
         label: "Cant. Prod. Term.: "
         align: right
@@ -132,21 +145,21 @@ report:
         breakline: 0
         style:
           font_weight: B
-    14:
+    16:
       text:
         field: product_total
         align: left
         width: 50
-    15:
+    17:
       breakline:
-    16:
+    18:
       text:
         field: title
         align: center
         style:
           font_size: 12
           font_weight: B
-    17:
+    19:
       table:
         field: results
         heading:
@@ -203,7 +216,7 @@ report:
               label: Tolva
               align: right
               width: 15
-    18:
+    20:
       breakline:
   footer:
     1:

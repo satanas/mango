@@ -232,7 +232,7 @@ module EasyReport
         totalization = {
           'precision' => (element.has_key?('precision')) ? 2 : element['precision'],
           'label' => element['label'],
-          'border' => element['border'],
+          'border' => get_border(element['border']),
           'align' => get_align(element['align']),
           'style' => get_style(element['style']),
         }
@@ -347,6 +347,7 @@ module EasyReport
       totals = {}
       table_data = @data[element['field']]
       grouping = get_grouping(element['grouping'])
+      totalization = get_totalization(element['totalization'])
 
       table_data.each do |row|
         unless grouping.nil?
@@ -372,7 +373,13 @@ module EasyReport
             end
           end
 
-          text = "#{row[column['field']].to_s}#{column['unit']}"
+          unless totalization.nil?
+            field_text = round(row[column['field']].to_f, {:precision => totalization['precision'].to_i})
+          else
+            field_text = row[column['field']]
+          end
+
+          text = "#{field_text}#{column['unit']}"
           style = column['cell']['style']
           align = column['cell']['align']
           x = GetX()
@@ -479,6 +486,37 @@ module EasyReport
         end
       end
       nl
+    end
+
+    def round(number, options = {})
+      options = options.stringify_keys
+      precision = options["precision"] || 2
+      unit = options["unit"] || ""
+      separator = precision > 0 ? options["separator"] || "," : ""
+      delimiter = options["delimiter"] || "."
+
+      begin
+        parts = number_with_precision(number, precision).split('.')
+        unit + number_with_delimiter(parts[0], delimiter) + separator + parts[1].to_s
+      rescue
+        number
+      end
+    end
+
+    def number_with_delimiter(number, delimiter=",", separator=".")
+      begin
+         parts = number.to_s.split('.')
+         parts[0].gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{delimiter}")
+         parts.join separator
+      rescue
+        number
+      end
+     end
+
+    def number_with_precision(number, precision=3)
+     "%01.#{precision}f" % number
+    rescue
+     number
     end
 
   end # Report

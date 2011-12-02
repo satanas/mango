@@ -88,13 +88,16 @@ end
 namespace :sys do
   desc 'Initialize system at first time'
   task :init => :environment do
+    RAILS_ENV = ENV['RAILS_ENV'] || 'development'
     Rake::Task['db:drop'].invoke
     Rake::Task['db:create'].invoke
     Rake::Task['db:migrate'].invoke
     Rake::Task['db:fixtures:users'].invoke
     Rake::Task['db:fixtures:schedules'].invoke
-    Rake::Task['db:fixtures:products'].invoke
-    #Rake::Task['db:fixtures:recipes'].invoke
-    Rake::Task['db:fixtures:lots'].invoke
+    if RAILS_ENV == 'development'
+      Rake::Task['db:fixtures:products'].invoke
+      #Rake::Task['db:fixtures:recipes'].invoke
+      #Rake::Task['db:fixtures:lots'].invoke
+    end
   end
 end
