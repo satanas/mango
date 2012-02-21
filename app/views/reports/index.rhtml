@@ -30,5 +30,16 @@
     </div>
   </div>
 
+  <div class="report-content">
+    <h2 onclick="toggle_report_details('ingredient_variation')">Variación de Materia Prima</h2>
+    <div id="ingredient_variation" class="report-details">
+      <%= form_for :report, :url=>ingredient_variation_report_path do |f| %>
+        <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
+        <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
+        <%= submit_tag 'Generar Reporte' %>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 <div class="clearfix"></div>

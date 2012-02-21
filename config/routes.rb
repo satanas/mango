@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   # Reports
   match 'reports/index' => "reports#index", :via => :get, :as => "reports"
   match 'reports/recipes' => "reports#recipes", :via => :get, :as => "recipes_report"
+  match 'reports/ingredient_variation' => "reports#ingredient_variation", :via => :get, :as => "ingredient_variation_report"
   match 'reports/daily_production' => "reports#daily_production", :via => :get, :as => "daily_production_report"
   match 'reports/order_details' => "reports#order_details", :via => :get, :as => "order_details_report"
   match 'batches/:batch_id/batches_hopper_lot' => "batches_hopper_lot#create", :via => :post, :as => "batches_hopper_lot"

@@ -109,6 +109,45 @@ class EasyModel
     return data
   end
 
+  def self.ingredients_variation(start_date, end_date)
+    results = {}
+    batches = BatchHopperLot.find :all, :include=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}, :batch=>{:order=>{:recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}}}, :conditions=>["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
+
+    batches.each do |b|
+      real_kg = b.amount.to_f
+      std_kg = b.batch.order.recipe.ingredient_recipe[0].amount.to_f
+      if results.has_key?(b.hopper_lot.lot.code)
+        results['real_kg'] += real_kg
+        results['std_kg'] += std_kg
+        results['var_kg'] = results['real_kg'] - results['std_kg']
+        results['var_perc'] = results['var_kg'] * 100 / results['std_kg']
+      else
+        var_kg = real_kg - std_kg
+        var_perc = var_kg * 100 / std_kg
+        results[b.hopper_lot.lot.code] = {
+          'lot' => b.hopper_lot.lot.code,
+          'ingredient_code' => b.hopper_lot.lot.ingredient.code,
+          'ingredient_name' => b.hopper_lot.lot.ingredient.name,
+          'real_kg' => real_kg,
+          'std_kg' => std_kg,
+          'var_kg' => var_kg,
+          'var_perc' => var_perc
+        }
+      end
+    end
+
+    temp = []
+    results.each do |key, item|
+      temp << item
+    end
+    data = {}
+    data['title'] = 'Variacion de Materia Prima'
+    data['start_date'] = start_date
+    data['end_date'] = end_date
+    data['results'] = temp
+    return data
+  end
+
   #==== Utilities ====
   def self.parse_date(param, name)
     day = param["#{name}(1i)"].to_i

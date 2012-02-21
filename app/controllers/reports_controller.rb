@@ -37,4 +37,19 @@ class ReportsController < ApplicationController
       send_data report.render, :filename => "detalle_orden_produccion.pdf", :type => "application/pdf"
     end
   end
+
+  def ingredient_variation
+    start_date = EasyModel.parse_date(params[:report], 'start')
+    end_date = EasyModel.parse_date(params[:report], 'end')
+    data = EasyModel.ingredients_variation(start_date, end_date)
+    if data.nil?
+      flash[:notice] = 'No hay registros para generar el reporte'
+      flash[:type] = 'warn'
+      redirect_to :action => 'index'
+    else
+      puts data.inspect
+      report = EasyReport::Report.new data, 'ingredient_variation.yml'
+      send_data report.render, :filename => "variacion_materia_prima.pdf", :type => "application/pdf"
+    end
+  end
 end

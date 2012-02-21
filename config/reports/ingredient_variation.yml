@@ -1,0 +1,140 @@
+report:
+  settings:
+    page:
+      size: Letter
+      orientation: P
+      margins: 20
+    style:
+      font_family: 'Helvetica'
+      font_size: 10
+      font_color: [0, 0, 0]
+  header:
+    1:
+      text:
+        label: INVERSIONES PORCINAS C.A.
+        margin: 30
+        align: left
+        style:
+          font_size: 11
+          font_weight: B
+    2:
+      text:
+        label: "RIF: 0-00000000-0"
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    3:
+      image:
+        filename: default-report-logo.png
+        width: 20
+        height: 20
+        x: 20
+        y: 12
+    4:
+      text:
+        label: Yaritagua - Estado Yaracuy
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    5:
+      breakline:
+    6:
+      pagenum:
+        pattern: "Pag. <PAGE>"
+        align: right
+  body:
+    1:
+      text:
+        label: "Desde: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    2:
+      text:
+        field: start_date
+        align: left
+        width: 50
+    3:
+      text:
+        label: "Hasta: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    4:
+      text:
+        field: end_date
+        align: left
+        width: 50
+    5:
+      breakline:
+    6:
+      text:
+        field: title
+        align: center
+        style:
+          font_size: 12
+          font_weight: B
+    7:
+      table:
+        field: results
+        heading:
+          align: left
+          style:
+            font_weight: B
+            bg_color: [220, 220, 220]
+        columns:
+          1:
+           lot:
+              label: Lote
+              align: left
+              width: 20
+          2:
+            ingredient_code:
+              label: Codigo
+              align: left
+              width: 20
+          3:
+            ingredient_name:
+              label: Materia Prima
+              align: left
+              width: 45
+          4:
+           real_kg:
+              label: Cant. Real
+              align: right
+              width: 30
+              unit: Kg
+          5:
+            std_kg:
+              label: Cant. Est.
+              align: right
+              unit: Kg
+              width: 30
+          6:
+            var_kg:
+              label: Var Kg
+              align: right
+              unit: Kg
+              width: 25
+          7:
+            var_perc:
+              label: Var %
+              align: right
+              unit: %
+              width: 25
+    8:
+      breakline:
+  footer:
+    1:
+      text:
+        label: Reporte generado con Mango v1.0 (Copyleft) 2011
+        align: center
+        style:
+          font_size: 8
+          font_color: [80, 80, 80]
