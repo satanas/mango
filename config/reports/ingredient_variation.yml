@@ -3,7 +3,7 @@ report:
     page:
       size: Letter
       orientation: P
-      margins: 20
+      margins: 15
     style:
       font_family: 'Helvetica'
       font_size: 10
@@ -103,31 +103,35 @@ report:
             ingredient_name:
               label: Materia Prima
               align: left
-              width: 45
+              width: 40
           4:
            real_kg:
               label: Cant. Real
               align: right
-              width: 30
+              width: 27
               unit: Kg
+              precision: 2
           5:
             std_kg:
               label: Cant. Est.
               align: right
               unit: Kg
-              width: 30
+              width: 27
+              precision: 2
           6:
             var_kg:
               label: Var Kg
               align: right
               unit: Kg
-              width: 25
+              width: 27
+              precision: 2
           7:
             var_perc:
               label: Var %
               align: right
               unit: %
-              width: 25
+              width: 20
+              precision: 2
     8:
       breakline:
   footer:
