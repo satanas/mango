@@ -38,6 +38,19 @@ class ReportsController < ApplicationController
     end
   end
 
+  def batch_details
+    data = EasyModel.batch_details(params[:report][:order], params[:report][:batch])
+    puts data.inspect
+    if data.nil?
+      flash[:notice] = 'No hay registros para generar el reporte'
+      flash[:type] = 'warn'
+      redirect_to :action => 'index'
+    else
+      report = EasyReport::Report.new data, 'batch_details.yml'
+      send_data report.render, :filename => "consumo_por_batch.pdf", :type => "application/pdf"
+    end
+  end
+
   def ingredient_variation
     start_date = EasyModel.parse_date(params[:report], 'start')
     end_date = EasyModel.parse_date(params[:report], 'end')

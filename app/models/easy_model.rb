@@ -148,6 +148,45 @@ class EasyModel
     return data
   end
 
+  def self.batch_details(order_code, batch_number)
+    data = {}
+    results = []
+    batches = BatchHopperLot.find :all, :include=>{:batch=>{:order=>{:recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}}, :hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}, :conditions=>["batches.number = '#{batch_number}' AND orders.code = '#{order_code}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
+
+    batches.each do |b|
+      real_kg = b.amount.to_f
+      std_kg = -1
+      b.batch.order.recipe.ingredient_recipe.each do |i|
+        if i.ingredient.id == b.hopper_lot.lot.ingredient.id
+          std_kg = i.amount.to_f
+          break
+        end
+      end
+      var_kg = real_kg - std_kg
+      var_perc = var_kg * 100 / std_kg
+      results << {
+        'code' => b.hopper_lot.lot.ingredient.code,
+        'ingredient' => b.hopper_lot.lot.ingredient.name,
+        'real_kg' => real_kg,
+        'std_kg' => std_kg,
+        'var_kg' => var_kg,
+        'var_perc' => var_perc,
+        'hopper' => b.hopper_lot.hopper.number,
+        'lot' => b.hopper_lot.lot.code,
+      }
+      data['recipe'] = "#{b.batch.order.recipe.code} - #{b.batch.order.recipe.name}"
+    end
+
+    order = Order.find_by_code(order_code)
+    data['order'] = order_code
+    data['batch'] = batch_number
+    data['start_date'] = Batch.where(:order_id=>order.id).minimum('start_date').strftime("%d/%m/%Y %H:%M:%S")
+    data['end_date'] = Batch.where(:order_id=>order.id).maximum('end_date').strftime("%d/%m/%Y %H:%M:%S")
+    data['title'] = 'Consumo por Bache'
+    data['results'] = results
+    return data
+  end
+
   #==== Utilities ====
   def self.parse_date(param, name)
     day = param["#{name}(1i)"].to_i

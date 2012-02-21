@@ -1,14 +1,5 @@
 <div class="yui3-u-1">
 
-  <div class="report-content" id="recipes_report_title">
-    <h2 onclick="toggle_report_details('recipes_report_details')">Recetas</h2>
-    <div id="recipes_report_details" class="report-details">
-      <%= form_for :report, :url=>recipes_report_path do |f| %>
-        <%= submit_tag 'Generar Reporte' %>
-      <% end %>
-    </div>
-  </div>
-
   <div class="report-content">
     <h2 onclick="toggle_report_details('daily_production')">Producción Diaria por Fábrica</h2>
     <div id="daily_production" class="report-details">
@@ -25,6 +16,17 @@
     <div id="order_details" class="report-details">
       <%= form_for :report, :url=>order_details_report_path do |f| %>
         <%= f.label :order, "Nro. Orden: ", :class=>'small' %> <%= f.text_field :order, :size=>15 %><br/><br/><br/>
+        <%= submit_tag 'Generar Reporte' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="report-content">
+    <h2 onclick="toggle_report_details('batch_details')">Detalles de Bache</h2>
+    <div id="batch_details" class="report-details">
+      <%= form_for :report, :url=>batch_details_report_path do |f| %>
+        <%= f.label :order, "Nro. Orden: ", :class=>'small' %> <%= f.text_field :order, :size=>15 %><br/>
+        <%= f.label :batch, "Nro. Bache: ", :class=>'small' %> <%= f.text_field :batch, :size=>15 %><br/><br/><br/>
         <%= submit_tag 'Generar Reporte' %>
       <% end %>
     </div>
