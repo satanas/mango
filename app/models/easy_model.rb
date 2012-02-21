@@ -115,7 +115,14 @@ class EasyModel
 
     batches.each do |b|
       real_kg = b.amount.to_f
-      std_kg = b.batch.order.recipe.ingredient_recipe[0].amount.to_f
+      std_kg = -1
+      b.batch.order.recipe.ingredient_recipe.each do |i|
+        if i.ingredient.id == b.hopper_lot.lot.ingredient.id
+          std_kg = i.amount.to_f
+          break
+        end
+      end
+
       if results.has_key?(b.hopper_lot.lot.code)
         results['real_kg'] += real_kg
         results['std_kg'] += std_kg
