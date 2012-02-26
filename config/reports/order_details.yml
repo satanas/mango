@@ -2,7 +2,7 @@ report:
   settings:
     page:
       size: Letter
-      orientation: P
+      orientation: L
       margins: 20
     style:
       font_family: 'Helvetica'
@@ -154,7 +154,7 @@ report:
       breakline:
     18:
       text:
-        field: title
+        label: Detalle Orden de Produccion
         align: center
         style:
           font_size: 12
@@ -184,7 +184,7 @@ report:
             ingredient:
               label: Materia Prima
               align: left
-              width: 45
+              width: 50
           3:
             lot:
               label: Lote
@@ -194,7 +194,7 @@ report:
            std_kg:
               label: Estandar
               align: right
-              width: 30
+              width: 35
               unit: Kg
               totalize: true
               precision: 2
@@ -203,18 +203,25 @@ report:
               label: Real
               align: right
               unit: Kg
-              width: 30
+              width: 35
               totalize: true
               precision: 2
           6:
             var_kg:
-              label: Var
+              label: Var Kg
               align: right
               unit: Kg
-              width: 25
+              width: 30
               totalize: true
               precision: 2
           7:
+            var_perc:
+              label: Var %
+              align: right
+              unit: %
+              width: 30
+              precision: 2
+          8:
             hopper:
               label: Tolva
               align: right

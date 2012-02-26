@@ -114,7 +114,7 @@ report:
       breakline:
     12:
       text:
-        field: title
+        label: Consumo por Bache
         align: center
         style:
           font_size: 12
