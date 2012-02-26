@@ -1,0 +1,170 @@
+report:
+  settings:
+    page:
+      size: Letter
+      orientation: L
+      margins: 10
+    style:
+      font_family: 'Helvetica'
+      font_size: 10
+      font_color: [0, 0, 0]
+  header:
+    1:
+      text:
+        label: INVERSIONES PORCINAS C.A.
+        margin: 30
+        align: left
+        style:
+          font_size: 11
+          font_weight: B
+    2:
+      text:
+        label: "RIF: 0-00000000-0"
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    3:
+      image:
+        filename: default-report-logo.png
+        width: 20
+        height: 20
+        x: 20
+        y: 12
+    4:
+      text:
+        label: Yaritagua - Estado Yaracuy
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    5:
+      breakline:
+    6:
+      text:
+        label: "Fecha Desde: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    7:
+      text:
+        field: since
+        align: left
+        width: 50
+    8:
+      text:
+        label: "Fecha Hasta: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    9:
+      text:
+        field: until
+        align: left
+        width: 50
+    10:
+      pagenum:
+        pattern: "Pag. <PAGE>"
+        align: right
+  body:
+    1:
+      text:
+        label: Duracion de Orden de Produccion
+        align: center
+        style:
+          font_size: 12
+          font_weight: B
+    2:
+      table:
+        field: results
+        heading:
+          align: left
+          style:
+            font_weight: B
+            bg_color: [220, 220, 220]
+        totalization:
+          precision: 2
+          label: Totales
+          align: right
+          border: T
+          style:
+            font_weight: B
+        columns:
+          1:
+           order:
+              label: Orden
+              align: left
+              width: 20
+          2:
+            recipe_code:
+              label: Receta
+              align: left
+              width: 20
+          3:
+            recipe_name:
+              label: Nombre
+              align: left
+              width: 50
+          4:
+            tons_per_hour:
+              label: Ton/Hrs
+              align: center
+              width: 20
+              precision: 2
+          5:
+            min_per_batch:
+              label: Min/Batch
+              align: center
+              width: 20
+              precision: 2
+          6:
+            duration:
+              label: Min
+              align: center
+              width: 15
+              precision: 2
+          7:
+            batches:
+              label: Batch
+              align: center
+              width: 15
+          8:
+            start_date:
+              label: Inicio
+              align: right
+              width: 25
+          9:
+            end_date:
+              label: Fin
+              align: right
+              width: 25
+          10:
+            total_real:
+              label: Total Kg
+              align: right
+              width: 25
+              unit: Kg
+              precision: 2
+              totalize: true
+          11:
+            total_std:
+              label: Total Std
+              align: right
+              width: 25
+              unit: Kg
+              precision: 2
+              totalize: true
+    3:
+      breakline:
+  footer:
+    1:
+      text:
+        label: Reporte generado con Mango v1.0 (Copyleft) 2011
+        align: center
+        style:
+          font_size: 8
+          font_color: [80, 80, 80]

@@ -60,9 +60,23 @@ class ReportsController < ApplicationController
       flash[:type] = 'warn'
       redirect_to :action => 'index'
     else
-      puts data.inspect
       report = EasyReport::Report.new data, 'ingredient_variation.yml'
       send_data report.render, :filename => "variacion_materia_prima.pdf", :type => "application/pdf"
+    end
+  end
+
+  def order_duration
+    start_date = EasyModel.parse_date(params[:report], 'start')
+    end_date = EasyModel.parse_date(params[:report], 'end')
+    data = EasyModel.order_duration(start_date, end_date)
+    if data.nil?
+      flash[:notice] = 'No hay registros para generar el reporte'
+      flash[:type] = 'warn'
+      redirect_to :action => 'index'
+    else
+      puts data.inspect
+      report = EasyReport::Report.new data, 'order_duration.yml'
+      send_data report.render, :filename => "duracion_de_orden_produccion.pdf", :type => "application/pdf"
     end
   end
 end
