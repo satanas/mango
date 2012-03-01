@@ -55,7 +55,7 @@ report:
   body:
     1:
       text:
-        field: title
+        label: Reporte de Produccion Diaria por Fabrica
         align: center
         style:
           font_size: 12

@@ -2,8 +2,8 @@ report:
   settings:
     page:
       size: Letter
-      orientation: p
-      margins: 15
+      orientation: L
+      margins: 10
     style:
       font_family: 'Helvetica'
       font_size: 10
@@ -41,85 +41,44 @@ report:
     5:
       breakline:
     6:
+      text:
+        label: "Fecha Desde: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    7:
+      text:
+        field: since
+        align: left
+        width: 50
+    8:
+      text:
+        label: "Fecha Hasta: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    9:
+      text:
+        field: until
+        align: left
+        width: 50
+    10:
       pagenum:
         pattern: "Pag. <PAGE>"
         align: right
   body:
     1:
       text:
-        label: "Receta: "
-        align: right
-        width: 120
-        breakline: 0
-        style:
-          font_weight: B
-    2:
-      text:
-        field: recipe
-        align: left
-        width: 50
-    3:
-      text:
-        label: "Orden: "
-        align: right
-        width: 120
-        breakline: 0
-        style:
-          font_weight: B
-    4:
-      text:
-        field: order
-        align: left
-        width: 50
-    5:
-      text:
-        label: "Num. Batch: "
-        align: right
-        width: 120
-        breakline: 0
-        style:
-          font_weight: B
-    6:
-      text:
-        field: batch
-        align: left
-        width: 50
-    7:
-      text:
-        label: "Inicio: "
-        align: right
-        width: 120
-        breakline: 0
-        style:
-          font_weight: B
-    8:
-      text:
-        field: start_date
-        align: left
-        width: 50
-    9:
-      text:
-        label: "Final: "
-        align: right
-        width: 120
-        breakline: 0
-        style:
-          font_weight: B
-    10:
-      text:
-        field: end_date
-        align: left
-        width: 50
-    11:
-      breakline:
-    12:
-      text:
-        label: Consumo por Bache
+        label: Duracion de Orden de Produccion
         align: center
         style:
           font_size: 12
           font_weight: B
-    13:
+    2:
       table:
         field: results
         heading:
@@ -136,50 +95,70 @@ report:
             font_weight: B
         columns:
           1:
-           code:
-              label: Codigo
+           order:
+              label: Orden
               align: left
               width: 20
           2:
-            ingredient:
-              label: Materia Prima
+            recipe_code:
+              label: Receta
               align: left
-              width: 45
+              width: 20
           3:
-            std_kg:
-              label: Cant. Est.
-              align: right
-              width: 30
-              unit: Kg
-              totalize: true
-              precision: 2
+            recipe_name:
+              label: Nombre
+              align: left
+              width: 50
           4:
-            real_kg:
-              label: Cant. Real
-              align: right
-              unit: Kg
-              width: 30
-              totalize: true
+            tons_per_hour:
+              label: Ton/Hrs
+              align: center
+              width: 20
               precision: 2
           5:
-            var_kg:
-              label: Var Kg
-              align: right
-              unit: Kg
-              width: 25
-              totalize: true
+            min_per_batch:
+              label: Min/Batch
+              align: center
+              width: 20
               precision: 2
           6:
-            hopper:
-              label: Dosif.
+            duration:
+              label: Min
+              align: center
+              width: 15
+              precision: 2
+          7:
+            batches:
+              label: Batch
+              align: center
+              width: 15
+          8:
+            start_date:
+              label: Inicio
               align: right
               width: 25
-          7:
-            lot:
-              label: Lote
+          9:
+            end_date:
+              label: Fin
               align: right
-              width: 15
-    14:
+              width: 25
+          10:
+            total_real:
+              label: Total Kg
+              align: right
+              width: 25
+              unit: Kg
+              precision: 2
+              totalize: true
+          11:
+            total_std:
+              label: Total Std
+              align: right
+              width: 25
+              unit: Kg
+              precision: 2
+              totalize: true
+    3:
       breakline:
   footer:
     1:

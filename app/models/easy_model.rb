@@ -26,7 +26,6 @@ class EasyModel
     @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.end_date >= ? and batches.end_date <= ?', start_date, end_date]
     return nil if @orders.length.zero?
     data = {}
-    data['title'] = "Reporte de Produccion Diaria por Fabrica"
     data['since'] = "Desde: #{Date.parse(start_date).strftime("%d/%m/%Y")}"
     data['until'] = "Hasta: #{Date.parse(end_date).strftime("%d/%m/%Y")}"
     std_total = 0
@@ -49,14 +48,10 @@ class EasyModel
   end
 
   def self.order_details(order)
-    @order = Order.find_by_code order, :include=>[
-        {:batch=>{:batch_hopper_lot=>{:hopper_lot=>[:hopper, {:lot=>:ingredient}]}}},
-        {:recipe=>{:ingredient_recipe=>:ingredient}},
-        :product
-      ]
+    @order = Order.find_by_code order, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}}, :recipe=>{:ingredient_recipe=>{:ingredient=>{}}}, :product=>{}}, :conditions => ['lots.ingredient_id = ingredients_recipes.ingredient_id']
+
     return nil if @order.nil?
     data = {}
-    data['title'] = 'Detalle Orden de Produccion'
     ingredients = {}
     @order.recipe.ingredient_recipe.each do |ir|
       ingredients[ir.ingredient.code] = {
@@ -64,19 +59,8 @@ class EasyModel
       }
     end
 
-    data['order'] = @order.code
-    data['recipe'] = "#{@order.recipe.code} - #{@order.recipe.name}"
-    data['product'] = "#{@order.product.code} - #{@order.product.name}"
-    data['start_date'] = Batch.where(:order_id=>@order.id).minimum('start_date').strftime("%d/%m/%Y %H:%M:%S")
-    data['end_date'] = Batch.where(:order_id=>@order.id).maximum('end_date').strftime("%d/%m/%Y %H:%M:%S")
-    data['prog_batches'] = @order.prog_batches.to_s
-    data['real_batches'] = Batch.where(:order_id => @order.id).count.to_s #We are not using this field => @order.real_batches.to_s
-    data['product_total'] = "#{Batch.get_real_total(@order.id).to_s} Kg"
-
     details = {}
     total_real = 0
-    #total_std = 0
-    #total_var = 0
     @order.batch.each do |batch|
       batch.batch_hopper_lot.each do |bhl|
         key = bhl.hopper_lot.lot.ingredient.code
@@ -88,19 +72,29 @@ class EasyModel
             'hopper' => bhl.hopper_lot.hopper.number,
             'real_kg' => bhl.amount.to_f,
             'std_kg' => std_amount,
-            'var_kg' => 0
+            'var_kg' => 0,
+            'var_perc' => 0
           }
         else
           details[key]['real_kg'] += bhl.amount.to_f
-          #details[key]['std_kg'] += ingredients[key]['amount']
         end
         details[key]['std_kg'] = ingredients[key]['amount'] * @order.prog_batches
         total_real += details[key]['real_kg']
         details[key]['var_kg'] = details[key]['real_kg'] - details[key]['std_kg']
+        details[key]['var_perc'] = details[key]['var_kg'] * 100 / details[key]['std_kg']
       end
     end
 
+    data['order'] = @order.code
+    data['recipe'] = "#{@order.recipe.code} - #{@order.recipe.name}"
+    data['product'] = "#{@order.product.code} - #{@order.product.name}"
+    data['start_date'] = @order.calculate_start_date()
+    data['end_date'] = @order.calculate_end_date()
+    data['prog_batches'] = @order.prog_batches.to_s
+    data['real_batches'] = @order.get_real_batches().to_s
+    data['product_total'] = "#{Batch.get_real_total(@order.id).to_s} Kg"
     data['total_real_kg'] = total_real
+
     data['results'] = []
     details.each do |key, value|
       element = {'code' => key}
@@ -110,6 +104,7 @@ class EasyModel
   end
 
   def self.ingredients_variation(start_date, end_date)
+    data = {}
     results = {}
     batches = BatchHopperLot.find :all, :include=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}, :batch=>{:order=>{:recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}}}, :conditions=>["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
 
@@ -147,7 +142,6 @@ class EasyModel
     results.each do |key, item|
       temp << item
     end
-    data = {}
     data['title'] = 'Variacion de Materia Prima'
     data['start_date'] = start_date
     data['end_date'] = end_date
@@ -189,7 +183,49 @@ class EasyModel
     data['batch'] = batch_number
     data['start_date'] = Batch.where(:order_id=>order.id).minimum('start_date').strftime("%d/%m/%Y %H:%M:%S")
     data['end_date'] = Batch.where(:order_id=>order.id).maximum('end_date').strftime("%d/%m/%Y %H:%M:%S")
-    data['title'] = 'Consumo por Bache'
+    data['results'] = results
+    return data
+  end
+
+  def self.order_duration(start_date, end_date)
+    data = {}
+    results = []
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}}, :recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}, :conditions=>["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
+
+    orders.each do |o|
+      total_real = 0
+      total_std = 0
+      o.batch.each do |b|
+        b.batch_hopper_lot.each do |bhl|
+          total_real += bhl.amount.to_f
+          o.recipe.ingredient_recipe.each do |i|
+            if i.ingredient_id == bhl.hopper_lot.lot.ingredient_id
+              total_std += i.amount.to_f
+              break
+            end
+          end
+        end
+      end
+
+      real_batches = o.get_real_batches()
+      duration = o.calculate_duration()
+      results << {
+        'order' => o.code,
+        'recipe_code' => o.recipe.code,
+        'recipe_name' => o.recipe.name,
+        'start_date' => duration['start_date'],
+        'end_date' => duration['end_date'],
+        'duration' => duration['duration'],
+        'batches' => real_batches,
+        'tons_per_hour' => 60 * total_real / duration['duration'],
+        'mins_per_batch' => duration['duration'].to_f / real_batches.to_f,
+        'total_real' => total_real,
+        'total_std' => total_std
+      }
+    end
+
+    data['since'] = Date.parse(start_date).strftime("%d/%m/%Y")
+    data['until'] = Date.parse(end_date).strftime("%d/%m/%Y")
     data['results'] = results
     return data
   end
