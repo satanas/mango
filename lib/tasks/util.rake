@@ -20,42 +20,50 @@ namespace :db do
     desc 'Load test user'
     task :users => :environment do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
-      fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
-      Fixtures.create_fixtures(fixtures_dir, 'users')
-      Fixtures.create_fixtures(fixtures_dir, 'clients')
-      puts 'Loaded test users'
+      run_fixture('users')
+      run_fixture('clients')
     end
 
     desc 'Load test ingredients'
     task :ingredients => :environment do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
-      fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
-      Fixtures.create_fixtures(fixtures_dir, 'ingredients')
-      puts 'Loaded test ingredients'
+      run_fixture('ingredients')
     end
-    
+
     desc 'Load test products'
     task :products => :environment do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
-      fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
-      Fixtures.create_fixtures(fixtures_dir, 'products')
-      puts 'Loaded test products'
+      run_fixture('products')
     end
-    
+
     desc 'Load test schedule'
     task :schedules => :environment do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
-      fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
-      Fixtures.create_fixtures(fixtures_dir, 'schedules')
-      puts 'Loaded test schedules'
+      run_fixture('schedules')
     end
 
     desc 'Load test lots'
     task :lots => :environment do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
-      fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
-      Fixtures.create_fixtures(fixtures_dir, 'lots')
-      puts 'Loaded test lots'
+      run_fixture('lots')
+    end
+
+    desc 'Load fixtures for warehouse types'
+    task :warehouse_types => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      run_fixture('warehouses_types')
+    end
+
+    desc 'Load fixtures for base units'
+    task :base_units => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      run_fixture('bases_units')
+    end
+
+    desc 'Load fixtures for transaction types'
+    task :transaction_types => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      run_fixture('transactions_types')
     end
 
     desc 'Load test recipes'
@@ -94,10 +102,19 @@ namespace :sys do
     Rake::Task['db:migrate'].invoke
     Rake::Task['db:fixtures:users'].invoke
     Rake::Task['db:fixtures:schedules'].invoke
+    Rake::Task['db:fixtures:warehouse_types'].invoke
+    Rake::Task['db:fixtures:base_units'].invoke
+    Rake::Task['db:fixtures:transaction_types'].invoke
     if RAILS_ENV == 'development'
       Rake::Task['db:fixtures:products'].invoke
       #Rake::Task['db:fixtures:recipes'].invoke
       #Rake::Task['db:fixtures:lots'].invoke
     end
   end
+end
+
+def run_fixture(table)
+  fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
+  Fixtures.create_fixtures(fixtures_dir, table)
+  puts "Loaded fixtures for #{table}"
 end

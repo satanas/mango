@@ -10,7 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110914232223) do
+ActiveRecord::Schema.define(:version => 20120301200611) do
+
+  create_table "bases_units", :force => true do |t|
+    t.string   "code",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "batch_hoppers_lots", :force => true do |t|
     t.integer  "batch_id"
@@ -50,6 +56,14 @@ ActiveRecord::Schema.define(:version => 20110914232223) do
     t.datetime "updated_at"
   end
 
+  create_table "display_units", :force => true do |t|
+    t.integer  "base_unit_id"
+    t.string   "code",         :null => false
+    t.float    "rate",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "hoppers", :force => true do |t|
     t.integer  "number",     :null => false
     t.datetime "created_at"
@@ -68,10 +82,11 @@ ActiveRecord::Schema.define(:version => 20110914232223) do
   add_index "hoppers_lots", ["lot_id"], :name => "fk_hoppers_lots_lot_id"
 
   create_table "ingredients", :force => true do |t|
-    t.string   "code",       :null => false
-    t.string   "name",       :null => false
+    t.string   "code",         :null => false
+    t.string   "name",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "base_unit_id"
   end
 
   create_table "ingredients_recipes", :force => true do |t|
@@ -119,8 +134,16 @@ ActiveRecord::Schema.define(:version => 20110914232223) do
   add_index "orders", ["user_id"], :name => "fk_orders_user_id"
 
   create_table "products", :force => true do |t|
-    t.string   "code",       :null => false
-    t.string   "name",       :null => false
+    t.string   "code",         :null => false
+    t.string   "name",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "base_unit_id"
+  end
+
+  create_table "products_lots", :force => true do |t|
+    t.integer  "order_id"
+    t.string   "number",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -144,12 +167,48 @@ ActiveRecord::Schema.define(:version => 20110914232223) do
     t.datetime "updated_at"
   end
 
+  create_table "transaction_types", :force => true do |t|
+    t.string   "code",        :null => false
+    t.string   "description", :null => false
+    t.string   "sign",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.integer  "transaction_type_id"
+    t.integer  "warehouse_id"
+    t.integer  "user_id"
+    t.datetime "date"
+    t.float    "amount"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name",                             :null => false
     t.string   "login",                            :null => false
     t.string   "password_hash",                    :null => false
     t.string   "password_salt",                    :null => false
     t.boolean  "admin",         :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "warehouses", :force => true do |t|
+    t.integer  "warehouse_type_id",                  :null => false
+    t.integer  "content_id",                         :null => false
+    t.string   "code",                               :null => false
+    t.string   "location",                           :null => false
+    t.float    "stock",             :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "warehouses_types", :force => true do |t|
+    t.string   "code",        :null => false
+    t.string   "description", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
