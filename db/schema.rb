@@ -197,7 +197,7 @@ ActiveRecord::Schema.define(:version => 20120301200611) do
   end
 
   create_table "warehouses", :force => true do |t|
-    t.integer  "warehouse_type_id",                  :null => false
+    t.integer  "warehouse_type_id"
     t.integer  "content_id",                         :null => false
     t.string   "code",                               :null => false
     t.string   "location",                           :null => false

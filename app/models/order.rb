@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :product
   has_many :batch
+  has_many :product_lot
 
   validates_presence_of :recipe_id, :user_id
   validates_uniqueness_of :code
