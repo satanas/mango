@@ -1,0 +1,4 @@
+<%= form_for :transaction_type, :url=>transaction_types_path, :html=>{:id=>'transaction_type_new_form'} do |f| %>
+  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <br/>
+<% end %>

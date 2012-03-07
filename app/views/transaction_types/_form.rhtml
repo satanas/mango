@@ -1,0 +1,9 @@
+<%= render_error_messages(f.error_messages) %>
+<label for="code" class="small">Código:</label>
+<div class="field"><%= f.text_field :code, :size=>'20' %> <span>*</span></div>
+<label for="description" class="small">Description:</label>
+<div class="field"><%= f.text_field :description, :size=>'20' %> <span>*</span></div>
+<label for="sign" class="small">Tipo:</label>
+<div class="field"><%= f.select :sign, [['Entrada (+)', '+'], ['Salida (-)', '-']], :size=>'20' %> <span>*</span></div>
+<div class="clearfix"></div>
+<br/><span class="required">* Campos obligatorios</span>

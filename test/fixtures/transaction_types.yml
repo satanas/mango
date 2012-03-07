@@ -4,8 +4,23 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  id: 1
+  code: EN-COM
+  description: Entrada por compra
+  sign: '+'
+two:
+  id: 2
+  code: EN-AJU
+  description: Entrada por ajuste
+  sign: '+'
+three:
+  id: 3
+  code: SA-CIN
+  description: Salida por consumo interno
+  sign: '-'
+four:
+  id: 4
+  code: SA-VEN
+  description: Salida por venta
+  sign: '-'

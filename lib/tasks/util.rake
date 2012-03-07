@@ -63,7 +63,7 @@ namespace :db do
     desc 'Load fixtures for transaction types'
     task :transaction_types => :environment do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
-      run_fixture('transactions_types')
+      run_fixture('transaction_types')
     end
 
     desc 'Load test recipes'

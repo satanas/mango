@@ -1,0 +1,34 @@
+<% i = 0 %>
+<% if @transaction_types.length > 0 %>
+<table id="tabledata">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Descripción<span class="order_arrow"></span></th>
+        <th>Signo<span class="order_arrow"></span></th>
+        <th class="actions_small">Acciones</th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @transaction_types.each do |t| %>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
+        <td><%=h t.code %></td>
+        <td><%=h t.description %></td>
+        <td class="center"><%=h t.sign %></td>
+        <td>
+          <%= render_action_edit(edit_transaction_type_path(t)) %>
+          <%= render_action_delete(transaction_type_path(t), "Desea borrar el tipo de transaccion '#{t.code}'?") %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+<div id="tablefooter">
+  <div id="pagination">
+    <%=raw show_pagination @transaction_types %>
+  </div>
+</div>
+<% else %>
+<p>No hay tipos de transacciones registrados</p>
+<% end %>

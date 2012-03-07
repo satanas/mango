@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   def index
     @users = User.paginate :all, :page=>params[:page], :per_page=>session[:per_page]
   end
-  
+
   def edit
     @user = User.find params[:id]
   end
-  
+
   def create
     @user = User.new params[:user]
     if @user.save
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+
   def update
     @user = User.find params[:id]
     @user.update_attributes(params[:user])
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @user = User.find params[:id]
     @user.eliminate
