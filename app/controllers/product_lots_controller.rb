@@ -1,22 +1,22 @@
-class LotsController < ApplicationController
+class ProductLotsController < ApplicationController
   def index
-    @lots = Lot.paginate :all, :page=>params[:page], :per_page=>session[:per_page]
+    @lots = ProductLot.paginate :all, :page=>params[:page], :per_page=>session[:per_page]
   end
 
   def new
-    @ingredients = Ingredient.find :all, :order => 'name ASC'
+    @orders = Order.find :all, :order => 'code ASC'
   end
 
   def edit
-    @lot = Lot.find params[:id]
-    @ingredients = Ingredient.find :all, :order => 'name ASC'
+    @lot = ProductLot.find params[:id]
+    @orders = Order.find :all, :order => 'code ASC'
   end
 
   def create
-    @lot = Lot.new params[:lot]
+    @lot = ProductLot.new params[:lot]
     if @lot.save
-      flash[:notice] = 'Lote guardado con éxito'
-      redirect_to :lots
+      flash[:notice] = 'ProductLot. guardado con éxito'
+      redirect_to :product_lots
     else
       new
       render :new
@@ -24,18 +24,18 @@ class LotsController < ApplicationController
   end
 
   def update
-    @lot = Lot.find params[:id]
+    @lot = ProductLot.find params[:id]
     @lot.update_attributes(params[:lot])
     if @lot.save
       flash[:notice] = 'Lote guardado con éxito'
-      redirect_to :lots
+      redirect_to :product_lots
     else
       render :edit
     end
   end
 
   def destroy
-    @lot = Lot.find params[:id]
+    @lot = ProductLot.find params[:id]
     @lot.eliminate
     if @lot.errors.size.zero?
       flash[:notice] = "Lote eliminado con éxito"
@@ -50,6 +50,6 @@ class LotsController < ApplicationController
         flash[:notice] = "El lote no se ha podido eliminar"
       end
     end
-    redirect_to :lots
+    redirect_to :product_lots
   end
 end

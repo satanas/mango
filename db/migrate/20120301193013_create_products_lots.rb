@@ -2,7 +2,8 @@ class CreateProductsLots < ActiveRecord::Migration
   def self.up
     create_table :products_lots do |t|
       t.references :order
-      t.string :number, :null=>false
+      t.string :code, :null=>false
+      t.date :date
       t.timestamps
     end
   end

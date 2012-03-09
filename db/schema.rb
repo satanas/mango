@@ -143,7 +143,8 @@ ActiveRecord::Schema.define(:version => 20120301200611) do
 
   create_table "products_lots", :force => true do |t|
     t.integer  "order_id"
-    t.string   "number",     :null => false
+    t.string   "code",       :null => false
+    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

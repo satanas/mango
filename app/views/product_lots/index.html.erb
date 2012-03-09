@@ -5,7 +5,7 @@
       <tr>
         <th>Código<span class="order_arrow"></span></th>
         <th>Fecha<span class="order_arrow"></span></th>
-        <th>Materia Prima<span class="order_arrow"></span></th>
+        <th>Orden de Producción<span class="order_arrow"></span></th>
         <th class="actions_small">Acciones</th>
       </tr>
     </thead>
@@ -15,10 +15,10 @@
       <tr class="<%= class_row %>">
         <td class="center"><%=h item.code %></td>
         <td><%=h item.date %></td>
-        <td><%=h item.ingredient.name %></td>
+        <td><%=h item.order.code %></td>
         <td class="center">
-          <%= render_action_edit(edit_lot_path(item)) %>
-          <%= render_action_delete(lot_path(item), "Desea borrar el lote '#{item.code}'?") %>
+          <%= render_action_edit(edit_product_lot_path(item)) %>
+          <%= render_action_delete(product_lot_path(item), "Desea borrar el lote '#{item.code}'?") %>
         </td>
       </tr>
     <% end %>

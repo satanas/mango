@@ -73,6 +73,12 @@ module MenuHelper
       menu = menu_for_transaction_types_new
     elsif c == 'transaction_types' and (a == 'edit' or a == 'update')
       menu = menu_for_transaction_types_edit
+    elsif c == 'product_lots' and a == 'index'
+      menu = menu_for_product_lots_index
+    elsif c == 'product_lots' and (a == 'new' or a == 'create')
+      menu = menu_for_product_lots_new
+    elsif c == 'product_lots' and (a == 'edit' or a == 'update')
+      menu = menu_for_product_lots_edit
     elsif c == 'reports' and a == 'index'
       menu = menu_for_reports_index
     end
@@ -332,7 +338,7 @@ module MenuHelper
   end
 
   def menu_for_lots_index
-    menu = content_tag(:p, 'Lista de lotes')
+    menu = content_tag(:p, 'Lista de lotes de ingredientes')
     menu += content_tag(:ul,
       render_back(root_path) +
       render_action('Crear', 'Crear nuevo lote', new_lot_path, 'button-add.png')
@@ -341,7 +347,7 @@ module MenuHelper
   end
 
   def menu_for_lots_new
-    menu = content_tag(:p, 'Crear nuevo lote')
+    menu = content_tag(:p, 'Crear nuevo lote de ingredientes')
     menu += content_tag(:ul,
       render_back(lots_path) +
       render_function('Guardar', 'Guardar lote', "submit_lot_new_form()", 'button-execute.png')
@@ -350,7 +356,7 @@ module MenuHelper
   end
 
   def menu_for_lots_edit
-    menu = content_tag(:p, 'Editar lote')
+    menu = content_tag(:p, 'Editar lote de ingredientes')
     menu += content_tag(:ul,
       render_back(lots_path) +
       render_function('Actualizar', 'Actualizar lote', "submit_lot_edit_form()", 'button-execute.png')
@@ -408,6 +414,33 @@ def menu_for_schedules_index
     menu += content_tag(:ul,
       render_back(transaction_types_path) +
       render_function('Actualizar', 'Actualizar tipo de transacción', "submit_transaction_type_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_product_lots_index
+    menu = content_tag(:p, 'Lista de lotes de producto terminado')
+    menu += content_tag(:ul,
+      render_back(root_path) +
+      render_action('Crear', 'Crear nuevo lote', new_product_lot_path, 'button-add.png')
+    )
+    return menu
+  end
+
+  def menu_for_product_lots_new
+    menu = content_tag(:p, 'Crear nuevo lote de producto terminado')
+    menu += content_tag(:ul,
+      render_back(product_lots_path) +
+      render_function('Guardar', 'Guardar lote', "submit_product_lot_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_product_lots_edit
+    menu = content_tag(:p, 'Editar lote de producto terminado')
+    menu += content_tag(:ul,
+      render_back(product_lots_path) +
+      render_function('Actualizar', 'Actualizar lote', "submit_product_lot_edit_form()", 'button-execute.png')
     )
     return menu
   end

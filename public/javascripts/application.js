@@ -99,6 +99,13 @@ function submit_transaction_type_edit_form() {
     $('transaction_type_edit_form').submit();
 }
 
+function submit_product_lot_new_form() {
+    $('product_lot_new_form').submit();
+}
+
+function submit_product_lot_edit_form() {
+    $('product_lot_edit_form').submit();
+}
 function toggle_report_details(id) {
     hide_all_report_details();
     $(id).toggle();
