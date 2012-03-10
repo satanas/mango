@@ -1,0 +1,4 @@
+<%= form_for :warehouse, :url=>warehouses_path, :html=>{:id=>'warehouse_new_form'} do |f| %>
+  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <br/>
+<% end %>

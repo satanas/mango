@@ -5,7 +5,6 @@ class TransactionTypesController < ApplicationController
 
   def edit
     @transaction_type = TransactionType.find params[:id]
-    puts @transaction_type.inspect
   end
 
   def create

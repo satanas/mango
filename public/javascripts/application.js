@@ -106,6 +106,23 @@ function submit_product_lot_new_form() {
 function submit_product_lot_edit_form() {
     $('product_lot_edit_form').submit();
 }
+
+function submit_warehouse_new_form() {
+    $('warehouse_new_form').submit();
+}
+
+function submit_warehouse_edit_form() {
+    $('warehouse_edit_form').submit();
+}
+
+function submit_transacction_new_form() {
+    $('transacction_new_form').submit();
+}
+
+function submit_transacction_edit_form() {
+    $('transacction_edit_form').submit();
+}
+
 function toggle_report_details(id) {
     hide_all_report_details();
     $(id).toggle();

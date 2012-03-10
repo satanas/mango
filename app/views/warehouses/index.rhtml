@@ -1,0 +1,38 @@
+<% i = 0 %>
+<% if @warehouses.length > 0 %>
+<table id="tabledata">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Tipo Almacén<span class="order_arrow"></span></th>
+        <th>Lote</th>
+        <th>Ubicación</th>
+        <th>Existencia</th>
+        <th class="actions_small">Acciones</th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @warehouses.each do |t| %>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
+        <td><%=h t.code %></td>
+        <td><%=h t.warehouse_type.code %></td>
+        <td><%=h t.content_id %></td>
+        <td><%=h t.location %></td>
+        <td class="center"><%=h t.stock %></td>
+        <td>
+          <%= render_action_edit(edit_warehouse_path(t)) %>
+          <%= render_action_delete(warehouse_path(t), "Desea borrar el almacen '#{t.code}'?") %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+<div id="tablefooter">
+  <div id="pagination">
+    <%=raw show_pagination @warehouses %>
+  </div>
+</div>
+<% else %>
+<p>No hay almacenes registrados</p>
+<% end %>

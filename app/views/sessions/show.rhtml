@@ -35,6 +35,24 @@
     </div>
   </div>
 
+  <!-- Transactions -->
+  <div class="module yui3-u-1-2">
+    <%= link_to image_tag('transactions-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), transactions_path %>
+    <div class="module-content">
+      <h2><%= link_to 'Transacciones', transactions_path %></h2>
+      <p>Gestión de movimientos de inventario</p>
+    </div>
+  </div>
+
+  <!-- Warehouses -->
+  <div class="module yui3-u-1-2">
+    <%= link_to image_tag('warehouses-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), warehouses_path %>
+    <div class="module-content">
+      <h2><%= link_to 'Almacenes', warehouses_path %></h2>
+      <p>Gestión de almacenes</p>
+    </div>
+  </div>
+
   <!-- Product Lots -->
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('products-lot-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), product_lots_path %>

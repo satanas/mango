@@ -79,6 +79,18 @@ module MenuHelper
       menu = menu_for_product_lots_new
     elsif c == 'product_lots' and (a == 'edit' or a == 'update')
       menu = menu_for_product_lots_edit
+    elsif c == 'warehouses' and a == 'index'
+      menu = menu_for_warehouses_index
+    elsif c == 'warehouses' and (a == 'new' or a == 'create')
+      menu = menu_for_warehouses_new
+    elsif c == 'warehouses' and (a == 'edit' or a == 'update')
+      menu = menu_for_warehouses_edit
+    elsif c == 'transactions' and a == 'index'
+      menu = menu_for_transactions_index
+    elsif c == 'transactions' and (a == 'new' or a == 'create')
+      menu = menu_for_transactions_new
+    elsif c == 'transactions' and (a == 'edit' or a == 'update')
+      menu = menu_for_transactions_edit
     elsif c == 'reports' and a == 'index'
       menu = menu_for_reports_index
     end
@@ -364,7 +376,7 @@ module MenuHelper
     return menu
   end
 
-def menu_for_schedules_index
+  def menu_for_schedules_index
     menu = content_tag(:p, 'Lista de turnos')
     menu += content_tag(:ul,
       render_back(root_path) +
@@ -441,6 +453,60 @@ def menu_for_schedules_index
     menu += content_tag(:ul,
       render_back(product_lots_path) +
       render_function('Actualizar', 'Actualizar lote', "submit_product_lot_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_warehouses_index
+    menu = content_tag(:p, 'Lista de almacenes')
+    menu += content_tag(:ul,
+      render_back(root_path) +
+      render_action('Crear', 'Crear nuevo almacén', new_warehouse_path, 'button-add.png')
+    )
+    return menu
+  end
+
+  def menu_for_warehouses_new
+    menu = content_tag(:p, 'Crear nuevo almacén')
+    menu += content_tag(:ul,
+      render_back(warehouses_path) +
+      render_function('Guardar', 'Guardar almacén', "submit_warehouse_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_warehouses_edit
+    menu = content_tag(:p, 'Editar almacén')
+    menu += content_tag(:ul,
+      render_back(warehouses_path) +
+      render_function('Actualizar', 'Actualizar turno', "submit_warehouse_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_transactions_index
+    menu = content_tag(:p, 'Lista de transacciones')
+    menu += content_tag(:ul,
+      render_back(root_path) +
+      render_action('Crear', 'Crear nueva transacción', new_transaction_path, 'button-add.png')
+    )
+    return menu
+  end
+
+  def menu_for_transactions_new
+    menu = content_tag(:p, 'Crear nueva transacción')
+    menu += content_tag(:ul,
+      render_back(transactions_path) +
+      render_function('Guardar', 'Guardar transacción', "submit_transaction_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_transactions_edit
+    menu = content_tag(:p, 'Editar transacción')
+    menu += content_tag(:ul,
+      render_back(transactions_path) +
+      render_function('Actualizar', 'Actualizar transacción', "submit_transaction_edit_form()", 'button-execute.png')
     )
     return menu
   end
