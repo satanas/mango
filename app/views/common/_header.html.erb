@@ -1,6 +1,6 @@
 <div id="header">
     <div id="logo">
-        <%= link_to image_tag(session[:company]['image'], :alt=>'company-logo', :width=>'72', :height=>'72'), root_path %>
+        <%= link_to image_tag(session[:company]['logo'], :alt=>'company-logo', :width=>'72', :height=>'72'), root_path %>
         <h1><%= session[:company]['name'] %></h1>
         <p><%= session[:company]['desc1'] %></p>
         <p><%= session[:company]['desc2'] %></p>

@@ -1,5 +1,5 @@
-company:
+application:
   name: Empresa de prueba C.A.
   desc1: Descripción 1
   desc2: Opcional
-  image: default-company-logo.png
+  logo: default-company-logo.png

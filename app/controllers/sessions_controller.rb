@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
   
   def show
     if session[:user]
-      @popup = ModalHelper::Modal::Popup.new('Bienvenido', 'Bem-vindo. Voce vais falar portugues logo')
       render :show, :layout => 'dashboard'
     else
       redirect_to :action=>'index'
@@ -20,7 +19,7 @@ class SessionsController < ApplicationController
     if user
       session[:user] = user
       session[:per_page] = 12
-      session[:company] = YAML::load(File.open("#{Rails.root.to_s}/config/company.yml"))['company']
+      session[:company] = YAML::load(File.open("#{Rails.root.to_s}/config/global.yml"))['application']
       puts session.inspect
       redirect_to :action => 'show'
     else
