@@ -1,0 +1,40 @@
+<% i = 0 %>
+<% if @transactions.length > 0 %>
+<table id="tabledata">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Tipo<span class="order_arrow"></span></th>
+        <th>Almacén<span class="order_arrow"></span></th>
+        <th>Cantidad<span class="order_arrow"></span></th>
+        <th>Usuario<span class="order_arrow"></span></th>
+        <th>Fecha<span class="order_arrow"></span></th>
+        <th class="actions_small">Acciones</th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @transactions.each do |t| %>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
+        <td><%=h t.code %></td>
+        <td><%=h t.transaction_type.code %></td>
+        <td><%=h t.warehouse.code %></td>
+        <td><%=h t.amount %></td>
+        <td><%=h t.user.login %></td>
+        <td><%=h t.date %></td>
+        <td>
+          <%= render_action_edit(edit_transaction_path(t)) %>
+          <%= render_action_delete(transaction_path(t), "Desea borrar la transacción '#{t.code}'?") %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+<div id="tablefooter">
+  <div id="pagination">
+    <%=raw show_pagination @transactions %>
+  </div>
+</div>
+<% else %>
+<p>No hay transacciones registradas</p>
+<% end %>

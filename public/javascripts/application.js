@@ -115,12 +115,12 @@ function submit_warehouse_edit_form() {
     $('warehouse_edit_form').submit();
 }
 
-function submit_transacction_new_form() {
-    $('transacction_new_form').submit();
+function submit_transaction_new_form() {
+    $('transaction_new_form').submit();
 }
 
-function submit_transacction_edit_form() {
-    $('transacction_edit_form').submit();
+function submit_transaction_edit_form() {
+    $('transaction_edit_form').submit();
 }
 
 function toggle_report_details(id) {

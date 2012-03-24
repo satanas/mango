@@ -177,11 +177,12 @@ ActiveRecord::Schema.define(:version => 20120301200611) do
   end
 
   create_table "transactions", :force => true do |t|
-    t.integer  "transaction_type_id"
-    t.integer  "warehouse_id"
-    t.integer  "user_id"
-    t.datetime "date"
-    t.float    "amount"
+    t.integer  "transaction_type_id", :null => false
+    t.integer  "warehouse_id",        :null => false
+    t.integer  "user_id",             :null => false
+    t.string   "code",                :null => false
+    t.date     "date",                :null => false
+    t.float    "amount",              :null => false
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"

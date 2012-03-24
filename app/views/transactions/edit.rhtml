@@ -1,0 +1,4 @@
+<%= form_for :transaction, :url=>transaction_path(@transaction), :html=>{:method=>:put, :id=>'transaction_edit_form'} do |f| %>
+  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <br/>
+<% end %>
