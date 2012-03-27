@@ -23,7 +23,9 @@ class EasyModel
   end
 
   def self.daily_production(start_date, end_date)
-    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.end_date >= ? and batches.end_date <= ?', start_date, end_date]
+    start_date << " 00:00:00"
+    end_date << " 23:59:59"
+    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', start_date, end_date]
     return nil if @orders.length.zero?
     data = {}
     data['since'] = "Desde: #{Date.parse(start_date).strftime("%d/%m/%Y")}"
@@ -33,14 +35,16 @@ class EasyModel
     data['results'] = []
     @orders.each do |o|
       rtotal = Batch.get_real_total(o.id)
+      rbatches = Batch.get_real_batches(o.id)
+      stotal = o.recipe.get_total() * rbatches
       data['results'] << {
         'order' => o.code,
         'recipe_code' => o.recipe.code,
         'recipe_name' => o.recipe.name,
         'client_code' => o.client.code,
         'client_name' => o.client.name,
-        'real_batches' => Batch.get_real_batches(o.id).to_s,
-        'total_recipe' => o.recipe.total.to_s,
+        'real_batches' => rbatches.to_s,
+        'total_standard' => stotal.to_s,
         'total_real' => rtotal.to_s,
       }
     end

@@ -107,7 +107,7 @@ report:
               align: right
               width: 15
           7:
-            total_recipe:
+            total_standard:
               label: Total Estand.
               align: right
               width: 30
