@@ -133,12 +133,9 @@ class Recipe < ActiveRecord::Base
   def get_total
     total = 0
     ingredients = IngredientRecipe.where(:recipe_id => self.id)
-    puts "Receta: #{self.name}"
     ingredients.each do |i|
-      puts "Ingrediente: #{i.amount}"
       total+= i.amount
     end
-    puts "Total: #{total}"
     return total
   end
 
