@@ -7,6 +7,8 @@ class Transaction < ActiveRecord::Base
   validates_presence_of :amount, :date, :transaction_type_id, :warehouse_id
 
   before_save :create_code
+  after_save :increase_stock
+  after_destroy :decrease_stock
 
   private
 
@@ -17,5 +19,17 @@ class Transaction < ActiveRecord::Base
     else
       self.code = last.code.succ
     end
+  end
+
+  def increase_stock
+    warehouse = Warehouse.get(self.warehouse.id)
+    warehouse.stock += self.amount
+    warehouse.save
+  end
+
+  def decrease_stock
+    warehouse = Warehouse.get(self.warehouse.id)
+    warehouse.stock -= self.amount
+    warehouse.save
   end
 end

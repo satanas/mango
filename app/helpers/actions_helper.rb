@@ -9,6 +9,11 @@ module ActionsHelper
     return link_to image + "Editar", url, :class => 'action'
   end
 
+  def render_action_recalculate(url)
+    image = image_tag('action-reset.png', :alt=>'Recalcular')
+    return link_to image + "Recalcular", url, :class => 'action'
+  end
+
   def render_action_delete(url, confirm)
     image = image_tag('action-delete.png', :alt=>'Borrar')
     return link_to image + " Eliminar", url, :class => 'action', :method => :delete, :confirm =>confirm

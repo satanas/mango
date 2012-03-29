@@ -23,7 +23,6 @@
         <td><%=h t.user.login %></td>
         <td><%=h t.date %></td>
         <td>
-          <%= render_action_edit(edit_transaction_path(t)) %>
           <%= render_action_delete(transaction_path(t), "Desea borrar la transacción '#{t.code}'?") %>
         </td>
       </tr>
