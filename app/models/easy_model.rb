@@ -50,6 +50,44 @@ class EasyModel
     end
     return data
   end
+  
+  def self.order_duration(start_date, end_date)
+    start_date << " 00:00:00"
+    end_date << " 23:59:59"
+    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', start_date, end_date]
+    return nil if @orders.length.zero?
+    data = {}
+    data['since'] = "Desde: #{Date.parse(start_date).strftime("%d/%m/%Y")}"
+    data['until'] = "Hasta: #{Date.parse(end_date).strftime("%d/%m/%Y")}"
+    std_total = 0
+    real_total = 0
+    data['results'] = []
+    @orders.each do |o|
+      rtotal = Batch.get_real_total(o.id)
+      rbatches = Batch.get_real_batches(o.id)
+      stotal = o.recipe.get_total() * rbatches
+      d = o.calculate_duration
+      order_duration = d['duration']
+      start_time = d['start_date'][-8,5] # Risky parsing
+      end_time = d['end_date'][-8,5] # Risky parsing
+      average_batch_duration = order_duration / rbatches # Must avoid divition by zero
+      average_tons_per_hour = rtotal / (order_duration / 60) / 1000 # Must avoid divition by zero
+      data['results'] << {
+        'order' => o.code,
+        'recipe_code' => o.recipe.code,
+        'recipe_name' => o.recipe.name,
+        'average_tons_per_hour' => average_tons_per_hour.to_s,
+        'average_batch_duration' => average_batch_duration.to_s,
+        'order_duration' => order_duration.to_s,
+        'real_batches' => rbatches.to_s,
+        'start_time' => start_time,
+        'end_time' => end_time,
+        'total_real' => rtotal.to_s,
+        'total_standard' => stotal.to_s        
+      }
+    end
+    return data
+  end
 
   def self.order_details(order)
     @order = Order.find_by_code order, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}}, :recipe=>{:ingredient_recipe=>{:ingredient=>{}}}, :product=>{}}, :conditions => ['lots.ingredient_id = ingredients_recipes.ingredient_id']
@@ -187,49 +225,6 @@ class EasyModel
     data['batch'] = batch_number
     data['start_date'] = Batch.where(:order_id=>order.id).minimum('start_date').strftime("%d/%m/%Y %H:%M:%S")
     data['end_date'] = Batch.where(:order_id=>order.id).maximum('end_date').strftime("%d/%m/%Y %H:%M:%S")
-    data['results'] = results
-    return data
-  end
-
-  def self.order_duration(start_date, end_date)
-    data = {}
-    results = []
-    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}}, :recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}, :conditions=>["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
-
-    orders.each do |o|
-      total_real = 0
-      total_std = 0
-      o.batch.each do |b|
-        b.batch_hopper_lot.each do |bhl|
-          total_real += bhl.amount.to_f
-          o.recipe.ingredient_recipe.each do |i|
-            if i.ingredient_id == bhl.hopper_lot.lot.ingredient_id
-              total_std += i.amount.to_f
-              break
-            end
-          end
-        end
-      end
-
-      real_batches = o.get_real_batches()
-      duration = o.calculate_duration()
-      results << {
-        'order' => o.code,
-        'recipe_code' => o.recipe.code,
-        'recipe_name' => o.recipe.name,
-        'start_date' => duration['start_date'],
-        'end_date' => duration['end_date'],
-        'duration' => duration['duration'],
-        'batches' => real_batches,
-        'tons_per_hour' => 60 * total_real / duration['duration'],
-        'mins_per_batch' => duration['duration'].to_f / real_batches.to_f,
-        'total_real' => total_real,
-        'total_std' => total_std
-      }
-    end
-
-    data['since'] = Date.parse(start_date).strftime("%d/%m/%Y")
-    data['until'] = Date.parse(end_date).strftime("%d/%m/%Y")
     data['results'] = results
     return data
   end
