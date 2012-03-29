@@ -6,7 +6,7 @@
 <label for="version" class="small">Versión:</label>
 <div class="field"><%=h @recipe.version %></div>
 <label for="total" class="small">Total:</label>
-<div class="field"><%=h @recipe.total %> Kg</div>
+<div class="field"><%=h @recipe.get_total() %> Kg</div>
 <label for="comment" class="small">Comentario:</label>
 <div class="field"><%=h @recipe.comment %></div>
 <label for="active" class="small">Activa:</label>

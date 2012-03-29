@@ -130,6 +130,15 @@ class Recipe < ActiveRecord::Base
     return true
   end
 
+  def get_total
+    total = 0
+    ingredients = IngredientRecipe.where(:recipe_id => self.id)
+    ingredients.each do |i|
+      total+= i.amount
+    end
+    return total
+  end
+
   private
 
   def validate_field(field, value)
@@ -154,5 +163,5 @@ class Recipe < ActiveRecord::Base
     value = string.strip().gsub('.', '')
     value = value.gsub(',', '.')
     return value.to_f
-  end
+  end 
 end
