@@ -23,17 +23,13 @@ class Transaction < ActiveRecord::Base
 
   def increase_stock
     warehouse = Warehouse.get(self.warehouse.id)
-    puts "w before #{warehouse.inspect}"
     warehouse.stock += self.amount
     warehouse.save
-    puts "w after #{warehouse.inspect}"
   end
 
   def decrease_stock
     warehouse = Warehouse.get(self.warehouse.id)
-    puts "w before #{warehouse.inspect}"
     warehouse.stock -= self.amount
     warehouse.save
-    puts "w after #{warehouse.inspect}"
   end
 end

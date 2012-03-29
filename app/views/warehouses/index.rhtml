@@ -8,7 +8,7 @@
         <th>Lote</th>
         <th>Ubicación</th>
         <th>Existencia</th>
-        <th class="actions_small">Acciones</th></th>
+        <th class="actions">Acciones</th></th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +23,7 @@
         <td>
           <%= render_action_edit(edit_warehouse_path(t)) %>
           <%= render_action_delete(warehouse_path(t), "Desea borrar el almacen '#{t.code}'?") %>
+          <%= render_action_recalculate(recalculate_warehouse_path(t)) %>
         </td>
       </tr>
     <% end %>
