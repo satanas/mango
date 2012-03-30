@@ -4,7 +4,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :user
 
   validates_numericality_of :amount
-  validates_presence_of :amount, :date, :transaction_type_id, :warehouse_id
+  validates_presence_of :amount, :date, :transaction_type_id, :warehouse_id, :document_number
 
   before_save :create_code
   after_save :increase_stock

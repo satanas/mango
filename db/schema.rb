@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301200611) do
+ActiveRecord::Schema.define(:version => 20120330005211) do
 
   create_table "bases_units", :force => true do |t|
     t.string   "code",       :null => false
@@ -186,6 +186,7 @@ ActiveRecord::Schema.define(:version => 20120301200611) do
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "document_number"
   end
 
   create_table "users", :force => true do |t|
