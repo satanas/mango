@@ -1,5 +1,5 @@
 class ProductLot < ActiveRecord::Base
-  belongs_to :order
+  belongs_to :product
 
   validates_uniqueness_of :code
   validates_presence_of :date, :order_id

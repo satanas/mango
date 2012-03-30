@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   has_many :order
+  has_many :product_lot
   belongs_to :base_unit
 
   validates_uniqueness_of :code
