@@ -73,6 +73,12 @@ namespace :db do
       r.import('test/receta_brill_nueva.txt', true)
       puts 'Loaded test recipes'
     end
+
+    desc 'Initialize order number'
+    task :orders_numbers => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      run_fixture('orders_numbers')
+    end
   end
 
   desc 'Clean ingredients and recipes related tables'
@@ -105,6 +111,7 @@ namespace :sys do
     Rake::Task['db:fixtures:warehouse_types'].invoke
     Rake::Task['db:fixtures:base_units'].invoke
     Rake::Task['db:fixtures:transaction_types'].invoke
+    Rake::Task['db:fixtures:orders_numbers'].invoke
     if RAILS_ENV == 'development'
       Rake::Task['db:fixtures:products'].invoke
       #Rake::Task['db:fixtures:recipes'].invoke

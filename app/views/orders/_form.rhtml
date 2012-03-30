@@ -1,6 +1,6 @@
 <%= render_error_messages(f.error_messages) %>
 <label for="code" class="small">Código:</label>
-<div class="field"><%= f.text_field :code, :size=>'10' %> <span>*</span></div>
+<div class="field"><%= @order_code %> </div>
 <label for="recipe_id" class="small">Receta:</label>
 <div class="field"><%= f.collection_select :recipe_id, @recipes, :id, :name, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %> <span>*</span></div>
 <label for="client_id" class="small">Cliente:</label>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330005211) do
+ActiveRecord::Schema.define(:version => 20120330020014) do
 
   create_table "bases_units", :force => true do |t|
     t.string   "code",       :null => false
@@ -132,6 +132,12 @@ ActiveRecord::Schema.define(:version => 20120330005211) do
   add_index "orders", ["product_id"], :name => "fk_orders_product_id"
   add_index "orders", ["recipe_id"], :name => "fk_orders_recipe_id"
   add_index "orders", ["user_id"], :name => "fk_orders_user_id"
+
+  create_table "orders_numbers", :force => true do |t|
+    t.string   "code",       :default => "0000000001"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", :force => true do |t|
     t.string   "code",         :null => false

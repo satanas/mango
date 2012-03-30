@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     @users = User.find :all, :order => 'name ASC'
     @products = Product.find :all, :order => 'name ASC'
     @order = Order.new if @order.nil?
+    @order_code = 'Autogenerado'
     unless session[:user].admin?
       @order.user_id = session[:user].id
     end
@@ -17,6 +18,7 @@ class OrdersController < ApplicationController
   def edit
     @order = Order.find(params[:id])
     new
+    @order_code = @order.code
   end
 
   def create
