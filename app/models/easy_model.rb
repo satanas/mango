@@ -70,8 +70,8 @@ class EasyModel
       order_duration = d['duration']
       start_time = d['start_date'][-8,5] # Risky parsing
       end_time = d['end_date'][-8,5] # Risky parsing
-      average_batch_duration = order_duration / rbatches # Must avoid divition by zero
-      average_tons_per_hour = rtotal / (order_duration / 60) / 1000 # Must avoid divition by zero
+      average_batch_duration = order_duration / rbatches rescue 0
+      average_tons_per_hour = rtotal / (order_duration / 60) / 1000 rescue 0
       data['results'] << {
         'order' => o.code,
         'recipe_code' => o.recipe.code,
