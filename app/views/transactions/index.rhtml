@@ -7,6 +7,7 @@
         <th>Tipo<span class="order_arrow"></span></th>
         <th>Almacén<span class="order_arrow"></span></th>
         <th>Cantidad<span class="order_arrow"></span></th>
+        <th>Nro. Doc.<span class="order_arrow"></span></th>
         <th>Usuario<span class="order_arrow"></span></th>
         <th>Fecha<span class="order_arrow"></span></th>
         <th class="actions_small">Acciones</th></th>
@@ -20,6 +21,7 @@
         <td><%=h t.transaction_type.code %></td>
         <td><%=h t.warehouse.code %></td>
         <td><%=h t.amount %></td>
+        <td><%=h t.document_number %></td>
         <td><%=h t.user.login %></td>
         <td><%=h t.date %></td>
         <td>
