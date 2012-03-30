@@ -3,7 +3,7 @@ report:
     page:
       size: Letter
       orientation: L
-      margins: 10
+      margins: 20
     style:
       font_family: 'Helvetica'
       font_size: 10
@@ -11,7 +11,7 @@ report:
   header:
     1:
       text:
-        label: INVERSIONES PORCINAS C.A.
+        label: INDUSTRIA AGROSANTANA C.A.
         margin: 30
         align: left
         style:
@@ -19,7 +19,7 @@ report:
           font_weight: B
     2:
       text:
-        label: "RIF: 0-00000000-0"
+        label: "RIF: J-29828893-0"
         margin: 30
         align: left
         style:
@@ -33,7 +33,7 @@ report:
         y: 12
     4:
       text:
-        label: Yaritagua - Estado Yaracuy
+        label: Maracaibo - Estado Zulia
         margin: 30
         align: left
         style:
@@ -42,38 +42,20 @@ report:
       breakline:
     6:
       text:
-        label: "Fecha Desde: "
+        field: since
         align: right
-        width: 120
-        breakline: 0
-        style:
-          font_weight: B
     7:
       text:
-        field: since
-        align: left
-        width: 50
-    8:
-      text:
-        label: "Fecha Hasta: "
-        align: right
-        width: 120
-        breakline: 0
-        style:
-          font_weight: B
-    9:
-      text:
         field: until
-        align: left
-        width: 50
-    10:
+        align: right
+    8:
       pagenum:
         pattern: "Pag. <PAGE>"
         align: right
   body:
     1:
       text:
-        label: Duracion de Orden de Produccion
+        label: Reporte de Produccion Diaria por Fabrica
         align: center
         style:
           font_size: 12
@@ -95,68 +77,66 @@ report:
             font_weight: B
         columns:
           1:
-           order:
+           order :
               label: Orden
               align: left
-              width: 20
+              width: 15
           2:
             recipe_code:
               label: Receta
               align: left
-              width: 20
+              width: 15
           3:
             recipe_name:
-              label: Nombre
+              label: Desc. Receta
               align: left
-              width: 50
+              width: 60
           4:
-            tons_per_hour:
+            average_tons_per_hour:
               label: Ton/Hrs
-              align: center
+              align: right
               width: 20
               precision: 2
           5:
-            min_per_batch:
-              label: Min/Batch
-              align: center
+            average_batch_duration:
+              label: Min/batch
+              align: right
               width: 20
               precision: 2
           6:
-            duration:
+            order_duration:
               label: Min
               align: center
-              width: 15
-              precision: 2
+              width: 20
+              precision: 0
           7:
-            batches:
+            real_batches:
               label: Batch
-              align: center
+              align: right
               width: 15
           8:
-            start_date:
-              label: Inicio
-              align: right
-              width: 25
+            start_time:
+              label: H. inicio
+              align: center
+              width: 15
           9:
-            end_date:
-              label: Fin
-              align: right
-              width: 25
+            end_time:
+              label: H. final
+              align: center
+              width: 15
           10:
-            total_real:
-              label: Total Kg
+            total_standard:
+              label: Total Estand.
               align: right
-              width: 25
+              width: 30
               unit: Kg
-              precision: 2
               totalize: true
           11:
-            total_std:
-              label: Total Std
+            total_real:
+              label: Total Real
               align: right
-              width: 25
+              width: 30
               unit: Kg
-              precision: 2
               totalize: true
     3:
       breakline:

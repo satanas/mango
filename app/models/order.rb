@@ -18,16 +18,20 @@ class Order < ActiveRecord::Base
   end
 
   def calculate_start_date
-    Batch.where(:order_id=>self.id).minimum('start_date').strftime("%d/%m/%Y %H:%M:%S")
+    Batch.where(:order_id=>self.id).minimum('created_at').strftime("%d/%m/%Y %H:%M:%S")
   end
 
   def calculate_end_date
-    Batch.where(:order_id=>self.id).maximum('end_date').strftime("%d/%m/%Y %H:%M:%S")
+    last_batch = Batch.find(:first, :conditions => ["number = ? and order_id = ?", Batch.where(:order_id=>self.id).maximum('number'), self.id])
+    end_date = BatchHopperLot.where(:batch_id=>last_batch.id).maximum('created_at')
+    return end_date.strftime("%d/%m/%Y %H:%M:%S")
   end
-
+  
   def calculate_duration
-    start_date = Batch.where(:order_id=>self.id).minimum('start_date')
-    end_date = Batch.where(:order_id=>self.id).maximum('end_date')
+    start_date = Batch.where(:order_id=>self.id).minimum('created_at')
+    last_batch = Batch.find(:first, :conditions => ["number = ? and order_id = ?", Batch.where(:order_id=>self.id).maximum('number'), self.id])
+    end_date = BatchHopperLot.where(:batch_id=>last_batch.id).maximum('created_at')
+    
     return {
       'start_date' => start_date.strftime("%d/%m/%Y %H:%M:%S"),
       'end_date' => end_date.strftime("%d/%m/%Y %H:%M:%S"),
