@@ -79,6 +79,23 @@ namespace :db do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
       run_fixture('orders_numbers')
     end
+
+    desc 'Initialize permissions'
+    task :permissions => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      run_fixture('permissions')
+      run_fixture('roles')
+      admin_rol = Role.find(1)
+      admin_rol.permission_role.clear
+      Permission.all.each do |perm|
+        perm_rol = PermissionRole.new
+        perm_rol.permission_id = perm.id
+        perm_rol.role_id = admin_rol.id
+        admin_rol.permission_role << perm_rol
+      end
+      admin_rol.save
+    end
+
   end
 
   desc 'Clean ingredients and recipes related tables'
@@ -112,6 +129,7 @@ namespace :sys do
     Rake::Task['db:fixtures:base_units'].invoke
     Rake::Task['db:fixtures:transaction_types'].invoke
     Rake::Task['db:fixtures:orders_numbers'].invoke
+    Rake::Task['db:fixtures:permissions'].invoke
     if RAILS_ENV == 'development'
       Rake::Task['db:fixtures:products'].invoke
       #Rake::Task['db:fixtures:recipes'].invoke

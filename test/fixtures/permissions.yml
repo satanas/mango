@@ -1,0 +1,26 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+batches_modify:
+  name: 'Modificación de Batches'
+  module: 'batches'
+  action: 'modify'
+  mode: 'global'
+batches_fetch:
+  name: 'Consulta de Batches'
+  module: 'batches'
+  action: 'index'
+  mode: 'global'
+orders_modify:
+  name: 'Modificación de Órdenes'
+  module: 'orders'
+  action: 'modify'
+  mode: 'global'
+orders_fetch:
+  name: 'Consulta de Órdenes'
+  module: 'orders'
+  action: 'index'
+  mode: 'global'
