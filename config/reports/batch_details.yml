@@ -170,11 +170,17 @@ report:
               totalize: true
               precision: 2
           6:
+            var_perc:
+              label: %
+              align: center
+              width: 10
+              precision: 1
+          7:
             hopper:
               label: Dosif.
               align: right
-              width: 25
-          7:
+              width: 15
+          8:
             lot:
               label: Lote
               align: right

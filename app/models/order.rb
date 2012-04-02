@@ -24,25 +24,41 @@ class Order < ActiveRecord::Base
   def calculate_end_date
     last_batch = Batch.find(:first, :conditions => ["number = ? and order_id = ?", Batch.where(:order_id=>self.id).maximum('number'), self.id])
     end_date = BatchHopperLot.where(:batch_id=>last_batch.id).maximum('created_at')
-    return end_date.strftime("%d/%m/%Y %H:%M:%S")
+    unless end_date.nil?
+      return end_date.strftime("%d/%m/%Y %H:%M:%S")
+    else
+      return "??/??/???? ??:??:??"
+    end
   end
-
+  
   def calculate_duration
     start_date = Batch.where(:order_id=>self.id).minimum('created_at')
     last_batch = Batch.find(:first, :conditions => ["number = ? and order_id = ?", Batch.where(:order_id=>self.id).maximum('number'), self.id])
     end_date = BatchHopperLot.where(:batch_id=>last_batch.id).maximum('created_at')
-
-    return {
-      'start_date' => start_date.strftime("%d/%m/%Y %H:%M:%S"),
-      'end_date' => end_date.strftime("%d/%m/%Y %H:%M:%S"),
-      'duration' => (end_date.to_i - start_date.to_i) / 60.0
-    }
+    unless end_date.nil?
+      return {
+        'start_date' => start_date.strftime("%d/%m/%Y %H:%M:%S"),
+        'end_date' => end_date.strftime("%d/%m/%Y %H:%M:%S"),
+        'duration' => (end_date.to_i - start_date.to_i) / 60.0
+      }
+    else
+      return {
+        'start_date' => start_date.strftime("%d/%m/%Y %H:%M:%S"),
+        'end_date' => "??/??/???? ??:??:??",
+        'duration' => 0
+      } 
+    end
+    
   end
 
   def get_real_batches
-    Batch.where(:order_id => self.id).count #We are not using this field => @order.real_batches.to_s
+    real_batches = 0
+    Batch.where(:order_id => self.id).each do |batch|
+      real_batches += 1 unless BatchHopperLot.where(:batch_id => batch.id).empty?
+    end
+    return real_batches
   end
-
+  
   def create_code
     order = OrderNumber.first
     self.code = order.code.succ
