@@ -85,17 +85,15 @@ namespace :db do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
       #run_fixture('permissions')
       id_cont = 1
+      Permission.delete_all
       Permission.get_modules().each do |modname|
-        desc = "#{modname.camelize} Modify"
-        p = Permission.new({:module=>modname, :action=>'modify', :mode=>'global', :name=>desc})
-        p.id = id_cont
-        p.save
-        id_cont += 1
-        desc = "#{modname.camelize} Consult"
-        p = Permission.new({:module=>modname, :action=>'consult', :mode=>'global', :name=>desc})
-        p.id = id_cont
-        p.save
-        id_cont += 1
+        ['consult', 'modify', 'delete'].each do |ptype|
+          desc = "#{modname.camelize} #{ptype.capitalize}"
+          p = Permission.new({:module=>modname, :action=>ptype, :mode=>'global', :name=>desc})
+          p.id = id_cont
+          p.save
+          id_cont += 1
+        end
       end
       puts "Loaded #{id_cont} permissions"
       run_fixture('roles')
