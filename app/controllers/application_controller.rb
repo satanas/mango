@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
-  before_filter :check_authentication
-  
+  before_filter :check_authentication, :check_permissions
+
   helper :flash
   helper :modal
   include ModalHelper::Modal
@@ -30,5 +30,15 @@ class ApplicationController < ActionController::Base
       redirect_to :controller=>'sessions', :action=>'index'
     end
   end
-  
+
+  def check_permissions
+    return true if (controller_name == 'sessions')
+    granted = session[:user].has_permission?(controller_name, action_name)
+    return true if granted
+    flash[:notice] = "No tiene permiso para acceder a ese recurso"
+    flash[:type] = 'error'
+    request.env["HTTP_REFERER"] ? (redirect_to :back) : (redirect_to :action=>'show', :controller=>'sessions')
+    return false
+  end
+
 end

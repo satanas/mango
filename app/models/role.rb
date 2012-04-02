@@ -1,4 +1,4 @@
 class Role < ActiveRecord::Base
   has_many :permission_role
-  belongs_to :user
+  has_many :role_user
 end

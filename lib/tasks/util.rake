@@ -83,8 +83,23 @@ namespace :db do
     desc 'Initialize permissions'
     task :permissions => :environment do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
-      run_fixture('permissions')
+      #run_fixture('permissions')
+      id_cont = 1
+      Permission.get_modules().each do |modname|
+        desc = "#{modname.camelize} Modify"
+        p = Permission.new({:module=>modname, :action=>'modify', :mode=>'global', :name=>desc})
+        p.id = id_cont
+        p.save
+        id_cont += 1
+        desc = "#{modname.camelize} Consult"
+        p = Permission.new({:module=>modname, :action=>'consult', :mode=>'global', :name=>desc})
+        p.id = id_cont
+        p.save
+        id_cont += 1
+      end
+      puts "Loaded #{id_cont} permissions"
       run_fixture('roles')
+      run_fixture('roles_users')
       admin_rol = Role.find(1)
       admin_rol.permission_role.clear
       Permission.all.each do |perm|
@@ -94,6 +109,7 @@ namespace :db do
         admin_rol.permission_role << perm_rol
       end
       admin_rol.save
+      puts 'Created administrator role (superuser)'
     end
 
   end
