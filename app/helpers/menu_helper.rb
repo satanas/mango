@@ -91,6 +91,18 @@ module MenuHelper
       menu = menu_for_transactions_new
     elsif c == 'transactions' and (a == 'edit' or a == 'update')
       menu = menu_for_transactions_edit
+    elsif c == 'permissions' and a == 'index'
+      menu = menu_for_permissions_index
+    elsif c == 'permissions' and (a == 'new' or a == 'create')
+      menu = menu_for_permissions_new
+    elsif c == 'permissions' and (a == 'edit' or a == 'update')
+      menu = menu_for_permissions_edit
+    elsif c == 'roles' and a == 'index'
+      menu = menu_for_roles_index
+    elsif c == 'roles' and (a == 'new' or a == 'create')
+      menu = menu_for_roles_new
+    elsif c == 'roles' and (a == 'edit' or a == 'update')
+      menu = menu_for_roles_edit
     elsif c == 'reports' and a == 'index'
       menu = menu_for_reports_index
     end
@@ -507,6 +519,60 @@ module MenuHelper
     menu += content_tag(:ul,
       render_back(transactions_path) +
       render_function('Actualizar', 'Actualizar transacción', "submit_transaction_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_permissions_index
+    menu = content_tag(:p, 'Lista de permisos')
+    menu += content_tag(:ul,
+      render_back(root_path) +
+      render_action('Crear', 'Crear nuevo permiso', new_permission_path, 'button-add.png')
+    )
+    return menu
+  end
+
+  def menu_for_permissions_new
+    menu = content_tag(:p, 'Crear nuevo permiso')
+    menu += content_tag(:ul,
+      render_back(permissions_path) +
+      render_function('Guardar', 'Guardar permiso', "submit_permission_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_permissions_edit
+    menu = content_tag(:p, 'Editar permiso')
+    menu += content_tag(:ul,
+      render_back(permissions_path) +
+      render_function('Actualizar', 'Actualizar permiso', "submit_permission_edit_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_roles_index
+    menu = content_tag(:p, 'Lista de roles')
+    menu += content_tag(:ul,
+      render_back(root_path) +
+      render_action('Crear', 'Crear nuevo rol', new_role_path, 'button-add.png')
+    )
+    return menu
+  end
+
+  def menu_for_roles_new
+    menu = content_tag(:p, 'Crear nuevo rol')
+    menu += content_tag(:ul,
+      render_back(roles_path) +
+      render_function('Guardar', 'Guardar rol', "submit_role_new_form()", 'button-execute.png')
+    )
+    return menu
+  end
+
+  def menu_for_roles_edit
+    menu = content_tag(:p, 'Editar rol')
+    menu += content_tag(:ul,
+      render_back(roles_path) +
+      render_function('Actualizar', 'Actualizar rol', "submit_role_edit_form()", 'button-execute.png')
     )
     return menu
   end

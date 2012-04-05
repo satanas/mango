@@ -1,0 +1,36 @@
+<% i = 0 %>
+<% if @permissions.length > 0 %>
+<table id="tabledata">
+    <thead>
+      <tr>
+        <th>Nombre<span class="order_arrow"></span></th>
+        <th>Módulo<span class="order_arrow"></span></th>
+        <th>Acción<span class="order_arrow"></span></th>
+        <th>Tipo<span class="order_arrow"></span></th>
+        <th class="actions_small">Acciones</th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @permissions.each do |u| %>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
+        <td><%=h u.name %></td>
+        <td class="center"><%=h u.module %></td>
+        <td class="center"><%=h u.action %></td>
+        <td class="center"><%=h u.mode %></td>
+        <td>
+          <%= render_action_edit(edit_permission_path(u)) %>
+          <%= render_action_delete(permission_path(u), "Desea borrar el permiso '#{u.name}'?") %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+<div id="tablefooter">
+  <div id="pagination">
+    <%=raw show_pagination @permissions %>
+  </div>
+</div>
+<% else %>
+<p>No hay permisos registrados</p>
+<% end %>

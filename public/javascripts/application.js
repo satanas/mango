@@ -123,6 +123,22 @@ function submit_transaction_edit_form() {
     $('transaction_edit_form').submit();
 }
 
+function submit_permission_new_form() {
+    $('permission_new_form').submit();
+}
+
+function submit_permission_edit_form() {
+    $('permission_edit_form').submit();
+}
+
+function submit_role_new_form() {
+    $('role_new_form').submit();
+}
+
+function submit_role_edit_form() {
+    $('role_edit_form').submit();
+}
+
 function toggle_report_details(id) {
     hide_all_report_details();
     $(id).toggle();

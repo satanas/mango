@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   attr_protected :id, :password_salt
 
   CONSULT_ACTIONS = ['index']
-  MODIFY_ACTIONS = ['edit', 'update']
+  MODIFY_ACTIONS = ['new', 'edit', 'create', 'update']
+  DELETE_ACTIONS = ['destroy']
 
   def self.auth(login, password)
     user = User.find(:first, :conditions =>["login = ?", login])
@@ -39,6 +40,8 @@ class User < ActiveRecord::Base
       if pm.permission.action == 'consult' and CONSULT_ACTIONS.include?(action)
         valid = true
       elsif pm.permission.action == 'modify' and MODIFY_ACTIONS.include?(action)
+        valid = true
+      elsif pm.permission.action == 'delete' and DELETE_ACTIONS.include?(action)
         valid = true
       end
       return true if valid
