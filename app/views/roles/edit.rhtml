@@ -1,0 +1,5 @@
+<%= form_for :role, :url=>role_path(@role), :html=>{:method=>:put, :id=>'role_edit_form'} do |f| %>
+  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <h5>Permisos</h5>
+  <%= render :partial=>'edit_grid', :locals =>{:f => f} %>
+<% end %>

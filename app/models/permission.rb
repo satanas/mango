@@ -36,4 +36,8 @@ class Permission < ActiveRecord::Base
   def self.is_delete?(action)
     DELETE.include?(action)
   end
+
+  def self.get_all
+    find :all, :order => 'module ASC'
+  end
 end

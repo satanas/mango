@@ -87,9 +87,9 @@ namespace :db do
       id_cont = 1
       Permission.delete_all
       Permission.get_modules().each do |modname|
-        Permission.get_modes().each do |ptype|
-          desc = "#{modname.camelize} #{ptype.capitalize}"
-          p = Permission.new({:module=>modname, :action=>ptype, :mode=>'global', :name=>desc})
+        Permission.get_actions().each do |act|
+          desc = "#{modname.camelize} #{act.capitalize}"
+          p = Permission.new({:module=>modname, :action=>act, :mode=>'global', :name=>desc})
           p.id = id_cont
           p.save
           id_cont += 1

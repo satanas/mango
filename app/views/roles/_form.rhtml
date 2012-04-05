@@ -1,0 +1,7 @@
+<%= render_error_messages(f.error_messages) %>
+<label for="name" class="small">Nombre:</label>
+<div class="field"><%= f.text_field :name, :size=>'20' %> <span>*</span></div>
+<label for="description" class="small">Descripción:</label>
+<div class="field"><%= f.text_field :description, :size=>'30' %> <span>*</span></div>
+<div class="clearfix"></div>
+<br/><span class="required">* Campos obligatorios</span>

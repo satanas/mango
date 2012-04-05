@@ -18,11 +18,15 @@ ActionController::Routing::Routes.draw do |map|
   match 'batches/:batch_id/batches_hopper_lot' => "batches_hopper_lot#create", :via => :post, :as => "batches_hopper_lot"
   match 'batches/:batch_id/batches_hopper_lot/:id' => "batches_hopper_lot#destroy", :via => :delete, :as => "batch_hopper_lot"
   resources :sessions, :users, :ingredients, :clients, :hoppers, :products, :orders, :lots, :schedules, :batches,
-    :transaction_types, :product_lots, :warehouses, :permissions, :roles
+    :transaction_types, :product_lots, :warehouses, :permissions
   resources :transactions, :except=>:edit
 
   resources :recipes do
     resources :ingredients_recipes
+  end
+
+  resources :roles do
+    resources :permissions_roles
   end
 
   root :to => "sessions#index"
