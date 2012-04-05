@@ -13,10 +13,6 @@ class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
   attr_protected :id, :password_salt
 
-  CONSULT_ACTIONS = ['index']
-  MODIFY_ACTIONS = ['new', 'edit', 'create', 'update']
-  DELETE_ACTIONS = ['destroy']
-
   def self.auth(login, password)
     user = User.find(:first, :conditions =>["login = ?", login])
     return nil if user.nil?
@@ -37,11 +33,11 @@ class User < ActiveRecord::Base
     permission_roles.each do |pm|
       puts "action: #{action}"
       puts "permission.action: #{pm.permission.action} - permission.module: #{pm.permission.module}"
-      if pm.permission.action == 'consult' and CONSULT_ACTIONS.include?(action)
+      if pm.permission.action == 'consult' and Permission.is_consult?(action)
         valid = true
-      elsif pm.permission.action == 'modify' and MODIFY_ACTIONS.include?(action)
+      elsif pm.permission.action == 'modify' and Permission.is_modify?(action)
         valid = true
-      elsif pm.permission.action == 'delete' and DELETE_ACTIONS.include?(action)
+      elsif pm.permission.action == 'delete' and Permission.is_delete?(action)
         valid = true
       end
       return true if valid

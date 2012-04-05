@@ -4,20 +4,36 @@ class Permission < ActiveRecord::Base
   MODULES = ['batches', 'orders', 'recipes', 'hoppers', 'transactions', 'warehouses', 'lots', 'product_lots',
     'ingredients', 'products', 'clients', 'transaction_types', 'schedules', 'users', 'roles', 'permissions',
     'reports', 'configuration']
-
+  # Permission actions
   ACTIONS = ['consult', 'modify', 'delete']
-
   MODES = ['global', 'module']
 
+  # Rails actions
+  CONSULT = ['index', 'show']
+  MODIFY = ['new', 'edit', 'create', 'update']
+  DELETE = ['destroy']
+
   def self.get_modules
-    return MODULES
+    MODULES
   end
 
   def self.get_actions
-    return ACTIONS
+    ACTIONS
   end
 
   def self.get_modes
-    return MODES
+    MODES
+  end
+
+  def self.is_consult?(action)
+    CONSULT.include?(action)
+  end
+
+  def self.is_modify?(action)
+    MODIFY.include?(action)
+  end
+
+  def self.is_delete?(action)
+    DELETE.include?(action)
   end
 end
