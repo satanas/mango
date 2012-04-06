@@ -37,6 +37,14 @@ class Permission < ActiveRecord::Base
     DELETE.include?(action)
   end
 
+  def self.is_recalculate?(action)
+    return action == 'recalculate'
+  end
+
+  def self.is_import?(action)
+    return action == 'import'
+  end
+
   def self.get_all
     find :all, :order => 'module ASC'
   end

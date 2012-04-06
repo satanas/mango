@@ -8,4 +8,4 @@ recalculate:
   name: Recalculate stock
   module: warehouses
   action: recalculate
-  mode: module
+  mode: global
