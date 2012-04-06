@@ -97,7 +97,6 @@ namespace :db do
       end
       puts "Loaded #{id_cont} permissions"
       run_fixture('roles')
-      run_fixture('roles_users')
       admin_rol = Role.find(1)
       admin_rol.permission_role.clear
       Permission.all.each do |perm|

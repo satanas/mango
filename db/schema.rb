@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402162434) do
+ActiveRecord::Schema.define(:version => 20120405224311) do
 
   create_table "bases_units", :force => true do |t|
     t.string   "code",       :null => false
@@ -165,7 +165,8 @@ ActiveRecord::Schema.define(:version => 20120402162434) do
 
   create_table "products_lots", :force => true do |t|
     t.integer  "order_id"
-    t.string   "number",     :null => false
+    t.string   "code",       :null => false
+    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -212,11 +213,12 @@ ActiveRecord::Schema.define(:version => 20120402162434) do
   end
 
   create_table "transactions", :force => true do |t|
-    t.integer  "transaction_type_id"
-    t.integer  "warehouse_id"
-    t.integer  "user_id"
-    t.datetime "date"
-    t.float    "amount"
+    t.integer  "transaction_type_id", :null => false
+    t.integer  "warehouse_id",        :null => false
+    t.integer  "user_id",             :null => false
+    t.string   "code",                :null => false
+    t.date     "date",                :null => false
+    t.float    "amount",              :null => false
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -231,10 +233,11 @@ ActiveRecord::Schema.define(:version => 20120402162434) do
     t.boolean  "admin",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role_id"
   end
 
   create_table "warehouses", :force => true do |t|
-    t.integer  "warehouse_type_id",                  :null => false
+    t.integer  "warehouse_type_id"
     t.integer  "content_id",                         :null => false
     t.string   "code",                               :null => false
     t.string   "location",                           :null => false

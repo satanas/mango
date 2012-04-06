@@ -2,10 +2,10 @@ class User < ActiveRecord::Base
   has_many :order
   has_many :batch
   has_many :transaction
-  has_one :role_user
+  has_one :role
 
   validates_uniqueness_of :login
-  validates_presence_of :name, :login
+  validates_presence_of :name, :login, :role_id
   validates_length_of :name, :login, :within => 3..40
 
   before_save :validate_password
@@ -20,6 +20,15 @@ class User < ActiveRecord::Base
     return nil
   end
 
+  def get_dashboard_permissions
+    permissions = []
+    perm = PermissionRole.find :all, :conditions=>{:role_id=>self.role_id, :permissions=>{:action=>'consult'}}, :include=>[:permission]
+    perm.each do |pr|
+      permissions << pr.permission.module
+    end
+    return permissions
+  end
+
   def password=(pass)
     return if pass.blank?
     @password = pass
@@ -29,7 +38,7 @@ class User < ActiveRecord::Base
 
   def has_permission?(controller, action)
     valid = false
-    permission_roles = PermissionRole.find_with_permissions(self.role_user.role.id, controller)
+    permission_roles = PermissionRole.find_with_permissions(self.role_id, controller)
     permission_roles.each do |pm|
       puts "action: #{action}"
       puts "permission.action: #{pm.permission.action} - permission.module: #{pm.permission.module}"
