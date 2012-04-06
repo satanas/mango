@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
   def check_permissions
     return true if (controller_name == 'sessions')
-    granted = session[:user].has_permission?(controller_name, action_name)
+    granted = session[:user].has_global_permission?(controller_name, action_name)
     return true if granted
     flash[:notice] = "No tiene permiso para acceder a ese recurso"
     flash[:type] = 'error'

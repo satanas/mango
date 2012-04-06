@@ -36,12 +36,12 @@ class User < ActiveRecord::Base
     self.password_hash = User.encrypt(pass, self.password_salt)
   end
 
-  def has_permission?(controller, action)
+  def has_global_permission?(controller, action)
     valid = false
-    permission_roles = PermissionRole.find_with_permissions(self.role_id, controller)
+    permission_roles = PermissionRole.find_with_permissions(self.role_id, controller, 'global')
     permission_roles.each do |pm|
-      puts "action: #{action}"
-      puts "permission.action: #{pm.permission.action} - permission.module: #{pm.permission.module}"
+      puts "GLOBAL::action: #{action} - controller: #{controller}"
+      puts "GLOBAL::permission.action: #{pm.permission.action} - permission.module: #{pm.permission.module}"
       if pm.permission.action == 'consult' and Permission.is_consult?(action)
         valid = true
       elsif pm.permission.action == 'modify' and Permission.is_modify?(action)
@@ -50,6 +50,16 @@ class User < ActiveRecord::Base
         valid = true
       end
       return true if valid
+    end
+    return false
+  end
+
+  def has_module_permission?(controller, action)
+    permission_roles = PermissionRole.find_with_permissions(self.role_id, controller, 'module')
+    permission_roles.each do |pm|
+      puts "MODULE::action: #{action} - controller: #{controller}"
+      puts "MODULE::permission.action: #{pm.permission.action} - permission.module: #{pm.permission.module}"
+      return true if pm.permission.action == action
     end
     return false
   end
