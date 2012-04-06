@@ -58,7 +58,7 @@ class Order < ActiveRecord::Base
     end
     return real_batches
   end
-  
+
   def create_code
     order = OrderNumber.first
     self.code = order.code.succ
