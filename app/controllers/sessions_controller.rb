@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
   skip_before_filter :check_authentication
   layout 'login'
-  
+
   def index
     redirect_to :action=>'show' if session[:user]
   end
-  
+
   def show
     if session[:user]
       render :show, :layout => 'dashboard'
@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
     user = User.auth(params[:user][:login], params[:user][:password])
     if user
       session[:user] = user
+      session[:permissions] = user.get_dashboard_permissions
       session[:per_page] = 12
       session[:company] = YAML::load(File.open("#{Rails.root.to_s}/config/global.yml"))['application']
       puts session.inspect

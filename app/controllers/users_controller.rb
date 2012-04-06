@@ -3,8 +3,13 @@ class UsersController < ApplicationController
     @users = User.paginate :all, :page=>params[:page], :per_page=>session[:per_page]
   end
 
+  def new
+    @roles = Role.get_all
+  end
+
   def edit
     @user = User.find params[:id]
+    @roles = Role.get_all
   end
 
   def create
@@ -13,6 +18,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Usuario guardado con éxito'
       redirect_to :users
     else
+      new
       render :new
     end
   end
@@ -24,6 +30,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Usuario guardado con éxito'
       redirect_to :users
     else
+      edit
       render :edit
     end
   end

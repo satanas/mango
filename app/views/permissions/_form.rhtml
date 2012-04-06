@@ -1,0 +1,11 @@
+<%= render_error_messages(f.error_messages) %>
+<label for="name" class="small">Nombre:</label>
+<div class="field"><%= f.text_field :name, :size=>'40' %> <span>*</span></div>
+<label for="module" class="small">Módulo:</label>
+<div class="field"><%= f.text_field :module, :size=>'20' %> <span>*</span></div>
+<label for="action" class="small">Acción:</label>
+<div class="field"><%= f.text_field :action, :size=>'20' %> <span>*</span></div>
+<label for="mode" class="small">Tipo:</label>
+<div class="field"><%= f.select :mode, @modes, :size=>'20' %> <span>*</span></div>
+<div class="clearfix"></div>
+<br/><span class="required">* Campos obligatorios</span>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330020014) do
+ActiveRecord::Schema.define(:version => 20120405224311) do
 
   create_table "bases_units", :force => true do |t|
     t.string   "code",       :null => false
@@ -139,6 +139,22 @@ ActiveRecord::Schema.define(:version => 20120330020014) do
     t.datetime "updated_at"
   end
 
+  create_table "permission_roles", :force => true do |t|
+    t.integer  "permission_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "permissions", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "module",     :null => false
+    t.string   "action",     :null => false
+    t.string   "mode",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", :force => true do |t|
     t.string   "code",         :null => false
     t.string   "name",         :null => false
@@ -162,6 +178,20 @@ ActiveRecord::Schema.define(:version => 20120330020014) do
     t.float    "total",      :default => 0.0
     t.boolean  "active",     :default => true
     t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name",        :null => false
+    t.string   "description", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", :force => true do |t|
+    t.integer  "role_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -203,6 +233,7 @@ ActiveRecord::Schema.define(:version => 20120330020014) do
     t.boolean  "admin",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role_id"
   end
 
   create_table "warehouses", :force => true do |t|

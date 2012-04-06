@@ -1,0 +1,31 @@
+<% i = 0 %>
+<div id="permission_role_grid">
+  <table id="tabledata">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Nombre</th>
+        <th>Módulo</th>
+        <th>Acción</th>
+        <th>Tipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @permissions.each do |p| %>
+        <% class_row, i = alternate_row_class(i) %>
+        <tr class="<%= class_row %>">
+          <td><%=check_box_tag 'permissions[]', p.id, @current_permission.include?(p.id) %></td>
+          <td><%=h p.name %></td>
+          <td><%=h p.module %></td>
+          <td><%=h p.action %></td>
+          <td><%=h p.mode %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div id="tablefooter">
+    <div id="pagination">
+      <!--= show_pagination @role %-->
+    </div>
+  </div>
+</div>

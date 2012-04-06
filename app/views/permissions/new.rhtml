@@ -1,0 +1,4 @@
+<%= form_for :permission, :url=>permissions_path, :html=>{:id=>'permission_new_form'} do |f| %>
+  <%= render :partial=>'form', :locals =>{:f => f} %>
+  <br/>
+<% end %>

@@ -16,7 +16,7 @@ class Transaction < ActiveRecord::Base
     transaction_type = TransactionType.find(self.transaction_type_id)
     return transaction_type.sign
   end
-  
+
   def do_stock_update
     if get_sign == '+'
       increase_stock
@@ -24,7 +24,7 @@ class Transaction < ActiveRecord::Base
       decrease_stock
     end
   end
-  
+
   def undo_stock_update
     if get_sign == '-'
       increase_stock
@@ -32,7 +32,7 @@ class Transaction < ActiveRecord::Base
       decrease_stock
     end
   end
-  
+
   def create_code
     last = Transaction.last
     if last.nil?

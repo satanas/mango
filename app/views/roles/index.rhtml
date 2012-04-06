@@ -1,0 +1,33 @@
+<% i = 0 %>
+<% if @roles.length > 0 %>
+<table id="tabledata">
+    <thead>
+      <tr>
+        <th>Nombre<span class="order_arrow"></span></th>
+        <th>Descripción<span class="order_arrow"></span></th>
+        <th class="actions">Acciones</th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @roles.each do |r| %>
+      <% class_row, i = alternate_row_class(i) %>
+      <tr class="<%= class_row %>">
+        <td><%=h r.name %></td>
+        <td><%=h r.description %></td>
+        <td>
+          <%= render_action_clone(clone_role_path(r)) %>
+          <%= render_action_edit(edit_role_path(r)) %>
+          <%= render_action_delete(role_path(r), "Desea borrar el rol '#{r.name}'?") %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+<div id="tablefooter">
+  <div id="pagination">
+    <%=raw show_pagination @roles %>
+  </div>
+</div>
+<% else %>
+<p>No hay roles registrados</p>
+<% end %>

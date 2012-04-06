@@ -1,5 +1,6 @@
 <div id="dashboard-content" class="yui3-g">
   <!-- Batches -->
+  <% if session[:permissions].include?('batches') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('batches-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), batches_path %>
     <div class="module-content">
@@ -7,8 +8,10 @@
       <p>Control y gestión de batches</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Orders -->
+  <% if session[:permissions].include?('orders') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('orden-de-produccion-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), orders_path %>
     <div class="module-content">
@@ -16,8 +19,10 @@
       <p>Gestión de las órdenes de producción</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Recipes -->
+  <% if session[:permissions].include?('recipes') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('recetas-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), recipes_path %>
     <div class="module-content">
@@ -25,8 +30,10 @@
       <p>Manejo de recetas de producción</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Hoppers -->
+  <% if session[:permissions].include?('hoppers') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('tolvas-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), hoppers_path %>
     <div class="module-content">
@@ -34,8 +41,10 @@
       <p>Gestión de tolvas y sus ingredientes</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Transactions -->
+  <% if session[:permissions].include?('transactions') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('transactions-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), transactions_path %>
     <div class="module-content">
@@ -43,8 +52,10 @@
       <p>Gestión de movimientos de inventario</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Warehouses -->
+  <% if session[:permissions].include?('warehouses') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('warehouses-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), warehouses_path %>
     <div class="module-content">
@@ -52,17 +63,21 @@
       <p>Gestión de almacenes</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Product Lots -->
+  <% if session[:permissions].include?('product_lots') %>
   <div class="module yui3-u-1-2">
-    <%= link_to image_tag('products-lot-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), product_lots_path %>
+    <%= link_to image_tag('product-lots-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), product_lots_path %>
     <div class="module-content">
       <h2><%= link_to 'Lotes de P. Terminado', product_lots_path %></h2>
       <p>Registro de lotes de producto terminado</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Ingredient Lots -->
+  <% if session[:permissions].include?('lots') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('ingredients-lot-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), lots_path %>
     <div class="module-content">
@@ -70,26 +85,32 @@
       <p>Registro de lotes de materia prima</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Ingredients -->
+  <% if session[:permissions].include?('ingredients') %>
   <div class="module yui3-u-1-2">
-    <%= link_to image_tag('materia-prima-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), ingredients_path %>
+    <%= link_to image_tag('ingredients-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), ingredients_path %>
     <div class="module-content">
       <h2><%= link_to 'Materia Prima', ingredients_path %></h2>
       <p>Manejo de los ingredientes</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Products -->
+  <% if session[:permissions].include?('products') %>
   <div class="module yui3-u-1-2">
-    <%= link_to image_tag('product-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), products_path %>
+    <%= link_to image_tag('products-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), products_path %>
     <div class="module-content">
       <h2><%= link_to 'Producto Terminado', products_path %></h2>
       <p>Gestión de productos terminados</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Clients -->
+  <% if session[:permissions].include?('clients') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('clientes-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), clients_path %>
     <div class="module-content">
@@ -97,8 +118,10 @@
       <p>Manejo de clientes</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Transaction Types -->
+  <% if session[:permissions].include?('transaction_types') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('transaction-types-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), transaction_types_path %>
     <div class="module-content">
@@ -106,17 +129,21 @@
       <p>Gestión de los tipos de transacciones</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Schedules -->
+  <% if session[:permissions].include?('schedules') %>
   <div class="module yui3-u-1-2">
-    <%= link_to image_tag('turnos-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), schedules_path %>
+    <%= link_to image_tag('schedules-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), schedules_path %>
     <div class="module-content">
       <h2><%= link_to 'Turnos', schedules_path %></h2>
       <p>Gestión de los turnos en la planta</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Users -->
+  <% if session[:permissions].include?('users') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('usuarios-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), users_path %>
     <div class="module-content">
@@ -124,8 +151,32 @@
       <p>Manejo de usuarios y permisología</p>
     </div>
   </div>
+  <% end %>
+
+  <!-- Roles -->
+  <% if session[:permissions].include?('roles') %>
+  <div class="module yui3-u-1-2">
+    <%= link_to image_tag('roles-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), roles_path %>
+    <div class="module-content">
+      <h2><%= link_to 'Roles', roles_path %></h2>
+      <p>Manejo de roles para usuarios</p>
+    </div>
+  </div>
+  <% end %>
+
+  <!-- Permissions -->
+  <% if session[:permissions].include?('permissions') %>
+  <div class="module yui3-u-1-2">
+    <%= link_to image_tag('permissions-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), permissions_path %>
+    <div class="module-content">
+      <h2><%= link_to 'Permisos', permissions_path %></h2>
+      <p>Gestión de privilegios</p>
+    </div>
+  </div>
+  <% end %>
 
   <!-- Reports -->
+  <% if session[:permissions].include?('reports') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('reportes-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), reports_path %>
     <div class="module-content">
@@ -133,8 +184,10 @@
       <p>Visualización de reportes</p>
     </div>
   </div>
+  <% end %>
 
   <!-- Config -->
+  <% if session[:permissions].include?('configuration') %>
   <div class="module yui3-u-1-2">
     <%= link_to image_tag('configuration-icon.png', :alt=>'icon', :class=>'icon', :width=>'64', :height=>'64'), not_implemented_path %>
     <div class="module-content">
@@ -142,5 +195,6 @@
       <p>Configuración general del sistema</p>
     </div>
   </div>
+  <% end %>
 
 </div>

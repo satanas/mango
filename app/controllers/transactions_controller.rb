@@ -15,13 +15,22 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Transaction.new params[:transaction]
-    @transaction.user = session[:user]
-    if @transaction.save
-      flash[:notice] = 'Transacción guardada con éxito'
-      redirect_to :transactions
+    ttype = TransactionType.find params[:transaction][:transaction_type_id]
+    granted = session[:user].has_module_permission?('transactions', ttype.code)
+    if granted
+      @transaction = Transaction.new params[:transaction]
+      @transaction.user = session[:user]
+      if @transaction.save
+        flash[:notice] = 'Transacción guardada con éxito'
+        redirect_to :transactions
+      else
+        new
+        render :new
+      end
     else
       new
+      flash[:type] = 'error'
+      flash[:notice] = 'No tiene permisos para realizar esa transacción'
       render :new
     end
   end

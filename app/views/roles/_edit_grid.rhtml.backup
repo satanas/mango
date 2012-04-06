@@ -1,0 +1,40 @@
+<% i = 0 %>
+<div id="permission_role_grid">
+  <%= form_for :permission_role, :url=>role_permissions_roles_path(@role) do |f| %>
+  <table id="tabledata">
+    <thead>
+      <tr>
+        <th>Nombre<span class="order_arrow"></span></th>
+        <th>Módulo<span class="order_arrow"></span></th>
+        <th>Acción<span class="order_arrow"></span></th>
+        <th>Tipo<span class="order_arrow"></span></th>
+        <th class="actions_medium">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="4">
+          <%= f.collection_select :id, @permissions, :id, :name, {:include_blank => true}, :class=>'chzn-select chzn-done chzn-field-normal' %>
+        </td>
+        <td><%= submit_tag 'Agregar' %></td>
+      </tr>
+      <% @role.permission_role.each do |pr| %>
+        <% class_row, i = alternate_row_class(i) %>
+          <tr class="<%= class_row %>">
+          <td><%=h pr.permission.name %></td>
+          <td><%=h pr.permission.module %></td>
+          <td><%=h pr.permission.action %></td>
+          <td><%=h pr.permission.mode %></td>
+          <td><%= render_action_delete(role_permissions_role_path(@role, pr), 
+            "Desea eliminar el permiso '#{pr.permission.name}'?") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div id="tablefooter">
+    <div id="pagination">
+      <!--= show_pagination @role %-->
+    </div>
+  </div>
+  <% end %>
+</div>

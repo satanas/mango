@@ -20,6 +20,30 @@ class Warehouse < ActiveRecord::Base
     return warehouse
   end
 
+  def self.get_all
+    warehouses = []
+    Warehouse.all.each do |w|
+      if w.warehouse_type_id == 1
+        w.ing_content_id = w.content_id
+      elsif w.warehouse_type_id == 2
+        w.pdt_content_id = w.content_id
+      end
+      warehouses << w
+    end
+    return warehouses
+  end
+
+  def recalculate
+    stock = 0
+    transactions = Transaction.find :all, :conditions => {:warehouse_id => self.id}, :include => [:transaction_type]
+    transactions.each do |t|
+      #puts "#{t.transaction_type.sign}#{t.amount}"
+      stock += ("#{t.transaction_type.sign}#{t.amount}".to_f)
+    end
+    self.stock = stock
+    raise StandardError, 'Problem updating warehouse stock' unless self.save
+  end
+
   private
 
   def select_content

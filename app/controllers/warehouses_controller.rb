@@ -57,4 +57,18 @@ class WarehousesController < ApplicationController
     end
     redirect_to :warehouses
   end
+
+  def recalculate
+    begin
+      Warehouse.get_all().each do |w|
+        w.recalculate
+      end
+      flash[:notice] = "Existencias recalculadas exitosamente"
+    rescue Exception => e
+      puts e.message
+      flash[:type] = 'error'
+      flash[:notice] = "Ha ocurrido un error recalculando las existencias"
+    end
+    redirect_to :warehouses
+  end
 end

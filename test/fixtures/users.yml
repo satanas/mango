@@ -1,10 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: 'Usuario de Pruebas'
-  login: 'prueba'
+  id: 1
+  name: 'Administrador'
+  login: 'admin'
   password_hash: '8fa0acf6233b92d2d48a30a315cd213748d48f28eaa63d7590509392316b3016'
   password_salt: 'abcdef'
-#
-# two:
-#   column: value
+  role_id: 1

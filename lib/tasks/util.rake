@@ -79,6 +79,39 @@ namespace :db do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
       run_fixture('orders_numbers')
     end
+
+    desc 'Initialize permissions'
+    task :permissions => :environment do
+      RAILS_ENV = ENV['RAILS_ENV'] || 'development'
+      id_cont = 1
+      Permission.delete_all
+      Permission.get_modules().each do |modname|
+        Permission.get_actions().each do |act|
+          desc = "#{modname.camelize} #{act.capitalize}"
+          p = Permission.new({:module=>modname, :action=>act, :mode=>'global', :name=>desc})
+          p.id = id_cont
+          p.save
+          id_cont += 1
+        end
+      end
+      insert_fixture('permissions', Permission)
+      puts "Loaded #{Permission.count} permissions"
+      run_fixture('roles')
+      admin_rol = Role.find(1)
+      admin_rol.permission_role.clear
+      Permission.all.each do |perm|
+        perm_rol = PermissionRole.new
+        perm_rol.permission_id = perm.id
+        perm_rol.role_id = admin_rol.id
+        admin_rol.permission_role << perm_rol
+      end
+      admin_rol.save
+      old_admin = User.find_by_id(1)
+      old_admin.delete unless old_admin.nil?
+      run_fixture('users')
+      puts 'Created administrator role (superuser)'
+    end
+
   end
 
   desc 'Clean ingredients and recipes related tables'
@@ -112,6 +145,7 @@ namespace :sys do
     Rake::Task['db:fixtures:base_units'].invoke
     Rake::Task['db:fixtures:transaction_types'].invoke
     Rake::Task['db:fixtures:orders_numbers'].invoke
+    Rake::Task['db:fixtures:permissions'].invoke
     if RAILS_ENV == 'development'
       Rake::Task['db:fixtures:products'].invoke
       #Rake::Task['db:fixtures:recipes'].invoke
@@ -124,4 +158,11 @@ def run_fixture(table)
   fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
   Fixtures.create_fixtures(fixtures_dir, table)
   puts "Loaded fixtures for #{table}"
+end
+
+def insert_fixture(name, object)
+  filename = File.join(File.dirname(__FILE__), "../../test/fixtures", "#{name}.yml")
+  YAML::load(File.open(filename)).each do |key, value|
+    object.create(value)
+  end
 end
