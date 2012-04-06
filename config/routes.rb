@@ -5,7 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   match 'ingredients/select' => "ingredients#select", :via => :get, :as => 'ingredient_select'
   match 'recipes/import' => "recipes#import", :via => :get, :as => 'recipe_import'
   match 'recipes/upload' => "recipes#upload", :via => :get, :as => 'recipe_upload'
-  match 'warehouse/:id/recalculate' => "warehouse#recalculate", :via => :post, :as => 'recalculate_warehouse'
+  match 'warehouses/:id/recalculate' => "warehouses#recalculate", :via => :get, :as => 'recalculate_warehouse'
+  match 'roles/:id/clone' => "roles#clone", :via => :get, :as => 'clone_role'
   match 'sessions/not_implemented' => "sessions#not_implemented", :via => :get, :as => "not_implemented"
   # Reports
   match 'reports/index' => "reports#index", :via => :get, :as => "reports"

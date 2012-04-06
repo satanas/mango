@@ -9,15 +9,15 @@
       </tr>
     </thead>
     <tbody>
-    <% @roles.each do |u| %>
+    <% @roles.each do |r| %>
       <% class_row, i = alternate_row_class(i) %>
       <tr class="<%= class_row %>">
-        <td><%=h u.name %></td>
-        <td><%=h u.description %></td>
+        <td><%=h r.name %></td>
+        <td><%=h r.description %></td>
         <td>
-          Clonar
-          <%= render_action_edit(edit_role_path(u)) %>
-          <%= render_action_delete(role_path(u), "Desea borrar el rol '#{u.name}'?") %>
+          <%= render_action_clone(clone_role_path(r)) %>
+          <%= render_action_edit(edit_role_path(r)) %>
+          <%= render_action_delete(role_path(r), "Desea borrar el rol '#{r.name}'?") %>
         </td>
       </tr>
     <% end %>

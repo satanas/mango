@@ -14,6 +14,11 @@ module ActionsHelper
     return link_to image + "Recalcular", url, :class => 'action'
   end
 
+  def render_action_clone(url)
+    image = image_tag('action-clone.png', :alt=>'Clonar')
+    return link_to image + "Clonar", url, :class => 'action'
+  end
+
   def render_action_delete(url, confirm)
     image = image_tag('action-delete.png', :alt=>'Borrar')
     return link_to image + " Eliminar", url, :class => 'action', :method => :delete, :confirm =>confirm

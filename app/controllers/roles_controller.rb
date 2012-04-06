@@ -10,11 +10,21 @@ class RolesController < ApplicationController
 
   def edit
     @current_permission = []
-    @role = Role.find params[:id], :include => {:permission_role=>:permission}
     @permissions = Permission.get_all
+    @role = Role.find params[:id], :include => {:permission_role=>:permission}
     @role.permission_role.each do |pr|
       @current_permission << pr.permission.id
     end
+  end
+
+  def clone
+    @current_permission = []
+    @permissions = Permission.get_all
+    role = Role.find params[:id], :include => {:permission_role=>:permission}
+    role.permission_role.each do |pr|
+      @current_permission << pr.permission.id
+    end
+    render :new
   end
 
   def create

@@ -99,7 +99,7 @@ module MenuHelper
       menu = menu_for_permissions_edit
     elsif c == 'roles' and a == 'index'
       menu = menu_for_roles_index
-    elsif c == 'roles' and (a == 'new' or a == 'create')
+    elsif c == 'roles' and (a == 'new' or a == 'create' or a == 'clone')
       menu = menu_for_roles_new
     elsif c == 'roles' and (a == 'edit' or a == 'update')
       menu = menu_for_roles_edit
