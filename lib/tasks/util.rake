@@ -83,7 +83,6 @@ namespace :db do
     desc 'Initialize permissions'
     task :permissions => :environment do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
-      #run_fixture('permissions')
       id_cont = 1
       Permission.delete_all
       Permission.get_modules().each do |modname|
@@ -95,7 +94,8 @@ namespace :db do
           id_cont += 1
         end
       end
-      puts "Loaded #{id_cont} permissions"
+      insert_fixture('permissions', Permission)
+      puts "Loaded #{Permission.count} permissions"
       run_fixture('roles')
       admin_rol = Role.find(1)
       admin_rol.permission_role.clear
@@ -158,4 +158,11 @@ def run_fixture(table)
   fixtures_dir = File.join(File.dirname(__FILE__), "../../test/fixtures")
   Fixtures.create_fixtures(fixtures_dir, table)
   puts "Loaded fixtures for #{table}"
+end
+
+def insert_fixture(name, object)
+  filename = File.join(File.dirname(__FILE__), "../../test/fixtures", "#{name}.yml")
+  YAML::load(File.open(filename)).each do |key, value|
+    object.create(value)
+  end
 end
