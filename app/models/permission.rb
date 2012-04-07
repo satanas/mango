@@ -1,6 +1,9 @@
 class Permission < ActiveRecord::Base
   has_many :permission_role
 
+  after_save :associate_role
+  after_destroy :deassociate_role
+
   MODULES = ['batches', 'orders', 'recipes', 'hoppers', 'transactions', 'warehouses', 'lots', 'product_lots',
     'ingredients', 'products', 'clients', 'transaction_types', 'schedules', 'users', 'roles', 'permissions',
     'reports', 'configuration']
@@ -47,5 +50,15 @@ class Permission < ActiveRecord::Base
 
   def self.get_all
     find :all, :order => 'module ASC'
+  end
+
+  private
+
+  def associate_role
+    pr = PermissionRole.create({:permission_id=>self.id, :role_id=>1})
+  end
+
+  def deassociate_role
+    PermissionRole.delete_all :permission_id=>self.id
   end
 end

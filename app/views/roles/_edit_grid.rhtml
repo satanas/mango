@@ -13,8 +13,13 @@
     <tbody>
       <% @permissions.each do |p| %>
         <% class_row, i = alternate_row_class(i) %>
+        <% if session[:user].login == 'admin' %>
+          <% disabled = true %>
+        <% else %>
+          <% disabled = false %>
+        <% end %>
         <tr class="<%= class_row %>">
-          <td><%=check_box_tag 'permissions[]', p.id, @current_permission.include?(p.id) %></td>
+          <td><%=check_box_tag 'permissions[]', p.id, @current_permission.include?(p.id), :disabled=>disabled %></td>
           <td><%=h p.name %></td>
           <td><%=h p.module %></td>
           <td><%=h p.action %></td>
