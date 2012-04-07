@@ -5,7 +5,7 @@ class Permission < ActiveRecord::Base
   after_destroy :deassociate_role
 
   MODULES = ['batches', 'orders', 'recipes', 'hoppers', 'transactions', 'warehouses', 'lots', 'product_lots',
-    'ingredients', 'products', 'clients', 'transaction_types', 'schedules', 'users', 'roles', 'permissions',
+    'ingredients', 'ingredients_recipes', 'products', 'clients', 'transaction_types', 'schedules', 'users', 'roles', 'permissions',
     'reports', 'configuration']
   # Permission actions
   ACTIONS = ['consult', 'modify', 'delete']

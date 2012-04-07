@@ -106,9 +106,9 @@ namespace :db do
         admin_rol.permission_role << perm_rol
       end
       admin_rol.save
-      old_admin = User.find_by_id(1)
-      old_admin.delete unless old_admin.nil?
-      run_fixture('users')
+      #old_admin = User.find_by_id(1)
+      #old_admin.delete unless old_admin.nil?
+      #run_fixture('users')
       puts 'Created administrator role (superuser)'
     end
 
