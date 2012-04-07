@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   match 'reports/batch_details' => "reports#batch_details", :via => :get, :as => "batch_details_report"
   match 'reports/ingredient_variation' => "reports#ingredient_variation", :via => :get, :as => "ingredient_variation_report"
   match 'reports/order_duration' => "reports#order_duration", :via => :get, :as => "order_duration_report"
+  match 'reports/total_per_recipe' => "reports#total_per_recipe", :via => :get, :as => "total_per_recipe_report"
   match 'batches/:batch_id/batches_hopper_lot' => "batches_hopper_lot#create", :via => :post, :as => "batches_hopper_lot"
   match 'batches/:batch_id/batches_hopper_lot/:id' => "batches_hopper_lot#destroy", :via => :delete, :as => "batch_hopper_lot"
   resources :sessions, :users, :ingredients, :clients, :hoppers, :products, :orders, :lots, :schedules, :batches,
