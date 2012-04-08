@@ -60,7 +60,7 @@
       <%= form_for :report, :url=>total_per_recipe_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
         <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
-        <%= f.label :recipe_code, "Codigo receta: ", :class=>'small' %> <%= f.text_field :recipe_code, :size=>15 %><br/><br/><br/>
+        <%= f.label :recipe, "Codigo receta: ", :class=>'small' %> <%= f.text_field :recipe, :size=>15 %><br/><br/><br/>
         <%= submit_tag 'Generar Reporte' %>
       <% end %>
     </div>

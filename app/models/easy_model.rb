@@ -233,6 +233,47 @@ class EasyModel
   def self.total_per_recipe(start_date, end_date, recipe_code)
     start_date << " 00:00:00"
     end_date << " 23:59:59"
+
+    std = {}
+    real = {}
+    nominal = {}
+    data = {}
+    data['title'] = 'Reporte de consumos por receta'
+    data['results'] = []
+
+    recipe = Recipe.find :first, :include=>{:ingredient_recipe=>{:ingredient=>{}}}, :conditions => ['code = ?', recipe_code]
+    recipe.ingredient_recipe.each do |ir|
+      key = ir.ingredient.code
+      nominal[key] = [ir.ingredient.name, ir.amount]
+    end
+
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ['recipe_id = ?', recipe.id]
+
+    orders.each do |o|
+      o.batch.each do |b|
+        b.batch_hopper_lot.each do |bhl|
+          key = bhl.hopper_lot.lot.ingredient.code
+          value = bhl.amount
+
+          std[key] = std.fetch(key, 0) + nominal[key][1]
+          real[key] = real.fetch(key, 0) + value
+        end
+      end
+    end
+
+    nominal.each do |key, value|
+      data['results'] << {
+        'code' => key,
+        'ingredient' => value[0],
+        'std_kg' => std[key].to_s,
+        'real_kg' => real[key].to_s,
+      }
+    end
+
+    data['recipe'] = "#{recipe.code} - #{recipe.name}"
+    data['start_date'] = start_date
+    data['end_date'] = end_date
+=begin
     recipe_id = Recipe.find(:first, :conditions => ['code = ?', recipe_code])
     orders = Order.find(:all, :include=>['batch'], :conditions => ['batches.start_date >= ? and batches.end_date <= ? and recipe_id = ?', start_date, end_date, recipe_id])
 
@@ -283,6 +324,7 @@ class EasyModel
       #Eso se hace a traves del arreglo* dinamico "data"
     end
     data['total'] = "Que no se repita"
+=end
     return data
   end
 
