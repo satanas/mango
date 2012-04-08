@@ -14,7 +14,7 @@
       <% @permissions.each do |p| %>
         <% class_row, i = alternate_row_class(i) %>
         <% if session[:user].login == 'admin' %>
-          <% disabled = true %>
+          <% disabled = false %>
         <% else %>
           <% disabled = false %>
         <% end %>
