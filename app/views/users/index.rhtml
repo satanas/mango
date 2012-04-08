@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-    <% @users.each do |u| %>
+    <% User.get_all.each do |u| %>
       <% class_row, i = alternate_row_class(i) %>
       <tr class="<%= class_row %>">
         <td><%=h u.login %></td>
@@ -23,7 +23,7 @@
           <% end %>
         </td>
       </tr>
-    <% end %>
+      <% end %>
     </tbody>
 </table>
 <div id="tablefooter">

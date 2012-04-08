@@ -7,4 +7,19 @@
 admin:
   id: 1
   name: 'Administrador'
-  description: 'Dios del sistema'
+  description: 'Soy el principio y el final.'
+
+manager:
+  id: 2
+  name: 'gerente'
+  description: 'Gerente'
+
+supervisor:
+  id: 3
+  name: 'supervisor'
+  description: 'Supervisor'
+
+operator:
+  id: 4
+  name: 'operator'
+  description: 'Operador'

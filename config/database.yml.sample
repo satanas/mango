@@ -1,0 +1,16 @@
+common: &common
+  adapter: mysql2
+  username: 
+  password:
+
+development:
+  << : *common
+  database: mango_dev
+
+test:
+  << : *common
+  database: mango_test
+
+production:
+  << : *common
+  database: mango
