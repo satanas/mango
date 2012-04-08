@@ -49,7 +49,7 @@ class Permission < ActiveRecord::Base
   end
 
   def self.get_all
-    find :all, :order => 'module ASC'
+    find :all, :order => 'module ASC, name ASC'
   end
 
   private
