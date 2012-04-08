@@ -21,8 +21,16 @@ class User < ActiveRecord::Base
   end
 
   def get_dashboard_permissions
+    
     permissions = []
     perm = PermissionRole.find :all, :conditions=>{:role_id=>self.role_id, :permissions=>{:action=>'consult'}}, :include=>[:permission]
+    
+    # You shall not question my god.
+    if self.role_id == 1 # Sure there is a better way
+      permissions = []
+      perm = PermissionRole.find :all, :conditions=>{:permissions=>{:action=>'consult'}}, :include=>[:permission]
+    end
+    
     perm.each do |pr|
       permissions << pr.permission.module
     end
@@ -37,6 +45,9 @@ class User < ActiveRecord::Base
   end
 
   def has_global_permission?(controller, action)
+    if self.role_id == 1 # Again, don't you dare
+      return true
+    end
     valid = false
     permission_roles = PermissionRole.find_with_permissions(self.role_id, controller, 'global')
     permission_roles.each do |pm|
@@ -61,6 +72,9 @@ class User < ActiveRecord::Base
   end
 
   def has_module_permission?(controller, action)
+    if self.role_id == 1 # You should be able to see it by now Mr. Anderson
+      return true
+    end
     permission_roles = PermissionRole.find_with_permissions(self.role_id, controller, 'module')
     permission_roles.each do |pm|
       puts "MODULE::action: #{action} - controller: #{controller}"
