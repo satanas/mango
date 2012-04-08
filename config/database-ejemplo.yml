@@ -1,17 +1,16 @@
-development:
+common: &common
   adapter: mysql2
-  database: porcinas_dev
   username: 
-  password: 
+  password:
+
+development:
+  << : *common
+  database: mango_dev
 
 test:
-  adapter: mysql2
-  database: porcinas_test
-  username: 
-  password: 
+  << : *common
+  database: mango_test
 
 production:
-  adapter: mysql2
-  database: porcinas
-  username: 
-  password: 
+  << : *common
+  database: mango
