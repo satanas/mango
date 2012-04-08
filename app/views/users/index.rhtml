@@ -10,11 +10,9 @@
       </tr>
     </thead>
     <tbody>
-    <% @users.each do |u| %>
-      <% unless u.role_id == 1 %>
+    <% User.get_all.each do |u| %>
       <% class_row, i = alternate_row_class(i) %>
       <tr class="<%= class_row %>">
-        
         <td><%=h u.login %></td>
         <td><%=h u.name %></td>
         <td class="center"><%=h u.admin %></td>
@@ -26,7 +24,6 @@
         </td>
       </tr>
       <% end %>
-    <% end %>
     </tbody>
 </table>
 <div id="tablefooter">

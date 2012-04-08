@@ -95,6 +95,10 @@ class User < ActiveRecord::Base
     return false if errors.size > 0
   end
 
+  def self.get_all
+    find :all, :conditions => ['role_id != ?', 1], :order => 'name ASC'
+  end
+
   protected
 
   def self.encrypt(pass, salt)
