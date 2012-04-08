@@ -86,6 +86,7 @@ namespace :db do
       id_cont = 1
       Permission.delete_all
       Permission.get_modules().each do |modname|
+        next if modname == 'reports'
         Permission.get_actions().each do |act|
           desc = "#{modname.camelize} #{act.capitalize}"
           p = Permission.new({:module=>modname, :action=>act, :mode=>'global', :name=>desc})

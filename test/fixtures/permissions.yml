@@ -9,3 +9,38 @@ recalculate:
   module: warehouses
   action: recalculate
   mode: global
+reports:
+  name: Report Consult
+  module: reports
+  action: consult
+  mode: global
+daily_production:
+  name: Report 'Daily Production'
+  module: reports
+  action: daily_production
+  mode: global
+order_duration:
+  name: Report 'Order Duration'
+  module: reports
+  action: order_duration
+  mode: global
+order_details:
+  name: Report 'Order Details'
+  module: reports
+  action: order_details
+  mode: global
+batch_details:
+  name: Report 'Batch Details'
+  module: reports
+  action: batch_details
+  mode: global
+ingredient_variation:
+  name: Report 'Ingredient Variation'
+  module: reports
+  action: ingredient_variation
+  mode: global
+total_per_recipe:
+  name: Report 'Total Per Recipe'
+  module: reports
+  action: total_per_recipe
+  mode: global

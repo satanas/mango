@@ -52,6 +52,8 @@ class User < ActiveRecord::Base
         valid = true
       elsif pm.permission.action == 'import' and Permission.is_import?(action)
         valid = true
+      elsif pm.permission.module == 'reports' and pm.permission.action == action
+        valid = true
       end
       return true if valid
     end
