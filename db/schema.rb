@@ -165,8 +165,7 @@ ActiveRecord::Schema.define(:version => 20120405224311) do
 
   create_table "products_lots", :force => true do |t|
     t.integer  "order_id"
-    t.string   "code",       :null => false
-    t.date     "date"
+    t.string   "number",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -189,6 +188,13 @@ ActiveRecord::Schema.define(:version => 20120405224311) do
     t.datetime "updated_at"
   end
 
+  create_table "roles_users", :force => true do |t|
+    t.integer  "role_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "schedules", :force => true do |t|
     t.string   "name"
     t.time     "start_hour"
@@ -206,12 +212,11 @@ ActiveRecord::Schema.define(:version => 20120405224311) do
   end
 
   create_table "transactions", :force => true do |t|
-    t.integer  "transaction_type_id", :null => false
-    t.integer  "warehouse_id",        :null => false
-    t.integer  "user_id",             :null => false
-    t.string   "code",                :null => false
-    t.date     "date",                :null => false
-    t.float    "amount",              :null => false
+    t.integer  "transaction_type_id"
+    t.integer  "warehouse_id"
+    t.integer  "user_id"
+    t.datetime "date"
+    t.float    "amount"
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -230,7 +235,7 @@ ActiveRecord::Schema.define(:version => 20120405224311) do
   end
 
   create_table "warehouses", :force => true do |t|
-    t.integer  "warehouse_type_id"
+    t.integer  "warehouse_type_id",                  :null => false
     t.integer  "content_id",                         :null => false
     t.string   "code",                               :null => false
     t.string   "location",                           :null => false
