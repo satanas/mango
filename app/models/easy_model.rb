@@ -327,6 +327,32 @@ class EasyModel
 =end
     return data
   end
+  
+  def self.adjusments(start_date, end_date)
+    start_date << " 00:00:00"
+    end_date << " 23:59:59"
+    
+    transaction_types = TransactionType.find :all
+    adjusment_type_ids = []
+    transaction_types.each do |ttype|
+      unless ttype.code.match(/(?i)AJU/).nil?
+        puts "Codigo de ajuste encontrado: " + ttype.code
+        adjusment_type_ids << ttype.id
+      end
+    end
+    return nil if adjusment_type_ids.length.zero?
+    
+    adjusments = Transaction.find :all, :conditions => {:id => adjusment_type_ids }
+    return nil if adjusments.length.zero?
+    
+    data = {}
+    data['since'] = "Desde: #{Date.parse(start_date).strftime("%d/%m/%Y")}"
+    data['until'] = "Hasta: #{Date.parse(end_date).strftime("%d/%m/%Y")}"
+    
+    #Magic stuff will happen here
+    
+    return data
+  end
 
   #==== Utilities ====
   def self.parse_date(param, name)
@@ -338,7 +364,8 @@ class EasyModel
 
   private
 
-  def self.orders_per_criteria(start_date, end_date, criteria, criteria_variable)
+  def self.total_per_criteria(start_date, end_date, criteria, criteria_variable)
+    #Mwhaha, in due time.
     return nil
   end
 end
