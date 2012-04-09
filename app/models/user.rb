@@ -21,16 +21,16 @@ class User < ActiveRecord::Base
   end
 
   def get_dashboard_permissions
-    
+
     permissions = []
     perm = PermissionRole.find :all, :conditions=>{:role_id=>self.role_id, :permissions=>{:action=>'consult'}}, :include=>[:permission]
-    
+
     # You shall not question my god.
     if self.role_id == 1 # Sure there is a better way
       permissions = []
       perm = PermissionRole.find :all, :conditions=>{:permissions=>{:action=>'consult'}}, :include=>[:permission]
     end
-    
+
     perm.each do |pr|
       permissions << pr.permission.module
     end
@@ -93,10 +93,6 @@ class User < ActiveRecord::Base
     errors.add(:password_confirmation, "can't be blank") if @password_confirmation.blank?
     errors.add(:password_confirmation, "doesn't match") if @password != @password_confirmation
     return false if errors.size > 0
-  end
-
-  def self.get_all
-    find :all, :conditions => ['role_id != ?', 1], :order => 'name ASC'
   end
 
   protected

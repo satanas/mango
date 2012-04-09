@@ -5,19 +5,21 @@
       <tr>
         <th>Usuario</th>
         <th>Nombre<span class="order_arrow"></span></th>
-        <th>Admin<span class="order_arrow"></span></th>
+        <th>Rol<span class="order_arrow"></span></th>
         <th class="actions_small">Acciones</th></th>
       </tr>
     </thead>
     <tbody>
-    <% User.get_all.each do |u| %>
+    <% @users.each do |u| %>
       <% class_row, i = alternate_row_class(i) %>
       <tr class="<%= class_row %>">
         <td><%=h u.login %></td>
         <td><%=h u.name %></td>
-        <td class="center"><%=h u.admin %></td>
+        <td><%=h u.role.name %></td>
         <td>
-          <%= render_action_edit(edit_user_path(u)) %>
+          <% if session[:user].role_id != 1 %>
+            <%= render_action_edit(edit_user_path(u)) %>
+          <% end %>
           <% if session[:user].id != u.id %>
             <%= render_action_delete(user_path(u), "Desea borrar el usuario '#{u.name}'?") %>
           <% end %>
