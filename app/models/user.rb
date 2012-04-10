@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :order
   has_many :batch
   has_many :transaction
-  has_one :role
+  belongs_to :role
 
   validates_uniqueness_of :login
   validates_presence_of :name, :login, :role_id
@@ -14,21 +14,20 @@ class User < ActiveRecord::Base
   attr_protected :id, :password_salt
 
   def self.auth(login, password)
-    user = User.find(:first, :conditions =>["login = ?", login])
+    user = User.find :first, :conditions =>["login = ?", login], :include=>[:role]
     return nil if user.nil?
     return user if User.encrypt(password, user.password_salt) == user.password_hash
     return nil
   end
 
   def get_dashboard_permissions
-
     permissions = []
-    perm = PermissionRole.find :all, :conditions=>{:role_id=>self.role_id, :permissions=>{:action=>'consult'}}, :include=>[:permission]
 
     # You shall not question my god.
     if self.role_id == 1 # Sure there is a better way
-      permissions = []
       perm = PermissionRole.find :all, :conditions=>{:permissions=>{:action=>'consult'}}, :include=>[:permission]
+    else
+      perm = PermissionRole.find :all, :conditions=>{:role_id=>self.role_id, :permissions=>{:action=>'consult'}}, :include=>[:permission]
     end
 
     perm.each do |pr|

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.paginate :all, :page=>params[:page], :per_page=>session[:per_page], :include=>[:role], :order => 'name ASC'
+    @users = User.paginate :all, :page=>params[:page], :per_page=>session[:per_page], :order => 'name ASC'
   end
 
   def new

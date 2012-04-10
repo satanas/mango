@@ -30,7 +30,7 @@ class RolesController < ApplicationController
   def create
     @role = Role.new params[:role]
     params[:permissions].each do |p|
-      pr = PermissionRole.create({:role_id=>@role.id, :permission_id=>p})
+      @role.permission_role << PermissionRole.new(:permission_id=>p)
     end
     if @role.save
       flash[:notice] = 'Rol guardado con éxito'

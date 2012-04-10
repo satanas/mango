@@ -1,6 +1,6 @@
 class Role < ActiveRecord::Base
   has_many :permission_role
-  has_many :user
+  has_one :user
 
   def self.get_all
     find :all, :order => 'name ASC'
