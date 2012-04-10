@@ -44,13 +44,13 @@ class User < ActiveRecord::Base
   end
 
   def has_global_permission?(controller, action)
-    if self.role_id == 1 # Again, don't you dare
-      return true
-    end
+    return true if self.role_id == 1 # Again, don't you dare
+
     valid = false
     permission_roles = PermissionRole.find_with_permissions(self.role_id, controller, 'global')
+    puts "GLOBAL::action: #{action} - controller: #{controller}"
+    puts permission_roles.inspect
     permission_roles.each do |pm|
-      puts "GLOBAL::action: #{action} - controller: #{controller}"
       puts "GLOBAL::permission.action: #{pm.permission.action} - permission.module: #{pm.permission.module}"
       if pm.permission.action == 'consult' and Permission.is_consult?(action)
         valid = true
@@ -62,6 +62,8 @@ class User < ActiveRecord::Base
         valid = true
       elsif pm.permission.action == 'import' and Permission.is_import?(action)
         valid = true
+      elsif pm.permission.action == 'reprocess' and Permission.is_reprocess?(action)
+        valid = true
       elsif pm.permission.module == 'reports' and pm.permission.action == action
         valid = true
       end
@@ -71,9 +73,8 @@ class User < ActiveRecord::Base
   end
 
   def has_module_permission?(controller, action)
-    if self.role_id == 1 # You should be able to see it by now Mr. Anderson
-      return true
-    end
+    return true if self.role_id == 1 # You should be able to see it by now Mr. Anderson
+
     permission_roles = PermissionRole.find_with_permissions(self.role_id, controller, 'module')
     permission_roles.each do |pm|
       puts "MODULE::action: #{action} - controller: #{controller}"

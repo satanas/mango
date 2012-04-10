@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   match 'recipes/import' => "recipes#import", :via => :get, :as => 'recipe_import'
   match 'recipes/upload' => "recipes#upload", :via => :get, :as => 'recipe_upload'
   match 'warehouses/recalculate' => "warehouses#recalculate", :via => :get, :as => 'recalculate_warehouses'
+  match 'transactions/reprocess' => "transactions#reprocess", :via => :get, :as => 'reprocess_transactions'
   match 'roles/:id/clone' => "roles#clone", :via => :get, :as => 'clone_role'
   match 'sessions/not_implemented' => "sessions#not_implemented", :via => :get, :as => "not_implemented"
   # Reports

@@ -85,6 +85,7 @@ namespace :db do
       RAILS_ENV = ENV['RAILS_ENV'] || 'development'
       id_cont = 1
       Permission.delete_all
+      PermissionRole.delete_all
       Permission.get_modules().each do |modname|
         next if modname == 'reports'
         Permission.get_actions().each do |act|

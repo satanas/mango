@@ -9,6 +9,11 @@ recalculate:
   module: warehouses
   action: recalculate
   mode: global
+reprocess:
+  name: Reprocess transactions
+  module: transactions
+  action: reprocess
+  mode: global
 reports:
   name: Report Consult
   module: reports

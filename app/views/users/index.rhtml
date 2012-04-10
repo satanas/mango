@@ -17,9 +17,7 @@
         <td><%=h u.name %></td>
         <td><%=h u.role.name %></td>
         <td>
-          <% if session[:user].role_id != 1 %>
-            <%= render_action_edit(edit_user_path(u)) %>
-          <% end %>
+          <%= render_action_edit(edit_user_path(u)) %>
           <% if session[:user].id != u.id %>
             <%= render_action_delete(user_path(u), "Desea borrar el usuario '#{u.name}'?") %>
           <% end %>

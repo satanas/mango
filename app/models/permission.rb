@@ -48,6 +48,10 @@ class Permission < ActiveRecord::Base
     return action == 'import'
   end
 
+  def self.is_reprocess?(action)
+    return action == 'reprocess'
+  end
+
   def self.get_all
     find :all, :order => 'module ASC, name ASC'
   end

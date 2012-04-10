@@ -71,4 +71,5 @@ class WarehousesController < ApplicationController
     end
     redirect_to :warehouses
   end
+
 end

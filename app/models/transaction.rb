@@ -10,6 +10,16 @@ class Transaction < ActiveRecord::Base
   after_save :do_stock_update
   after_destroy :undo_stock_update
 
+  def self.get_no_processed
+    Transaction.find :all, :conditions=>['processed_in_stock = 0']
+  end
+
+  def process
+    do_stock_update
+    self.processed_in_stock = 1
+    raise StandardError, 'Problem reprocessing transaction' unless self.save
+  end
+
   private
 
   def get_sign

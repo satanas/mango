@@ -20,6 +20,7 @@ class TransactionsController < ApplicationController
     if granted
       @transaction = Transaction.new params[:transaction]
       @transaction.user = session[:user]
+      @transaction.processed_in_stock = 1
       if @transaction.save
         flash[:notice] = 'Transacción guardada con éxito'
         redirect_to :transactions
@@ -62,6 +63,20 @@ class TransactionsController < ApplicationController
       else
         flash[:notice] = "La transacción no se ha podido eliminar"
       end
+    end
+    redirect_to :transactions
+  end
+
+  def reprocess
+    begin
+      Transaction.get_no_processed().each do |t|
+        t.process
+      end
+      flash[:notice] = "Consumos de materia prima procesados exitosamente"
+    rescue Exception => e
+      puts e.message
+      flash[:type] = 'error'
+      flash[:notice] = "Ha ocurrido un error procesando los consumos"
     end
     redirect_to :transactions
   end
