@@ -6,7 +6,7 @@
         <th>Código<span class="order_arrow"></span></th>
         <th>Receta<span class="order_arrow"></span></th>
         <th>Cliente<span class="order_arrow"></span></th>
-        <th>Producto<span class="order_arrow"></span></th>
+        <th>Lote P.T.<span class="order_arrow"></span></th>
         <th>B. Prog.</th>
         <th>B. Real.</th>
         <th>Fin.</th>
@@ -17,12 +17,12 @@
     <% @orders.each do |o| %>
       <% class_row, i = alternate_row_class(i) %>
       <% client = o.client.nil? ? '' : o.client.name %>
-      <% product = o.product.nil? ? '' : o.product.name %>
+      <% product_lot = o.product_lot.nil? ? '' : o.product_lot.code %>
       <tr class="<%= class_row %>">
         <td class="center"><%=h o.code %></td>
         <td><%= link_to o.recipe.name, recipe_path(o.recipe.id) %></td>
         <td><%=h client %></td>
-        <td><%=h product %></td>
+        <td><%=h product_lot %></td>
         <td class="center"><%=h o.prog_batches %></td>
         <td class="center"><%=h o.real_batches %></td>
         <td class="center"><%=h o.completed %></td>

@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     @recipes = Recipe.find :all, :order => 'name ASC'
     @clients = Client.find :all, :order => 'name ASC'
     @users = User.find :all, :order => 'name ASC'
-    @products = Product.find :all, :order => 'name ASC'
+    @product_lots = ProductLot.find :all, :order => 'code ASC'
     @order = Order.new if @order.nil?
     @order_code = 'Autogenerado'
     unless session[:user].admin?

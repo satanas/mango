@@ -4,12 +4,12 @@ class ProductLotsController < ApplicationController
   end
 
   def new
-    @orders = Order.find :all, :order => 'code ASC'
+    @products = Product.find :all, :order => 'code ASC'
   end
 
   def edit
     @lot = ProductLot.find params[:id]
-    @orders = Order.find :all, :order => 'code ASC'
+    @products = Product.find :all, :order => 'code ASC'
   end
 
   def create

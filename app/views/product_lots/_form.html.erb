@@ -3,7 +3,7 @@
 <div class="field"><%= f.text_field :code, :size=>'15' %> <span>*</span></div>
 <label for="date" class="small">Fecha:</label>
 <div class="field"><%= f.date_select :date, :size=>'10' %> <span>*</span></div>
-<label for="ingredient_id" class="small">Orden de Producción:</label>
-<div class="field"><%= f.collection_select :order_id, @orders, :id, :code, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %> <span>*</span></div>
+<label for="product_id" class="small">Producto:</label>
+<div class="field"><%= f.collection_select :product_id, @products, :id, :name, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %> <span>*</span></div>
 <div class="clearfix"></div>
 <br/><span class="required">* Campos obligatorios</span>

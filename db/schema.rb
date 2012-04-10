@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(:version => 20120410014541) do
     t.integer  "recipe_id"
     t.integer  "client_id"
     t.integer  "user_id"
-    t.integer  "product_id"
+    t.integer  "product_lot_id"
     t.integer  "prog_batches",                         :null => false
     t.integer  "real_batches"
     t.string   "code",                                 :null => false
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(:version => 20120410014541) do
   end
 
   add_index "orders", ["client_id"], :name => "fk_orders_client_id"
-  add_index "orders", ["product_id"], :name => "fk_orders_product_id"
+  add_index "orders", ["product_lot_id"], :name => "fk_orders_product_lot_id"
   add_index "orders", ["recipe_id"], :name => "fk_orders_recipe_id"
   add_index "orders", ["user_id"], :name => "fk_orders_user_id"
 
@@ -164,12 +164,14 @@ ActiveRecord::Schema.define(:version => 20120410014541) do
   end
 
   create_table "products_lots", :force => true do |t|
-    t.integer  "order_id"
+    t.integer  "product_id"
     t.string   "code",       :null => false
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "products_lots", ["product_id"], :name => "fk_products_lots_product_id"
 
   create_table "recipes", :force => true do |t|
     t.string   "code"
@@ -185,13 +187,6 @@ ActiveRecord::Schema.define(:version => 20120410014541) do
   create_table "roles", :force => true do |t|
     t.string   "name",        :null => false
     t.string   "description", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles_users", :force => true do |t|
-    t.integer  "role_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

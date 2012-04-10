@@ -7,7 +7,7 @@ extend MigrationHelper
       t.references :recipe
       t.references :client
       t.references :user
-      t.references :product
+      t.references :product_lot
       t.integer :prog_batches, :null => false
       t.integer :real_batches
       t.string :code, :null => false
@@ -22,11 +22,9 @@ extend MigrationHelper
     add_foreign_key 'orders', 'recipe_id', 'recipes'
     add_foreign_key 'orders', 'client_id', 'clients'
     add_foreign_key 'orders', 'user_id', 'users'
-    add_foreign_key 'orders', 'product_id', 'products'
   end
 
   def self.down
-    drop_foreign_key 'orders', 'product_id'
     drop_foreign_key 'orders', 'user_id'
     drop_foreign_key 'orders', 'client_id'
     drop_foreign_key 'orders', 'recipe_id'

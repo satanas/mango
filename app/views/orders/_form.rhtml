@@ -11,8 +11,8 @@
 <% else %>
 <%= f.hidden_field :user_id, :size=>'10' %>
 <% end %>
-<label for="product_id" class="small">Producto:</label>
-<div class="field"><%= f.collection_select :product_id, @products, :id, :name, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
+<label for="product_lot_id" class="small">Lote Prod. Terminado:</label>
+<div class="field"><%= f.collection_select :product_lot_id, @product_lots, :id, :code, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %></div>
 <label for="prog_batchs" class="small">Batch Prog.:</label>
 <div class="field"><%= f.text_field :prog_batches, :size=>'10' %> <span>*</span></div>
 <label for="comment" class="small">Comentario:</label>

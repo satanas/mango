@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
   belongs_to :recipe
   belongs_to :client
   belongs_to :user
-  belongs_to :product
+  belongs_to :product_lot
   has_many :batch
 
   validates_presence_of :recipe_id, :user_id
