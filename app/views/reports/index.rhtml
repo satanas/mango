@@ -65,5 +65,17 @@
       <% end %>
     </div>
   </div>
+
+  <div class="report-content">
+    <h2 onclick="toggle_report_details('consumption_per_ingredients')">Consumo por ingredientes</h2>
+    <div id="consumption_per_ingredients" class="report-details">
+      <%= form_for :report, :url=>consumption_per_ingredients_report_path do |f| %>
+        <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
+        <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
+        <%= submit_tag 'Generar Reporte' %>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 <div class="clearfix"></div>

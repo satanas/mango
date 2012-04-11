@@ -247,7 +247,7 @@ class EasyModel
       nominal[key] = [ir.ingredient.name, ir.amount]
     end
 
-    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ['recipe_id = ?', recipe.id]
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND recipe_id = ?", recipe.id]
 
     orders.each do |o|
       o.batch.each do |b|
@@ -273,58 +273,6 @@ class EasyModel
     data['recipe'] = "#{recipe.code} - #{recipe.name}"
     data['start_date'] = start_date
     data['end_date'] = end_date
-=begin
-    recipe_id = Recipe.find(:first, :conditions => ['code = ?', recipe_code])
-    orders = Order.find(:all, :include=>['batch'], :conditions => ['batches.start_date >= ? and batches.end_date <= ? and recipe_id = ?', start_date, end_date, recipe_id])
-
-    data = {}
-    data['title'] = 'Reporte de consumos por receta'
-    data['table1'] = []
-    #Encabezado y pie de pagina en data, cualquier otro dato general
-    ingredients_recipes = IngredientRecipe.find(:all, :conditions => ['recipe_id = ?', recipe_id])
-
-    ingredients_recipes.each do |ir| # Por cada ingrediente de la receta
-      ingredient_id = ir.ingredient_id
-      ingredient_total = 0
-      orders.each do |o| # Por cada orden
-        batches = Batch.find(:all, :conditions => ['order_id = ?', o.id])
-        batches.each do |b| # Por cada bache
-          batch_hopper_lots = BatchHopperLot.find(:all, :conditions => ['batch_id', b.id])
-          batch_hopper_lots.each do |bhl| # Por cada consumo
-            #Buscar el lote consumido
-            hopper_lot_id = bhl.hopper_lot_id
-            lot_id = HopperLot.find(hopper_lot_id).lot_id
-            #Buscar ingrediente del lote consumido
-            bhl_ingredient_id = Lot.find(lot_id).ingredient_id
-            if bhl_ingredient_id == ingredient_id
-              #puts << "Consumo ingrediente " + ingredient_id + ":"
-              #puts bhl.amount.to_s
-              ingredient_total += bhl.amount.to_f
-            end
-          end
-        end
-      end
-
-      receta = Recipe.find(recipe_id).name
-      ingrediente = Ingredient.find(ingredient_id)
-      codigo_ingrediente = ingrediente.code
-      nombre_ingrediente = ingrediente.name
-
-      data['table1'] << {
-          'recipe' => receta,
-          'code' => codigo_ingrediente,
-          'name' => nombre_ingrediente,
-          'amount' => ingredient_total.to_s,
-          'priority' => 0,
-          'percentage' => 0
-        }
-
-      #Aqui esta el total por cada ingrediente
-      #Hay que meter este total en una fila de la tabla del reporte
-      #Eso se hace a traves del arreglo* dinamico "data"
-    end
-    data['total'] = "Que no se repita"
-=end
     return data
   end
   
@@ -351,6 +299,41 @@ class EasyModel
     
     #Magic stuff will happen here
     
+    return data
+  end
+
+  def self.consumption_per_ingredients(start_date, end_date)
+    start_date << " 00:00:00"
+    end_date << " 23:59:59"
+
+    real = {}
+    name = {}
+    data = {}
+    data['title'] = 'Reporte de consumo por ingrediente'
+    data['results'] = []
+
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}'"]
+
+    orders.each do |o|
+      o.batch.each do |b|
+        b.batch_hopper_lot.each do |bhl|
+          key = bhl.hopper_lot.lot.ingredient.code
+          name[key] = bhl.hopper_lot.lot.ingredient.name
+          real[key] = real.fetch(key, 0) + bhl.amount
+        end
+      end
+    end
+
+    real.each do |key, value|
+      data['results'] << {
+        'code' => key,
+        'ingredient' => name[key],
+        'real_kg' => value.to_s,
+      }
+    end
+
+    data['start_date'] = start_date
+    data['end_date'] = end_date
     return data
   end
 

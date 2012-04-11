@@ -49,3 +49,8 @@ total_per_recipe:
   module: reports
   action: total_per_recipe
   mode: global
+consumption_per_ingredients:
+  name: Report 'Consumption Per Ingredients'
+  module: reports
+  action: consumption_per_ingredients
+  mode: global
