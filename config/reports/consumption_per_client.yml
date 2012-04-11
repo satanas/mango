@@ -1,0 +1,139 @@
+report:
+  settings:
+    page:
+      size: Letter
+      orientation: p
+      margins: 15
+    style:
+      font_family: 'Helvetica'
+      font_size: 10
+      font_color: [0, 0, 0]
+  header:
+    1:
+      text:
+        label: INVERSIONES PORCINAS C.A.
+        margin: 30
+        align: left
+        style:
+          font_size: 11
+          font_weight: B
+    2:
+      text:
+        label: "RIF: 0-00000000-0"
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    3:
+      image:
+        filename: default-report-logo.png
+        width: 20
+        height: 20
+        x: 20
+        y: 12
+    4:
+      text:
+        label: Yaritagua - Estado Yaracuy
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    5:
+      breakline:
+    6:
+      pagenum:
+        pattern: "Pag. <PAGE>"
+        align: right
+  body:
+    1:
+      text:
+        label: "Cliente: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    2:
+      text:
+        field: client
+        align: left
+        width: 50
+    3:
+      text:
+        label: "Desde: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    4:
+      text:
+        field: start_date
+        align: left
+        width: 50
+    5:
+      text:
+        label: "Hasta: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    6:
+      text:
+        field: end_date
+        align: left
+        width: 50
+    7:
+      breakline:
+    8:
+      text:
+        label: Consumo por Cliente
+        align: center
+        style:
+          font_size: 12
+          font_weight: B
+    9:
+      table:
+        field: results
+        heading:
+          align: left
+          style:
+            font_weight: B
+            bg_color: [220, 220, 220]
+        totalization:
+          precision: 2
+          label: Totales
+          align: right
+          border: T
+          style:
+            font_weight: B
+        columns:
+          1:
+           code:
+              label: Codigo
+              align: left
+              width: 20
+          2:
+            ingredient:
+              label: Ingrediente
+              align: left
+              width: 100
+          3:
+            real_kg:
+              label: Cant. Real
+              align: right
+              unit: Kg
+              width: 60
+              totalize: true
+              precision: 2
+    10:
+      breakline:
+  footer:
+    1:
+      text:
+        label: Reporte generado con Mango v1.0 (Copyleft) 2011
+        align: center
+        style:
+          font_size: 8
+          font_color: [80, 80, 80]

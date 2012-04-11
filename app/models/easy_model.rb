@@ -337,6 +337,43 @@ class EasyModel
     return data
   end
 
+  def self.consumption_per_client(start_date, end_date, client_code)
+    start_date << " 00:00:00"
+    end_date << " 23:59:59"
+
+    real = {}
+    name = {}
+    data = {}
+    data['title'] = 'Reporte de consumo por cliente'
+    data['results'] = []
+
+    client = Client.find :first, :conditions => ['code = ?', client_code]
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND orders.client_id = ?", client.id]
+
+    orders.each do |o|
+      o.batch.each do |b|
+        b.batch_hopper_lot.each do |bhl|
+          key = bhl.hopper_lot.lot.ingredient.code
+          name[key] = bhl.hopper_lot.lot.ingredient.name
+          real[key] = real.fetch(key, 0) + bhl.amount
+        end
+      end
+    end
+
+    real.each do |key, value|
+      data['results'] << {
+        'code' => key,
+        'ingredient' => name[key],
+        'real_kg' => value.to_s,
+      }
+    end
+
+    data['client'] = "#{client.code} - #{client.name}"
+    data['start_date'] = start_date
+    data['end_date'] = end_date
+    return data
+  end
+
   #==== Utilities ====
   def self.parse_date(param, name)
     day = param["#{name}(1i)"].to_i

@@ -107,4 +107,18 @@ class ReportsController < ApplicationController
     end
   end
 
+  def consumption_per_client
+    start_date = EasyModel.parse_date(params[:report], 'start')
+    end_date = EasyModel.parse_date(params[:report], 'end')
+    data = EasyModel.consumption_per_client(start_date, end_date, params[:report][:client])
+    if data.nil?
+      flash[:notice] = 'No hay registros para generar el reporte'
+      flash[:type] = 'warn'
+      redirect_to :action => 'index'
+    else
+      report = EasyReport::Report.new data, 'consumption_per_client.yml'
+      send_data report.render, :filename => "consumo_por_cliente.pdf", :type => "application/pdf"
+    end
+  end
+
 end
