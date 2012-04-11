@@ -292,10 +292,10 @@ class EasyModel
     return nil if adjusments.length.zero?
     
     data = {}
+    results = []
+    
     data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
     data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
-    
-    data['results'] = []
     
     adjusments.each do |a|
       warehouse = Warehouse.find(a.warehouse_id)
@@ -320,14 +320,16 @@ class EasyModel
       if sign == '-'
         amount = -1 * amount
       end
-      data['results'] << {
+      
+      results << {
         'lot_code' => lot_code,
         'content_code' => content_code,
         'content_name' => content_name,
         'amount' => amount.to_s,
-        'adjusment_code' => ttype_code,
-      }
+        'adjusment_code' => ttype_code
+      }      
     end
+    data['results'] = results
     return data
   end
 

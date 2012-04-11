@@ -88,13 +88,6 @@ report:
           style:
             font_weight: B
             bg_color: [220, 220, 220]
-        totalization:
-          precision: 2
-          label: Totales
-          align: right
-          border: T
-          style:
-            font_weight: B
         columns:
           1:
            lot_code:
@@ -112,8 +105,6 @@ report:
               align: right
               width: 40
               unit: Kg
-              totalize: true
-              precision: 2
           4:
             adjusment_code:
               label: Cod. Aju.
