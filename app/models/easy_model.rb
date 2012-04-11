@@ -321,13 +321,18 @@ class EasyModel
         amount = -1 * amount
       end
       
+      user_name = User.find(a.user_id).name
+      date = a.date.strftime("%Y-%m-%d")
+      
       results << {
         'lot_code' => lot_code,
         'content_code' => content_code,
         'content_name' => content_name,
         'amount' => amount.to_s,
+        'user_name' => user_name,
+        'date' => date,
         'adjusment_code' => ttype_code
-      }      
+      }
     end
     data['results'] = results
     return data

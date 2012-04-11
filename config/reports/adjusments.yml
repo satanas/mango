@@ -2,8 +2,8 @@ report:
   settings:
     page:
       size: Letter
-      orientation: p
-      margins: 15
+      orientation: L
+      margins: 20
     style:
       font_family: 'Helvetica'
       font_size: 10
@@ -11,7 +11,7 @@ report:
   header:
     1:
       text:
-        label: AGROSANTANA C.A.
+        label: INDUSTRIA AGROSANTANA C.A.
         margin: 30
         align: left
         style:
@@ -19,7 +19,7 @@ report:
           font_weight: B
     2:
       text:
-        label: "RIF: 0-00000000-0"
+        label: "RIF: J-29828893-0"
         margin: 30
         align: left
         style:
@@ -33,7 +33,7 @@ report:
         y: 12
     4:
       text:
-        label: Por donde el viento se devuelve - Estado Zulia
+        label: Maracaibo - Estado Zulia
         margin: 30
         align: left
         style:
@@ -41,46 +41,26 @@ report:
     5:
       breakline:
     6:
+      text:
+        field: since
+        align: right
+    7:
+      text:
+        field: until
+        align: right
+    8:
       pagenum:
         pattern: "Pag. <PAGE>"
         align: right
   body:
     1:
       text:
-        label: "Desde: "
-        align: right
-        width: 120
-        breakline: 0
-        style:
-          font_weight: B
-    2:
-      text:
-        field: since
-        align: left
-        width: 50
-    3:
-      text:
-        label: "Hasta: "
-        align: right
-        width: 120
-        breakline: 0
-        style:
-          font_weight: B
-    4:
-      text:
-        field: until
-        align: left
-        width: 50
-    5:
-      breakline:
-    6:
-      text:
-        label: Ajustes realizados
+        label: Reporte por ajustes realizados en inventario.
         align: center
         style:
           font_size: 12
           font_weight: B
-    9:
+    2:
       table:
         field: results
         heading:
@@ -90,27 +70,42 @@ report:
             bg_color: [220, 220, 220]
         columns:
           1:
-           lot_code:
+           lot_code :
               label: Cod. Lote
               align: left
               width: 20
           2:
             content_code:
-              label: Cod. Ing./Prod.
+              label: Cod. MP / Prod
               align: left
-              width: 80
+              width: 30
           3:
-            amount:
-              label: Cantidad 
-              align: right
-              width: 40
-              unit: Kg
+            content_name:
+              label: Nom. MP / Prod
+              align: left
+              width: 60
           4:
-            adjusment_code:
-              label: Cod. Aju.
+            amount:
+              label: Cantidad
+              align: center
+              width: 30
+              precision: 2
+          5:
+            user_name:
+              label: Usuario
               align: right
-              width: 40
-    10:
+              width: 30
+          6:
+            date:
+              label: Fecha
+              align: right
+              width: 30
+          7:
+            adjusment_code:
+              label: Cod. Ajuste
+              align: center
+              width: 30
+    3:
       breakline:
   footer:
     1:
