@@ -98,5 +98,35 @@
       <% end %>
     </div>
   </div>
+  <div class="report-content">
+    <h2 onclick="toggle_report_details('adjusments')">Reporte de entrada de materia prima [EN PRUEBAS]</h2>
+    <div id="adjusments" class="report-details">
+      <%= form_for :report, :url=>'#' do |f| %>
+        <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
+        <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
+        <%= submit_tag 'Generar Reporte' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="report-content">
+    <h2 onclick="toggle_report_details('adjusments')">Reporte de inventario de materia prima [EN PRUEBAS]</h2>
+    <div id="adjusments" class="report-details">
+      <%= form_for :report, :url=>'#' do |f| %>
+        <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
+        <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
+        <%= submit_tag 'Generar Reporte' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="report-content">
+    <h2 onclick="toggle_report_details('adjusments')">Reporte de despachos de producto terminado [EN PRUEBAS]</h2>
+    <div id="adjusments" class="report-details">
+      <%= form_for :report, :url=>'#' do |f| %>
+        <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
+        <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
+        <%= submit_tag 'Generar Reporte' %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div class="clearfix"></div>

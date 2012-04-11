@@ -134,4 +134,24 @@ class ReportsController < ApplicationController
       send_data report.render, :filename => "ajustes.pdf", :type => "application/pdf"
     end
   end
+  
+  def lots_income
+    retard_report
+  end
+  
+  def lots_stock
+    retard_report
+  end
+  
+  def product_lots_outcome
+    retard_report
+  end
+  
+  private
+  
+  def retard_report
+    flash[:notice] = 'No hay registros para generar el reporte'
+    flash[:type] = 'warn'
+    redirect_to :action => 'index'
+  end
 end
