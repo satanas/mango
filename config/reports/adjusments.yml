@@ -55,7 +55,7 @@ report:
           font_weight: B
     2:
       text:
-        field: start_date
+        field: since
         align: left
         width: 50
     3:
@@ -68,7 +68,7 @@ report:
           font_weight: B
     4:
       text:
-        field: end_date
+        field: until
         align: left
         width: 50
     5:

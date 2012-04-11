@@ -122,8 +122,11 @@ class ReportsController < ApplicationController
   end
   
   def adjusments
-    start_date = EasyModel.parse_date(params[:report], 'start')
-    end_date = EasyModel.parse_date(params[:report], 'end')
+    #start_date = EasyModel.parse_date(params[:report], 'start')
+    start_date = EasyModel.param_to_date(params[:report], 'start')
+    #end_date = EasyModel.parse_date(params[:report], 'end')
+    end_date = EasyModel.param_to_date(params[:report], 'end')
+
     data = EasyModel.adjusments(start_date, end_date)
     if data.nil?
       flash[:notice] = 'No hay registros para generar el reporte'

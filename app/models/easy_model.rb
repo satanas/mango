@@ -287,11 +287,8 @@ class EasyModel
     end
     return nil if adjusment_type_ids.length.zero?
     
-    pulidito_start_date = start_date.to_date
-    pulidito_end_date = end_date.to_date
-    
     adjusments = Transaction.find :all, :conditions => {:transaction_type_id => adjusment_type_ids, 
-                                                        :created_at => (pulidito_start_date)..(pulidito_end_date)}
+                                                        :date => (start_date)..((end_date) + 1.day)}
     return nil if adjusments.length.zero?
     
     data = {}
@@ -412,5 +409,12 @@ class EasyModel
     month = param["#{name}(2i)"].to_i
     year = param["#{name}(3i)"].to_i
     return Date.new(day, month, year).strftime("%Y-%m-%d")
+  end
+  
+  def self.param_to_date(param, name)
+    day = param["#{name}(1i)"].to_i
+    month = param["#{name}(2i)"].to_i
+    year = param["#{name}(3i)"].to_i
+    return Date.new(day, month, year)
   end
 end
