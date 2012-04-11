@@ -308,10 +308,10 @@ class EasyModel
         content_code = Ingredient.find(lot.ingredient_id).code
         content_name = Ingredient.find(lot.ingredient_id).name
       else # PDT Warehouse
-        product_lot = ProductLot.find(a.content_id)
-        lot_code = lot.code
-        content_code = Product.find(product_lot.ingredient_id).code
-        content_name = Product.find(product_lot.ingredient_id).name
+        product_lot = ProductLot.find(warehouse.content_id)
+        lot_code = product_lot.code
+        content_code = Product.find(product_lot.product_id).code
+        content_name = Product.find(product_lot.product_id).name
       end
       transaction_type_id = a.transaction_type_id
       sign = TransactionType.find(transaction_type_id).sign
