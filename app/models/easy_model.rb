@@ -313,6 +313,7 @@ class EasyModel
         content_name = Ingredient.find(lot.ingredient_id).name
       else # PDT Warehouse
         product_lot = ProductLot.find(a.content_id)
+        lot_code = lot.code
         content_code = Product.find(product_lot.ingredient_id).code
         content_name = Product.find(product_lot.ingredient_id).name
       end
