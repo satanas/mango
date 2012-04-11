@@ -292,7 +292,7 @@ class EasyModel
     end
     return nil if adjusment_type_ids.length.zero?
     
-    adjusments = Transaction.find :all, :conditions => {:transaction_type_id => adjusment_type_ids}#, :created_at => time_span}
+    adjusments = Transaction.find :all, :conditions => {:transaction_type_id => adjusment_type_ids, :created_at => time_span}
     return nil if adjusments.length.zero?
     
     data = {}
