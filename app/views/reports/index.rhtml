@@ -44,7 +44,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('ingredient_variation')">Variación de Materia Prima</h2>
+    <h2 onclick="toggle_report_details('ingredient_variation')">Variación de Materia Prima [EN PRUEBAS]</h2>
     <div id="ingredient_variation" class="report-details">
       <%= form_for :report, :url=>ingredient_variation_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
@@ -67,7 +67,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('consumption_per_ingredients')">Consumo por ingredientes</h2>
+    <h2 onclick="toggle_report_details('consumption_per_ingredients')">Consumo por ingredientes [EN PRUEBAS]</h2>
     <div id="consumption_per_ingredients" class="report-details">
       <%= form_for :report, :url=>consumption_per_ingredients_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
@@ -78,7 +78,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('consumption_per_client')">Consumo por cliente</h2>
+    <h2 onclick="toggle_report_details('consumption_per_client')">Consumo por cliente [EN PRUEBAS]</h2>
     <div id="consumption_per_client" class="report-details">
       <%= form_for :report, :url=>consumption_per_client_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
@@ -89,7 +89,7 @@
     </div>
   </div>
   <div class="report-content">
-    <h2 onclick="toggle_report_details('adjusments')">Reporte de ajustes</h2>
+    <h2 onclick="toggle_report_details('adjusments')">Reporte de ajustes [EN PRUEBAS]</h2>
     <div id="adjusments" class="report-details">
       <%= form_for :report, :url=>adjusments_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
