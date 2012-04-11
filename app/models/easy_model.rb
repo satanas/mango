@@ -276,12 +276,7 @@ class EasyModel
     return data
   end
   
-  def self.adjusments(start_date, end_date)
-    us_start_date = to_us_date(start_date)
-    us_end_date = to_us_date(end_date)
-    
-    time_span = (us_start_date.to_date)..((us_end_date.to_date) + 1.day)
-
+  def self.adjusments(start_date, end_date)    
     transaction_types = TransactionType.find :all
     adjusment_type_ids = []
     transaction_types.each do |ttype|
@@ -292,12 +287,16 @@ class EasyModel
     end
     return nil if adjusment_type_ids.length.zero?
     
-    adjusments = Transaction.find :all, :conditions => {:transaction_type_id => adjusment_type_ids, :created_at => time_span}
+    pulidito_start_date = start_date.to_date
+    pulidito_end_date = end_date.to_date
+    
+    adjusments = Transaction.find :all, :conditions => {:transaction_type_id => adjusment_type_ids, 
+                                                        :created_at => (pulidito_start_date)..(pulidito_end_date)}
     return nil if adjusments.length.zero?
     
     data = {}
-    data['since'] = "Desde: #{us_start_date.to_date.strftime("%d/%m/%Y")}"
-    data['until'] = "Hasta: #{us_end_date.to_date.strftime("%d/%m/%Y")}"
+    data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
+    data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
     
     data['results'] = []
     
@@ -413,23 +412,5 @@ class EasyModel
     month = param["#{name}(2i)"].to_i
     year = param["#{name}(3i)"].to_i
     return Date.new(day, month, year).strftime("%Y-%m-%d")
-  end
-  
-  def self.to_us_date(eu_date)
-    day = eu_date[0,2]
-    month = eu_date[3,2]
-    year = eu_date[6,4]
-    hours = eu_date[-8,2]
-    mins = eu_date[-5,2]
-    secs = eu_date[-2,2]
-    us_date = month + '/' + day + '/' + year
-    return us_date
-  end
-
-  private
-
-  def self.total_per_criteria(start_date, end_date, criteria, criteria_variable)
-    #Mwhaha, in due time.
-    return nil
   end
 end
