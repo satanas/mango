@@ -277,28 +277,59 @@ class EasyModel
   end
   
   def self.adjusments(start_date, end_date)
-    start_date << " 00:00:00"
-    end_date << " 23:59:59"
+    us_start_date = to_us_date(start_date)
+    us_end_date = to_us_date(end_date)
     
+    time_span = (us_start_date.to_date)..((us_end_date.to_date) + 1.day)
+
     transaction_types = TransactionType.find :all
     adjusment_type_ids = []
     transaction_types.each do |ttype|
       unless ttype.code.match(/(?i)AJU/).nil?
-        puts "Codigo de ajuste encontrado: " + ttype.code
+        puts "Adjusment code found: " + ttype.code
         adjusment_type_ids << ttype.id
       end
     end
     return nil if adjusment_type_ids.length.zero?
     
-    adjusments = Transaction.find :all, :conditions => {:id => adjusment_type_ids }
+    adjusments = Transaction.find :all, :conditions => {:transaction_type_id => adjusment_type_ids}#, :created_at => time_span}
     return nil if adjusments.length.zero?
     
     data = {}
-    data['since'] = "Desde: #{Date.parse(start_date).strftime("%d/%m/%Y")}"
-    data['until'] = "Hasta: #{Date.parse(end_date).strftime("%d/%m/%Y")}"
+    data['since'] = "Desde: #{us_start_date.to_date.strftime("%d/%m/%Y")}"
+    data['until'] = "Hasta: #{us_end_date.to_date.strftime("%d/%m/%Y")}"
     
-    #Magic stuff will happen here
+    data['results'] = []
     
+    adjusments.each do |a|
+      warehouse = Warehouse.find(a.warehouse_id)
+      lot_code = ''
+      content_code = ''
+      content_name = ''
+      if warehouse.warehouse_type_id == 1 # ING Warehouse
+        lot = Lot.find(warehouse.content_id)
+        lot_code = lot.code
+        content_code = Ingredient.find(lot.ingredient_id).code
+        content_name = Ingredient.find(lot.ingredient_id).name
+      else # PDT Warehouse
+        product_lot = ProductLot.find(a.content_id)
+        content_code = Product.find(product_lot.ingredient_id).code
+        content_name = Product.find(product_lot.ingredient_id).name
+      end
+      transaction_type_id = a.transaction_type_id
+      sign = TransactionType.find(transaction_type_id).sign
+      amount = a.amount
+      if sign == '-'
+        amount = -1 * amount
+      end
+      data['results'] << {
+        'lot_code' => lot_code,
+        'content_code' => content_code,
+        'content_name' => content_name,
+        'amount' => amount.to_s,
+        'adjusment_code' => a.code,
+      }
+    end
     return data
   end
 
@@ -380,6 +411,17 @@ class EasyModel
     month = param["#{name}(2i)"].to_i
     year = param["#{name}(3i)"].to_i
     return Date.new(day, month, year).strftime("%Y-%m-%d")
+  end
+  
+  def self.to_us_date(eu_date)
+    day = eu_date[0,2]
+    month = eu_date[3,2]
+    year = eu_date[6,4]
+    hours = eu_date[-8,2]
+    mins = eu_date[-5,2]
+    secs = eu_date[-2,2]
+    us_date = month + '/' + day + '/' + year
+    return us_date
   end
 
   private
