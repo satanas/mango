@@ -11,7 +11,7 @@ report:
   header:
     1:
       text:
-        label: INVERSIONES PORCINAS C.A.
+        label: INDUSTRIA AGROSANTANA C.A.
         margin: 30
         align: left
         style:
@@ -19,7 +19,7 @@ report:
           font_weight: B
     2:
       text:
-        label: "RIF: 0-00000000-0"
+        label: "RIF: J-29828893-0"
         margin: 30
         align: left
         style:
@@ -33,7 +33,7 @@ report:
         y: 12
     4:
       text:
-        label: Yaritagua - Estado Yaracuy
+        label: Maracaibo - Estado Zulia
         margin: 30
         align: left
         style:

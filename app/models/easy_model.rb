@@ -410,6 +410,59 @@ class EasyModel
     return data
   end
 
+  # Modularization will do great things... when we get the time
+  def self.lots_incomes(start_date, end_date)    
+    income_type = TransactionType.find :first, :conditions => {:code => 'EN-COM'}
+    "Income code found: " + income_type.code
+    return nil if income_type.nil?
+    
+    # We should leave out product warehouses here using :include, the pulidito way.
+    incomes = Transaction.find :all, :conditions => {:transaction_type_id => income_type, 
+                                                     :date => (start_date)..((end_date) + 1.day)}
+    return nil if incomes.length.zero?
+
+    data = {}
+    results = []
+    
+    data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
+    data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
+    
+    incomes.each do |i|
+      warehouse = Warehouse.find(i.warehouse_id)
+      lot_code = ''
+      content_code = ''
+      content_name = ''
+      if warehouse.warehouse_type_id == 1 # The not so pulidito way.
+        lot = Lot.find(warehouse.content_id)
+        lot_code = lot.code
+        content_code = Ingredient.find(lot.ingredient_id).code
+        content_name = Ingredient.find(lot.ingredient_id).name
+        transaction_type_id = i.transaction_type_id
+        sign = TransactionType.find(transaction_type_id).sign
+        ttype_code = TransactionType.find(transaction_type_id).code
+        amount = i.amount
+        if sign == '-'
+          amount = -1 * amount
+        end
+
+        user_name = User.find(i.user_id).name
+        date = i.date.strftime("%Y-%m-%d")
+
+        results << {
+          'lot_code' => lot_code,
+          'content_code' => content_code,
+          'content_name' => content_name,
+          'amount' => amount.to_s,
+          'user_name' => user_name,
+          'date' => date,
+          'adjusment_code' => ttype_code
+        }
+      end
+    end
+    data['results'] = results
+    return data
+  end
+
   #==== Utilities ====
   def self.parse_date(param, name)
     day = param["#{name}(1i)"].to_i

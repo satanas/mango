@@ -89,7 +89,7 @@
     </div>
   </div>
   <div class="report-content">
-    <h2 onclick="toggle_report_details('adjusments')">Reporte de ajustes [EN PRUEBAS]</h2>
+    <h2 onclick="toggle_report_details('adjusments')">Reporte de ajustes</h2>
     <div id="adjusments" class="report-details">
       <%= form_for :report, :url=>adjusments_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
@@ -99,9 +99,9 @@
     </div>
   </div>
   <div class="report-content">
-    <h2 onclick="toggle_report_details('lots_income')">Reporte de entrada de materia prima [EN PRUEBAS]</h2>
-    <div id="lots_income" class="report-details">
-      <%= form_for :report, :url=>'#' do |f| %>
+    <h2 onclick="toggle_report_details('lots_incomes')">Reporte de entrada de materia prima [EN PRUEBAS]</h2>
+    <div id="lots_incomes" class="report-details">
+      <%= form_for :report, :url=>lots_incomes_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
         <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
         <%= submit_tag 'Generar Reporte' %>
