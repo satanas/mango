@@ -319,6 +319,7 @@ class EasyModel
       end
       transaction_type_id = a.transaction_type_id
       sign = TransactionType.find(transaction_type_id).sign
+      ttype_code = TransactionType.find(transaction_type_id).code
       amount = a.amount
       if sign == '-'
         amount = -1 * amount
@@ -328,7 +329,7 @@ class EasyModel
         'content_code' => content_code,
         'content_name' => content_name,
         'amount' => amount.to_s,
-        'adjusment_code' => a.code,
+        'adjusment_code' => ttype_code,
       }
     end
     return data
