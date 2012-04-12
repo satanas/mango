@@ -91,7 +91,7 @@ class EasyModel
   end
 
   def self.order_details(order)
-    @order = Order.find_by_code order, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}}, :recipe=>{:ingredient_recipe=>{:ingredient=>{}}}, :product=>{}}, :conditions => ['lots.ingredient_id = ingredients_recipes.ingredient_id']
+    @order = Order.find_by_code order, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}}, :recipe=>{:ingredient_recipe=>{:ingredient=>{}}}, :product_lot=>{:product=>{}}}, :conditions => ['lots.ingredient_id = ingredients_recipes.ingredient_id']
 
     return nil if @order.nil?
     data = {}
@@ -130,7 +130,7 @@ class EasyModel
 
     data['order'] = @order.code
     data['recipe'] = "#{@order.recipe.code} - #{@order.recipe.name}"
-    data['product'] = "#{@order.product.code} - #{@order.product.name}"
+    data['product'] = "#{@order.product_lot.product.code} - #{@order.product_lot.product.name}"
     data['start_date'] = @order.calculate_start_date()
     data['end_date'] = @order.calculate_end_date()
     data['prog_batches'] = @order.prog_batches.to_s
