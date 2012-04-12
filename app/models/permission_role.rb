@@ -22,6 +22,7 @@ class PermissionRole < ActiveRecord::Base
     scada_role = Role.find(2)
     scada_role.permission_role.clear
     permissions = Permission.find :all, :conditions=>["module = 'batches'"]
+    permissions << Permission.find(:first, :conditions=>["module = 'transactions' AND action = 'SA-CSM'"])
     permissions.each do |perm|
       perm_role = PermissionRole.new
       perm_role.permission_id = perm.id

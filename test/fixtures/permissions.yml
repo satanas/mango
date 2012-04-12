@@ -4,6 +4,31 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+sa_csm:
+  name: "Transaction 'Salida por consumo'"
+  module: transactions
+  action: SA-CSM
+  mode: module
+en_aju:
+  name: "Transaction 'Entrada por ajuste'"
+  module: transactions
+  action: EN-AJU
+  mode: module
+sa_aju:
+  name: "Transaction 'Salida por ajuste'"
+  module: transactions
+  action: SA-AJU
+  mode: module
+en_com:
+  name: "Transaction 'Entrada por compra'"
+  module: transactions
+  action: EN-COM
+  mode: module
+sa_des:
+  name: "Transaction 'Salida por despacho'"
+  module: transactions
+  action: SA-DES
+  mode: module
 recalculate:
   name: Recalculate stock
   module: warehouses
