@@ -540,12 +540,8 @@ class EasyModel
         content_code = Product.find(product_lot.product_id).code
         content_name = Product.find(product_lot.product_id).name
         transaction_type_id = d.transaction_type_id
-        sign = TransactionType.find(transaction_type_id).sign
         ttype_code = TransactionType.find(transaction_type_id).code
         amount = d.amount
-        if sign == '-'
-          amount = -1 * amount
-        end
 
         user_name = User.find(d.user_id).name
         date = d.date.strftime("%Y-%m-%d")
