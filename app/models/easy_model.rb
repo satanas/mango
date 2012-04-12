@@ -513,6 +513,54 @@ class EasyModel
     return data
   end
 
+  def self.product_lots_dispatches(start_date, end_date)
+    dispatch_type = TransactionType.find :first, :conditions => {:code => 'SA-DES'}
+    "Dispatch code found: " + dispatch_type.code
+    return nil if dispatch_type.nil?
+
+    # We should leave out ingredient warehouses here using :include, the pulidito way.
+    dispatches = Transaction.find :all, :conditions => {:transaction_type_id => dispatch_type,
+                                                     :date => (start_date)..((end_date) + 1.day)}
+    return nil if dispatches.length.zero?
+
+    data = {}
+    results = []
+
+    data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
+    data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
+
+    dispatches.each do |d|
+      warehouse = Warehouse.find(d.warehouse_id)
+      lot_code = ''
+      content_code = ''
+      content_name = ''
+      if warehouse.warehouse_type_id == 2 # The not so pulidito way.
+        product_lot = ProductLot.find(warehouse.content_id)
+        lot_code = product_lot.code
+        content_code = Product.find(product_lot.product_id).code
+        content_name = Product.find(product_lot.product_id).name
+        transaction_type_id = d.transaction_type_id
+        ttype_code = TransactionType.find(transaction_type_id).code
+        amount = d.amount
+
+        user_name = User.find(d.user_id).name
+        date = d.date.strftime("%Y-%m-%d")
+
+        results << {
+          'lot_code' => lot_code,
+          'content_code' => content_code,
+          'content_name' => content_name,
+          'amount' => amount.to_s,
+          'user_name' => user_name,
+          'date' => date,
+          'adjusment_code' => ttype_code
+        }
+      end
+    end
+    data['results'] = results
+    return data
+  end
+  
   #==== Utilities ====
   def self.parse_date(param, name)
     day = param["#{name}(1i)"].to_i
