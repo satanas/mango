@@ -55,7 +55,7 @@ report:
   body:
     1:
       text:
-        label: Reporte por ingresos de materia prima a almacén.
+        label: Reporte por ingresos de materia prima.
         align: center
         style:
           font_size: 12
