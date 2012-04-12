@@ -9,17 +9,23 @@ admin:
   name: 'Administrador'
   description: 'Soy el principio y el final.'
 
-manager:
+scada:
   id: 2
-  name: 'gerente'
+  name: 'Scada'
+  description: 'Souless partner'
+
+# Empty roles
+manager:
+  id: 3
+  name: 'Gerente'
   description: 'Gerente'
 
 supervisor:
-  id: 3
-  name: 'supervisor'
+  id: 4
+  name: 'Supervisor'
   description: 'Supervisor'
 
 operator:
-  id: 4
-  name: 'operator'
+  id: 5
+  name: 'Operator'
   description: 'Operador'

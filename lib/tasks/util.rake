@@ -93,19 +93,10 @@ namespace :db do
       insert_fixture('permissions', Permission)
       puts "Loaded #{Permission.count} permissions"
       run_fixture('roles')
-      admin_rol = Role.find(1)
-      admin_rol.permission_role.clear
-      Permission.all.each do |perm|
-        perm_rol = PermissionRole.new
-        perm_rol.permission_id = perm.id
-        perm_rol.role_id = admin_rol.id
-        admin_rol.permission_role << perm_rol
-      end
-      admin_rol.save
-      #old_admin = User.find_by_id(1)
-      #old_admin.delete unless old_admin.nil?
-      #run_fixture('users')
+      PermissionRole.generate_god_role
       puts 'Created administrator role (superuser)'
+      PermissionRole.generate_scada_role
+      puts 'Created scada role'
     end
 
   end

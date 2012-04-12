@@ -1,9 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+im_your_god:
   id: 1
   name: 'Administrador'
   login: 'admin'
   password_hash: '8fa0acf6233b92d2d48a30a315cd213748d48f28eaa63d7590509392316b3016'
   password_salt: 'abcdef'
   role_id: 1
+scada:
+  id: 2
+  name: 'SCADA'
+  login: 'scada'
+  password_hash: 'df59c7facf460db889b05f6063afa6dde12e8fc9b312a60f3a99ad6ecb77b318'
+  password_salt: '5jyIoyLK'
+  role_id: 2
