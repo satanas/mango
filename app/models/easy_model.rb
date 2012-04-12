@@ -275,8 +275,8 @@ class EasyModel
     data['end_date'] = end_date
     return data
   end
-  
-  def self.adjusments(start_date, end_date)    
+
+  def self.adjusments(start_date, end_date)
     transaction_types = TransactionType.find :all
     adjusment_type_ids = []
     transaction_types.each do |ttype|
@@ -286,17 +286,17 @@ class EasyModel
       end
     end
     return nil if adjusment_type_ids.length.zero?
-    
-    adjusments = Transaction.find :all, :conditions => {:transaction_type_id => adjusment_type_ids, 
+
+    adjusments = Transaction.find :all, :conditions => {:transaction_type_id => adjusment_type_ids,
                                                         :date => (start_date)..((end_date) + 1.day)}
     return nil if adjusments.length.zero?
-    
+
     data = {}
     results = []
-    
+
     data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
     data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
-    
+
     adjusments.each do |a|
       warehouse = Warehouse.find(a.warehouse_id)
       lot_code = ''
@@ -320,10 +320,10 @@ class EasyModel
       if sign == '-'
         amount = -1 * amount
       end
-      
+
       user_name = User.find(a.user_id).name
       date = a.date.strftime("%Y-%m-%d")
-      
+
       results << {
         'lot_code' => lot_code,
         'content_code' => content_code,
@@ -411,22 +411,22 @@ class EasyModel
   end
 
   # Modularization will do great things... when we get the time
-  def self.lots_incomes(start_date, end_date)    
+  def self.lots_incomes(start_date, end_date)
     income_type = TransactionType.find :first, :conditions => {:code => 'EN-COM'}
     "Income code found: " + income_type.code
     return nil if income_type.nil?
-    
+
     # We should leave out product warehouses here using :include, the pulidito way.
-    incomes = Transaction.find :all, :conditions => {:transaction_type_id => income_type, 
+    incomes = Transaction.find :all, :conditions => {:transaction_type_id => income_type,
                                                      :date => (start_date)..((end_date) + 1.day)}
     return nil if incomes.length.zero?
 
     data = {}
     results = []
-    
+
     data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
     data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
-    
+
     incomes.each do |i|
       warehouse = Warehouse.find(i.warehouse_id)
       lot_code = ''
@@ -463,6 +463,56 @@ class EasyModel
     return data
   end
 
+  def self.ingredients_stock(start_date, end_date)
+    start_date << " 00:00:00"
+    end_date << " 23:59:59"
+
+    stock = {}
+    data = {}
+    data['title'] = 'Reporte de consumo por ingrediente'
+    data['results'] = []
+    transactions = Transaction.find :all, :include=>{:warehouse=>{}, :transaction_type=>{}}, :conditions=>["transactions.date >= '#{start_date}' AND transactions.date <= '#{end_date}' AND warehouses.warehouse_type_id=1"]
+    transactions.each do |t|
+      income = 0
+      outcome = 0
+      ingredient = t.warehouse.get_content.ingredient
+
+      if t.transaction_type.sign == '+'
+        income = t.amount
+      elsif t.transaction_type.sign == '-'
+        outcome = t.amount
+      end
+
+      if stock.has_key?(ingredient.code)
+        stock[ingredient.code]['income'] += income
+        stock[ingredient.code]['outcome'] += outcome
+        stock[ingredient.code]['stock'] = stock[ingredient.code]['income'] - stock[ingredient.code]['outcome']
+      else
+        stock[ingredient.code] = {
+          'code' => ingredient.code,
+          'name' => ingredient.name,
+          'income' => income,
+          'outcome' => outcome,
+          'stock' => (income - outcome)
+        }
+      end
+    end
+
+    stock.each do |key, value|
+      data['results'] << {
+        'code' => value['code'],
+        'ingredient' => value['name'],
+        'income_kg' => value['income'].to_s,
+        'outcome_kg' => value['outcome'].to_s,
+        'stock_kg' => value['stock'].to_s,
+      }
+    end
+
+    data['start_date'] = start_date
+    data['end_date'] = end_date
+    return data
+  end
+
   #==== Utilities ====
   def self.parse_date(param, name)
     day = param["#{name}(1i)"].to_i
@@ -470,7 +520,7 @@ class EasyModel
     year = param["#{name}(3i)"].to_i
     return Date.new(day, month, year).strftime("%Y-%m-%d")
   end
-  
+
   def self.param_to_date(param, name)
     day = param["#{name}(1i)"].to_i
     month = param["#{name}(2i)"].to_i

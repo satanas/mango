@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   match 'reports/consumption_per_client' => "reports#consumption_per_client", :via => :get, :as => "consumption_per_client_report"
   match 'reports/adjusments' => "reports#adjusments", :via => :get, :as => "adjusments_report"
   match 'reports/lots_incomes' => "reports#lots_incomes", :via => :get, :as => "lots_incomes_report"
-  #match 'reports/lots_stock' => "reports#lots_stock", :via => :get, :as => "lots_stock_report"
+  match 'reports/ingredients_stock' => "reports#ingredients_stock", :via => :get, :as => "ingredients_stock_report"
   #match 'reports/product_lots_outcome' => "reports#product_lots_outcome", :via => :get, :as => "product_lots_outcome_report"
   match 'batches/:batch_id/batches_hopper_lot' => "batches_hopper_lot#create", :via => :post, :as => "batches_hopper_lot"
   match 'batches/:batch_id/batches_hopper_lot/:id' => "batches_hopper_lot#destroy", :via => :delete, :as => "batch_hopper_lot"

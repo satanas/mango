@@ -88,6 +88,7 @@
       <% end %>
     </div>
   </div>
+
   <div class="report-content">
     <h2 onclick="toggle_report_details('adjusments')">Reporte de ajustes</h2>
     <div id="adjusments" class="report-details">
@@ -98,6 +99,7 @@
       <% end %>
     </div>
   </div>
+
   <div class="report-content">
     <h2 onclick="toggle_report_details('lots_incomes')">Reporte de entrada de materia prima [EN PRUEBAS]</h2>
     <div id="lots_incomes" class="report-details">
@@ -108,16 +110,18 @@
       <% end %>
     </div>
   </div>
+
   <div class="report-content">
-    <h2 onclick="toggle_report_details('lots_stock')">Reporte de inventario de materia prima [EN PRUEBAS]</h2>
-    <div id="lots_stock" class="report-details">
-      <%= form_for :report, :url=>'#' do |f| %>
+    <h2 onclick="toggle_report_details('ingredients_stock')">Reporte de inventario de materia prima</h2>
+    <div id="ingredients_stock" class="report-details">
+      <%= form_for :report, :url=>ingredients_stock_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
         <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
         <%= submit_tag 'Generar Reporte' %>
       <% end %>
     </div>
   </div>
+
   <div class="report-content">
     <h2 onclick="toggle_report_details('product_lots_outcome')">Reporte de despachos de producto terminado [EN PRUEBAS]</h2>
     <div id="product_lots_outcome" class="report-details">

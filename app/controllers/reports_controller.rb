@@ -120,7 +120,7 @@ class ReportsController < ApplicationController
       send_data report.render, :filename => "consumo_por_cliente.pdf", :type => "application/pdf"
     end
   end
-  
+
   def adjusments
     #start_date = EasyModel.parse_date(params[:report], 'start')
     start_date = EasyModel.param_to_date(params[:report], 'start')
@@ -137,7 +137,7 @@ class ReportsController < ApplicationController
       send_data report.render, :filename => "ajustes.pdf", :type => "application/pdf"
     end
   end
-  
+
   def lots_incomes
     start_date = EasyModel.param_to_date(params[:report], 'start')
     end_date = EasyModel.param_to_date(params[:report], 'end')
@@ -151,17 +151,27 @@ class ReportsController < ApplicationController
       send_data report.render, :filename => "entrada_materia_prima.pdf", :type => "application/pdf"
     end
   end
-  
-  def lots_stock
-    retard_report
+
+  def ingredients_stock
+    start_date = EasyModel.parse_date(params[:report], 'start')
+    end_date = EasyModel.parse_date(params[:report], 'end')
+    data = EasyModel.ingredients_stock(start_date, end_date)
+    if data.nil?
+      flash[:notice] = 'No hay registros para generar el reporte'
+      flash[:type] = 'warn'
+      redirect_to :action => 'index'
+    else
+      report = EasyReport::Report.new data, 'ingredients_stock.yml'
+      send_data report.render, :filename => "inventario_materia_prima.pdf", :type => "application/pdf"
+    end
   end
-  
+
   def product_lots_outcome
     retard_report
   end
-  
+
   private
-  
+
   def retard_report
     flash[:notice] = 'No hay registros para generar el reporte'
     flash[:type] = 'warn'

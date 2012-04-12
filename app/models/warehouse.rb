@@ -44,6 +44,14 @@ class Warehouse < ActiveRecord::Base
     raise StandardError, 'Problem updating warehouse stock' unless self.save
   end
 
+  def get_content
+    if self.warehouse_type_id == 1
+      return Lot.find self.content_id, :include=>[:ingredient]
+    elsif self.warehouse_type_id == 2
+      return ProductLot.find self.content_id, :include=>[:product]
+    end
+  end
+
   private
 
   def select_content
