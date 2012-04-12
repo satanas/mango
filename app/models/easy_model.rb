@@ -514,7 +514,7 @@ class EasyModel
   end
 
   def self.product_lots_dispatches(start_date, end_date)
-    dispatch_type = TransactionType.find :first, :conditions => {:code => 'SA-VEN'}
+    dispatch_type = TransactionType.find :first, :conditions => {:code => 'SA-DES'}
     "Dispatch code found: " + dispatch_type.code
     return nil if dispatch_type.nil?
 
