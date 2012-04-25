@@ -47,7 +47,7 @@ report:
   body:
     1:
       text:
-        label: "Receta: "
+        label: "Num. Batch: "
         align: right
         width: 120
         breakline: 0
@@ -55,7 +55,7 @@ report:
           font_weight: B
     2:
       text:
-        field: recipe
+        field: batch
         align: left
         width: 50
     3:
@@ -73,7 +73,7 @@ report:
         width: 50
     5:
       text:
-        label: "Num. Batch: "
+        label: "Receta: "
         align: right
         width: 120
         breakline: 0
@@ -81,7 +81,7 @@ report:
           font_weight: B
     6:
       text:
-        field: batch
+        field: recipe
         align: left
         width: 50
     7:

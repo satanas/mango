@@ -3,7 +3,7 @@ report:
     page:
       size: Letter
       orientation: L
-      margins: 20
+      margins: 10
     style:
       font_family: 'Helvetica'
       font_size: 10
@@ -55,7 +55,7 @@ report:
   body:
     1:
       text:
-        label: Reporte de Produccion Diaria por Fabrica
+        label: Reporte de Duracion de cada Orden
         align: center
         style:
           font_size: 12
@@ -80,7 +80,7 @@ report:
            order :
               label: Orden
               align: left
-              width: 15
+              width: 25
           2:
             recipe_code:
               label: Receta
@@ -88,9 +88,9 @@ report:
               width: 15
           3:
             recipe_name:
-              label: Desc. Receta
+              label: Nombre
               align: left
-              width: 60
+              width: 45
           4:
             average_tons_per_hour:
               label: Ton/Hrs
@@ -106,24 +106,24 @@ report:
           6:
             order_duration:
               label: Min
-              align: center
-              width: 20
+              align: right
+              width: 15
               precision: 0
           7:
             real_batches:
               label: Batch
               align: right
-              width: 15
+              width: 10
           8:
             start_time:
-              label: H. inicio
-              align: center
-              width: 15
+              label: Inicio
+              align: right
+              width: 25
           9:
             end_time:
-              label: H. final
-              align: center
-              width: 15
+              label: Fin
+              align: right
+              width: 25
           10:
             total_standard:
               label: Total Estand.

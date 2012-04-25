@@ -12,7 +12,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('order_duration')">Duración de orden</h2>
+    <h2 onclick="toggle_report_details('order_duration')">Duración de Orden</h2>
     <div id="order_duration" class="report-details">
       <%= form_for :report, :url=>order_duration_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
@@ -42,22 +42,11 @@
       <% end %>
     </div>
   </div>
-<!--
+
   <div class="report-content">
-    <h2 onclick="toggle_report_details('ingredient_variation')">Variación de Materia Prima [EN PRUEBAS]</h2>
-    <div id="ingredient_variation" class="report-details">
-      <%= form_for :report, :url=>ingredient_variation_report_path do |f| %>
-        <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
-        <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
-        <%= submit_tag 'Generar Reporte' %>
-      <% end %>
-    </div>
-  </div>
--->
-  <div class="report-content">
-    <h2 onclick="toggle_report_details('total_per_recipe')">Consumo total por receta</h2>
-    <div id="total_per_recipe" class="report-details">
-      <%= form_for :report, :url=>total_per_recipe_report_path do |f| %>
+    <h2 onclick="toggle_report_details('consumption_per_recipe')">Consumo por Receta</h2>
+    <div id="consumption_per_recipe" class="report-details">
+      <%= form_for :report, :url=>consumption_per_recipe_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
         <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
         <%= f.label :recipe, "Código receta: ", :class=>'small' %> <%= f.text_field :recipe, :size=>15 %><br/><br/><br/>
@@ -67,7 +56,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('consumption_per_ingredients')">Consumo por ingredientes</h2>
+    <h2 onclick="toggle_report_details('consumption_per_ingredients')">Consumo por Ingredientes</h2>
     <div id="consumption_per_ingredients" class="report-details">
       <%= form_for :report, :url=>consumption_per_ingredients_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
@@ -78,7 +67,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('consumption_per_client')">Consumo por cliente</h2>
+    <h2 onclick="toggle_report_details('consumption_per_client')">Consumo por Cliente</h2>
     <div id="consumption_per_client" class="report-details">
       <%= form_for :report, :url=>consumption_per_client_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
@@ -90,7 +79,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('adjusments')">Reporte de ajustes</h2>
+    <h2 onclick="toggle_report_details('adjusments')">Ajustes de Inventario</h2>
     <div id="adjusments" class="report-details">
       <%= form_for :report, :url=>adjusments_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
@@ -101,7 +90,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('lots_incomes')">Reporte de entrada de materia prima</h2>
+    <h2 onclick="toggle_report_details('lots_incomes')">Entrada de Materia Prima</h2>
     <div id="lots_incomes" class="report-details">
       <%= form_for :report, :url=>lots_incomes_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
@@ -112,7 +101,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('ingredients_stock')">Reporte de inventario de materia prima</h2>
+    <h2 onclick="toggle_report_details('ingredients_stock')">Inventario de Materia Prima</h2>
     <div id="ingredients_stock" class="report-details">
       <%= form_for :report, :url=>ingredients_stock_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
@@ -123,7 +112,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('product_lots_dispatches')">Reporte de despachos de producto terminado</h2>
+    <h2 onclick="toggle_report_details('product_lots_dispatches')">Despachos de Producto Terminado</h2>
     <div id="product_lots_dispatches" class="report-details">
       <%= form_for :report, :url=>product_lots_dispatches_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>

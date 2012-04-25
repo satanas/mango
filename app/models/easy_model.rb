@@ -146,52 +146,6 @@ class EasyModel
     return data
   end
 
-  def self.ingredients_variation(start_date, end_date)
-    data = {}
-    results = {}
-    batches = BatchHopperLot.find :all, :include=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}, :batch=>{:order=>{:recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}}}, :conditions=>["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
-
-    batches.each do |b|
-      real_kg = b.amount.to_f
-      std_kg = -1
-      b.batch.order.recipe.ingredient_recipe.each do |i|
-        if i.ingredient.id == b.hopper_lot.lot.ingredient.id
-          std_kg = i.amount.to_f
-          break
-        end
-      end
-
-      if results.has_key?(b.hopper_lot.lot.code)
-        results['real_kg'] += real_kg
-        results['std_kg'] += std_kg
-        results['var_kg'] = results['real_kg'] - results['std_kg']
-        results['var_perc'] = results['var_kg'] * 100 / results['std_kg']
-      else
-        var_kg = real_kg - std_kg
-        var_perc = var_kg * 100 / std_kg
-        results[b.hopper_lot.lot.code] = {
-          'lot' => b.hopper_lot.lot.code,
-          'ingredient_code' => b.hopper_lot.lot.ingredient.code,
-          'ingredient_name' => b.hopper_lot.lot.ingredient.name,
-          'real_kg' => real_kg,
-          'std_kg' => std_kg,
-          'var_kg' => var_kg,
-          'var_perc' => var_perc
-        }
-      end
-    end
-
-    temp = []
-    results.each do |key, item|
-      temp << item
-    end
-    data['title'] = 'Variacion de Materia Prima'
-    data['start_date'] = start_date
-    data['end_date'] = end_date
-    data['results'] = temp
-    return data
-  end
-
   def self.batch_details(order_code, batch_number)
     data = {}
     results = []
@@ -230,7 +184,7 @@ class EasyModel
     return data
   end
 
-  def self.total_per_recipe(start_date, end_date, recipe_code)
+  def self.consumption_per_recipe(start_date, end_date, recipe_code)
     start_date << " 00:00:00"
     end_date << " 23:59:59"
 
