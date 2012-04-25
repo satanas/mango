@@ -21,7 +21,6 @@ class SessionsController < ApplicationController
       session[:permissions] = user.get_dashboard_permissions
       session[:per_page] = 12
       session[:company] = YAML::load(File.open("#{Rails.root.to_s}/config/global.yml"))['application']
-      puts session.inspect
       redirect_to :action => 'show'
     else
       flash[:notice] = 'Credenciales inválidas'

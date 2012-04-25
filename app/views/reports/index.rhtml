@@ -55,9 +55,9 @@
   </div>
 -->
   <div class="report-content">
-    <h2 onclick="toggle_report_details('total_per_recipe')">Consumo total por receta</h2>
-    <div id="total_per_recipe" class="report-details">
-      <%= form_for :report, :url=>total_per_recipe_report_path do |f| %>
+    <h2 onclick="toggle_report_details('consumption_per_recipe')">Consumo por Receta</h2>
+    <div id="consumption_per_recipe" class="report-details">
+      <%= form_for :report, :url=>consumption_per_recipe_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
         <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
         <%= f.label :recipe, "Código receta: ", :class=>'small' %> <%= f.text_field :recipe, :size=>15 %><br/><br/><br/>
