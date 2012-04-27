@@ -17,7 +17,7 @@
       <tr class="<%= class_row %>">
         <td><%=h t.code %></td>
         <td><%=h t.warehouse_type.code %></td>
-        <td><%=h t.content_id %></td>
+        <td><%=h t.get_content.to_collection_select %></td>
         <td><%=h t.location %></td>
         <td class="center"><%=h t.stock %></td>
         <td>

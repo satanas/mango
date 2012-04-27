@@ -7,8 +7,8 @@
 <label for="warehouse_type" class="small">Tipo de almacén:</label>
 <div class="field"><%= f.collection_select :warehouse_type_id, @warehouse_types, :id, :description, {:include_blank => true} %></div>
 <label for="ing_content_id" class="small" id="ing_label">Lote Ingrediente:</label>
-<div class="field" id="ing_select"><%= f.collection_select :ing_content_id, @ing_contents, :id, :code, {:include_blank => true} %></div>
+<div class="field" id="ing_select"><%= f.collection_select :ing_content_id, @ing_contents, :id, :to_collection_select, {:include_blank => true} %></div>
 <label for="pdt_content_id" class="small" id="pdt_label">Lote Producto:</label>
-<div class="field" id="pdt_select"><%= f.collection_select :pdt_content_id, @pdt_contents, :id, :code, {:include_blank => true} %></div>
+<div class="field" id="pdt_select"><%= f.collection_select :pdt_content_id, @pdt_contents, :id, :to_collection_select, {:include_blank => true} %></div>
 <div class="clearfix"></div>
 <br/><span class="required">* Campos obligatorios</span>
