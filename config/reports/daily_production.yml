@@ -3,7 +3,7 @@ report:
     page:
       size: Letter
       orientation: L
-      margins: 20
+      margins: 10
     style:
       font_family: 'Helvetica'
       font_size: 10
@@ -11,7 +11,7 @@ report:
   header:
     1:
       text:
-        label: INDUSTRIA AGROSANTANA C.A.
+        field: company_name
         margin: 30
         align: left
         style:
@@ -19,7 +19,7 @@ report:
           font_weight: B
     2:
       text:
-        label: "RIF: J-29828893-0"
+        field: company_rif
         margin: 30
         align: left
         style:
@@ -33,7 +33,7 @@ report:
         y: 12
     4:
       text:
-        label: Maracaibo - Estado Zulia
+        field: company_address
         margin: 30
         align: left
         style:
@@ -55,7 +55,7 @@ report:
   body:
     1:
       text:
-        label: Reporte de Produccion Diaria por Fabrica
+        field: title
         align: center
         style:
           font_size: 12
@@ -95,7 +95,7 @@ report:
             client_code:
               label: Cliente
               align: left
-              width: 30
+              width: 25
           5:
             client_name:
               label: Desc. Cliente
@@ -113,6 +113,7 @@ report:
               width: 30
               unit: Kg
               totalize: true
+              precision: 2
           8:
             total_real:
               label: Total Real
@@ -120,12 +121,27 @@ report:
               width: 30
               unit: Kg
               totalize: true
+              precision: 2
+          9:
+            var_kg:
+              label: Var Kg
+              align: right
+              width: 20
+              unit: Kg
+              precision: 2
+          10:
+            var_perc:
+              label: Var %
+              align: right
+              width: 15
+              unit: %
+              precision: 2
     3:
       breakline:
   footer:
     1:
       text:
-        label: Reporte generado con Mango v1.0 (Copyleft) 2011
+        field: footer
         align: center
         style:
           font_size: 8

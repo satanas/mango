@@ -11,8 +11,8 @@ admin:
 
 scada:
   id: 2
-  name: 'Scada'
-  description: 'Souless partner'
+  name: 'SCADA'
+  description: 'Souless piece of software'
 
 # Empty roles
 manager:
@@ -27,5 +27,5 @@ supervisor:
 
 operator:
   id: 5
-  name: 'Operator'
+  name: 'Operador'
   description: 'Operador'

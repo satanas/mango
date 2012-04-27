@@ -1,5 +1,11 @@
 application:
   name: Empresa de prueba C.A.
-  desc1: Descripción 1
-  desc2: Opcional
+  address: Dirección de pruebas
+  rif: J-29828893-0
   logo: default-company-logo.png
+  footer: Reporte generado con Mango (Copyleft) 2011 - 2012
+reports:
+    style:
+      font_family: 'Helvetica'
+      font_size: 10
+      font_color: [0, 0, 0]

@@ -1,11 +1,12 @@
 class EasyModel
 
   def self.recipes
-    data = {}
-    data['title'] = 'Reporte de recetas'
-    data['table1'] = []
     @recipes = Recipe.find :all, :include => {:ingredient_recipe => :ingredient}
     return nil if @recipes.length.zero?
+
+    data = self.initialize_data('Recetas')
+    data['table1'] = []
+
     @recipes.each do |r|
       receta = "Receta: #{r.code} - #{r.name} Version: #{r.version}"
       r.ingredient_recipe.each do |ing|
@@ -19,6 +20,7 @@ class EasyModel
         }
       end
     end
+
     data['total'] = "Recetas procesadas: #{Recipe.count}"
     return data
   end
@@ -28,12 +30,14 @@ class EasyModel
     end_date << " 23:59:59"
     @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', start_date, end_date]
     return nil if @orders.length.zero?
-    data = {}
+
+    data = self.initialize_data('Produccion Diaria por Fabrica')
     data['since'] = "Desde: #{Date.parse(start_date).strftime("%d/%m/%Y")}"
     data['until'] = "Hasta: #{Date.parse(end_date).strftime("%d/%m/%Y")}"
+    data['results'] = []
+
     std_total = 0
     real_total = 0
-    data['results'] = []
     @orders.each do |o|
       rtotal = Batch.get_real_total(o.id)
       rbatches = Batch.get_real_batches(o.id)
@@ -47,8 +51,11 @@ class EasyModel
         'real_batches' => rbatches.to_s,
         'total_standard' => stotal.to_s,
         'total_real' => rtotal.to_s,
+        'var_kg' => (stotal - rtotal).to_s,
+        'var_perc' => ((rtotal * 100.0) / stotal).to_s
       }
     end
+
     return data
   end
 
@@ -57,12 +64,14 @@ class EasyModel
     end_date << " 23:59:59"
     @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', start_date, end_date]
     return nil if @orders.length.zero?
-    data = {}
+
+    data = self.initialize_data('Duracion de Orden de Produccion')
     data['since'] = "Desde: #{Date.parse(start_date).strftime("%d/%m/%Y")}"
     data['until'] = "Hasta: #{Date.parse(end_date).strftime("%d/%m/%Y")}"
+    data['results'] = []
+
     std_total = 0
     real_total = 0
-    data['results'] = []
     @orders.each do |o|
       rtotal = Batch.get_real_total(o.id)
       rbatches = Batch.get_real_batches(o.id)
@@ -87,14 +96,14 @@ class EasyModel
         'total_standard' => stotal.to_s
       }
     end
+
     return data
   end
 
   def self.order_details(order)
     @order = Order.find_by_code order, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}}, :recipe=>{:ingredient_recipe=>{:ingredient=>{}}}, :product_lot=>{:product=>{}}}, :conditions => ['lots.ingredient_id = ingredients_recipes.ingredient_id']
-
     return nil if @order.nil?
-    data = {}
+
     ingredients = {}
     @order.recipe.ingredient_recipe.each do |ir|
       ingredients[ir.ingredient.code] = {
@@ -128,6 +137,7 @@ class EasyModel
       end
     end
 
+    data = self.initialize_data('Detalle de Orden de Produccion')
     data['order'] = @order.code
     data['recipe'] = "#{@order.recipe.code} - #{@order.recipe.name}"
     data['product'] = "#{@order.product_lot.product.code} - #{@order.product_lot.product.name}"
@@ -137,20 +147,27 @@ class EasyModel
     data['real_batches'] = @order.get_real_batches().to_s
     data['product_total'] = "#{Batch.get_real_total(@order.id).to_s} Kg"
     data['total_real_kg'] = total_real
-
     data['results'] = []
+
     details.each do |key, value|
       element = {'code' => key}
       data['results'] << element.merge(value)
     end
+
     return data
   end
 
   def self.batch_details(order_code, batch_number)
-    data = {}
-    results = []
-    batches = BatchHopperLot.find :all, :include=>{:batch=>{:order=>{:recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}}, :hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}, :conditions=>["batches.number = '#{batch_number}' AND orders.code = '#{order_code}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
+    order = Order.find_by_code(order_code)
 
+    data = self.initialize_data('Detalle de Batch')
+    data['order'] = order_code
+    data['batch'] = batch_number
+    data['start_date'] = Batch.where(:order_id=>order.id).minimum('start_date').strftime("%d/%m/%Y %H:%M:%S")
+    data['end_date'] = Batch.where(:order_id=>order.id).maximum('end_date').strftime("%d/%m/%Y %H:%M:%S")
+    data['results'] = []
+
+    batches = BatchHopperLot.find :all, :include=>{:batch=>{:order=>{:recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}}, :hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}, :conditions=>["batches.number = '#{batch_number}' AND orders.code = '#{order_code}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
     batches.each do |b|
       real_kg = b.amount.to_f
       std_kg = -1
@@ -162,7 +179,7 @@ class EasyModel
       end
       var_kg = real_kg - std_kg
       var_perc = var_kg * 100 / std_kg
-      results << {
+      data['results'] << {
         'code' => b.hopper_lot.lot.ingredient.code,
         'ingredient' => b.hopper_lot.lot.ingredient.name,
         'real_kg' => real_kg,
@@ -175,12 +192,6 @@ class EasyModel
       data['recipe'] = "#{b.batch.order.recipe.code} - #{b.batch.order.recipe.name}"
     end
 
-    order = Order.find_by_code(order_code)
-    data['order'] = order_code
-    data['batch'] = batch_number
-    data['start_date'] = Batch.where(:order_id=>order.id).minimum('start_date').strftime("%d/%m/%Y %H:%M:%S")
-    data['end_date'] = Batch.where(:order_id=>order.id).maximum('end_date').strftime("%d/%m/%Y %H:%M:%S")
-    data['results'] = results
     return data
   end
 
@@ -188,14 +199,19 @@ class EasyModel
     start_date << " 00:00:00"
     end_date << " 23:59:59"
 
+    recipe = Recipe.find :first, :include=>{:ingredient_recipe=>{:ingredient=>{}}}, :conditions => ['code = ?', recipe_code]
+    return nil if recipe.nil?
+
     std = {}
     real = {}
     nominal = {}
-    data = {}
-    data['title'] = 'Reporte de consumos por receta'
+
+    data = self.initialize_data('Consumo por Receta')
+    data['recipe'] = "#{recipe.code} - #{recipe.name}"
+    data['start_date'] = start_date
+    data['end_date'] = end_date
     data['results'] = []
 
-    recipe = Recipe.find :first, :include=>{:ingredient_recipe=>{:ingredient=>{}}}, :conditions => ['code = ?', recipe_code]
     recipe.ingredient_recipe.each do |ir|
       key = ir.ingredient.code
       nominal[key] = [ir.ingredient.name, ir.amount]
@@ -224,34 +240,30 @@ class EasyModel
       }
     end
 
-    data['recipe'] = "#{recipe.code} - #{recipe.name}"
-    data['start_date'] = start_date
-    data['end_date'] = end_date
     return data
   end
 
-  def self.adjusments(start_date, end_date)
+  def self.stock_adjustments(start_date, end_date)
     transaction_types = TransactionType.find :all
-    adjusment_type_ids = []
+    adjustment_type_ids = []
     transaction_types.each do |ttype|
       unless ttype.code.match(/(?i)AJU/).nil?
         puts "Adjusment code found: " + ttype.code
-        adjusment_type_ids << ttype.id
+        adjustment_type_ids << ttype.id
       end
     end
-    return nil if adjusment_type_ids.length.zero?
+    return nil if adjustment_type_ids.length.zero?
 
-    adjusments = Transaction.find :all, :conditions => {:transaction_type_id => adjusment_type_ids,
+    adjustments = Transaction.find :all, :conditions => {:transaction_type_id => adjustment_type_ids,
                                                         :date => (start_date)..((end_date) + 1.day)}
-    return nil if adjusments.length.zero?
+    return nil if adjustments.length.zero?
 
-    data = {}
-    results = []
-
+    data = self.initialize_data('Ajustes de Inventario')
     data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
     data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
+    data['results'] = []
 
-    adjusments.each do |a|
+    adjustments.each do |a|
       warehouse = Warehouse.find(a.warehouse_id)
       lot_code = ''
       content_code = ''
@@ -278,17 +290,17 @@ class EasyModel
       user_name = User.find(a.user_id).name
       date = a.date.strftime("%Y-%m-%d")
 
-      results << {
+      data['results'] << {
         'lot_code' => lot_code,
         'content_code' => content_code,
         'content_name' => content_name,
         'amount' => amount.to_s,
         'user_name' => user_name,
         'date' => date,
-        'adjusment_code' => ttype_code
+        'adjustment_code' => ttype_code
       }
     end
-    data['results'] = results
+
     return data
   end
 
@@ -296,12 +308,13 @@ class EasyModel
     start_date << " 00:00:00"
     end_date << " 23:59:59"
 
+    data = self.initialize_data('Consumo por Ingrediente')
+    data['results'] = []
+    data['start_date'] = start_date
+    data['end_date'] = end_date
+
     real = {}
     name = {}
-    data = {}
-    data['title'] = 'Reporte de consumo por ingrediente'
-    data['results'] = []
-
     orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}'"]
 
     orders.each do |o|
@@ -322,8 +335,6 @@ class EasyModel
       }
     end
 
-    data['start_date'] = start_date
-    data['end_date'] = end_date
     return data
   end
 
@@ -331,13 +342,16 @@ class EasyModel
     start_date << " 00:00:00"
     end_date << " 23:59:59"
 
-    real = {}
-    name = {}
-    data = {}
-    data['title'] = 'Reporte de consumo por cliente'
+    client = Client.find :first, :conditions => ['code = ?', client_code]
+
+    data = self.initialize_data('Consumo por Cliente')
+    data['client'] = "#{client.code} - #{client.name}"
+    data['start_date'] = start_date
+    data['end_date'] = end_date
     data['results'] = []
 
-    client = Client.find :first, :conditions => ['code = ?', client_code]
+    real = {}
+    name = {}
     orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND orders.client_id = ?", client.id]
 
     orders.each do |o|
@@ -358,9 +372,6 @@ class EasyModel
       }
     end
 
-    data['client'] = "#{client.code} - #{client.name}"
-    data['start_date'] = start_date
-    data['end_date'] = end_date
     return data
   end
 
@@ -371,15 +382,13 @@ class EasyModel
     return nil if income_type.nil?
 
     # We should leave out product warehouses here using :include, the pulidito way.
-    incomes = Transaction.find :all, :conditions => {:transaction_type_id => income_type,
-                                                     :date => (start_date)..((end_date) + 1.day)}
+    incomes = Transaction.find :all, :include=>[:user], :conditions => {:transaction_type_id => income_type, :date => (start_date)..((end_date) + 1.day)}
     return nil if incomes.length.zero?
 
-    data = {}
-    results = []
-
+    data = self.initialize_data('Entradas de Materia Prima')
     data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
     data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
+    data['results'] = []
 
     incomes.each do |i|
       warehouse = Warehouse.find(i.warehouse_id)
@@ -399,21 +408,21 @@ class EasyModel
           amount = -1 * amount
         end
 
-        user_name = User.find(i.user_id).name
+        #user_name = User.find(i.user_id).name
         date = i.date.strftime("%Y-%m-%d")
 
-        results << {
+        data['results'] << {
           'lot_code' => lot_code,
           'content_code' => content_code,
           'content_name' => content_name,
           'amount' => amount.to_s,
-          'user_name' => user_name,
+          'user_name' => i.user.login,
           'date' => date,
           'adjusment_code' => ttype_code
         }
       end
     end
-    data['results'] = results
+
     return data
   end
 
@@ -422,9 +431,11 @@ class EasyModel
     end_date << " 23:59:59"
 
     stock = {}
-    data = {}
-    data['title'] = 'Reporte de consumo por ingrediente'
+    data = self.initialize_data('Inventario de Materia Prima')
+    data['start_date'] = start_date
+    data['end_date'] = end_date
     data['results'] = []
+
     transactions = Transaction.find :all, :include=>{:warehouse=>{}, :transaction_type=>{}}, :conditions=>["transactions.date >= '#{start_date}' AND transactions.date <= '#{end_date}' AND warehouses.warehouse_type_id=1"]
     transactions.each do |t|
       income = 0
@@ -462,26 +473,21 @@ class EasyModel
       }
     end
 
-    data['start_date'] = start_date
-    data['end_date'] = end_date
     return data
   end
 
   def self.product_lots_dispatches(start_date, end_date)
     dispatch_type = TransactionType.find :first, :conditions => {:code => 'SA-DES'}
-    "Dispatch code found: " + dispatch_type.code
     return nil if dispatch_type.nil?
 
     # We should leave out ingredient warehouses here using :include, the pulidito way.
-    dispatches = Transaction.find :all, :conditions => {:transaction_type_id => dispatch_type,
-                                                     :date => (start_date)..((end_date) + 1.day)}
+    dispatches = Transaction.find :all, :conditions => {:transaction_type_id => dispatch_type, :date => (start_date)..((end_date) + 1.day)}
     return nil if dispatches.length.zero?
 
-    data = {}
-    results = []
-
+    data = self.initialize_data('Inventario de Materia Prima')
     data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
     data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
+    data['results'] = []
 
     dispatches.each do |d|
       warehouse = Warehouse.find(d.warehouse_id)
@@ -500,7 +506,7 @@ class EasyModel
         user_name = User.find(d.user_id).name
         date = d.date.strftime("%Y-%m-%d")
 
-        results << {
+        data['results'] << {
           'lot_code' => lot_code,
           'content_code' => content_code,
           'content_name' => content_name,
@@ -511,11 +517,14 @@ class EasyModel
         }
       end
     end
-    data['results'] = results
+
     return data
   end
-  
-  #==== Utilities ====
+
+  # ================================================================
+  # Utilities
+  # ================================================================
+
   def self.parse_date(param, name)
     day = param["#{name}(1i)"].to_i
     month = param["#{name}(2i)"].to_i
@@ -528,5 +537,21 @@ class EasyModel
     month = param["#{name}(2i)"].to_i
     year = param["#{name}(3i)"].to_i
     return Date.new(day, month, year)
+  end
+
+  private
+
+  def self.initialize_data(title)
+    company = YAML::load(File.open("#{Rails.root.to_s}/config/global.yml"))['application']
+    puts company.inspect
+    data = {}
+    data['title'] = title
+    data['company_name'] = company['name']
+    data['company_address'] = company['address']
+    data['company_rif'] = company['rif']
+    data['company_logo'] = company['logo']
+    data['footer'] = company['footer']
+
+    return data
   end
 end

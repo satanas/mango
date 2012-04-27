@@ -79,9 +79,9 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('adjusments')">Ajustes de Inventario</h2>
-    <div id="adjusments" class="report-details">
-      <%= form_for :report, :url=>adjusments_report_path do |f| %>
+    <h2 onclick="toggle_report_details('stock_adjustments')">Ajustes de Inventario</h2>
+    <div id="stock_adjustments" class="report-details">
+      <%= form_for :report, :url=>stock_adjustments_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
         <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
         <%= submit_tag 'Generar Reporte' %>
@@ -90,7 +90,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('lots_incomes')">Entrada de Materia Prima</h2>
+    <h2 onclick="toggle_report_details('lots_incomes')">Entradas de Materia Prima</h2>
     <div id="lots_incomes" class="report-details">
       <%= form_for :report, :url=>lots_incomes_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>

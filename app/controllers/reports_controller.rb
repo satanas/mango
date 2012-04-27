@@ -61,7 +61,7 @@ class ReportsController < ApplicationController
       redirect_to :action => 'index'
     else
       report = EasyReport::Report.new data, 'batch_details.yml'
-      send_data report.render, :filename => "consumo_por_batch.pdf", :type => "application/pdf"
+      send_data report.render, :filename => "detalle_batch.pdf", :type => "application/pdf"
     end
   end
 
@@ -107,20 +107,20 @@ class ReportsController < ApplicationController
     end
   end
 
-  def adjusments
+  def stock_adjustments
     #start_date = EasyModel.parse_date(params[:report], 'start')
     start_date = EasyModel.param_to_date(params[:report], 'start')
     #end_date = EasyModel.parse_date(params[:report], 'end')
     end_date = EasyModel.param_to_date(params[:report], 'end')
 
-    data = EasyModel.adjusments(start_date, end_date)
+    data = EasyModel.stock_adjustments(start_date, end_date)
     if data.nil?
       flash[:notice] = 'No hay registros para generar el reporte'
       flash[:type] = 'warn'
       redirect_to :action => 'index'
     else
-      report = EasyReport::Report.new data, 'adjusments.yml'
-      send_data report.render, :filename => "ajustes.pdf", :type => "application/pdf"
+      report = EasyReport::Report.new data, 'stock_adjustments.yml'
+      send_data report.render, :filename => "ajustes_de_inventario.pdf", :type => "application/pdf"
     end
   end
 
