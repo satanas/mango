@@ -3,7 +3,7 @@ class Warehouse < ActiveRecord::Base
   has_many :transaction
 
   validates_uniqueness_of :code
-  validates_presence_of :location
+  validates_presence_of :code, :location, :content_id
   validates_numericality_of :stock
 
   before_validation :select_content
@@ -56,10 +56,16 @@ class Warehouse < ActiveRecord::Base
 
   def select_content
     if self.warehouse_type_id == 1
-      self.errors.add_to_base("Ingredient lot can't be blank") if self.ing_content_id.blank?
+      if self.ing_content_id.blank?
+        self.errors.add_to_base("Ingredient lot can't be blank")
+        return false
+      end
       self.content_id = ing_content_id
     elsif self.warehouse_type_id == 2
-      self.errors.add_to_base("Product lot can't be blank") if self.pdt_content_id.blank?
+      if self.pdt_content_id.blank?
+        self.errors.add_to_base("Product lot can't be blank")
+        return false
+      end
       self.content_id = pdt_content_id
     end
   end
