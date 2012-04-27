@@ -17,7 +17,7 @@
     <% @orders.each do |o| %>
       <% class_row, i = alternate_row_class(i) %>
       <% client = o.client.nil? ? '' : o.client.name %>
-      <% product_lot = o.product_lot.nil? ? '' : o.product_lot.code %>
+      <% product_lot = o.product_lot.nil? ? '' : o.product_lot.to_collection_select %>
       <tr class="<%= class_row %>">
         <td class="center"><%=h o.code %></td>
         <td><%= link_to o.recipe.name, recipe_path(o.recipe.id) %></td>
