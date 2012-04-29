@@ -44,6 +44,7 @@ class EasyModel
       stotal = o.recipe.get_total() * rbatches
       data['results'] << {
         'order' => o.code,
+        'date' => o.created_at.strftime("%d/%m/%Y"),
         'recipe_code' => o.recipe.code,
         'recipe_name' => o.recipe.name,
         'client_code' => o.client.code,

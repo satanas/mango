@@ -82,59 +82,60 @@ report:
               align: left
               width: 20
           2:
+            date:
+              label: Fecha
+              align: left
+              width: 18
+          3:
             recipe_code:
               label: Receta
               align: left
               width: 20
-          3:
+          4:
             recipe_name:
               label: Desc. Receta
               align: left
-              width: 50
-          4:
+              width: 40
+          5:
             client_code:
               label: Cliente
               align: left
               width: 25
-          5:
+          6:
             client_name:
               label: Desc. Cliente
               align: left
-              width: 40
-          6:
-            real_batches:
-              label: Batch.R.
-              align: right
-              width: 15
+              width: 35
           7:
-            total_standard:
-              label: Total Estand.
+            real_batches:
+              label: Baches
               align: right
-              width: 30
-              unit: Kg
-              totalize: true
-              precision: 2
+              width: 13
           8:
-            total_real:
-              label: Total Real
+            total_standard:
+              label: Total Est.(Kg)
               align: right
-              width: 30
-              unit: Kg
+              width: 28
               totalize: true
               precision: 2
           9:
-            var_kg:
-              label: Var Kg
+            total_real:
+              label: Total Real (Kg)
               align: right
-              width: 20
-              unit: Kg
+              width: 28
+              totalize: true
               precision: 2
           10:
+            var_kg:
+              label: Var (Kg)
+              align: right
+              width: 20
+              precision: 2
+          11:
             var_perc:
-              label: Var %
+              label: Var (%)
               align: right
               width: 15
-              unit: %
               precision: 2
     3:
       breakline:
