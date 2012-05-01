@@ -93,8 +93,8 @@ ActiveRecord::Schema.define(:version => 20120410014541) do
     t.integer  "ingredient_id"
     t.integer  "recipe_id"
     t.float    "amount",        :null => false
-    t.integer  "priority",      :null => false
-    t.float    "percentage",    :null => false
+    t.integer  "priority"
+    t.float    "percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

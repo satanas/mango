@@ -30,24 +30,25 @@ class Order < ActiveRecord::Base
       return "??/??/???? ??:??:??"
     end
   end
-  
+
   def calculate_duration
     start_date = Batch.where(:order_id=>self.id).minimum('created_at')
     last_batch = Batch.find(:first, :conditions => ["number = ? and order_id = ?", Batch.where(:order_id=>self.id).maximum('number'), self.id])
     end_date = BatchHopperLot.where(:batch_id=>last_batch.id).maximum('created_at')
-    
-    start_date_string = start_date.strftime("%d/%m/%Y %H:%M:%S") rescue "??/??/???? ??:??:??"
-    end_date_string = end_date.strftime("%d/%m/%Y %H:%M:%S") rescue "??/??/???? ??:??:??"
-    duration_value = 0
-    unless start_date.nil? or end_date.nil?
-      duration_value = (end_date.to_i - start_date.to_i) / 60.0
+    unless end_date.nil?
+      return {
+        'start_date' => start_date.strftime("%d/%m/%Y %H:%M:%S"),
+        'end_date' => end_date.strftime("%d/%m/%Y %H:%M:%S"),
+        'duration' => (end_date.to_i - start_date.to_i) / 60.0
+      }
+    else
+      return {
+        'start_date' => start_date.strftime("%d/%m/%Y %H:%M:%S"),
+        'end_date' => "??/??/???? ??:??:??",
+        'duration' => 0
+      }
     end
-    
-    return {
-      'start_date' => start_date_string,
-      'end_date' => end_date_string,
-      'duration' => duration_value
-    }
+
   end
 
   def get_real_batches

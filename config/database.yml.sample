@@ -1,7 +1,7 @@
 common: &common
   adapter: mysql2
-  username: 
-  password:
+  username: root 
+  password: mango
 
 development:
   << : *common

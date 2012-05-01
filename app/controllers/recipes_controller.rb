@@ -37,11 +37,19 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find params[:id]
     @ingredients = Ingredient.find :all
-    if @recipe.eliminate
-      flash[:notice] = 'Receta eliminada con éxito'
+    @recipe.eliminate
+    if @recipe.errors.size.zero?
+      flash[:notice] = "Receta eliminada con éxito"
     else
-      flash[:notice] = 'La receta no se pudo eliminar'
+      logger.error("Error eliminando receta: #{@recipe.errors.inspect}")
       flash[:type] = 'error'
+      if not @recipe.errors[:foreign_key].nil?
+        flash[:notice] = 'La receta no se puede eliminar porque tiene registros asociados'
+      elsif not @recipe.errors[:unknown].nil?
+        flash[:notice] = @recipe.errors[:unknown]
+      else
+        flash[:notice] = "La receta no se ha podido eliminar"
+      end
     end
     redirect_to :recipes
   end
