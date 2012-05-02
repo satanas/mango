@@ -69,10 +69,10 @@ ingredient_variation:
   module: reports
   action: ingredient_variation
   mode: global
-total_per_recipe:
+consumption_per_recipe:
   name: Report 'Total per Recipe'
   module: reports
-  action: total_per_recipe
+  action: consumption_per_recipe
   mode: global
 consumption_per_ingredients:
   name: Report 'Consumption per Ingredients'
@@ -83,4 +83,29 @@ consumption_per_client:
   name: Report 'Consumption per Client'
   module: reports
   action: consumption_per_client
+  mode: global
+ingredients_stock:
+  name: Report 'Ingredients stock'
+  module: reports
+  action: ingredients_stock
+  mode: global
+products_stock:
+  name: Report 'Products stock'
+  module: reports
+  action: products_stock
+  mode: global
+lots_incomes:
+  name: Report 'Lots incomes'
+  module: reports
+  action: lots_incomes
+  mode: global
+product_lots_dispatches:
+  name: Report 'Product lots dispatches'
+  module: reports
+  action: product_lots_dispatches
+  mode: global
+stock_adjusments:
+  name: Report 'Stock adjusments'
+  module: reports
+  action: stock_adjusments
   mode: global
