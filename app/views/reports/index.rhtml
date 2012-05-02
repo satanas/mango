@@ -112,7 +112,7 @@
   </div>
 
   <div class="report-content">
-    <h2 onclick="toggle_report_details('ingredients_stock')">Inventario de Producto Terminado</h2>
+    <h2 onclick="toggle_report_details('products_stock')">Inventario de Producto Terminado</h2>
     <div id="products_stock" class="report-details">
       <%= form_for :report, :url=>products_stock_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
