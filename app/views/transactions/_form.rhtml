@@ -2,7 +2,7 @@
 <label for="transaction_type_id" class="small">Tipo:</label>
 <div class="field"><%= f.collection_select :transaction_type_id, @transaction_types, :id, :code, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %> <span>*</span></div>
 <label for="warehouse_id" class="small">Almacén:</label>
-<div class="field"><%= f.collection_select :warehouse_id, @warehouses, :id, :code, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %> <span>*</span></div>
+<div class="field"><%= f.collection_select :warehouse_id, @warehouses, :id, :to_collection_select, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %> <span>*</span></div>
 <label for="date" class="small">Fecha:</label>
 <div class="field"><%= f.date_select :date, :size=>'10' %> <span>*</span></div>
 <label for="amount" class="small">Cantidad:</label>
