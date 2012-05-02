@@ -2,7 +2,7 @@ report:
   settings:
     page:
       size: Letter
-      orientation: P
+      orientation: L
       margins: 10
     style:
       font_family: 'Helvetica'
@@ -49,7 +49,7 @@ report:
       text:
         label: "Desde: "
         align: right
-        width: 170
+        width: 240
         breakline: 0
         style:
           font_weight: B
@@ -62,7 +62,7 @@ report:
       text:
         label: "Hasta: "
         align: right
-        width: 170
+        width: 240
         breakline: 0
         style:
           font_weight: B
@@ -105,7 +105,7 @@ report:
            lot_code :
               label: Cod. Lote
               align: left
-              width: 20
+              width: 25
           3:
             content_code:
               label: Codigo Prod.
@@ -115,7 +115,7 @@ report:
             doc_number:
               label: Nro. Doc.
               align: left
-              width: 20
+              width: 25
           5:
             content_name:
               label: Nombre
@@ -133,6 +133,11 @@ report:
               label: Usuario
               align: left
               width: 25
+          8:
+            comment:
+              label: Comentario
+              align: left
+              width: 50
     8:
       breakline:
   footer:

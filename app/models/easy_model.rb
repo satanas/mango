@@ -479,6 +479,7 @@ class EasyModel
           'content_name' => product_lot.product.name,
           'amount' => d.amount.to_s,
           'user_name' => d.user.login,
+          'comment' => d.comment,
           'date' => self.print_formatted_date(d.date),
           'adjusment_code' => d.transaction_type.code,
         }
