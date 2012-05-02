@@ -112,6 +112,17 @@
   </div>
 
   <div class="report-content">
+    <h2 onclick="toggle_report_details('ingredients_stock')">Inventario de Producto Terminado</h2>
+    <div id="products_stock" class="report-details">
+      <%= form_for :report, :url=>products_stock_report_path do |f| %>
+        <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
+        <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
+        <%= submit_tag 'Generar Reporte' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="report-content">
     <h2 onclick="toggle_report_details('product_lots_dispatches')">Despachos de Producto Terminado</h2>
     <div id="product_lots_dispatches" class="report-details">
       <%= form_for :report, :url=>product_lots_dispatches_report_path do |f| %>

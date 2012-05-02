@@ -89,6 +89,11 @@ ingredients_stock:
   module: reports
   action: ingredients_stock
   mode: global
+products_stock:
+  name: Report 'Products stock'
+  module: reports
+  action: products_stock
+  mode: global
 lots_incomes:
   name: Report 'Lots incomes'
   module: reports
