@@ -41,26 +41,46 @@ report:
     5:
       breakline:
     6:
-      text:
-        field: since
-        align: right
-    7:
-      text:
-        field: until
-        align: right
-    8:
       pagenum:
         pattern: "Pag. <PAGE>"
         align: right
   body:
     1:
       text:
+        label: "Desde: "
+        align: right
+        width: 170
+        breakline: 0
+        style:
+          font_weight: B
+    2:
+      text:
+        field: since
+        align: left
+        width: 50
+    3:
+      text:
+        label: "Hasta: "
+        align: right
+        width: 170
+        breakline: 0
+        style:
+          font_weight: B
+    4:
+      text:
+        field: until
+        align: left
+        width: 50
+    5:
+      breakline:
+    6:
+      text:
         field: title
         align: center
         style:
           font_size: 12
           font_weight: B
-    2:
+    7:
       table:
         field: results
         heading:
@@ -113,7 +133,7 @@ report:
               label: Usuario
               align: left
               width: 25
-    3:
+    8:
       breakline:
   footer:
     1:

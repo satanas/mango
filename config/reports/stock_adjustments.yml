@@ -2,8 +2,8 @@ report:
   settings:
     page:
       size: Letter
-      orientation: L
-      margins: 20
+      orientation: P
+      margins: 10
     style:
       font_family: 'Helvetica'
       font_size: 10
@@ -41,26 +41,46 @@ report:
     5:
       breakline:
     6:
-      text:
-        field: since
-        align: right
-    7:
-      text:
-        field: until
-        align: right
-    8:
       pagenum:
         pattern: "Pag. <PAGE>"
         align: right
   body:
     1:
       text:
+        label: "Desde: "
+        align: right
+        width: 170
+        breakline: 0
+        style:
+          font_weight: B
+    2:
+      text:
+        field: since
+        align: left
+        width: 50
+    3:
+      text:
+        label: "Hasta: "
+        align: right
+        width: 170
+        breakline: 0
+        style:
+          font_weight: B
+    4:
+      text:
+        field: until
+        align: left
+        width: 50
+    5:
+      breakline:
+    6:
+      text:
         field: title
         align: center
         style:
           font_size: 12
           font_weight: B
-    2:
+    7:
       table:
         field: results
         heading:
@@ -70,43 +90,43 @@ report:
             bg_color: [220, 220, 220]
         columns:
           1:
+            date:
+              label: Fecha
+              align: left
+              width: 25
+          2:
+            adjustment_code:
+              label: Cod. Ajuste
+              align: center
+              width: 20
+          3:
            lot_code :
               label: Lote
               align: left
-              width: 20
-          2:
+              width: 25
+          4:
             content_code:
-              label: MP / Prod
+              label: Cod. MP/Prod
               align: left
-              width: 30
-          3:
+              width: 25
+          5:
             content_name:
               label: Descripcion
               align: left
-              width: 60
-          4:
+              width: 50
+          6:
             amount:
               label: Cantidad
               align: right
               unit: Kg
               width: 30
               precision: 2
-          5:
+          7:
             user_name:
               label: Usuario
-              align: right
-              width: 30
-          6:
-            date:
-              label: Fecha
-              align: right
-              width: 30
-          7:
-            adjustment_code:
-              label: Cod. Ajuste
-              align: center
-              width: 30
-    3:
+              align: left
+              width: 25
+    8:
       breakline:
   footer:
     1:

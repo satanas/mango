@@ -26,14 +26,12 @@ class EasyModel
   end
 
   def self.daily_production(start_date, end_date)
-    start_date << " 00:00:00"
-    end_date << " 23:59:59"
-    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', start_date, end_date]
+    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)]
     return nil if @orders.length.zero?
 
     data = self.initialize_data('Produccion Diaria por Fabrica')
-    data['since'] = "Desde: #{Date.parse(start_date).strftime("%d/%m/%Y")}"
-    data['until'] = "Hasta: #{Date.parse(end_date).strftime("%d/%m/%Y")}"
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
     data['results'] = []
 
     std_total = 0
@@ -44,7 +42,7 @@ class EasyModel
       stotal = o.recipe.get_total() * rbatches
       data['results'] << {
         'order' => o.code,
-        'date' => o.created_at.strftime("%d/%m/%Y"),
+        'date' => self.print_formatted_date(o.created_at),
         'recipe_code' => o.recipe.code,
         'recipe_name' => o.recipe.name,
         'client_code' => o.client.code,
@@ -61,14 +59,12 @@ class EasyModel
   end
 
   def self.order_duration(start_date, end_date)
-    start_date << " 00:00:00"
-    end_date << " 23:59:59"
-    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', start_date, end_date]
+    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)]
     return nil if @orders.length.zero?
 
     data = self.initialize_data('Duracion de Orden de Produccion')
-    data['since'] = "Desde: #{Date.parse(start_date).strftime("%d/%m/%Y")}"
-    data['until'] = "Hasta: #{Date.parse(end_date).strftime("%d/%m/%Y")}"
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
     data['results'] = []
 
     std_total = 0
@@ -85,7 +81,7 @@ class EasyModel
       average_tons_per_hour = rtotal / (order_duration / 60) / 1000 rescue 0
       data['results'] << {
         'order' => o.code,
-        'date' => o.created_at.strftime("%d/%m/%Y"),
+        'date' => self.print_formatted_date(o.created_at),
         'recipe_code' => o.recipe.code,
         'recipe_name' => o.recipe.name,
         'average_tons_per_hour' => average_tons_per_hour.to_s,
@@ -165,8 +161,8 @@ class EasyModel
     data = self.initialize_data('Detalle de Batch')
     data['order'] = order_code
     data['batch'] = batch_number
-    data['start_date'] = Batch.where(:order_id=>order.id).minimum('start_date').strftime("%d/%m/%Y %H:%M:%S")
-    data['end_date'] = Batch.where(:order_id=>order.id).maximum('end_date').strftime("%d/%m/%Y %H:%M:%S")
+    data['start_date'] = order.calculate_start_date()
+    data['end_date'] = order.calculate_end_date()
     data['results'] = []
 
     batches = BatchHopperLot.find :all, :include=>{:batch=>{:order=>{:recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}}, :hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}, :conditions=>["batches.number = '#{batch_number}' AND orders.code = '#{order_code}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
@@ -198,9 +194,6 @@ class EasyModel
   end
 
   def self.consumption_per_recipe(start_date, end_date, recipe_code)
-    start_date << " 00:00:00"
-    end_date << " 23:59:59"
-
     recipe = Recipe.find :first, :include=>{:ingredient_recipe=>{:ingredient=>{}}}, :conditions => ['code = ?', recipe_code]
     return nil if recipe.nil?
 
@@ -210,8 +203,8 @@ class EasyModel
 
     data = self.initialize_data('Consumo por Receta')
     data['recipe'] = "#{recipe.code} - #{recipe.name}"
-    data['start_date'] = start_date
-    data['end_date'] = end_date
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
     data['results'] = []
 
     recipe.ingredient_recipe.each do |ir|
@@ -219,7 +212,7 @@ class EasyModel
       nominal[key] = [ir.ingredient.name, ir.amount]
     end
 
-    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND recipe_id = ?", recipe.id]
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ? AND recipe_id = ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date), recipe.id]
 
     orders.each do |o|
       o.batch.each do |b|
@@ -256,13 +249,12 @@ class EasyModel
     end
     return nil if adjustment_type_ids.length.zero?
 
-    adjustments = Transaction.find :all, :conditions => {:transaction_type_id => adjustment_type_ids,
-                                                        :date => (start_date)..((end_date) + 1.day)}
+    adjustments = Transaction.find :all, :include=>[:warehouse, :user], :conditions => {:transaction_type_id => adjustment_type_ids, :date => (start_date)..((end_date) + 1.day)}
     return nil if adjustments.length.zero?
 
     data = self.initialize_data('Ajustes de Inventario')
-    data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
-    data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
     data['results'] = []
 
     adjustments.each do |a|
@@ -289,16 +281,13 @@ class EasyModel
         amount = -1 * amount
       end
 
-      user_name = User.find(a.user_id).name
-      date = a.date.strftime("%Y-%m-%d")
-
       data['results'] << {
         'lot_code' => lot_code,
         'content_code' => content_code,
         'content_name' => content_name,
         'amount' => amount.to_s,
-        'user_name' => user_name,
-        'date' => date,
+        'user_name' => a.user.login,
+        'date' => self.print_formatted_date(a.date),
         'adjustment_code' => ttype_code
       }
     end
@@ -307,17 +296,14 @@ class EasyModel
   end
 
   def self.consumption_per_ingredients(start_date, end_date)
-    start_date << " 00:00:00"
-    end_date << " 23:59:59"
-
     data = self.initialize_data('Consumo por Ingrediente')
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
     data['results'] = []
-    data['start_date'] = start_date
-    data['end_date'] = end_date
 
     real = {}
     name = {}
-    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}'"]
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)]
 
     orders.each do |o|
       o.batch.each do |b|
@@ -341,20 +327,17 @@ class EasyModel
   end
 
   def self.consumption_per_client(start_date, end_date, client_code)
-    start_date << " 00:00:00"
-    end_date << " 23:59:59"
-
     client = Client.find :first, :conditions => ['code = ?', client_code]
 
     data = self.initialize_data('Consumo por Cliente')
     data['client'] = "#{client.code} - #{client.name}"
-    data['start_date'] = start_date
-    data['end_date'] = end_date
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
     data['results'] = []
 
     real = {}
     name = {}
-    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND orders.client_id = ?", client.id]
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ? AND orders.client_id = ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date), client.id]
 
     orders.each do |o|
       o.batch.each do |b|
@@ -377,19 +360,17 @@ class EasyModel
     return data
   end
 
-  # Modularization will do great things... when we get the time
   def self.lots_incomes(start_date, end_date)
     income_type = TransactionType.find :first, :conditions => {:code => 'EN-COM'}
     "Income code found: " + income_type.code
     return nil if income_type.nil?
 
-    # We should leave out product warehouses here using :include, the pulidito way.
     incomes = Transaction.find :all, :include=>[:user], :conditions => {:transaction_type_id => income_type, :date => (start_date)..((end_date) + 1.day)}
     return nil if incomes.length.zero?
 
     data = self.initialize_data('Entradas de Materia Prima')
-    data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
-    data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
     data['results'] = []
 
     incomes.each do |i|
@@ -397,7 +378,7 @@ class EasyModel
       lot_code = ''
       content_code = ''
       content_name = ''
-      if warehouse.warehouse_type_id == 1 # The not so pulidito way.
+      if warehouse.warehouse_type_id == 1
         lot = Lot.find(warehouse.content_id)
         lot_code = lot.code
         content_code = Ingredient.find(lot.ingredient_id).code
@@ -410,16 +391,13 @@ class EasyModel
           amount = -1 * amount
         end
 
-        #user_name = User.find(i.user_id).name
-        date = i.date.strftime("%Y-%m-%d")
-
         data['results'] << {
           'lot_code' => lot_code,
           'content_code' => content_code,
           'content_name' => content_name,
           'amount' => amount.to_s,
           'user_name' => i.user.login,
-          'date' => date,
+          'date' => self.print_formatted_date(i.date),
           'adjusment_code' => ttype_code
         }
       end
@@ -429,16 +407,13 @@ class EasyModel
   end
 
   def self.ingredients_stock(start_date, end_date)
-    start_date << " 00:00:00"
-    end_date << " 23:59:59"
-
-    stock = {}
     data = self.initialize_data('Inventario de Materia Prima')
-    data['start_date'] = start_date
-    data['end_date'] = end_date
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
     data['results'] = []
 
-    transactions = Transaction.find :all, :include=>{:warehouse=>{}, :transaction_type=>{}}, :conditions=>["transactions.date >= '#{start_date}' AND transactions.date <= '#{end_date}' AND warehouses.warehouse_type_id=1"]
+    stock = {}
+    transactions = Transaction.find :all, :include=>{:warehouse=>{}, :transaction_type=>{}}, :conditions=>{:warehouses=>{:warehouse_type_id=>1}, :transactions=>{:date=>(start_date)..((end_date) + 1.day)}} #["transactions.date >= '#{start_date}' AND transactions.date <= '#{end_date}' AND warehouses.warehouse_type_id=1"]
     transactions.each do |t|
       income = 0
       outcome = 0
@@ -489,8 +464,8 @@ class EasyModel
     return nil if dispatches.length.zero?
 
     data = self.initialize_data('Despacho de producto terminado')
-    data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
-    data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
     data['results'] = []
 
     dispatches.each do |d|
@@ -504,7 +479,7 @@ class EasyModel
           'content_name' => product_lot.product.name,
           'amount' => d.amount.to_s,
           'user_name' => d.user.login,
-          'date' => d.date.strftime("%d/%m/%Y"),
+          'date' => self.print_formatted_date(d.date),
           'adjusment_code' => d.transaction_type.code,
         }
       end
@@ -517,18 +492,27 @@ class EasyModel
   # Utilities
   # ================================================================
 
-  def self.parse_date(param, name)
-    day = param["#{name}(1i)"].to_i
-    month = param["#{name}(2i)"].to_i
-    year = param["#{name}(3i)"].to_i
-    return Date.new(day, month, year).strftime("%Y-%m-%d")
-  end
-
   def self.param_to_date(param, name)
     day = param["#{name}(1i)"].to_i
     month = param["#{name}(2i)"].to_i
     year = param["#{name}(3i)"].to_i
     return Date.new(day, month, year)
+  end
+
+  def self.print_formatted_date(date)
+    date.strftime("%d/%m/%Y")
+  end
+
+  def self.start_date_to_sql(date)
+    date.strftime("%Y-%m-%d")
+  end
+
+  def self.end_date_to_sql(date)
+    (date + 1.day).strftime("%Y-%m-%d")
+  end
+
+  def self.print_range_date(str_date)
+    str_date.strftime("%d/%m/%Y")
   end
 
   private

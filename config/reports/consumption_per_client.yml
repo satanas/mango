@@ -47,7 +47,7 @@ report:
   body:
     1:
       text:
-        label: "Cliente: "
+        label: "Desde: "
         align: right
         width: 120
         breakline: 0
@@ -55,23 +55,10 @@ report:
           font_weight: B
     2:
       text:
-        field: client
+        field: since
         align: left
         width: 50
     3:
-      text:
-        label: "Desde: "
-        align: right
-        width: 120
-        breakline: 0
-        style:
-          font_weight: B
-    4:
-      text:
-        field: start_date
-        align: left
-        width: 50
-    5:
       text:
         label: "Hasta: "
         align: right
@@ -79,9 +66,22 @@ report:
         breakline: 0
         style:
           font_weight: B
+    4:
+      text:
+        field: until
+        align: left
+        width: 50
+    5:
+      text:
+        label: "Cliente: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
     6:
       text:
-        field: end_date
+        field: client
         align: left
         width: 50
     7:

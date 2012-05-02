@@ -13,8 +13,8 @@ class ReportsController < ApplicationController
   end
 
   def daily_production
-    start_date = EasyModel.parse_date(params[:report], 'start')
-    end_date = EasyModel.parse_date(params[:report], 'end')
+    start_date = EasyModel.param_to_date(params[:report], 'start')
+    end_date = EasyModel.param_to_date(params[:report], 'end')
     data = EasyModel.daily_production(start_date, end_date)
     if data.nil?
       flash[:notice] = 'No hay registros para generar el reporte'
@@ -27,8 +27,8 @@ class ReportsController < ApplicationController
   end
 
   def order_duration
-    start_date = EasyModel.parse_date(params[:report], 'start')
-    end_date = EasyModel.parse_date(params[:report], 'end')
+    start_date = EasyModel.param_to_date(params[:report], 'start')
+    end_date = EasyModel.param_to_date(params[:report], 'end')
     data = EasyModel.order_duration(start_date, end_date)
     if data.nil?
       flash[:notice] = 'No hay registros para generar el reporte'
@@ -66,8 +66,8 @@ class ReportsController < ApplicationController
   end
 
   def consumption_per_recipe
-    start_date = EasyModel.parse_date(params[:report], 'start')
-    end_date = EasyModel.parse_date(params[:report], 'end')
+    start_date = EasyModel.param_to_date(params[:report], 'start')
+    end_date = EasyModel.param_to_date(params[:report], 'end')
     data = EasyModel.consumption_per_recipe(start_date, end_date, params[:report][:recipe])
     if data.nil?
       flash[:notice] = 'No hay registros para generar el reporte'
@@ -80,8 +80,8 @@ class ReportsController < ApplicationController
   end
 
   def consumption_per_ingredients
-    start_date = EasyModel.parse_date(params[:report], 'start')
-    end_date = EasyModel.parse_date(params[:report], 'end')
+    start_date = EasyModel.param_to_date(params[:report], 'start')
+    end_date = EasyModel.param_to_date(params[:report], 'end')
     data = EasyModel.consumption_per_ingredients(start_date, end_date)
     if data.nil?
       flash[:notice] = 'No hay registros para generar el reporte'
@@ -94,8 +94,8 @@ class ReportsController < ApplicationController
   end
 
   def consumption_per_client
-    start_date = EasyModel.parse_date(params[:report], 'start')
-    end_date = EasyModel.parse_date(params[:report], 'end')
+    start_date = EasyModel.param_to_date(params[:report], 'start')
+    end_date = EasyModel.param_to_date(params[:report], 'end')
     data = EasyModel.consumption_per_client(start_date, end_date, params[:report][:client])
     if data.nil?
       flash[:notice] = 'No hay registros para generar el reporte'
@@ -108,9 +108,7 @@ class ReportsController < ApplicationController
   end
 
   def stock_adjustments
-    #start_date = EasyModel.parse_date(params[:report], 'start')
     start_date = EasyModel.param_to_date(params[:report], 'start')
-    #end_date = EasyModel.parse_date(params[:report], 'end')
     end_date = EasyModel.param_to_date(params[:report], 'end')
 
     data = EasyModel.stock_adjustments(start_date, end_date)
@@ -139,8 +137,8 @@ class ReportsController < ApplicationController
   end
 
   def ingredients_stock
-    start_date = EasyModel.parse_date(params[:report], 'start')
-    end_date = EasyModel.parse_date(params[:report], 'end')
+    start_date = EasyModel.param_to_date(params[:report], 'start')
+    end_date = EasyModel.param_to_date(params[:report], 'end')
     data = EasyModel.ingredients_stock(start_date, end_date)
     if data.nil?
       flash[:notice] = 'No hay registros para generar el reporte'

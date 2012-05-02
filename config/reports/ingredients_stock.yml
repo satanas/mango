@@ -2,8 +2,8 @@ report:
   settings:
     page:
       size: Letter
-      orientation: L
-      margins: 15
+      orientation: P
+      margins: 10
     style:
       font_family: 'Helvetica'
       font_size: 10
@@ -49,26 +49,26 @@ report:
       text:
         label: "Desde: "
         align: right
-        width: 120
+        width: 170
         breakline: 0
         style:
           font_weight: B
     2:
       text:
-        field: start_date
+        field: since
         align: left
         width: 50
     3:
       text:
         label: "Hasta: "
         align: right
-        width: 120
+        width: 170
         breakline: 0
         style:
           font_weight: B
     4:
       text:
-        field: end_date
+        field: until
         align: left
         width: 50
     5:
@@ -105,13 +105,13 @@ report:
             ingredient:
               label: Ingrediente
               align: left
-              width: 60
+              width: 55
           3:
             income_kg:
               label: Entradas
               align: right
               unit: Kg
-              width: 50
+              width: 40
               totalize: true
               precision: 2
           4:
@@ -119,7 +119,7 @@ report:
               label: Salidas
               align: right
               unit: Kg
-              width: 50
+              width: 40
               totalize: true
               precision: 2
           5:
@@ -127,7 +127,7 @@ report:
               label: Disponible
               align: right
               unit: Kg
-              width: 50
+              width: 40
               totalize: true
               precision: 2
     8:

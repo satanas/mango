@@ -49,26 +49,26 @@ report:
       text:
         label: "Desde: "
         align: right
-        width: 120
+        width: 170
         breakline: 0
         style:
           font_weight: B
     2:
       text:
-        field: start_date
+        field: since
         align: left
         width: 50
     3:
       text:
         label: "Hasta: "
         align: right
-        width: 120
+        width: 170
         breakline: 0
         style:
           font_weight: B
     4:
       text:
-        field: end_date
+        field: until
         align: left
         width: 50
     5:
@@ -100,7 +100,7 @@ report:
            code:
               label: Codigo
               align: left
-              width: 20
+              width: 25
           2:
             ingredient:
               label: Ingrediente
