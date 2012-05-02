@@ -26,7 +26,7 @@ class EasyModel
   end
 
   def self.daily_production(start_date, end_date)
-    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)]
+    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)], :order=>['batches.start_date DESC']
     return nil if @orders.length.zero?
 
     data = self.initialize_data('Produccion Diaria por Fabrica')
@@ -59,7 +59,7 @@ class EasyModel
   end
 
   def self.order_duration(start_date, end_date)
-    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)]
+    @orders = Order.find :all, :include=>['batch', 'recipe', 'client'], :conditions=>['batches.start_date >= ? and batches.end_date <= ?', self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)], :order=>['batches.start_date DESC']
     return nil if @orders.length.zero?
 
     data = self.initialize_data('Duracion de Orden de Produccion')
@@ -212,7 +212,7 @@ class EasyModel
       nominal[key] = [ir.ingredient.name, ir.amount]
     end
 
-    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ? AND recipe_id = ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date), recipe.id]
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ? AND recipe_id = ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date), recipe.id], :order=>['batches.start_date DESC']
 
     orders.each do |o|
       o.batch.each do |b|
@@ -238,6 +238,71 @@ class EasyModel
     return data
   end
 
+  def self.consumption_per_ingredients(start_date, end_date)
+    data = self.initialize_data('Consumo por Ingrediente')
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
+    data['results'] = []
+
+    real = {}
+    name = {}
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)], :order=>['batches.start_date DESC']
+
+    orders.each do |o|
+      o.batch.each do |b|
+        b.batch_hopper_lot.each do |bhl|
+          key = bhl.hopper_lot.lot.ingredient.code
+          name[key] = bhl.hopper_lot.lot.ingredient.name
+          real[key] = real.fetch(key, 0) + bhl.amount
+        end
+      end
+    end
+
+    real.each do |key, value|
+      data['results'] << {
+        'code' => key,
+        'ingredient' => name[key],
+        'real_kg' => value.to_s,
+      }
+    end
+
+    return data
+  end
+
+  def self.consumption_per_client(start_date, end_date, client_code)
+    client = Client.find :first, :conditions => ['code = ?', client_code]
+
+    data = self.initialize_data('Consumo por Cliente')
+    data['client'] = "#{client.code} - #{client.name}"
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
+    data['results'] = []
+
+    real = {}
+    name = {}
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ? AND orders.client_id = ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date), client.id], :order=>['batches.start_date DESC']
+
+    orders.each do |o|
+      o.batch.each do |b|
+        b.batch_hopper_lot.each do |bhl|
+          key = bhl.hopper_lot.lot.ingredient.code
+          name[key] = bhl.hopper_lot.lot.ingredient.name
+          real[key] = real.fetch(key, 0) + bhl.amount
+        end
+      end
+    end
+
+    real.each do |key, value|
+      data['results'] << {
+        'code' => key,
+        'ingredient' => name[key],
+        'real_kg' => value.to_s,
+      }
+    end
+
+    return data
+  end
+
   def self.stock_adjustments(start_date, end_date)
     transaction_types = TransactionType.find :all
     adjustment_type_ids = []
@@ -249,7 +314,7 @@ class EasyModel
     end
     return nil if adjustment_type_ids.length.zero?
 
-    adjustments = Transaction.find :all, :include=>[:warehouse, :user], :conditions => {:transaction_type_id => adjustment_type_ids, :date => (start_date)..((end_date) + 1.day)}
+    adjustments = Transaction.find :all, :include=>[:warehouse, :user], :conditions => {:transaction_type_id => adjustment_type_ids, :date => (start_date)..((end_date) + 1.day)}, :order=>['date DESC']
     return nil if adjustments.length.zero?
 
     data = self.initialize_data('Ajustes de Inventario')
@@ -295,77 +360,12 @@ class EasyModel
     return data
   end
 
-  def self.consumption_per_ingredients(start_date, end_date)
-    data = self.initialize_data('Consumo por Ingrediente')
-    data['since'] = self.print_range_date(start_date)
-    data['until'] = self.print_range_date(end_date)
-    data['results'] = []
-
-    real = {}
-    name = {}
-    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)]
-
-    orders.each do |o|
-      o.batch.each do |b|
-        b.batch_hopper_lot.each do |bhl|
-          key = bhl.hopper_lot.lot.ingredient.code
-          name[key] = bhl.hopper_lot.lot.ingredient.name
-          real[key] = real.fetch(key, 0) + bhl.amount
-        end
-      end
-    end
-
-    real.each do |key, value|
-      data['results'] << {
-        'code' => key,
-        'ingredient' => name[key],
-        'real_kg' => value.to_s,
-      }
-    end
-
-    return data
-  end
-
-  def self.consumption_per_client(start_date, end_date, client_code)
-    client = Client.find :first, :conditions => ['code = ?', client_code]
-
-    data = self.initialize_data('Consumo por Cliente')
-    data['client'] = "#{client.code} - #{client.name}"
-    data['since'] = self.print_range_date(start_date)
-    data['until'] = self.print_range_date(end_date)
-    data['results'] = []
-
-    real = {}
-    name = {}
-    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ? AND orders.client_id = ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date), client.id]
-
-    orders.each do |o|
-      o.batch.each do |b|
-        b.batch_hopper_lot.each do |bhl|
-          key = bhl.hopper_lot.lot.ingredient.code
-          name[key] = bhl.hopper_lot.lot.ingredient.name
-          real[key] = real.fetch(key, 0) + bhl.amount
-        end
-      end
-    end
-
-    real.each do |key, value|
-      data['results'] << {
-        'code' => key,
-        'ingredient' => name[key],
-        'real_kg' => value.to_s,
-      }
-    end
-
-    return data
-  end
-
   def self.lots_incomes(start_date, end_date)
     income_type = TransactionType.find :first, :conditions => {:code => 'EN-COM'}
     "Income code found: " + income_type.code
     return nil if income_type.nil?
 
-    incomes = Transaction.find :all, :include=>[:user], :conditions => {:transaction_type_id => income_type, :date => (start_date)..((end_date) + 1.day)}
+    incomes = Transaction.find :all, :include=>[:user], :conditions => {:transaction_type_id => income_type, :date => (start_date)..((end_date) + 1.day)}, :order=>['date DESC']
     return nil if incomes.length.zero?
 
     data = self.initialize_data('Entradas de Materia Prima')
@@ -413,7 +413,7 @@ class EasyModel
     data['results'] = []
 
     stock = {}
-    transactions = Transaction.find :all, :include=>{:warehouse=>{}, :transaction_type=>{}}, :conditions=>{:warehouses=>{:warehouse_type_id=>1}, :transactions=>{:date=>(start_date)..((end_date) + 1.day)}} #["transactions.date >= '#{start_date}' AND transactions.date <= '#{end_date}' AND warehouses.warehouse_type_id=1"]
+    transactions = Transaction.find :all, :include=>{:warehouse=>{}, :transaction_type=>{}}, :conditions=>{:warehouses=>{:warehouse_type_id=>1}, :transactions=>{:date=>(start_date)..((end_date) + 1.day)}} , :order=>['date DESC']
     transactions.each do |t|
       income = 0
       outcome = 0
