@@ -117,6 +117,7 @@
       <%= form_for :report, :url=>product_lots_dispatches_report_path do |f| %>
         <%= f.label :start, "Fecha Inicio: ", :class=>'small' %> <%= f.date_select :start %><br/>
         <%= f.label :end, "Fecha Fin: ", :class=>'small' %> <%= f.date_select :end %><br/><br/>
+        <%= f.label :doc_number, "Nro. Doc.: ", :class=>'small' %> <%= f.text_field :doc_number, :size=>15 %><br/><br/><br/>
         <%= submit_tag 'Generar Reporte' %>
       <% end %>
     </div>

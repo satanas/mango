@@ -478,48 +478,38 @@ class EasyModel
     return data
   end
 
-  def self.product_lots_dispatches(start_date, end_date)
-    dispatch_type = TransactionType.find :first, :conditions => {:code => 'SA-DES'}
-    return nil if dispatch_type.nil?
+  def self.product_lots_dispatches(start_date, end_date, doc_number)
+    if doc_number.blank?
+      conditions = {:transaction_type_id=>5, :date=>(start_date)..((end_date) + 1.day)}
+    else
+      conditions = {:transaction_type_id=>5, :transactions=>{:document_number=>doc_number}, :date=>(start_date)..((end_date) + 1.day)}
+    end
 
-    # We should leave out ingredient warehouses here using :include, the pulidito way.
-    dispatches = Transaction.find :all, :conditions => {:transaction_type_id => dispatch_type, :date => (start_date)..((end_date) + 1.day)}
+    dispatches = Transaction.find :all, :include=>[:warehouse, :transaction_type, :user], :conditions => conditions
     return nil if dispatches.length.zero?
 
-    data = self.initialize_data('Inventario de Materia Prima')
+    data = self.initialize_data('Despacho de producto terminado')
     data['since'] = "Desde: #{start_date.strftime("%d/%m/%Y")}"
     data['until'] = "Hasta: #{end_date.strftime("%d/%m/%Y")}"
     data['results'] = []
 
     dispatches.each do |d|
-      warehouse = Warehouse.find(d.warehouse_id)
-      lot_code = ''
-      content_code = ''
-      content_name = ''
-      if warehouse.warehouse_type_id == 2 # The not so pulidito way.
-        product_lot = ProductLot.find(warehouse.content_id)
-        lot_code = product_lot.code
-        content_code = Product.find(product_lot.product_id).code
-        content_name = Product.find(product_lot.product_id).name
-        transaction_type_id = d.transaction_type_id
-        ttype_code = TransactionType.find(transaction_type_id).code
-        amount = d.amount
-
-        user_name = User.find(d.user_id).name
-        date = d.date.strftime("%Y-%m-%d")
+      if d.warehouse.warehouse_type_id == 2
+        product_lot = ProductLot.find d.warehouse.content_id, :include=>[:product]
 
         data['results'] << {
-          'lot_code' => lot_code,
-          'content_code' => content_code,
-          'content_name' => content_name,
-          'amount' => amount.to_s,
-          'user_name' => user_name,
-          'date' => date,
-          'adjusment_code' => ttype_code
+          'lot_code' => product_lot.code,
+          'doc_number' => d.document_number || '--',
+          'content_code' => product_lot.product.code,
+          'content_name' => product_lot.product.name,
+          'amount' => d.amount.to_s,
+          'user_name' => d.user.login,
+          'date' => d.date.strftime("%d/%m/%Y"),
+          'adjusment_code' => d.transaction_type.code,
         }
       end
     end
-
+    return nil if data['results'].empty?
     return data
   end
 

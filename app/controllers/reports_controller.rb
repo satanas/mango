@@ -155,7 +155,7 @@ class ReportsController < ApplicationController
   def product_lots_dispatches
     start_date = EasyModel.param_to_date(params[:report], 'start')
     end_date = EasyModel.param_to_date(params[:report], 'end')
-    data = EasyModel.product_lots_dispatches(start_date, end_date)
+    data = EasyModel.product_lots_dispatches(start_date, end_date, params[:report][:doc_number])
     if data.nil?
       flash[:notice] = 'No hay registros para generar el reporte'
       flash[:type] = 'warn'
@@ -166,11 +166,4 @@ class ReportsController < ApplicationController
     end
   end
 
-  private
-
-  def retard_report
-    flash[:notice] = 'No hay registros para generar el reporte'
-    flash[:type] = 'warn'
-    redirect_to :action => 'index'
-  end
 end

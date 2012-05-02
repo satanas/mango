@@ -7,6 +7,6 @@ class ProductLot < ActiveRecord::Base
   validates_length_of :code, :within => 3..20
 
   def to_collection_select
-   "#{self.product.name} (L: #{self.code})"
+    "#{self.product.name} (L: #{self.code})"
   end
 end

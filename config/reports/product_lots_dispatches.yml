@@ -2,8 +2,8 @@ report:
   settings:
     page:
       size: Letter
-      orientation: L
-      margins: 20
+      orientation: P
+      margins: 10
     style:
       font_family: 'Helvetica'
       font_size: 10
@@ -68,38 +68,51 @@ report:
           style:
             font_weight: B
             bg_color: [220, 220, 220]
+        totalization:
+          precision: 2
+          label: Totales
+          align: right
+          border: T
+          style:
+            font_weight: B
         columns:
           1:
+            date:
+              label: Fecha
+              align: left
+              width: 25
+          2:
            lot_code :
               label: Cod. Lote
               align: left
               width: 20
-          2:
+          3:
             content_code:
               label: Codigo Prod.
               align: left
               width: 30
-          3:
+          4:
+            doc_number:
+              label: Nro. Doc.
+              align: left
+              width: 20
+          5:
             content_name:
               label: Nombre
               align: left
-              width: 60
-          4:
+              width: 45
+          6:
             amount:
-              label: Cantidad
-              align: center
+              label: Cant. (Kg)
+              align: right
               width: 30
               precision: 2
-          5:
+              totalize: true
+          7:
             user_name:
               label: Usuario
-              align: right
-              width: 30
-          6:
-            date:
-              label: Fecha
-              align: right
-              width: 30
+              align: left
+              width: 25
     3:
       breakline:
   footer:
