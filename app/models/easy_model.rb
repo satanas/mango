@@ -460,7 +460,7 @@ class EasyModel
       conditions = {:transaction_type_id=>5, :transactions=>{:document_number=>doc_number}, :date=>(start_date)..((end_date) + 1.day)}
     end
 
-    dispatches = Transaction.find :all, :include=>[:warehouse, :transaction_type, :user], :conditions => conditions
+    dispatches = Transaction.find :all, :include=>[:warehouse, :transaction_type, :user], :conditions => conditions, :order=>['date DESC']
     return nil if dispatches.length.zero?
 
     data = self.initialize_data('Despacho de producto terminado')
