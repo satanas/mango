@@ -150,6 +150,20 @@ class ReportsController < ApplicationController
     end
   end
 
+  def products_stock
+    start_date = EasyModel.param_to_date(params[:report], 'start')
+    end_date = EasyModel.param_to_date(params[:report], 'end')
+    data = EasyModel.products_stock(start_date, end_date)
+    if data.nil?
+      flash[:notice] = 'No hay registros para generar el reporte'
+      flash[:type] = 'warn'
+      redirect_to :action => 'index'
+    else
+      report = EasyReport::Report.new data, 'products_stock.yml'
+      send_data report.render, :filename => "inventario_producto_terminado.pdf", :type => "application/pdf"
+    end
+  end
+
   def product_lots_dispatches
     start_date = EasyModel.param_to_date(params[:report], 'start')
     end_date = EasyModel.param_to_date(params[:report], 'end')

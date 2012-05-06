@@ -496,6 +496,53 @@ class EasyModel
     return data
   end
 
+  def self.products_stock(start_date, end_date)
+    stock = {}
+    data = self.initialize_data('Inventario de Producto Terminado')
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
+    data['results'] = []
+
+    transactions = Transaction.find :all, :include=>{:warehouse=>{}, :transaction_type=>{}}, :conditions=>{:date=>(start_date)..((end_date) + 1.day), :warehouses=>{:warehouse_type_id=>2}}, :order=>['date DESC']
+    transactions.each do |t|
+      income = 0
+      outcome = 0
+      product = t.warehouse.get_content.product
+
+      if t.transaction_type.sign == '+'
+        income = t.amount
+      elsif t.transaction_type.sign == '-'
+        outcome = t.amount
+      end
+
+      if stock.has_key?(product.code)
+        stock[product.code]['income'] += income
+        stock[product.code]['outcome'] += outcome
+        stock[product.code]['stock'] = stock[product.code]['income'] - stock[product.code]['outcome']
+      else
+        stock[product.code] = {
+          'code' => product.code,
+          'name' => product.name,
+          'income' => income,
+          'outcome' => outcome,
+          'stock' => (income - outcome)
+        }
+      end
+    end
+
+    stock.each do |key, value|
+      data['results'] << {
+        'code' => value['code'],
+        'product' => value['name'],
+        'income_kg' => value['income'].to_s,
+        'outcome_kg' => value['outcome'].to_s,
+        'stock_kg' => value['stock'].to_s,
+      }
+    end
+
+    return data
+  end
+
   # ================================================================
   # Utilities
   # ================================================================

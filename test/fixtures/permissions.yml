@@ -104,3 +104,8 @@ ingredient_variation:
   module: reports
   action: ingredient_variation
   mode: global
+products_stock:
+  name: Report 'Products stock'
+  module: reports
+  action: products_stock
+  mode: global
