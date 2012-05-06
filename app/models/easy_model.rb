@@ -80,8 +80,8 @@ class EasyModel
       stotal = o.recipe.get_total() * rbatches
       d = o.calculate_duration
       order_duration = d['duration']
-      start_time = d['start_date'][-8,5] # Risky parsing
-      end_time = d['end_date'][-8,5] # Risky parsing
+      start_time = d['start_date']
+      end_time = d['end_date']
       average_batch_duration = order_duration / rbatches rescue 0
       average_tons_per_hour = rtotal / (order_duration / 60) / 1000 rescue 0
       data['results'] << {

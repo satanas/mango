@@ -36,10 +36,10 @@ class Order < ActiveRecord::Base
     last_batch = Batch.find(:first, :conditions => ["number = ? and order_id = ?", Batch.where(:order_id=>self.id).maximum('number'), self.id])
     end_date = BatchHopperLot.where(:batch_id=>last_batch.id).maximum('created_at')
 
-    start_date_string = start_date.strftime("%d/%m/%Y %H:%M:%S") rescue "??/??/???? ??:??:??"
-    end_date_string = end_date.strftime("%d/%m/%Y %H:%M:%S") rescue "??/??/???? ??:??:??"
+    start_date_string = start_date.strftime("%H:%M:%S") rescue "??:??:??"
+    end_date_string = end_date.strftime("%H:%M:%S") rescue "??:??:??"
     duration_value = 0
-    unless start_date.nil? or end_date.nil?
+    if not start_date.nil? and not end_date.nil?
       duration_value = (end_date.to_i - start_date.to_i) / 60.0
     end
 
