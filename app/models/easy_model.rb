@@ -40,6 +40,11 @@ class EasyModel
       rtotal = Batch.get_real_total(o.id)
       rbatches = Batch.get_real_batches(o.id)
       stotal = o.recipe.get_total() * rbatches
+      var_kg = stotal - rtotal
+      var_perc = (rtotal * 100.0) / stotal
+      if var_perc > 100:
+        var_perc = 100 - var_perc
+      end
       data['results'] << {
         'order' => o.code,
         'date' => self.print_formatted_date(o.created_at),
@@ -50,8 +55,8 @@ class EasyModel
         'real_batches' => rbatches.to_s,
         'total_standard' => stotal.to_s,
         'total_real' => rtotal.to_s,
-        'var_kg' => (stotal - rtotal).to_s,
-        'var_perc' => ((rtotal * 100.0) / stotal).to_s
+        'var_kg' => var_kg.to_s,
+        'var_perc' => var_perc.to_s
       }
     end
 
@@ -123,7 +128,7 @@ class EasyModel
             'real_kg' => bhl.amount.to_f,
             'std_kg' => std_amount,
             'var_kg' => 0,
-            'var_perc' => 0
+            'var_perc' => 0,
           }
         else
           details[key]['real_kg'] += bhl.amount.to_f
@@ -138,6 +143,8 @@ class EasyModel
     data = self.initialize_data('Detalle de Orden de Produccion')
     data['order'] = @order.code
     data['recipe'] = "#{@order.recipe.code} - #{@order.recipe.name}"
+    data['version'] = @order.recipe.version
+    data['comment'] = @order.comment
     data['product'] = "#{@order.product_lot.product.code} - #{@order.product_lot.product.name}"
     data['start_date'] = @order.calculate_start_date()
     data['end_date'] = @order.calculate_end_date()

@@ -55,9 +55,9 @@ class Warehouse < ActiveRecord::Base
   def to_collection_select
     content = get_content
     if self.warehouse_type_id == 1
-      return "#{self.code} (#{self.warehouse_type.code} - #{content.ingredient.code})"
+      return "#{self.code} (#{self.warehouse_type.code}): #{content.ingredient.name}"
     elsif self.warehouse_type_id == 2
-      return "#{self.code} (#{self.warehouse_type.code} - #{content.product.code})"
+      return "#{self.code} (#{self.warehouse_type.code}): #{content.product.name}"
     end
   end
 

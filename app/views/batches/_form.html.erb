@@ -4,9 +4,9 @@
 <label for="code" class="small">Orden Prod.:</label>
 <div class="field"><%= f.collection_select :order_id, @orders, :id, :code, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %> <span>*</span></div>
 <label for="start_date" class="small">Inicio:</label>
-<div class="field"><%= f.datetime_select :start_date, :include_seconds => true, :size=>'10' %> <span>*</span></div>
+<div class="field"><%= f.datetime_select :start_date, :include_seconds => true, :default=>DateTime.now, :size=>'10' %> <span>*</span></div>
 <label for="end_date" class="small">Fin:</label>
-<div class="field"><%= f.datetime_select :end_date, :include_seconds => true, :size=>'10' %> <span>*</span></div>
+<div class="field"><%= f.datetime_select :end_date, :include_seconds => true, :default=>DateTime.now, :size=>'10' %> <span>*</span></div>
 <% if session[:user].admin? %>
 <label for="user_id" class="small">Usuario:</label>
 <div class="field"><%= f.collection_select :user_id, @users, :id, :login, {:include_blank => true}, :class=>'chzn-select chzn-field-normal' %> <span>*</span></div>
