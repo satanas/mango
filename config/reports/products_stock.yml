@@ -105,13 +105,13 @@ report:
             product:
               label: Producto
               align: left
-              width: 60
+              width: 45
           3:
             income_kg:
               label: Entradas
               align: right
               unit: Kg
-              width: 50
+              width: 40
               totalize: true
               precision: 2
           4:
@@ -119,7 +119,7 @@ report:
               label: Salidas
               align: right
               unit: Kg
-              width: 50
+              width: 40
               totalize: true
               precision: 2
           5:
@@ -127,7 +127,7 @@ report:
               label: Disponible
               align: right
               unit: Kg
-              width: 50
+              width: 40
               totalize: true
               precision: 2
     8:
