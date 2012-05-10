@@ -2,7 +2,7 @@ report:
   settings:
     page:
       size: Letter
-      orientation: p
+      orientation: P
       margins: 15
     style:
       font_family: 'Helvetica'
@@ -97,22 +97,49 @@ report:
             font_weight: B
         columns:
           1:
-           code:
+            lot:
+              label: Lote
+              align: left
+              width: 20
+          2:
+            ingredient_code:
               label: Codigo
               align: left
               width: 25
-          2:
-            ingredient:
+          3:
+            ingredient_name:
               label: Ingrediente
               align: left
-              width: 100
-          3:
+              width: 40
+          4:
             real_kg:
-              label: Cantidad
+              label: Cant. Real
               align: right
               unit: Kg
-              width: 60
+              width: 27
               totalize: true
+              precision: 2
+          5:
+            std_kg:
+              label: Cant. Est.
+              align: right
+              unit: Kg
+              width: 27
+              totalize: true
+              precision: 2
+          6:
+            var_kg:
+              label: Var Kg
+              align: right
+              unit: Kg
+              width: 27
+              precision: 2
+          7:
+            var_perc:
+              label: Var %
+              align: right
+              unit: %
+              width: 20
               precision: 2
     8:
       breakline:

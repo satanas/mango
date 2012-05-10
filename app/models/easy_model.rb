@@ -251,8 +251,44 @@ class EasyModel
     data['until'] = self.print_range_date(end_date)
     data['results'] = []
 
-    real = {}
-    name = {}
+    results = {}
+    batches = BatchHopperLot.find :all, :include=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}, :batch=>{:order=>{:recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ? AND lots.ingredient_id = ingredients_recipes.ingredient_id", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)], :order=>['batches.start_date DESC'] #:conditions=>["batches.start_date >= '#{start_date}' AND batches.end_date <= '#{end_date}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
+    batches.each do |b|
+      real_kg = b.amount.to_f
+      std_kg = -1
+      b.batch.order.recipe.ingredient_recipe.each do |i|
+        if i.ingredient.id == b.hopper_lot.lot.ingredient.id
+          std_kg = i.amount.to_f
+          break
+        end
+      end
+
+      key = b.hopper_lot.lot.code
+      if results.has_key?(key)
+        results[key]['real_kg'] += real_kg
+        results[key]['std_kg'] += std_kg
+        results[key]['var_kg'] = results[key]['real_kg'] - results[key]['std_kg']
+        results[key]['var_perc'] = results[key]['var_kg'] * 100 / results[key]['std_kg']
+      else
+        var_kg = real_kg - std_kg
+        var_perc = var_kg * 100 / std_kg
+        results[key] = {
+          'lot' => key,
+          'ingredient_code' => b.hopper_lot.lot.ingredient.code,
+          'ingredient_name' => b.hopper_lot.lot.ingredient.name,
+          'real_kg' => real_kg,
+          'std_kg' => std_kg,
+          'var_kg' => var_kg,
+          'var_perc' => var_perc
+        }
+      end
+    end
+
+    results.each do |key, item|
+      data['results'] << item
+    end
+=begin
+    results = {}
     orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)], :order=>['batches.start_date DESC']
 
     orders.each do |o|
@@ -272,7 +308,7 @@ class EasyModel
         'real_kg' => value.to_s,
       }
     end
-
+=end
     return data
   end
 

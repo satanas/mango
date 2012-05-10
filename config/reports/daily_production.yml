@@ -131,6 +131,7 @@ report:
               label: Baches
               align: right
               width: 13
+              totalize: true
           8:
             total_standard:
               label: Total Est.(Kg)
