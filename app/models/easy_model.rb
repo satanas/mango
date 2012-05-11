@@ -602,6 +602,47 @@ class EasyModel
     return data
   end
 
+  def self.production_per_client(start_date, end_date, client_code)
+    client = Client.find :first, :conditions => ['code = ?', client_code]
+    return nil if client.nil?
+
+    data = self.initialize_data('Produccion por Cliente')
+    data['client'] = "#{client.ci_rif} - #{client.name}"
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
+    data['results'] = []
+
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}, :recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ? AND client_id = ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date), client.id], :order=>['batches.start_date DESC']
+
+    orders.each do |o|
+      std = 0
+      real = 0
+      nominal = 0
+
+      o.recipe.ingredient_recipe.each do |ir|
+        nominal += ir.amount
+      end
+
+      o.batch.each do |b|
+        b.batch_hopper_lot.each do |bhl|
+          std += nominal
+          real += bhl.amount
+        end
+      end
+
+      data['results'] << {
+        'order' => o.code,
+        'recipe_code' => o.recipe.code,
+        'recipe_name' => o.recipe.name,
+        'real_batches' => o.get_real_batches(),
+        'std_kg' => std.to_s,
+        'real_kg' => real.to_s,
+      }
+    end
+
+    return data
+  end
+
   # ================================================================
   # Utilities
   # ================================================================
