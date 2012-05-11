@@ -1,0 +1,159 @@
+report:
+  settings:
+    page:
+      size: Letter
+      orientation: P
+      margins: 15
+    style:
+      font_family: 'Helvetica'
+      font_size: 10
+      font_color: [0, 0, 0]
+  header:
+    1:
+      text:
+        field: company_name
+        margin: 30
+        align: left
+        style:
+          font_size: 11
+          font_weight: B
+    2:
+      text:
+        field: company_rif
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    3:
+      image:
+        filename: default-report-logo.png
+        width: 20
+        height: 20
+        x: 20
+        y: 12
+    4:
+      text:
+        field: company_address
+        margin: 30
+        align: left
+        style:
+          font_size: 10
+    5:
+      breakline:
+    6:
+      pagenum:
+        pattern: "Pag. <PAGE>"
+        align: right
+  body:
+    1:
+      text:
+        label: "Desde: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    2:
+      text:
+        field: since
+        align: left
+        width: 50
+    3:
+      text:
+        label: "Hasta: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    4:
+      text:
+        field: until
+        align: left
+        width: 50
+    5:
+      text:
+        label: "Receta: "
+        align: right
+        width: 120
+        breakline: 0
+        style:
+          font_weight: B
+    6:
+      text:
+        field: recipe
+        align: left
+        width: 50
+    7:
+      breakline:
+    8:
+      text:
+        field: title
+        align: center
+        style:
+          font_size: 12
+          font_weight: B
+    9:
+      table:
+        field: results
+        heading:
+          align: left
+          style:
+            font_weight: B
+            bg_color: [220, 220, 220]
+        totalization:
+          precision: 2
+          label: Totales
+          align: right
+          border: T
+          style:
+            font_weight: B
+        columns:
+          1:
+           order:
+              label: Orden
+              align: left
+              width: 20
+          2:
+            client_code:
+              label: Cod. Cliente
+              align: left
+              width: 25
+          3:
+            client_name:
+              label: Nombre Cliente
+              align: left
+              width: 40
+          4:
+            real_batches:
+              label: Batches
+              align: right
+              width: 20
+              totalize: true
+              precision: 2
+          5:
+            std_kg:
+              label: Cant. Est.
+              align: right
+              width: 35
+              unit: Kg
+              totalize: true
+              precision: 2
+          6:
+            real_kg:
+              label: Cant. Real
+              align: right
+              unit: Kg
+              width: 35
+              totalize: true
+              precision: 2
+    10:
+      breakline:
+  footer:
+    1:
+      text:
+        field: footer
+        align: center
+        style:
+          font_size: 8
+          font_color: [80, 80, 80]

@@ -291,28 +291,7 @@ class EasyModel
     results.each do |key, item|
       data['results'] << item
     end
-=begin
-    results = {}
-    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date)], :order=>['batches.start_date DESC']
 
-    orders.each do |o|
-      o.batch.each do |b|
-        b.batch_hopper_lot.each do |bhl|
-          key = bhl.hopper_lot.lot.ingredient.code
-          name[key] = bhl.hopper_lot.lot.ingredient.name
-          real[key] = real.fetch(key, 0) + bhl.amount
-        end
-      end
-    end
-
-    real.each do |key, value|
-      data['results'] << {
-        'code' => key,
-        'ingredient' => name[key],
-        'real_kg' => value.to_s,
-      }
-    end
-=end
     return data
   end
 
@@ -577,6 +556,46 @@ class EasyModel
         'income_kg' => value['income'].to_s,
         'outcome_kg' => value['outcome'].to_s,
         'stock_kg' => value['stock'].to_s,
+      }
+    end
+
+    return data
+  end
+
+  def self.production_per_recipe(start_date, end_date, recipe_code)
+    recipe = Recipe.find :first, :include=>{:ingredient_recipe=>{:ingredient=>{}}}, :conditions => ['code = ?', recipe_code]
+    return nil if recipe.nil?
+
+    data = self.initialize_data('Produccion por Receta')
+    data['recipe'] = "#{recipe.code} - #{recipe.name}"
+    data['since'] = self.print_range_date(start_date)
+    data['until'] = self.print_range_date(end_date)
+    data['results'] = []
+
+    nominal = 0
+    recipe.ingredient_recipe.each do |ir|
+      nominal += ir.amount
+    end
+
+    orders = Order.find :all, :include=>{:batch=>{:batch_hopper_lot=>{:hopper_lot=>{:lot=>{:ingredient=>{}}}}}, :client=>{}}, :conditions => ["batches.start_date >= ? AND batches.end_date <= ? AND recipe_id = ?", self.start_date_to_sql(start_date), self.end_date_to_sql(end_date), recipe.id], :order=>['batches.start_date DESC']
+
+    orders.each do |o|
+      std = 0
+      real = 0
+      o.batch.each do |b|
+        b.batch_hopper_lot.each do |bhl|
+          std += nominal
+          real += bhl.amount
+        end
+      end
+
+      data['results'] << {
+        'order' => o.code,
+        'client_code' => o.client.ci_rif,
+        'client_name' => o.client.name,
+        'real_batches' => o.get_real_batches(),
+        'std_kg' => std.to_s,
+        'real_kg' => real.to_s,
       }
     end
 
