@@ -164,12 +164,16 @@ class EasyModel
 
   def self.batch_details(order_code, batch_number)
     order = Order.find_by_code(order_code)
+    return nil if order.nil?
+
+    batch = Batch.find :first, :include=>[:order], :conditions=>{:number=>batch_number, :orders=>{:code=>order_code}}
+    return nil if batch.nil?
 
     data = self.initialize_data('Detalle de Batch')
     data['order'] = order_code
     data['batch'] = batch_number
-    data['start_date'] = order.calculate_start_date()
-    data['end_date'] = order.calculate_end_date()
+    data['start_date'] = self.print_range_date(batch.start_date, true)
+    data['end_date'] = self.print_range_date(batch.end_date, true)
     data['results'] = []
 
     batches = BatchHopperLot.find :all, :include=>{:batch=>{:order=>{:recipe=>{:ingredient_recipe=>{:ingredient=>{}}}}}, :hopper_lot=>{:hopper=>{}, :lot=>{:ingredient=>{}}}}, :conditions=>["batches.number = '#{batch_number}' AND orders.code = '#{order_code}' AND lots.ingredient_id = ingredients_recipes.ingredient_id"]
@@ -602,8 +606,9 @@ class EasyModel
     (date + 1.day).strftime("%Y-%m-%d")
   end
 
-  def self.print_range_date(str_date)
-    str_date.strftime("%d/%m/%Y")
+  def self.print_range_date(str_date, with_time=false)
+    fmt = with_time ? "%d/%m/%Y %H:%M:%S" : "%d/%m/%Y"
+    return str_date.strftime(fmt)
   end
 
   private
