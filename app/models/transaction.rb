@@ -15,9 +15,14 @@ class Transaction < ActiveRecord::Base
   end
 
   def process
-    do_stock_update
-    self.processed_in_stock = 1
-    raise StandardError, 'Problem reprocessing transaction' unless self.save
+    transaction do
+      do_stock_update
+      self.processed_in_stock = 1
+      unless self.save
+        logger.error(self.errors.inspect)
+        raise StandardError, 'Problem reprocessing transaction'
+      end
+    end
   end
 
   private
